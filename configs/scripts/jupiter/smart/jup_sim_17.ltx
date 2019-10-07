@@ -1,0 +1,20 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 37
+max_population = 1
+respawn_params = respawn@jup_sim_17
+respawn_idle = 172800
+
+
+[respawn@jup_sim_17]
+
+spawn_monster1
+spawn_ecolog
+
+[spawn_monster1]
+spawn_squads = simulation_dog_5_7, simulation_psy_dog, simulation_cat_3_5
+spawn_num = {=!smart_controlled(jup_sim_17)} 1, 0
+
+[spawn_ecolog]
+spawn_squads = ecolog_sim_squad_advanced, ecolog_sim_squad_veteran
+spawn_num = {+bar_deactivate_radar_done} 1, 0

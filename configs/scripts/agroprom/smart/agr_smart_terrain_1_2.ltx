@@ -1,0 +1,14 @@
+[smart_terrain]
+respawn_radius = 150 ;agr_smart_terrain_1_2 ;;переход агро-янтарь. Болото.
+squad_id = 1
+max_population = 1
+respawn_params = respawn@agr_smart_terrain_1_2
+respawn_idle = 8640
+
+[respawn@agr_smart_terrain_1_2]
+
+spawn_monster1
+
+[spawn_monster1]
+spawn_squads = simulation_tushkano, simulation_rats
+spawn_num = {=!smart_controlled(agr_smart_terrain_1_2)} 7, 0

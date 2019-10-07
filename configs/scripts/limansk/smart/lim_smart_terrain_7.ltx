@@ -1,0 +1,13 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 8
+max_population = 1
+respawn_params = respawn@lim_smart_terrain_7
+respawn_idle = 432000
+
+[respawn@lim_smart_terrain_7]
+spawn_heli_strong
+
+[spawn_heli_strong]
+spawn_helicopter = simulation_mono_helicopter_strong
+spawn_num = {-warlab_deactivate_generators_done !is_laststand} 1, 0

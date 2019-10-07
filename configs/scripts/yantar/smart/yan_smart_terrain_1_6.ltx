@@ -1,0 +1,25 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 1
+max_population = 2
+respawn_params = respawn@yan_smart_terrain_1_6
+respawn_idle = 43200
+
+
+[respawn@yan_smart_terrain_1_6]
+
+spawn_zombied
+spawn_monster1
+spawn_monster2
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_novice, zombied_sim_squad_advanced
+spawn_num = {=smart_under_faction(yan_smart_terrain_1_6:zombied) -yan_labx16_switcher_primary_off} 2, 0
+
+[spawn_monster1]
+spawn_squads = simulation_psy_dog, simulation_snork, simulation_snork_2_5
+spawn_num = {=!smart_controlled(yan_smart_terrain_1_6) -yan_labx16_switcher_primary_off} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_boar, simulation_flesh
+spawn_num = {=!smart_controlled(yan_smart_terrain_1_6) +yan_labx16_switcher_primary_off} 2, 0

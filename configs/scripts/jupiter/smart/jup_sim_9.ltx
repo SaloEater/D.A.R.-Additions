@@ -1,0 +1,16 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 47
+max_population = 2
+;respawn_only_smart = true
+respawn_params = respawn@jup_sim_9
+respawn_idle = 172800
+
+
+[respawn@jup_sim_9]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = jup_b205_smart_terrain_zombie_snork, jup_b205_smart_terrain_mix_dogs, jup_b205_smart_terrain_psy_dog_squad, jup_b205_smart_terrain_tushkano, jup_b205_smart_terrain_cat, jup_b205_smart_terrain_poltergeist
+spawn_num = {=!smart_controlled(jup_sim_9)} 1, 0

@@ -1,0 +1,57 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 12
+max_population = 2
+respawn_params = respawn@pri_b35_mercs 
+respawn_idle = 86400
+
+[respawn@pri_b35_mercs]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+spawn_zombied
+
+[spawn_monster1]
+spawn_squads = simulation_dog, simulation_pseudodog, simulation_dog, simulation_psy_dog
+spawn_num = {=!smart_controlled(pri_b35_mercs)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_cat
+spawn_num = {=!smart_controlled(pri_b35_mercs) =actor_week_in_zone(3)} 2, 0
+
+[spawn_monster3]
+spawn_squads = simulation_snork, simulation_zombie, simulation_bloodsucker_red, simulation_bloodsucker, simulation_poltergeist_tele
+spawn_num = {=!smart_controlled(pri_b35_mercs) =actor_week_in_zone(9)} 2, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b35_mercs:zombied)} 2, 0
+
+
+[exclusive]
+pri_b35_merc_leader = pripyat\pri_b35_mercs_logic.ltx
+pri_b35_merc_1  = pripyat\pri_b35_mercs_logic.ltx
+pri_b35_merc_2  = pripyat\pri_b35_mercs_logic.ltx
+pri_b35_merc_3  = pripyat\pri_b35_mercs_logic.ltx
+pri_b35_merc_4  = pripyat\pri_b35_mercs_logic.ltx
+pri_b35_merc_5  = pripyat\pri_b35_mercs_logic.ltx
+pri_b35_merc_6  = pripyat\pri_b35_mercs_logic.ltx
+pri_b35_envoy = pripyat\pri_b35_envoy_logic.ltx
+pri_b35_envoy_1 = pripyat\pri_b35_envoy_logic.ltx
+pri_b35_envoy_2 = pripyat\pri_b35_envoy_logic.ltx
+
+pri_a18_vano = pripyat\pri_a18_vano.ltx
+pri_a18_sokolov = pripyat\pri_a18_sokolov.ltx
+pri_a18_merkulov = pripyat\pri_a18_merkulov.ltx
+pri_a18_skelja = pripyat\pri_a18_skelja.ltx
+
+pri_a18_vano_surge = pripyat\pri_a18_reinf_surge_works.ltx
+pri_a18_sokolov_surge = pripyat\pri_a18_reinf_surge_works.ltx
+pri_a18_merkulov_surge = pripyat\pri_a18_reinf_surge_works.ltx
+pri_a18_skelja_surge = pripyat\pri_a18_reinf_surge_works.ltx
+
+pri_a20_missing_military_recon_leader = pripyat\pri_a20_military_missing_squad_ex_works.ltx
+pri_a20_missing_military_recon_1 = pripyat\pri_a20_military_missing_squad_ex_works.ltx
+pri_a20_missing_military_recon_2 = pripyat\pri_a20_military_missing_squad_ex_works.ltx
+pri_a20_missing_military_recon_3 = pripyat\pri_a20_military_missing_squad_ex_works.ltx

@@ -1,0 +1,39 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 12
+max_population = 2
+respawn_params = respawn@jup_b204
+respawn_idle = 86400
+
+
+[respawn@jup_b204]
+
+spawn_stalker
+spawn_monster1
+spawn_monster2
+spawn_monster3
+spawn_zombied
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran, bandit_sim_squad_veteran, csky_sim_squad_veteran, duty_sim_squad_veteran, freedom_sim_squad_veteran, merc_sim_squad_veteran, ecolog_sim_squad_veteran
+spawn_num = {+bar_deactivate_radar_done} 1, 0
+
+[spawn_monster1]
+spawn_squads = simulation_zombie, zombied_sim_squad_veteran
+spawn_num = {=!smart_controlled(jup_b204)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_snork_2_5
+spawn_num = {=!smart_controlled(jup_b204)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_dog_5_7, simulation_dog_mix, simulation_psy_dog_squad, simulation_psy_dog, simulation_dog
+spawn_num = {=!smart_controlled(jup_b204)} 1, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran, simulation_zombie
+spawn_num = {=smart_under_faction(jup_b204:zombied)} 1, 0
+
+
+[exclusive]
+jup_b204_watchman = jupiter\jup_b204_watchman.ltx

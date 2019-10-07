@@ -1,0 +1,31 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 12
+max_population = 1
+respawn_params = respawn@yan_smart_terrain_6_2
+respawn_idle = 86400
+
+[respawn@yan_smart_terrain_6_2]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_snork, simulation_dog, simulation_tushkano, simulation_psy_dog
+spawn_num = {=!smart_controlled(yan_smart_terrain_6_2)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_snork_2_5
+spawn_num = {=!smart_controlled(yan_smart_terrain_6_2) =actor_week_in_zone(5)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_poltergeist_tele, simulation_psy_dog_squad
+spawn_num = {=!smart_controlled(yan_smart_terrain_6_2) =actor_week_in_zone(9)} 1, 0
+
+[exclusive]
+yan_smart_terrain_6_2_zombie_wave_1 = yantar\yan_smart_terrain_6_2_smart_logic.ltx
+yan_smart_terrain_6_2_zombie_wave_2 = yantar\yan_smart_terrain_6_2_smart_logic.ltx
+yan_smart_terrain_6_2_zombie_wave_3 = yantar\yan_smart_terrain_6_2_smart_logic.ltx
+yan_smart_terrain_6_2_zombie_wave_4 = yantar\yan_smart_terrain_6_2_smart_logic.ltx
+yan_smart_terrain_6_2_zombie_wave_5 = yantar\yan_smart_terrain_6_2_smart_logic.ltx

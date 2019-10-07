@@ -1,0 +1,71 @@
+[smart_terrain]
+respawn_radius = 300;esc_smart_terrain_7_11 ;;АТП
+squad_id = 19
+max_population = 2
+respawn_params = respawn@esc_smart_terrain_7_11
+respawn_idle = 43200
+
+[respawn@esc_smart_terrain_7_11]
+
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_killer
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_dog, simulation_dog, simulation_cat
+spawn_num = {=!smart_controlled(esc_smart_terrain_7_11)} 3, 0
+
+[spawn_monster2]
+spawn_squads = simulation_pseudodog, simulation_tushkano_7_10, simulation_rats_7_10
+spawn_num = {=!smart_controlled(esc_smart_terrain_7_11) =actor_week_in_zone(6)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_dog_mix, simulation_dog_5_7
+spawn_num = {=!smart_controlled(esc_smart_terrain_7_11) =actor_week_in_zone(9)} 1, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_novice
+spawn_num = {=smart_under_faction(esc_smart_terrain_7_11:stalker)} 2, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_novice
+spawn_num = {=smart_under_faction(esc_smart_terrain_7_11:bandit)} 4, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_novice, stalker_sim_squad_novice
+spawn_num = {=smart_under_faction(esc_smart_terrain_7_11:csky)} 2, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_novice, stalker_sim_squad_novice
+spawn_num = {=smart_under_faction(esc_smart_terrain_7_11:dolg)} 2, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_novice, bandit_sim_squad_novice
+spawn_num = {=smart_under_faction(esc_smart_terrain_7_11:freedom)} 2, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_novice, bandit_sim_squad_novice
+spawn_num = {=smart_under_faction(esc_smart_terrain_7_11:killer)} 4, 0
+
+
+[exclusive]
+
+guard_1 = escape\esc_smart_terrain_7_11_smart_logic.ltx
+guard_2 = escape\esc_smart_terrain_7_11_smart_logic.ltx
+guard_3 = escape\esc_smart_terrain_7_11_smart_logic.ltx
+guard_4 = escape\esc_smart_terrain_7_11_smart_logic.ltx
+;guard_5 = escape\esc_smart_terrain_7_11_smart_logic.ltx
+
+;esc_smart_terrain_7_11_robber = escape\esc_smart_terrain_7_11_smart_logic.ltx
+esc_smart_terrain_7_11_camp_work_1 = escape\esc_smart_terrain_7_11_smart_logic.ltx
+esc_smart_terrain_7_11_camp_work_2 = escape\esc_smart_terrain_7_11_smart_logic.ltx
+esc_smart_terrain_7_11_camp_work_3 = escape\esc_smart_terrain_7_11_smart_logic.ltx
+esc_smart_terrain_7_11_camp_work_4 = escape\esc_smart_terrain_7_11_smart_logic.ltx
+esc_smart_terrain_7_11_camp_work_5 = escape\esc_smart_terrain_7_11_smart_logic.ltx

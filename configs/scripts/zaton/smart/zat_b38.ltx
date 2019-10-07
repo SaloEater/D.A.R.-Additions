@@ -1,0 +1,20 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 41
+max_population = 3
+respawn_params = respawn@zat_b38
+respawn_idle = 86400
+
+
+[respawn@zat_b38]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_snork
+spawn_num = {=!smart_controlled(zat_b38)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_zombie
+spawn_num = {=!smart_controlled(zat_b38)} 1, 0

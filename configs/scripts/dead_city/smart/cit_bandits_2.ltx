@@ -1,0 +1,28 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 5
+max_population = 1
+respawn_params = respawn@cit_bandits_2
+respawn_idle = 86400
+
+
+[respawn@cit_bandits_2]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_bloodsucker_2weak, simulation_bloodsucker_red
+spawn_num = {=!smart_controlled(cit_bandits_2) =actor_week_in_zone(9)} 2, {=!smart_controlled(cit_bandits_2)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_dog_mix, simulation_snork_2_5, simulation_dog_5_7
+spawn_num = {=!smart_controlled(cit_bandits_2) } 1, 0
+
+
+
+[exclusive]
+cit_bandits_2_zombie_1 = dead_city\deadcity_zombie_logic.ltx
+cit_bandits_2_zombie_2 = dead_city\deadcity_zombie_logic.ltx
+cit_bandits_2_zombie_3 = dead_city\deadcity_zombie_logic.ltx
+cit_bandits_2_zombie_4 = dead_city\deadcity_zombie_logic.ltx

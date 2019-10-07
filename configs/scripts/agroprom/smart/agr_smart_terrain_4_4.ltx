@@ -1,0 +1,143 @@
+[smart_terrain]
+respawn_radius = 900; agr_smart_terrain_4_4 ;;сев.комплекс, глaвное здание
+squad_id = 7
+max_population = 1
+respawn_params = respawn@agr_smart_terrain_4_4
+respawn_idle = 43200
+
+[respawn@agr_smart_terrain_4_4]
+
+spawn_monster
+spawn_stalker1
+spawn_stalker2
+spawn_stalker3
+spawn_stalker4
+spawn_bandit1
+spawn_bandit2
+spawn_bandit3
+spawn_bandit4
+spawn_csky1
+spawn_csky2
+spawn_csky3
+spawn_csky4
+spawn_dolg1
+spawn_dolg2
+spawn_dolg3
+spawn_dolg4
+spawn_freedom1
+spawn_freedom2
+spawn_freedom3
+spawn_freedom4
+spawn_killer1
+spawn_killer2
+spawn_killer3
+spawn_killer4
+
+[spawn_monster]
+spawn_squads = simulation_dog, simulation_dog, simulation_tushkano, simulation_pseudodog
+spawn_num = {=!smart_controlled(agr_smart_terrain_4_4)} 3, 0
+
+[spawn_stalker1]
+spawn_squads = stalker_sim_squad_novice, stalker_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4:stalker)} 2, 0
+
+[spawn_stalker2]
+spawn_squads = stalker_sim_squad_novice, stalker_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_1:stalker)} 1, 0
+
+[spawn_stalker3]
+spawn_squads = stalker_sim_squad_novice, stalker_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_2:stalker)} 1, 0
+
+[spawn_stalker4]
+spawn_squads = stalker_sim_squad_novice, stalker_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_3:stalker)} 1, 0
+
+[spawn_bandit1]
+spawn_squads = bandit_sim_squad_novice, bandit_sim_squad_novice, bandit_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4:bandit)} 2, 0
+
+[spawn_bandit2]
+spawn_squads = bandit_sim_squad_novice, bandit_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_1:bandit)} 1, 0
+
+[spawn_bandit3]
+spawn_squads = bandit_sim_squad_novice, bandit_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_2:bandit)} 1, 0
+
+[spawn_bandit4]
+spawn_squads = bandit_sim_squad_novice, bandit_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_3:bandit)} 1, 0
+
+[spawn_csky1]
+spawn_squads = csky_sim_squad_novice, csky_sim_squad_advanced, csky_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4:csky)} 2, 0
+
+[spawn_csky2]
+spawn_squads = csky_sim_squad_novice, csky_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_1:csky)} 1, 0
+
+[spawn_csky3]
+spawn_squads = csky_sim_squad_novice, csky_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_2:csky)} 1, 0
+
+[spawn_csky4]
+spawn_squads =  csky_sim_squad_novice, csky_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_3:csky)} 1, 0
+
+
+[spawn_dolg1]
+spawn_squads = duty_def_agr_smart_terrain_4_4
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4:dolg)  =!actor_week_in_zone(5) =!squad_exist(duty_def_agr_smart_terrain_4_4)} 1, 0
+
+[spawn_dolg2]
+spawn_squads = duty_sim_squad_novice
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_1:dolg)  =!actor_week_in_zone(6)} 2, 0
+
+[spawn_dolg3]
+spawn_squads = duty_def_agr_smart_terrain_4_4_near_2
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_2:dolg)  =!actor_week_in_zone(4) =!squad_exist(duty_def_agr_smart_terrain_4_4_near_2)} 1, 0
+
+[spawn_dolg4]
+spawn_squads = duty_def_agr_smart_terrain_4_4_near_3
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_3:dolg)  =!actor_week_in_zone(4) =!squad_exist(duty_def_agr_smart_terrain_4_4_near_3)} 1, 0
+
+[spawn_freedom1]
+spawn_squads = freedom_sim_squad_novice, freedom_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4:freedom)} 2, 0
+
+[spawn_freedom2]
+spawn_squads = freedom_sim_squad_novice, freedom_sim_squad_novice, freedom_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_1:freedom)} 1, 0
+
+[spawn_freedom3]
+spawn_squads = freedom_sim_squad_novice, freedom_sim_squad_novice, freedom_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_2:freedom)} 1, 0
+
+[spawn_freedom4]
+spawn_squads = freedom_sim_squad_novice, freedom_sim_squad_novice, freedom_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_3:freedom)} 1, 0
+
+[spawn_killer1]
+spawn_squads = merc_sim_squad_novice, merc_sim_squad_novice, merc_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4:killer)} 2, 0
+
+[spawn_killer2]
+spawn_squads = merc_sim_squad_novice, bandit_sim_squad_novice, merc_sim_squad_advanced, bandit_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_1:killer)} 1, 0
+
+[spawn_killer3]
+spawn_squads = merc_sim_squad_novice, bandit_sim_squad_novice, merc_sim_squad_advanced, bandit_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_2:killer)} 1, 0
+
+[spawn_killer4]
+spawn_squads = merc_sim_squad_novice, bandit_sim_squad_novice, merc_sim_squad_advanced, bandit_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4_near_3:killer)} 1, 0
+
+
+[exclusive]
+agr_smart_terrain_4_4_camp_work_1 = agroprom\agr_smart_terrain_4_4_smart_logic.ltx
+agr_smart_terrain_4_4_camp_work_2 = agroprom\agr_smart_terrain_4_4_smart_logic.ltx
+agr_smart_terrain_4_4_camp_work_3 = agroprom\agr_smart_terrain_4_4_smart_logic.ltx
+agr_smart_terrain_4_4_camp_work_4 = agroprom\agr_smart_terrain_4_4_smart_logic.ltx
+agr_smart_terrain_4_4_camp_work_5 = agroprom\agr_smart_terrain_4_4_smart_logic.ltx

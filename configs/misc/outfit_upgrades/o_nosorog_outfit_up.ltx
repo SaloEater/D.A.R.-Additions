@@ -1,0 +1,222 @@
+[up_sect_firsta_nosorog_outfit]
+cost 		= 18000
+inv_weight	= +0.88
+value		= +5
+
+hit_fraction_actor				= -0.011
+fire_wound_protection  			= 0.05
+
+bones_koeff_protection_add		= actor_armor_medium_add_4
+
+[up_sect_firstc_nosorog_outfit]
+cost 		= 21000
+inv_weight	= +0.96
+value		= +5
+
+hit_fraction_actor				= -0.011
+fire_wound_protection  			= 0.05
+
+bones_koeff_protection_add		= actor_armor_medium_add_4
+
+[up_sect_firste_nosorog_outfit]
+cost 		= 27000
+inv_weight	= +2.21
+value		= +5
+
+hit_fraction_actor				= -0.011
+fire_wound_protection  			= 0.05
+
+bones_koeff_protection_add		= actor_armor_medium_add_4
+
+[up_sect_secona_nosorog_outfit]
+cost 		= 36000
+inv_weight	= +2.62
+value		= +10
+
+hit_fraction_actor				= -0.011
+
+mmunities_sect_add 			= sect_nosorog_outfit_immunities_physical_add_small
+
+[up_sect_seconc_nosorog_outfit]
+cost 		= 28000
+inv_weight	= +2.62
+value		= +10
+
+hit_fraction_actor				= -0.011
+
+mmunities_sect_add 			= sect_nosorog_outfit_immunities_physical_add_small
+
+[up_sect_second_nosorog_outfit]
+cost 		= 48000
+inv_weight	= +0.26
+value		= +15
+
+chemical_burn_protection 		= 0.15
+radiation_protection 		 	= 0.0015
+
+immunities_sect_add 			= sect_nosorog_outfit_immunities_chemical_burn_add
+
+[up_sect_thirda_nosorog_outfit]
+cost 		= 12000
+inv_weight	= +0.27
+value       = +1
+
+artefact_count					= 1
+
+[up_firsta_nosorog_outfit]
+scheme_index            = 0, 0
+known                   = 1
+effects                 = up_gr_firstcd_nosorog_outfit
+section                 = up_sect_firsta_nosorog_outfit
+property                = prop_armor
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_up_arm_a4_name
+description             = st_up_arm_a4_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_1
+
+[up_firstc_nosorog_outfit]
+scheme_index            = 1, 0
+known                   = 1
+effects                 = up_gr_firstef_nosorog_outfit
+section                 = up_sect_firstc_nosorog_outfit
+property                = prop_armor
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_up_arm_b7_name
+description             = st_up_arm_b7_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_2
+
+[up_firste_nosorog_outfit]
+scheme_index            = 2, 0
+known                   = 1
+effects                 = 
+section                 = up_sect_firste_nosorog_outfit
+property                = prop_armor
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_up_arm_c12_name
+description             = st_up_arm_c12_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_3
+
+[up_secona_nosorog_outfit]
+scheme_index            = 0, 1
+known                   = 1
+effects                 = up_gr_seconcd_nosorog_outfit
+section                 = up_sect_secona_nosorog_outfit
+property                = prop_durability
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_up_arm_b5_name
+description             = st_up_arm_b5_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_4
+
+[up_seconc_nosorog_outfit]
+scheme_index            = 1, 1
+known                   = 1
+effects                 = 
+section                 = up_sect_seconc_nosorog_outfit
+property                = prop_durability
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_up_exo_b2_name
+description             = st_up_exo_b2_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_18
+
+[up_second_nosorog_outfit]
+scheme_index            = 1, 2
+known                   = 1
+effects                 = 
+section                 = up_sect_second_nosorog_outfit
+property                = prop_chem, prop_radio
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_up_kom_c9_name
+description             = st_up_kom_c9_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_10
+
+[up_thirda_nosorog_outfit]
+scheme_index            = 0, 2
+known                   = 1
+effects                 = 
+section                 = up_sect_thirda_nosorog_outfit
+property                = prop_artefact
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_up_uti_c1_name
+description             = st_up_uti_c1_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_13
+
+[up_gr_firstab_nosorog_outfit]
+elements                = up_firsta_nosorog_outfit
+
+[up_gr_firstcd_nosorog_outfit]
+elements                = up_firstc_nosorog_outfit
+
+[up_gr_firstef_nosorog_outfit]
+elements                = up_firste_nosorog_outfit
+
+[up_gr_seconab_nosorog_outfit]
+elements                = up_secona_nosorog_outfit
+
+[up_gr_seconcd_nosorog_outfit]
+elements                = up_seconc_nosorog_outfit, up_second_nosorog_outfit
+
+[up_gr_thirdab_nosorog_outfit]
+elements                = up_thirda_nosorog_outfit

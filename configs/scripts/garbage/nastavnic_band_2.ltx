@@ -1,0 +1,94 @@
+[logic@new_band_new_start_2_squad]
+suitable = {=check_npc_name(new_band_new_start_2)} true	
+prior = 200	
+active = walker@new_band_new_start_1_squad_1_1
+level_spot = quest_npc
+
+[walker@new_band_new_start_1_squad_1_1]
+path_walk = new_band_new_start_2_squad_walk
+path_look = new_band_new_start_2_squad_look
+on_info = {+bandit_kmb_01_semera_2} walker@new_band_new_start_1_squad_1_2 
+on_info2 = {=surge_started} walker@surge
+def_state_moving = walk_noweap
+meet = meet
+invulnerable = {!actor_enemy} true, false
+combat_ignore_cond = {=actor_enemy =check_enemy_name(actor)} false, true
+combat_ignore_cond = true
+reach_distance = 10
+gather_items_enabled = false
+corpse_detection_enabled = false
+help_wounded_enabled = true
+use_camp = false	
+anim = sit_ass_weapon
+danger = danger_ignore 
+
+[walker@new_band_new_start_1_squad_1_2]
+path_walk = new_band_new_start_2_squad_1_2_walk
+path_look = new_band_new_start_2_squad_1_2_look
+on_info = {+band_kmb_1_dekan_2_semera_restr} remark@wound
+on_info2 = {=surge_started} walker@surge
+def_state_moving = walk_noweap
+invulnerable = false
+combat_ignore_keep_when_attacked = true
+combat_ignore_cond = true
+gather_items_enabled = false
+corpse_detection_enabled = false
+help_wounded_enabled = true
+use_camp = false	
+anim = claim
+
+[remark@wound]
+wounded = wounded@duel
+meet = meet@wounded
+on_info = {+bandit_kmb_01_semera_end} walker@new_band_new_start_1_squad_1_4 
+
+[wounded@duel]
+meet_dialog = bandit_kmb_01_semera_3
+hp_state = 101|wounded_heavy@help_heavy
+hp_state_see = 101|wounded_heavy@help_heavy
+hp_victim = 101|nil
+hp_cover = 101|false
+hp_fight = 101|false
+autoheal = false
+not_for_help = true
+enable_talk = true
+
+[meet@wounded]
+use = true
+meet_dialog = bandit_kmb_01_semera_3
+abuse = false
+allow_break = false
+trade_enable = false
+close_anim = nil
+close_victim = nil
+close_distance = 0
+far_distance = 0 
+
+[walker@new_band_new_start_1_squad_1_4]
+path_walk = new_band_new_start_2_squad_walk
+path_look = new_band_new_start_2_squad_look
+on_info = {=surge_started} walker@surge
+def_state_moving = walk_noweap
+meet = meet
+invulnerable = {!actor_enemy} true, false
+combat_ignore_cond = {=actor_enemy =check_enemy_name(actor)} false, true
+combat_ignore_cond = true
+reach_distance = 10
+gather_items_enabled = false
+corpse_detection_enabled = false
+help_wounded_enabled = true
+use_camp = false
+anim = sit_ass
+danger = danger_ignore 
+
+[walker@surge]
+path_walk = hide_2_walk
+path_look  = hide_2_look
+on_info = {!surge_started} walker@new_band_new_start_1_squad_1_1
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+invulnerable = {!actor_enemy} true, false
+
+[danger_ignore]
+ignore_distance = 0

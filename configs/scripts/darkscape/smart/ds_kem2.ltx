@@ -1,0 +1,20 @@
+[smart_terrain]
+respawn_radius = 300 ;;автозаправка
+squad_id = 7
+max_population = 2
+respawn_params = respawn@ds_kem2
+respawn_idle = 43200
+
+[respawn@ds_kem2]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_zombie, simulation_snork
+spawn_num = {=!smart_controlled(ds_kem2)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_poltergeist_tele, simulation_controller, simulation_tushkano_7_10, simulation_tushkano_7_10
+spawn_num = {=!smart_controlled(ds_kem2) =actor_week_in_zone(9)} 1, 0
+

@@ -1,0 +1,54 @@
+[smart_terrain]
+respawn_radius = 300;cit_killers_vs_bandits ;;слава кпсс, здание напротив базы мерков
+squad_id = 7
+max_population = 2
+respawn_params = respawn@cit_killers_vs_bandits
+respawn_idle = 86400
+
+[respawn@cit_killers_vs_bandits]
+
+spawn_monster
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_killer
+spawn_army
+spawn_monolith
+
+[spawn_monster]
+spawn_squads = simulation_tushkano, simulation_rats, simulation_tushkano
+spawn_num = {=!smart_controlled(cit_killers_vs_bandits)} 8, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_advanced, stalker_sim_squad_veteran
+spawn_num = {=smart_under_faction(cit_killers_vs_bandits:stalker)} 1, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_advanced, bandit_sim_squad_advanced, bandit_sim_squad_veteran
+spawn_num = {=smart_under_faction(cit_killers_vs_bandits:bandit)} 1, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_advanced, csky_sim_squad_veteran
+spawn_num = {=smart_under_faction(cit_killers_vs_bandits:csky)} 1, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_novice, duty_sim_squad_advanced, duty_sim_squad_advanced, duty_sim_squad_advanced, duty_sim_squad_veteran
+spawn_num = {=smart_under_faction(cit_killers_vs_bandits:dolg)} 1, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_novice, freedom_sim_squad_advanced, freedom_sim_squad_advanced, freedom_sim_squad_advanced, freedom_sim_squad_veteran 
+spawn_num = {=smart_under_faction(cit_killers_vs_bandits:freedom)} 1, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_novice, merc_sim_squad_advanced
+spawn_num = {=smart_under_faction(cit_killers_vs_bandits:killer)} 2, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_advanced
+spawn_num = {=smart_under_faction(cit_killers_vs_bandits:army)} 1, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_novice, monolith_sim_squad_advanced
+spawn_num = {=smart_under_faction(cit_killers_vs_bandits:monolith)} 1, 0

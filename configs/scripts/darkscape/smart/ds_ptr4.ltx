@@ -1,0 +1,14 @@
+[smart_terrain]
+respawn_radius = 300 ;;вход со стороны кордона, около аномалии.
+squad_id = 13
+max_population = 1
+respawn_params = respawn@ds_ptr4
+respawn_idle = 43200
+
+[respawn@ds_ptr4]
+
+spawn_monster1
+
+[spawn_monster1]
+spawn_squads = simulation_pseudodog, simulation_cat
+spawn_num = {=!smart_controlled(ds_ptr4)} 1, 0

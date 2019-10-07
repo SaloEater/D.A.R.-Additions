@@ -1,0 +1,35 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 2
+max_population = 1
+respawn_params = respawn@cit_kanaliz1
+respawn_idle = 43200
+
+
+[respawn@cit_kanaliz1]
+
+spawn_army1
+spawn_army2
+spawn_zombied
+spawn_monster1
+spawn_monster2
+
+[spawn_army1]
+spawn_squads = army_sim_squad_elite
+spawn_num = {=!actor_on_level(l09_deadcity) =!smart_controlled(cit_kanaliz1) =actor_week_in_zone(6)} 2, {=!actor_on_level(l09_deadcity) =!smart_controlled(cit_kanaliz1) +yan_labx16_switcher_primary_off} 2, 0
+
+[spawn_army2]
+spawn_squads = army_sim_squad_advanced, army_sim_squad_veteran
+spawn_num = {=smart_under_faction(cit_kanaliz1:army)} 8, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_novice, zombied_sim_squad_advanced, zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(cit_kanaliz1:zombied) -yan_labx16_switcher_primary_off} 4, 0
+
+[spawn_monster1]
+spawn_squads = simulation_tushkano, simulation_pseudodog, simulation_cat, simulation_cat
+spawn_num = {=!smart_controlled(cit_kanaliz1)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_poltergeist_tele, simulation_psy_dog, simulation_tushkano, simulation_tushkano
+spawn_num = {=!smart_controlled(cit_kanaliz1) =actor_week_in_zone(3) -yan_labx16_switcher_primary_off} 1, 0

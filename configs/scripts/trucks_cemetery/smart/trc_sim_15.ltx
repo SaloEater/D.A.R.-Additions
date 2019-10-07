@@ -1,0 +1,14 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 15
+max_population = 2
+respawn_params = respawn@trc_sim_15
+respawn_idle = 8640
+
+[respawn@trc_sim_15]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_rat, simulation_rats, simulation_tushkano
+spawn_num = {=!smart_controlled(trc_sim_15)} 10, 0

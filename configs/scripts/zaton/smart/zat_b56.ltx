@@ -1,0 +1,29 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 31
+max_population = 1
+respawn_params = respawn@zat_b56   
+respawn_idle = 86400
+
+
+[respawn@zat_b56]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_flesh, simulation_cat
+spawn_num = {=!smart_controlled(zat_b56)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_dog, simulation_dog_5_7, simulation_pseudodog
+spawn_num = {=!smart_controlled(zat_b56)} 1, 0
+
+
+[exclusive]
+;please leave this for sim - stalkers only
+zat_b29_stalker_rival_leader = zaton\zat_b29_stalkers_rivals.ltx
+zat_b29_stalker_rival_2 = zaton\zat_b29_stalkers_rivals.ltx
+zat_b29_stalker_rival_3 = zaton\zat_b29_stalkers_rivals.ltx
+;please leave this for sim - polters only only
+zat_b56_polter = zaton\zat_b56_polter.ltx

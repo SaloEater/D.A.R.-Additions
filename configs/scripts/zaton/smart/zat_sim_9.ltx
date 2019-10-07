@@ -1,0 +1,20 @@
+[smart_terrain]
+respawn_radius = 300;zat_sim_9
+squad_id = 2
+max_population = 2
+respawn_params = respawn@zat_sim_9
+respawn_idle = 172800
+
+
+[respawn@zat_sim_9]
+
+spawn_monster
+spawn_stalker
+
+[spawn_monster]
+spawn_squads = simulation_boar_3_5, simulation_boar_flesh, simulation_cat_3_5, simulation_bloodsucker_red
+spawn_num = {=!smart_controlled(zat_sim_9)} 1, 0
+
+[spawn_stalker]
+spawn_squads = bandit_sim_squad_veteran, merc_sim_squad_veteran
+spawn_num = {+bar_deactivate_radar_done} 1, 0

@@ -1,0 +1,19 @@
+[smart_terrain]
+respawn_radius = 900;ros_smart_killers1 ;корридор с дырками, где мерки в ТЧ сидели
+squad_id = 2
+max_population = 2
+respawn_params = respawn@ros_smart_killers1
+respawn_idle = 86400
+
+[respawn@ros_smart_killers1]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_dog_5_7, simulation_fracture, simulation_bloodsucker_red, simulation_snork, simulation_zombie
+spawn_num = {=!smart_controlled(ros_smart_killers1)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_snork_2_5
+spawn_num = {=!smart_controlled(ros_smart_killers1) =actor_week_in_zone(3)} 1, 0

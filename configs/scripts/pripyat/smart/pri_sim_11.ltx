@@ -1,0 +1,27 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 33
+max_population = 1
+respawn_only_smart = true
+respawn_params = respawn@pri_sim_11
+respawn_idle = 86400
+
+
+[respawn@pri_sim_11]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_dog, simulation_dog, simulation_dog, simulation_dog_mix
+spawn_num = {=!smart_controlled(pri_sim_11)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_cat
+spawn_num = {=!smart_controlled(pri_sim_11) =actor_week_in_zone(3)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_zombie, simulation_snork, simulation_bloodsucker_red
+spawn_num = {=!smart_controlled(pri_sim_11) =actor_week_in_zone(9)} 1, 0
+

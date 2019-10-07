@@ -1,0 +1,367 @@
+last_drink, start_blur_1 	= nil,nil -- to change defaults, edit below in 'create' function
+local items,force,start_blur_2,start_blur_3,start_blur_4,itn_mul,pwr_rate,rng_factor,caff_max,die_chance,last_drink_chk,pwr_chk,force_slp
+
+function create()
+	last_drink 				= 0
+	up_drink				= 2.5
+	in_hour					= 60
+	force 					= 720
+	start_blur_1 			= 144
+	start_blur_2 			= 288
+	start_blur_3 			= 432
+	start_blur_4 			= 576
+	itn_mul 				= 0.001
+	pwr_rate,rng_factor 	= -0.00010, 0.08
+	caff_max				= 3
+	die_chance 				= 5
+	force_slp				= 30
+	items = {
+	--	Vanilla.
+	--	Drinks.
+		vodka		    = -46,
+		vodka_2             = -46,
+		vodka_3             = -46,
+		vodka_script	    = -46,
+		vodka_quality       = -46,
+		vodka_quality_2     = -46,
+		vodka_quality_3     = -46,
+		bottle_metal        = -46,
+		bottle_metal_2      = -46,
+		bottle_metal_3      = -46,
+		drink_crow          = -137,
+		beer                = -154,
+		energy_drink	    = -222,
+		water_drink         = -289,
+		flask		    = -289,
+		flask_2             = -289,
+		flask_3             = -289,
+		tea                 = -389,
+		tea_2               = -389,
+		tea_3               = -389,
+		mineral_water       = -426,
+		mineral_water_2     = -426,
+		mineral_water_3     = -426,
+	--	Eat
+	    mint                = 4,
+		mint_2              = 4,
+		mint_3              = 4,
+	    chocolate           = 12,
+		protein             = 16,
+		nuts                = 24,
+        raisins             = 18,		
+		bread		    = 32,
+		breadold            = 40,
+		meat_bloodsucker    = 48,
+		meat_boar           = 48,
+		meat_chimera        = 48,
+		meat_dog            = 48,
+		meat_flesh          = 48,
+		meat_pseudodog      = 48,
+		meat_snork          = 48,
+		meat_tushkano       = 48,
+		corn                = 16,
+		tomato              = 14,
+		salmon              = 42,
+		sausage             = 72,
+		tushonka            = 40,
+		conserva	    = 40,
+		kolbasa		    = 40,
+		beans               = 40,
+		chili               = 24,
+		mre                 = 58,
+		mre_2               = 58,
+		mre_3               = 58,
+		ration_ru           = 64,
+		ration_ru_2         = 64,
+		ration_ru_3         = 64,
+		ration_ru_4         = 64,
+		ration_ru_5         = 64,
+		ration_ru_6         = 64,
+		ration_ru_7         = 64,
+		ration_ukr          = 68,
+		ration_ukr_2        = 68,
+		ration_ukr_3        = 68,
+		ration_ukr_4        = 68,
+		ration_ukr_5        = 68,
+		ration_ukr_6        = 68,
+	--	Medical supplies.
+	    joint		             = 30,
+		marijuana           = 30,
+		hand_rolling_tobacco = 15,
+		hand_rolling_tobacco_2 = 15,
+		hand_rolling_tobacco_3 = 15,
+		tobacco             = 15,
+		tobacco_2           = 15,
+		tobacco_3           = 15,
+	    cigar               = 15,
+		cigar1              = 15,
+		cigar1_2            = 15,
+		cigar1_3            = 15,
+		cigar2              = 15,
+		cigar2_2            = 15,
+		cigar2_3            = 15,
+		cigar3              = 15,
+		cigar3_2            = 15,
+		cigar3_3            = 15,
+		cigarettes          = 15,
+		cigarettes_2        = 15,
+		cigarettes_3        = 15,
+		cigarettes_lucky    = 15,
+		cigarettes_lucky_2  = 15,
+		cigarettes_lucky_3  = 15,
+		cigarettes_russian  = 15,
+		cigarettes_russian_2 = 15,
+		cigarettes_russian_3 = 15,
+		cocaine             = 40,
+		glucose             = 20,
+		glucose_s           = 20,
+		survival_kit        = 10,
+		tetanus             = 10,
+		morphine            = 10,
+		salicidic_acid      = 10,
+		stimpack            = 10,
+		stimpack_army       = 10,
+		stimpack_scientic   = 10,
+		antirad				= 20,
+		drug_anabiotic		= 20,
+		drug_antidot		= 20,
+		drug_antidot_2      = 20,
+		drug_antidot_3      = 20,
+		drug_coagulant		= 20,
+		drug_coagulant_2    = 20,
+		drug_coagulant_3    = 20,
+		drug_coagulant_4    = 20,
+		drug_coagulant_5    = 20,
+		drug_lsd	  	= 30,
+		drug_lsd_2    		= 30,
+		drug_lsd_3    		= 30,
+		drug_lsd_4    		= 30,
+		drug_lsd_5    		= 30,
+		drug_iodide		= 20,
+		drug_iodide_2    = 20,
+		drug_iodide_3    = 20,
+		drug_iodide_4    = 20,
+		drug_iodide_5    = 20,		
+		drug_psy_blockade	= 20,
+		drug_psy_blockade_2 = 20,
+		drug_psy_blockade_3 = 20,
+		drug_psy_blockade_4 = 20,
+		drug_psy_blockade_5 = 20,
+		drug_radioprotector	= 20,
+		drug_radioprotector_2 = 20,
+	    drug_sleepingpills	= 20,
+		drug_sleepingpills_2 = 20,
+		drug_sleepingpills_3 = 20,
+		drug_sleepingpills_4 = 20,
+		drug_sleepingpills_5 = 20,
+		drug_charcoal		 = 10,
+		drug_charcoal_2	 = 10,
+		drug_charcoal_3	 = 10,
+		drug_charcoal_4	 = 10,
+		drug_charcoal_5	 = 10,	
+		adrenalin           = 50,
+		akvatab             = 20,
+		akvatab_2           = 20,
+		caffeine            = 20,
+		caffeine_2          = 20,
+		caffeine_3          = 20,
+		caffeine_4          = 20,
+		caffeine_5          = 20,
+		medkit				= 10,
+		medkit_army			= 10,
+		medkit_scientic 	= 10,
+		medkit_script		= 10,
+		antibio_sulfad		= 15,
+		antibio_sulfad_2	= 15,
+		antibio_sulfad_3	= 15,
+		yadylin					= 30,
+	}
+	RegisterScriptCallback("actor_on_update",actor_on_update)
+	RegisterScriptCallback("actor_on_item_use",actor_on_item_use)
+	if (USE_MARSHAL) then
+		RegisterScriptCallback("save_state",save_state)
+		RegisterScriptCallback("load_state",load_state)
+	end
+end 
+
+function destroy()
+	UnregisterScriptCallback("actor_on_update",actor_on_update)
+	UnregisterScriptCallback("actor_on_item_use",actor_on_item_use)
+	if (USE_MARSHAL) then
+		UnregisterScriptCallback("save_state",save_state)
+		UnregisterScriptCallback("load_state",load_state)
+	end
+	alife_storage_manager.get_state().drink = nil
+end 
+
+function on_game_start()
+	-- if (axr_main.config:r_value("mm_options","enable_sleep_deprived",1,false) == false) then
+		-- return 
+	-- end
+	create()
+end
+
+function save(package)
+	if (USE_MARSHAL) then
+		return
+	end
+	package:w_u8(last_drink)
+	package:w_u16(last_drink_chk)
+end
+function load(package)
+	if (USE_MARSHAL) then
+		return
+	end
+	last_drink  = package:r_u8() or 0
+	last_drink_chk 	= package:r_u16() or 0
+end
+--//--------------------------------------------------------------//--
+function save_state(m_data)
+	if (USE_MARSHAL) then
+		m_data.drink = m_data.drink or {}
+		m_data.drink["last_drink"] = last_drink
+		m_data.drink["chk_drink"] = last_drink_chk
+	end
+end
+
+function load_state(m_data)
+	if (USE_MARSHAL) then
+		last_drink = m_data.drink and m_data.drink.last_drink or 0
+		last_drink_chk = m_data.drink and m_data.drink.chk_drink or nil
+	end
+end
+
+function actor_on_item_use(item)
+	for i,j in pairs(items) do
+		if item:section() == i then
+		-- log('!Использован предмет: '..item:section()..' Изменение жажды на: '..j..' Жажды до: '..last_drink)
+			if j < 0 then
+				last_drink = last_drink + j
+				if last_drink < 0 then last_drink = 0 end
+				test_blur()
+				break
+			elseif j > 0 then
+				last_drink = last_drink + j
+				if last_drink > 1000 then last_drink = 1000 end
+				test_blur()
+				break
+			end
+		end
+	end
+end
+
+function actor_on_update(b,d)
+	-- printf("last_drink_chk=%s last_drink=%s",last_drink_chk and game.get_game_time():diffSec(last_drink_chk) or "nil",last_drink)
+	if last_drink > start_blur_1 then
+		local tg = time_global()
+		if (pwr_chk == nil or tg > pwr_chk) then 
+			if (db.actor.power > 0) then
+				db.actor.power = pwr_rate*((last_drink-start_blur_1)*rng_factor)/10
+				db.actor.health = pwr_rate*((last_drink-start_blur_1)*rng_factor)/100
+			end
+			pwr_chk = tg+100
+		end
+	end
+	if (last_drink_chk and game.get_game_time():diffSec(last_drink_chk) < 300) then 
+		indicator_update()
+		return 
+	end
+	last_drink_chk = game.get_game_time()
+	-- log('!Обычное повышение жажды на 6. Жажды до: '..last_drink)
+	last_drink = last_drink + up_drink
+	if last_drink < 0 then last_drink = 0 elseif last_drink > 1000 then last_drink = 1000 end
+	test_blur()
+end
+
+function test_blur()
+	level.remove_pp_effector(39568)
+	if last_drink >= start_blur_1 then
+		level.add_pp_effector("yantar_underground_psi.ppe", 39568, false)
+		if last_drink >= start_blur_1 and last_drink < start_blur_2 then
+			level.remove_pp_effector(39568)
+			-- level.set_pp_effector_factor(39568, (last_drink-start_blur_1) * itn_mul)
+		elseif last_drink >= start_blur_2 and last_drink < start_blur_3 then
+			level.set_pp_effector_factor(39568, (last_drink-start_blur_1) * itn_mul)
+			-- SetHudMsg(game.translate_string("Вы давно не пили и должны попить"),3)
+		elseif last_drink >= start_blur_3 and last_drink < start_blur_4 then
+			level.set_pp_effector_factor(39568, (last_drink-start_blur_1) * itn_mul)
+			-- SetHudMsg(game.translate_string("Вы давно не пили и должны попить"),5)
+		elseif last_drink >= start_blur_4 and last_drink < force then
+			level.set_pp_effector_factor(39568, (last_drink-start_blur_1) * itn_mul)
+		elseif last_drink >= force and math.random(100) <= force_slp and not db.actor:has_info("actor_is_sleeping")==true then
+			db.actor:give_info_portion("force_slp")
+			force_sleep()
+			-- SetHudMsg(game.translate_string("Вы крайне истощены - необходимо попить!"),5)
+		end
+	end
+end
+
+function force_sleep()
+	ui_sleep_dialog.sleep_forced()
+	if math.random(100) < die_chance then
+		SetHudMsg(game.translate_string("st_sleep_deprived"),5)
+		db.actor:kill(db.actor)
+	end
+	disable_info("force_slp")
+end
+--'-----------------------------------------------------------------------------
+--'           INDICATORS NEW
+--'-----------------------------------------------------------------------------
+local d_hud={
+x=989,
+y=310,
+height=25,
+weight=25}
+function indicator_update(bShow)
+  local hud=get_hud()
+  local drk=hud:GetCustomStatic("indicator_drink")
+  local wnd
+  if(bShow==false or db.actor:is_talking() )then
+	if(drk~=nil)then
+      hud:RemoveCustomStatic("indicator_drink")
+      drk=nil
+	end
+    return
+  end
+  if(drk==nil)then
+    hud:AddCustomStatic("indicator_drink",true)
+	drk=hud:GetCustomStatic("indicator_drink")
+    wnd=drk:wnd()
+    if(wnd~=nil)then
+      wnd:SetWndPos(vector2():set(d_hud.x,d_hud.y))
+      if utils.is_widescreen() then
+        wnd:SetWndSize(vector2():set(d_hud.weight-7,d_hud.height))
+      else
+        wnd:SetWndSize(vector2():set(d_hud.weight,d_hud.height))
+      end
+      wnd:SetAutoDelete(true)
+    end
+  end
+  if(drk~=nil)then
+    wnd=drk:wnd()
+    wnd:InitTexture(get_color_drink())
+  end
+end
+
+function get_color_drink()
+  local textures={
+    [0]="ui_inGame2_circle_drink_empty",
+    [1]="ui_inGame2_circle_drink_green",
+    [2]="ui_inGame2_circle_drink_yellow",
+    [3]="ui_inGame2_circle_drink_orange",
+    [4]="ui_inGame2_circle_drink_red"
+  }
+  local color=0
+  if last_drink>start_blur_4 then color=4
+  elseif last_drink>start_blur_3 then color=3
+  elseif last_drink>start_blur_2 then color=2
+  elseif last_drink>start_blur_1 then color=1
+  elseif last_drink<start_blur_1 then color=0
+  end
+	if color2~=color then
+		-- log('!СМЕНА ИКОНКИ!')
+	end
+	color2=color
+	-- log('@'..textures[color])
+  return textures[color]
+end

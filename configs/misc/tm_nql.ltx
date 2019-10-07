@@ -1,0 +1,752 @@
+<!-- =================КМБ Сталкеры (NQl)=================== -->
+[task_fanat_kmb_1]
+icon = 02-11
+prior = 20
+storyline = false
+title = {+visit_esc_2_12_village_kmb_restr} fanat_kmb_1_7_st, {+fanat_kmb_1_give3} fanat_kmb_1_6_st, {=actor_has_item(af_medusa)} fanat_kmb_1_8_st, {+fanat_kmb_1_give2} fanat_kmb_1_9_st, {+visit_esc_1_11_kmb_restr} fanat_kmb_1_5_st, {+fanat_kmb_1_give1} fanat_kmb_1_4_st, {+esc_2_14_boars_kmb_death} fanat_kmb_1_3_st, fanat_kmb_1_1_st
+descr = {+fanat_kmb_1_give3} task_fanat_kmb_3_descr, {+fanat_kmb_1_give1} task_fanat_kmb_2_descr, task_fanat_kmb_1_descr
+target = {+visit_esc_2_12_village_kmb_restr} nastavnic_squad, {+fanat_kmb_1_give3} esc_2_14_village_kmb_restr, {=actor_has_item(af_medusa) +fanat_kmb_1_give2} nastavnic_squad, {+visit_esc_1_11_kmb_restr} nastavnic_squad, {+fanat_kmb_1_give1} esc_1_11_kmb_restr, {+esc_2_14_boars_kmb_death} nastavnic_squad, esc_2_14_boars_kmb_restr
+condlist_0 = {+fanat_kmb_1_give4} complete, {+nastavnic_death} fail
+condlist_1 = {=drx_sl_is_enemy(stalker)} fail
+condlist_2 = {+fanat_kmb_1_give1_cancel} fail
+condlist_3 = {+fanat_kmb_1_give2_cancel} fail
+on_complete = %=reward_random_money(500:1000) =complete_task_inc_goodwill(10:stalker)%
+reward_item = kolbasa:medkit:greencard:yellowcard
+
+[task_fanat_kmb_2]
+icon = 02-04
+prior = 20
+storyline = false
+title = {+fanat_kmb_2_open} fanat_kmb_2_2_st, fanat_kmb_2_1_st
+descr = task_fanat_kmb_1_2_descr
+target = {+fanat_kmb_2_open} nastavnic_squad, nil
+condlist_0 = {+fanat_kmb_2_give1} complete, {+nastavnic_death} fail
+condlist_1 = {=drx_sl_is_enemy(stalker)} fail
+on_complete = %=complete_task_inc_goodwill(10:stalker)%
+<!-- =================КМБ Сталкеры (NQl)=================== -->
+<!-- =================КМБ Чистое небо (NQl)=================== -->
+[task_mar_kmb_1]
+icon = 01-12
+prior = 20
+storyline = false
+title = {+visit_mar_2_12_village_kmb_restr} mar_kmb_1_7_st, {+mar_kmb_1_give3} mar_kmb_1_6_st, {=actor_has_item(af_drop)} mar_kmb_1_8_st, {+mar_kmb_1_give2} mar_kmb_1_9_st, {+visit_mar_1_11_kmb_restr} mar_kmb_1_5_st, {+mar_kmb_1_give1} mar_kmb_1_4_st, {+mar_flesh_kmb_death} mar_kmb_1_3_st, mar_kmb_1_1_st
+descr = {+mar_kmb_1_give3} task_mar_kmb_3_descr, {+mar_kmb_1_give1} task_mar_kmb_2_descr, task_mar_kmb_1_descr
+target = {+visit_mar_2_12_village_kmb_restr} nastavnic_cs_squad, {+mar_kmb_1_give3} mar_2_14_village_kmb_restr, {=actor_has_item(af_drop) +mar_kmb_1_give2} nastavnic_cs_squad, {+visit_mar_1_11_kmb_restr} nastavnic_cs_squad, {+mar_kmb_1_give1} mar_1_11_kmb_restr, {+mar_flesh_kmb_death} nastavnic_cs_squad, mar_flesh_smart_8_9_kmb_restr
+condlist_0 = {+mar_kmb_1_give4} complete, {+nastavnic_cs_death} fail
+condlist_1 = {=drx_sl_is_enemy(csky)} fail
+condlist_2 = {+mar_kmb_1_give1_cancel} fail
+condlist_3 = {+mar_kmb_1_give2_cancel} fail
+reward_item = kolbasa:medkit:greencard:yellowcard
+on_complete = %=reward_random_money(400:600) =complete_task_inc_goodwill(10:csky)%
+
+[task_mar_kmb_2]
+icon = 02-05
+prior = 20
+storyline = false
+title = {+mar_kmb_2_open} mar_kmb_2_2_st, mar_kmb_2_1_st
+descr = task_mar_kmb_1_2_descr
+target = {+mar_kmb_2_open} nastavnic_cs_squad, nil
+condlist_0 = {+mar_kmb_2_give1} complete, {+nastavnic_cs_death} fail
+condlist_1 = {=drx_sl_is_enemy(csky)} fail
+on_complete = %=complete_task_inc_goodwill(10:csky)%
+<!-- =================КМБ Чистое небо (NQl)=================== -->
+<!-- =================КМБ Военные=================== -->
+[mil_kmb_00]
+icon = 03-10
+prior = 300
+storyline = true
+title = mil_kmb_00_text_0_st
+descr = mil_kmb_00_descr
+target = nastavnic_mil_squad
+condlist_0 = {+mil_kmb_00_end} complete
+condlist_1 = {=drx_sl_is_enemy(army)} fail
+
+[task_mishen_military_kmb_1]
+icon = 02-14
+prior = 20
+storyline = false
+title = {+mishen_military_01_death +mishen_military_02_death +mishen_military_03_death +mishen_military_04_death +mishen_military_05_death} title_mishen_military_02_name_st, title_mishen_military_01_name_st
+descr = {+mishen_military_01_death +mishen_military_02_death +mishen_military_03_death +mishen_military_04_death +mishen_military_05_death} descr_mishen_military_text_st_1, descr_mishen_military_text_st
+target = {+mishen_military_01_death +mishen_military_02_death +mishen_military_03_death +mishen_military_04_death +mishen_military_05_death} nastavnic_mil_squad, mil_new_restr
+condlist_0 = {+mil_kmb_1_done +mishen_military_05_death +mishen_military_04_death +mishen_military_03_death +mishen_military_02_death +mishen_military_01_death} complete, {+nastavnic_mil_death} fail
+condlist_1 = {=drx_sl_is_enemy(army)} fail
+on_complete = %=complete_task_inc_goodwill(10:army)%
+
+[task_mishen_military_kmb_2]
+icon = 02-03
+prior = 20
+storyline = false
+title = {+mil_kmb_2_1} title_mil_gruz_3_name_st, {=actor_has_item(mil_gruz_1)} title_mil_gruz_2_name_st, {+mil_kmb_2} title_mil_gruz_1_name_st, {+mil_kmb_1_done} title_mil_gruz_0_name_st
+descr = {+mil_kmb_2_1} descr_mil_gruz_1_text_st_1, descr_mil_gruz_1_text_st
+target = {+mil_kmb_2_1} nastavnic_mil_squad, {=actor_has_item(mil_gruz_1)} nastavnic_mil_2_squad, {+mil_kmb_2} mil_new_2_restr, {+mil_kmb_1_done} nastavnic_mil_2_squad
+condlist_0 = {+nastavnic_mil_2_done} complete, {+nastavnic_mil_death} fail
+condlist_1 = {+nastavnic_mil_2_death} fail
+condlist_2 = {=drx_sl_is_enemy(army)} fail
+reward_item = geiger:medkit_army:ration_ukr_3:greencard:yellowcard
+on_complete = %=reward_random_money(3000:7500) =complete_task_inc_goodwill(10:army)%
+
+[task_mishen_military_kmb_3]
+icon = 02-13
+prior = 20
+storyline = false
+title = {+mil_kmb_3_new_restr} title_mil_kmb_3_1_name_st, title_mil_kmb_3_0_name_st
+descr = descr_kmb_3_text_st
+target = {+mil_kmb_3_new_restr} nastavnic_mil_squad, {+mil_kmb_3} mil_new_3_restr
+condlist_0 = {+mil_kmb_3_done +mil_kmb_3_new_restr} complete, {+nastavnic_mil_death} fail
+condlist_1 = {=drx_sl_is_enemy(army)} fail
+reward_item = wpn_aps:mag_wpn_aps:ammo_9x18_pmm:stimpack_army
+on_complete = %=reward_random_money(7000:12000) =complete_task_inc_goodwill(30:army)%
+<!-- =================КМБ Военные=================== -->
+<!-- =================КМБ Наёмники=================== -->
+[naim_kmb_1]
+icon = 01-01
+prior = 50
+storyline = false
+title = title_naim_kmb_1_0_name_st
+descr = descr_naim_kmb_1_text_st
+target = cit_killers_merc_trader_stalker_squad
+condlist_0 = {+naim_kmb_1_end_give} complete, {+cit_killers_merc_trader_stalker_squad_death} fail 
+condlist_1 = {=drx_sl_is_enemy(killer)} fail
+on_complete = %=complete_task_inc_goodwill(10:killer)%
+
+[naim_kmb_2]
+icon = 03-04
+prior = 50
+storyline = false
+title = {+naim_kmb_bloodsucker_death} title_naim_kmb_2_1_name_st, title_naim_kmb_2_0_name_st
+descr = descr_naim_kmb_2_text_st
+target = {+naim_kmb_bloodsucker_death} cit_killers_merc_trader_stalker_squad, naim_kmb_bloodsucker
+condlist_0 = {+naim_kmb_2_end_give +naim_kmb_bloodsucker_death} complete, {+cit_killers_merc_trader_stalker_squad_death} fail
+condlist_1 = {=drx_sl_is_enemy(killer)} fail
+on_complete = %=complete_task_inc_goodwill(10:killer)%
+
+[naim_kmb_3]
+icon = 03-15
+prior = 50
+storyline = false
+on_init = %=create_squad(cit_kmb_3_stalker_squad:cit_kanaliz2)%
+title = {+kmb_stalker_dead_city_death} title_naim_kmb_3_1_name_st, title_naim_kmb_3_0_name_st
+descr = descr_naim_kmb_3_text_st
+target = {+kmb_stalker_dead_city_death} cit_killers_merc_trader_stalker_squad, kmb_stalker_dead_city_1
+condlist_0 = {+naim_kmb_3_end_give +kmb_stalker_dead_city_death } complete, {+cit_killers_merc_trader_stalker_squad_death} fail 
+condlist_1 = {=drx_sl_is_enemy(killer)} fail
+reward_item = ammo_9x19_pbp:mre:water_drink:medkit:jgut:antirad:swiss:yellowcard:yellowcard
+on_complete = %=reward_random_money(3000:8000) =complete_task_inc_goodwill(10:killer)%
+
+[task_naim_kmb_4_kill_monster_1]
+icon = 02-07
+prior = 120
+storyline = false
+title = {=actor_has_item(duty_naim_contrakt_1_pda)} task_naim_kmb_4_kill_monster_1_st, task_naim_kmb_4_kill_monster_0_st
+descr = {=actor_has_item(duty_naim_contrakt_1_pda)} task_naim_kmb_4_kill_monster_1_descr, task_naim_kmb_4_kill_monster_0_descr
+target = {=actor_has_item(duty_naim_contrakt_1_pda)} cit_killers_merc_trader_stalker_squad, duty_kvad_1_nps_walve_kwest
+condlist_0 = {+naim_kmb_4_kill_monster_contrakt_start} complete, {+cit_killers_merc_trader_stalker_squad_death} fail
+condlist_1 = {=drx_sl_is_enemy(killer)} fail
+condlist_2 =  {+naim_kmb_4_kill_monster_start_cancel_alt} fail
+condlist_3 =  {+naim_kmb_4_kill_monster_start_cancel} fail
+condlist_4 =  {+begin_duty_naim_contrakt_1_cancel} fail
+on_complete = %=complete_task_inc_goodwill(10:killer)%
+
+[task_naim_kmb_4_kill_monster]
+icon = 02-07
+prior = 120
+storyline = false
+title = {+mutnii_mertv_5} task_naim_kmb_4_kill_monster_6_st, {+mutnii_mertv_2} task_naim_kmb_4_kill_monster_5_st, {+mutnii_mertv_1} task_naim_kmb_4_kill_monster_4_st, {+naim_kmb_4_kill_monster_contrakt_start} task_naim_kmb_4_kill_monster_3_st, {+begin_duty_naim_contrakt_1} task_naim_kmb_4_kill_monster_2_st
+descr = {+mutnii_mertv_5} task_naim_kmb_4_kill_monster_3_descr, {+mutnii_mertv_1} task_naim_kmb_4_kill_monster_2_descr
+on_init = %=create_squad(mutnii_mertv_3_1_squad:mil_smart_terrain_2_4)%
+target = {+mutnii_mertv_5} cit_killers_merc_trader_stalker_squad, {+mutnii_mertv_2} mutnii_mertv_3_5_squad, {+mutnii_mertv_1} mutnii_mertv_3_2_squad, {+naim_kmb_4_kill_monster_contrakt_start} mutnii_mertv_3_1_squad
+condlist_0 = {+naim_kmb_4_kill_monster_contrakt_end} complete, {+cit_killers_merc_trader_stalker_squad_death} fail
+condlist_1 = {=drx_sl_is_enemy(killer)} fail
+condlist_2 =  {+naim_kmb_4_kill_monster_contrakt_end_cancel} fail
+condlist_3 =  {+begin_duty_naim_contrakt_1_cancel} fail
+on_complete = %=reward_random_money(15000:25000) =complete_task_inc_goodwill(70:killer)%
+reward_item = wpn_knife6:yellowcard:yellowcard
+<!-- =================КМБ Наёмники=================== --> 
+<!-- =================КМБ Долг=================== -->
+[duty_kmb_00]
+icon = 03-02
+prior = 300
+storyline = true
+title = duty_kmb_00_text_0_st
+descr = duty_kmb_00_descr
+target = bar_dolg_leader_squad
+condlist_0 = {+duty_kmb_00_end} complete, {+bar_dolg_leader_squad_death} fail 
+condlist_1 = {=drx_sl_is_enemy(dolg)} fail
+
+[duty_kmb_1]
+icon = 02-14
+prior = 20
+storyline = false
+title = {+mishen_duty_01_death +mishen_duty_02_death +mishen_duty_03_death +mishen_duty_04_death +mishen_duty_05_death} title_mishen_duty_02_name_st, title_mishen_duty_01_name_st
+descr = {+mishen_duty_01_death +mishen_duty_02_death +mishen_duty_03_death +mishen_duty_04_death +mishen_duty_05_death} descr_mishen_duty_text_st_1, descr_mishen_duty_text_st
+target = {+mishen_duty_01_death +mishen_duty_02_death +mishen_duty_03_death +mishen_duty_04_death +mishen_duty_05_death} bar_dolg_leader_squad, duty_kmb_1_new
+condlist_0 = {+duty_kmb_1_end_give} complete, {+bar_dolg_leader_squad_death} fail 
+condlist_1 = {=drx_sl_is_enemy(dolg)} fail
+
+[duty_kmb_2]
+icon = 03-14
+prior = 20
+storyline = false
+title = {+duty_kmb_2_barkas_3_give} duty_kmb_2_text_7_st, {+duty_kmb_3_new_restr} duty_kmb_2_text_6_st, {+duty_kmb_2_gar_bar_leader_2_give} duty_kmb_2_text_5_st, {+duty_kmb_2_barkas_2_give} duty_kmb_2_text_4_st, {+bloodsucker_duty_kmb_2} duty_kmb_2_text_3_st, {+duty_kmb_2_gar_bar_leader_1_give} duty_kmb_2_text_2_st, {+duty_kmb_2_barkas_1_give} duty_kmb_2_text_1_st, duty_kmb_2_text_0_st
+descr = {+duty_kmb_2_gar_bar_leader_2_give} descr_duty_kmb_2_text_st_2, {+duty_kmb_2_gar_bar_leader_1_give} descr_duty_kmb_2_text_st_1, descr_duty_kmb_2_text_st
+target = {+duty_kmb_2_barkas_3_give} bar_dolg_leader_squad, {+duty_kmb_3_new_restr} barkas, {+duty_kmb_2_gar_bar_leader_2_give} duty_kmb_3_new_restr, {+duty_kmb_2_barkas_2_give} new_duty_new_start_1, {+bloodsucker_duty_kmb_2} barkas, {+duty_kmb_2_gar_bar_leader_1_give} duty_kmb_2_new, {+duty_kmb_2_barkas_1_give} new_duty_new_start_1, barkas
+condlist_0 = {+duty_kmb_2_done_give} complete, {+barkas_death} fail
+condlist_1 = {=drx_sl_is_enemy(dolg)} fail, {+bar_dolg_leader_squad_death} fail 
+condlist_2 = {+duty_kmb_1_end_give_cancel1} fail
+condlist_3 = {+new_duty_new_start_1_death} fail
+reward_item = kolbasa:medkit:medkit:medkit:greencard:yellowcard
+on_complete = %=reward_random_money(400:600) =complete_task_inc_goodwill(10:dolg)%
+
+[duty_task_naim_kmb_4_kill_monster_1]
+icon = 02-07
+prior = 120
+storyline = false
+title = {=actor_has_item(duty_naim_contrakt_1_pda)} duty_task_naim_kmb_4_kill_monster_1_st, duty_task_naim_kmb_4_kill_monster_0_st
+descr = {=actor_has_item(duty_naim_contrakt_1_pda)} duty_task_naim_kmb_4_kill_monster_1_descr, duty_task_naim_kmb_4_kill_monster_0_descr
+target = {=actor_has_item(duty_naim_contrakt_1_pda)} bar_dolg_leader_squad, duty_kvad_1_nps_walve_kwest
+condlist_0 = {+duty_naim_kmb_4_kill_monster_contrakt_start} complete, {+bar_dolg_leader_squad_death} fail
+condlist_1 = {=drx_sl_is_enemy(dolg)} fail
+condlist_2 =  {+duty_naim_kmb_4_kill_monster_start_cancel_alt} fail
+condlist_3 =  {+duty_naim_kmb_4_kill_monster_start_cancel} fail
+condlist_4 =  {+duty_begin_duty_naim_contrakt_1_cancel} fail
+on_complete = %=complete_task_inc_goodwill(10:dolg)%
+
+[duty_task_naim_kmb_4_kill_monster]
+icon = 02-07
+prior = 120
+storyline = false
+title = {+mutnii_mertv_5} duty_task_naim_kmb_4_kill_monster_6_st, {+mutnii_mertv_2} duty_task_naim_kmb_4_kill_monster_5_st, {+mutnii_mertv_1} duty_task_naim_kmb_4_kill_monster_4_st, {+naim_kmb_4_kill_monster_contrakt_start} duty_task_naim_kmb_4_kill_monster_3_st, {+begin_duty_naim_contrakt_1} duty_task_naim_kmb_4_kill_monster_2_st
+descr = {+mutnii_mertv_5} duty_task_naim_kmb_4_kill_monster_3_descr, {+mutnii_mertv_1} duty_task_naim_kmb_4_kill_monster_2_descr
+on_init = %=create_squad(mutnii_mertv_3_1_squad:mil_smart_terrain_2_4)%
+target = {+mutnii_mertv_5} bar_dolg_leader_squad, {+mutnii_mertv_2} mutnii_mertv_3_5_squad, {+mutnii_mertv_1} mutnii_mertv_3_2_squad, {+naim_kmb_4_kill_monster_contrakt_start} mutnii_mertv_3_1_squad
+condlist_0 = {+duty_naim_kmb_4_kill_monster_contrakt_end} complete, {+bar_dolg_leader_squad_death} fail
+condlist_1 = {=drx_sl_is_enemy(dolg)} fail
+condlist_2 =  {+duty_naim_kmb_4_kill_monster_contrakt_end_cancel} fail
+condlist_3 =  {+duty_begin_duty_naim_contrakt_1_cancel} fail
+on_complete = %=reward_random_money(4000:9000) =complete_task_inc_goodwill(70:dolg)%
+<!-- =================КМБ Долг=================== -->
+<!-- =================Задание Волка=================== -->
+[esc_talk_wolf_1_quest] 
+icon = 02-17
+prior = 30
+storyline = false
+title = esc_talk_wolf_1_quest_st
+descr = esc_talk_wolf_1_quest_desc
+target = esc_2_12_stalker_wolf
+condlist_0 = {+esc_talk_wolf_1_quest_end} complete, {+esc_2_12_stalker_fanat_death} fail
+
+[esc_task_wolf_1_quest]
+icon = 02-07
+prior = 30
+storyline = false
+title = {=actor_has_item(wolf_dinamyt)}esc_task_wolf_1_quest_1_st, esc_task_wolf_1_quest_0_st
+descr = esc_task_wolf_1_quest_desc
+target = {=actor_has_item(wolf_dinamyt)}esc_2_12_stalker_wolf
+condlist_0 = {+esc_task_wolf_1_quest_end1} complete, {+esc_2_12_stalker_fanat_death} fail
+condlist_1 = {+esc_task_wolf_1_quest_alt_cancel} fail
+on_init = %=create_squad(esc_nql_qwest_luis_squad:esc_smart_terrain_2_12)%
+on_complete = %=complete_task_inc_goodwill(10:stalker)%
+<!-- =================Задание Волка=================== -->
+<!-- =================КМБ Бандитов=================== -->
+[bandit_kmb_00]
+icon = 02-18
+prior = 300
+storyline = true
+title = bandit_kmb_00_text_0_st
+descr = bandit_kmb_00_descr
+target = gar_smart_terrain_3_5_leader
+condlist_0 = {+bandit_kmb_00_end} complete, {+gar_smart_terrain_3_5_leader_death} fail
+condlist_1 = {=drx_sl_is_enemy(bandit)} fail
+
+[bandit_kmb_01]
+icon = 02-03
+prior = 300
+storyline = false
+on_init = %=create_squad(new_band_new_start_4_squad:gar_smart_terrain_5_6)%
+title = {+bandit_kmb_01_semera_end} bandit_kmb_01_text_8_st, {+band_kmb_1_dekan_3_semera_restr} bandit_kmb_01_text_7_st, {+bandit_kmb_01_semera_3} bandit_kmb_01_text_6_st, {+band_kmb_1_dekan_2_semera_restr} bandit_kmb_01_text_5_st, {+bandit_kmb_01_fraer} bandit_kmb_01_text_4_st, {+bandit_kmb_01_semera_2} bandit_kmb_01_text_3_st, {+bandit_kmb_01_semera_1} bandit_kmb_01_text_2_st, {+bandit_kmb_01_start} bandit_kmb_01_text_1_st
+descr = {+bandit_kmb_01_semera_3} bandit_kmb_01_descr_3, {+band_kmb_1_dekan_2_semera_restr} bandit_kmb_01_descr_2, {+bandit_kmb_01_fraer} bandit_kmb_01_descr_1, bandit_kmb_01_descr
+target = {+bandit_kmb_01_semera_end} gar_smart_terrain_3_5_leader, {+band_kmb_1_dekan_3_semera_restr} new_band_new_start_2_squad, {+bandit_kmb_01_semera_3} band_kmb_1_dekan_3_semera_restr, {+band_kmb_1_dekan_2_semera_restr} new_band_new_start_2_squad, {+bandit_kmb_01_fraer} band_kmb_1_dekan_2_semera_restr, {+bandit_kmb_01_semera_2} new_band_new_start_4_squad, {+band_kmb_1_dekan_1_semera_restr} new_band_new_start_2_squad, {+bandit_kmb_01_semera_1} band_kmb_1_dekan_1_semera_restr, {+bandit_kmb_01_start} new_band_new_start_2_squad
+condlist_0 = {+bandit_kmb_01_end} complete, {+new_band_new_start_2_death} fail, {+gar_smart_terrain_3_5_leader_death} fail
+condlist_1 = {=drx_sl_is_enemy(bandit)} fail
+
+[bandit_kmb_02]
+icon = 02-15
+prior = 300
+storyline = false
+title = {=actor_has_item(chennosti)} bandit_kmb_02_1_st, bandit_kmb_02_0_st
+descr = bandit_kmb_02_descr
+target = {=actor_has_item(chennosti)} gar_smart_terrain_3_5_leader
+condlist_0 = {+bandit_kmb_02_end} complete, {+gar_smart_terrain_3_5_leader_death} fail
+condlist_1 = {=drx_sl_is_enemy(bandit)} fail
+condlist_2 = {=actor_has_item(chennosti) -gar_decan_duty_permission_info_fail} reversed
+
+[bandit_kmb_03]
+icon = 02-17
+prior = 300
+storyline = false
+title = {+kmb_help_semeran_2} bandit_kmb_03_4_st, {+vremya_proshlo_semera_1} bandit_kmb_03_3_st, {+kmb_help_semeran_doc_1} bandit_kmb_03_2_st, {+kmb_help_semeran_1} bandit_kmb_03_1_st, bandit_kmb_03_0_st
+descr = {+kmb_help_semeran_2} bandit_kmb_03_descr_1, bandit_kmb_03_descr
+;target = {+kmb_help_semeran_2} gar_smart_terrain_3_5_leader, {+kmb_help_semeran_doc_1} gar_doc_restr_1, {+kmb_help_semeran_1} mar_smart_terrain_doc_doctor, new_band_new_start_2_squad
+target = {+kmb_help_semeran_2} gar_smart_terrain_3_5_leader, {+kmb_help_semeran_doc_1} bolot_doc_bandit_squad, {+kmb_help_semeran_1} mar_smart_terrain_doc_doctor, new_band_new_start_2_squad
+condlist_0 = {+kmb_help_semera_decan_end} complete, {+gar_smart_terrain_3_5_leader_death} fail, {+new_band_new_start_2_death} fail, {+mar_smart_terrain_doc_squad_death}, {+bolot_doc_bandit_death} fail 
+condlist_1 = {=drx_sl_is_enemy(bandit)} fail
+reward_item = wpn_knife14:greencard:yellowcard
+<!-- =================КМБ Бандитов=================== -->
+<!-- =================КМБ Экологов=================== -->
+[eco_kmb_1]
+icon = 02-01
+prior = 30
+storyline = false
+title = {=actor_has_item(pda_eco_army01)} eco_kmb_1_text_1_st, eco_kmb_1_text_0_st
+descr = {=actor_has_item(pda_eco_army01)} eco_kmb_1_descr_0_1, eco_kmb_1_descr_0
+target = {+kmb_eco_1_end_voen} yan_stalker_sakharov_squad, {=actor_has_item(pda_eco_army01)} eco_kmb_6_new_restr, {+kmb_eco_1_start_voen} nastavnic_eco_death, nastavnic_eco_squad
+condlist_0 = {+kmb_eco_1_end} complete, {+nastavnic_eco_death} fail
+condlist_1 = {=drx_sl_is_enemy(ecolog)} fail
+reward_item = medkit_scientic:greencard:yellowcard
+on_complete = %=reward_random_money(1000:1500) =complete_task_inc_goodwill(10:ecolog)%
+
+[eco_kmb_1_alt]
+icon = 02-01
+prior = 30
+storyline = false
+title = {=actor_has_item(pda_eco_army01)} eco_kmb_1_text_1_alt_st, eco_kmb_1_text_0_alt_st
+descr = {=actor_has_item(pda_eco_army01)} eco_kmb_1_descr_0_alt_1, eco_kmb_1_descr_0_alt
+target = {=actor_has_item(pda_eco_army01)} yan_stalker_sakharov_squad, nastavnic_eco_death
+condlist_0 = {+kmb_eco_1_end_alt} complete
+condlist_1 = {=drx_sl_is_enemy(ecolog)} fail
+reward_item = medkit_scientic:greencard:yellowcard
+on_complete = %=reward_random_money(1000:1500) =complete_task_inc_goodwill(10:ecolog)%
+
+[eco_kmb_2]
+icon = 01-18
+prior = 30
+storyline = false
+title = {+kmb_eco_2_end_voen} eco_kmb_2_text_7_st, {+eco_kmb_6_new_restr} eco_kmb_2_text_6_st, {+eco_kmb_5_new_restr} eco_kmb_2_text_5_st, {+eco_kmb_4_new_restr} eco_kmb_2_text_4_st, {+eco_kmb_3_new_restr} eco_kmb_2_text_3_st, {+eco_kmb_2_new_restr} eco_kmb_2_text_2_st, {+kmb_eco_2_start_vzyal_detector} eco_kmb_2_text_1_st, {+kmb_eco_2_start_voen} eco_kmb_2_text_1_1_st, eco_kmb_2_text_0_st
+descr = {+kmb_eco_2_end_voen} eco_kmb_2_descr_2, {+eco_kmb_5_new_restr} eco_kmb_2_descr_1, eco_kmb_2_descr
+target = {+kmb_eco_2_end_voen} yan_stalker_sakharov_squad, {+eco_kmb_6_new_restr} nastavnic_eco_squad, {+eco_kmb_5_new_restr} eco_kmb_6_new_restr, {+eco_kmb_4_new_restr} eco_kmb_5_new_restr, {+eco_kmb_3_new_restr} eco_kmb_4_new_restr, {+eco_kmb_2_new_restr} eco_kmb_3_new_restr, {+kmb_eco_2_start_vzyal_detector} eco_kmb_2_new_restr, {+kmb_eco_2_start_voen} agr_smart_terrain_1_6_near_2_military_colonel_kovalski, nastavnic_eco_squad
+condlist_0 = {+kmb_eco_2_end} complete, {+nastavnic_eco_death} fail
+condlist_1 = {=drx_sl_is_enemy(ecolog)} fail
+on_complete = %=complete_task_inc_goodwill(10:ecolog)%
+
+[eco_kmb_2_alt]
+icon = 02-01
+prior = 30
+storyline = false
+title = {+eco_kmb_6_new_restr} eco_kmb_2_text_alt_6_st, {+eco_kmb_5_new_restr} eco_kmb_2_text_alt_5_st, {+eco_kmb_4_new_restr} eco_kmb_2_alt_text_4_st, {+eco_kmb_3_new_restr} eco_kmb_2_alt_text_3_st, {+eco_kmb_2_new_restr} eco_kmb_2_alt_text_2_st, {+kmb_eco_2_start_vzyal_detector} eco_kmb_2_alt_text_1_st, eco_kmb_2_alt_text_0_st
+descr =  {+eco_kmb_6_new_restr} eco_kmb_2_alt_descr_2, {+eco_kmb_5_new_restr} eco_kmb_2_alt_descr_1, eco_kmb_2_alt_descr
+target = {+eco_kmb_6_new_restr} yan_stalker_sakharov_squad, {+eco_kmb_5_new_restr} eco_kmb_6_new_restr, {+eco_kmb_4_new_restr} eco_kmb_5_new_restr, {+eco_kmb_3_new_restr} eco_kmb_4_new_restr, {+eco_kmb_2_new_restr} eco_kmb_3_new_restr, {+kmb_eco_2_start_vzyal_detector} eco_kmb_2_new_restr, agr_smart_terrain_1_6_near_2_military_colonel_kovalski
+condlist_0 = {+kmb_eco_2_end_alt} complete
+condlist_1 = {=drx_sl_is_enemy(ecolog)} fail
+on_complete = %=complete_task_inc_goodwill(10:ecolog)%
+<!-- =================КМБ Экологов=================== -->
+<!-- =================КМБ Монолит=================== -->
+[mono_kmb_00]
+icon = 01-15
+prior = 300
+storyline = true
+title = mono_kmb_00_text_0_st
+descr = mono_kmb_00_descr
+target = nastavnic_mono
+condlist_0 = {+mono_kmb_00_end} complete
+condlist_1 = {=drx_sl_is_enemy(monolith)} fail
+
+[mono_kmb_1]
+icon = 02-16
+prior = 30
+storyline = false
+title = {+kmb_mon_1_4} kmb_mon_1_4_st, {+kmb_mon_1_eco_death +kmb_mon_1_eco_death_1} mono_kmb_1_text_3_1_st, {+kmb_mon_1_3} mono_kmb_1_text_3_st, {=actor_has_item(pda_pri_army02)} mono_kmb_1_text_22_st, {+kmb_mon_1_2} mono_kmb_1_text_2_st, {=actor_has_item(pda_pri_army01)} mono_kmb_1_text_1_st, mono_kmb_1_text_0_st
+descr = {+kmb_mon_1_4} kmb_mon_1_descr_3, {+kmb_mon_1_mil_death} kmb_mon_1_descr_2, {+kmb_mon_1_1} kmb_mon_1_descr_1, kmb_mon_1_descr
+target = {+kmb_mon_1_4} kmb_mon_1_0, {+kmb_mon_1_eco_death +kmb_mon_1_eco_death_1} kmb_mon_1_1, {+kmb_mon_1_3} kmb_mon_1_eco, {+kmb_mon_1_3} , {=actor_has_item(pda_pri_army02)} kmb_mon_1_1, {+kmb_mon_1_2} kmb_mon_3_d, {=actor_has_item(pda_pri_army01)} kmb_mon_1_1, {+kmb_mon_1_1} mon_kmb_1_new_restr, kmb_mon_1_1
+on_init = %=create_squad(kmb_mon_1_1_squad:pri_sim_14)%
+condlist_0 = {+kmb_mon_1_end} complete, {+kmb_mon_1_1_death} fail, {+kmb_mon_1_1_cancel} fail, {+kmb_mon_1_1_start_alt_cancel} fail
+condlist_1 = {=drx_sl_is_enemy(monolith)} fail
+condlist_2 = {+kmb_mon_1_2_cancel} reversed, {+kmb_mon_1_3_cancel} reversed, {+kmb_mon_1_4_cancel} reversed
+on_complete = %=complete_task_inc_goodwill(10:monolith)%
+
+[mono_kmb_2]
+icon = 02-20
+prior = 30
+storyline = false
+title = {=actor_has_item(af_electra_sparkler)} mono_kmb_2_text_1_st,  mono_kmb_2_text_0_st
+descr = kmb_mon_2_descr
+target = nastavnic_mono
+condlist_0 = {+mono_kmb_2_end} complete, {+nastavnic_mono_death} fail
+condlist_1 = {=drx_sl_is_enemy(monolith)} fail
+condlist_2 = {+kmb_mon_2_start_cancel)} fail, {+kmb_mon_2_end_cancel)} fail
+on_complete = %=complete_task_inc_goodwill(10:monolith)%
+
+[mono_kmb_3]
+icon = 01-20
+prior = 30
+storyline = false
+title = {+mono_contr_death} mono_kmb_3_text_1_st, mono_kmb_3_text_0_st
+descr = {+mono_contr_death} kmb_mon_3_descr_1, kmb_mon_3_descr
+target = {+mono_contr_death} nastavnic_mono, mono_contr
+on_init = %=create_squad(mono_contr:aes_smart_terrain_monsters2)%
+condlist_0 = {+mono_kmb_3_end} complete, {+nastavnic_mono_death} fail
+condlist_1 = {=drx_sl_is_enemy(monolith)} fail
+reward_item = ammo_5.7x28_ss195:greencard:yellowcard:medkit_scientic:akvatab_3:adrenalin:jgut:flask_3:mre_3
+on_complete = %=reward_random_money(5000:10000) =complete_task_inc_goodwill(10:monolith)%
+
+[mono_kmb_4]
+icon = 02-13
+prior = 30
+storyline = false
+title = mono_kmb_4_text_0_st
+descr = kmb_mon_4_descr
+target = kmb_mon_1_0
+condlist_0 = {+mono_kmb_4_end} complete
+condlist_1 = {=drx_sl_is_enemy(monolith)} fail
+reward_item = wpn_knife8:stimpack_scientic:antirad:drug_anabiotic:yadylin:antibio_sulfad_3:mint_3:mineral_water_3:mre_3
+on_complete = %=reward_random_money(10000:15000) =complete_task_inc_goodwill(70:monolith)%
+<!-- =================КМБ Монолит=================== -->
+<!-- =================КМБ Свобода=================== -->
+[free_kmb_1]
+icon = 02-06
+prior = 30
+storyline = false
+title =  {=actor_has_item(pda_free_army01)} free_kmb_1_text_1_st, {=actor_has_item(pda_free_army02)} free_kmb_1_text_1_1_st, free_kmb_1_text_0_st
+descr = {=actor_has_item(pda_free_army01)} free_kmb_1_descr, {=actor_has_item(pda_free_army02)} free_kmb_1_descr_2, free_kmb_1_descr_1
+target = {=actor_has_item(pda_free_army01)} jup_a6_freedom_leader_squad
+condlist_0 = {+kmb_free_end} complete
+condlist_1 = {=drx_sl_is_enemy(freedom)} fail
+on_complete = %=reward_random_money(20000:30000) =complete_task_inc_goodwill(10:freedom)%
+reward_item = greencard:yellowcard
+<!-- =================КМБ Свобода=================== -->
+<!-- =================квесты на спасение экологов=================== -->
+[zadanie_voen_pripayt]
+icon = 02-16
+prior = 20
+storyline = false
+title = {+zadanie_voen_pripayt_eco_end} mil_eco_text_3_st, {+mil_kmb_3_new_restr_alt} mil_eco_text_22_st, {+zadanie_voen_pripayt_eco_start_1_1} mil_eco_text_2_st, {=actor_has_item(pda_pri_army02)} mil_eco_text_1_st, mil_eco_text_0_st
+descr = {+zadanie_voen_pripayt_eco_end} mil_eco_descr_3, {+mil_kmb_3_new_restr_alt} mil_eco_descr_22, {+zadanie_voen_pripayt_eco_start_1_1} mil_eco_descr_2, {=actor_has_item(pda_pri_army02)} mil_eco_descr_1, mil_eco_descr_0 
+target = {+zadanie_voen_pripayt_eco_end} agr_smart_terrain_1_6_near_2_military_colonel_kovalski, {+mil_kmb_3_new_restr_alt} kmb_mon_7_u, {+zadanie_voen_pripayt_eco_start_1_1} eco_saif_qwest_restr, {=actor_has_item(pda_pri_army02)} kmb_mon_7_u, kmb_mon_3_d
+condlist_0 = {+zadanie_voen_pripayt_end} complete
+condlist_1 = {=drx_sl_is_enemy(army)} fail
+condlist_2 = {=drx_sl_is_enemy(ecolog)} fail
+condlist_3 = {+kmb_mon_1_eco_death} fail
+on_complete = %=reward_random_money(20000:30000) =complete_task_inc_goodwill(120:army)%
+reward_item = wpn_knife10:yellowcard:yellowcard
+<!-- =================квесты на спасение экологов=================== -->
+<!-- =================квесты хип=================== -->
+[devushka_1_give]
+icon = 01-17
+prior = 40
+storyline = false
+title = {=actor_has_item(wpn_toz34_nimble) =actor_has_item(ammo_12x70_buck)} toz34_sk2_return, toz34_sk2_find
+descr = toz34_return_descr
+target = {=actor_has_item(wpn_toz34_nimble) =actor_has_item(ammo_12x70_buck)} devushka
+condlist_0 = {+devushka_1_done} complete, {+devushka_death} fail
+condlist_1 = {=drx_sl_is_enemy(csky)} fail
+on_complete = %=inc_faction_goodwill_to_actor(sin:300)%
+reward_item = drug_anabiotic:gasmask_filter:cleaning_kit_r_3:glue_e_2:bag_04:greencard:yellowcard
+
+[devushka_3_give]
+icon = 01-17
+prior = 41
+storyline = false
+title = {=actor_has_item(af_vyvert) =actor_has_item(af_fireball) =actor_has_item(af_electra_moonlight)} artefacts_to_sidor_return, artefacts_to_sidor_find
+descr = artefacts_to_sidor_return_descr
+target = {=actor_has_item(af_vyvert) =actor_has_item(af_fireball) =actor_has_item(af_electra_moonlight)} esc_2_12_stalker_trader
+condlist_0 = {+devushka_3_done} complete, {+devushka_death} fail
+condlist_1 = {=drx_sl_is_enemy(csky)} fail
+on_complete = %=inc_faction_goodwill_to_actor(sin:200)%
+reward_money = 20000
+
+[devushka_4_give]
+icon = 01-17
+prior = 42
+storyline = false
+title = {+devushka_4_give} go_to_barmen_1_st, go_to_barmen_2_st
+descr = go_to_barmen_descr
+target = {+devushka_4_give} bar_visitors_barman_stalker_trader
+condlist_0 = {+devushka_4_done} complete, {+devushka_death} fail
+condlist_1 = {=drx_sl_is_enemy(stalker)} fail
+on_complete = %=inc_faction_goodwill_to_actor(sin:100)%
+
+[devushka_5_give]
+icon = 01-17
+prior = 45
+storyline = false
+title = {+devushka_5_give} go_to_lukash_1_st, go_to_lukash_2_st
+descr = go_to_lukash_descr
+target = {+devushka_5_give} bar_visitors_informer_stalker_squad
+condlist_0 = {+devushka_5_done} complete, {+devushka_death} fail
+condlist_1 = {=drx_sl_is_enemy(stalker)} fail
+on_complete = %=inc_faction_goodwill_to_actor(sin:100)%
+
+[task_devushka_help_done3]
+icon = 01-17
+prior = 45
+storyline = false
+title = task_devushka_help_done3
+descr = task_devushka_help_done3_descr
+target = gzegosh_bandos_squad
+condlist_0 = {+devushka_help_done} complete, {+devushka_death} fail
+condlist_1 = {=drx_sl_is_enemy(csky)} fail
+
+[task_devushka_help_done4]
+icon = 01-17
+prior = 45
+storyline = false
+title = {+gzegosh_bandos1_devushka} task_devushka_help_done4_2, task_devushka_help_done4_1
+descr = task_devushka_help_done4_descr
+on_init = %=create_squad(gzegosh_bandos1_squad:gar_smart_terrain_5_2)%
+target = {+gzegosh_bandos1_devushka} gzegosh_squad, gzegosh_bandos1_squad
+condlist_0 = {+devushka_help_done} complete, {+devushka_death} fail, {+gzegosh_bandos1_death} fail
+condlist_1 = {=drx_sl_is_enemy(csky)} fail
+on_complete = %=inc_faction_goodwill_to_actor(bandit:300)%
+on_complete = %=inc_faction_goodwill_to_actor(sin:400)%
+
+[devushka_help_1_give]
+icon = 01-17
+prior = 42
+storyline = false
+title = {=actor_has_item(gruz_barm)} go_to_boroda_1_st, go_to_boroda_2_st
+descr = go_to_boroda_descr
+target = {=actor_has_item(gruz_barm)} zat_a2_stalker_barmen
+condlist_0 = {+devushka_help_done3} complete, {+devushka_death} fail
+condlist_1 = {=drx_sl_is_enemy(stalker)} fail
+on_complete = %=inc_faction_goodwill_to_actor(stalker:100)%
+reward_item = survival_kit:drug_booster:stimpack:gasmask_filter:batteries:greencard:yellowcard
+
+[devushka_help_2_give]
+icon = 01-17
+prior = 48
+storyline = false
+title = {=actor_has_item(gruz_barm)} go_to_loki_1_st, go_to_loki_2_st
+descr = go_to_loki_descr
+target = {=actor_has_item(gruz_barm)} jup_a6_stalker_barmen
+condlist_0 = {+devushka_help_done3} complete, {+devushka_death} fail
+condlist_1 = {=drx_sl_is_enemy(freedom)} fail
+on_complete = %=inc_faction_goodwill_to_actor(freedom:100)%
+reward_item = mineral_water_3:vodka_quality_3:sausage:bread:tushonka
+<!-- =================квесты хип=================== -->
+<!-- =================квест военных=================== -->
+[posilnii_voen_1] 
+icon = 02-06
+prior = 30
+storyline = false
+title = {=actor_has_item(otschet_german) =actor_has_item(otschet_sakhar) =actor_has_item(otschet_petrenko)} posilnii_voen_title_1, posilnii_voen_title_0
+descr = {=actor_has_item(otschet_german) =actor_has_item(otschet_sakhar) =actor_has_item(otschet_petrenko)} posilnii_voen_descr_1_descr, posilnii_voen_descr_0_descr
+target = {=actor_has_item(otschet_german) =actor_has_item(otschet_sakhar) =actor_has_item(otschet_petrenko)} agr_smart_terrain_1_6_near_2_military_colonel_kovalski
+condlist_0 = {+kurer_army5} complete, {=drx_sl_is_enemy(army)} fail
+condlist_1 = {=drx_sl_is_enemy(ecolog)} fail
+condlist_2 = {=drx_sl_is_enemy(dolg)} fail
+condlist_3 = {+start_kurer_army_cancel} fail
+reward_money = 7000
+reward_item = medkit_army:medkit_army
+<!-- =================квест военных=================== -->
+<!-- =================квест fanat=================== -->
+[fanat_1_wepons_qwest]
+icon = 03-11
+prior = 20
+storyline = false
+title = {=actor_has_item(wpn_abakan_qwest)} fanat_1_wepons_qwest_3_st, {+fanat_1_wepons_qwest_cont} fanat_1_wepons_qwest_2_st, {=actor_has_item(mono_fanat_pda)} fanat_1_wepons_qwest_1_st, fanat_1_wepons_qwest_0_st
+descr = {=actor_has_item(wpn_abakan_qwest)} fanat_1_wepons_qwest_3_descr, {+fanat_1_wepons_qwest_cont} fanat_1_wepons_qwest_2_descr, {=actor_has_item(mono_fanat_pda)} fanat_1_wepons_qwest_1_descr, fanat_1_wepons_qwest_0_descr
+target = bar_visitors_stalker_fanat_squad
+condlist_0 = {+fanat_1_wepons_qwest_en} complete, {+fanat_1_wepons_qwest_cont_cancel} fail
+condlist_1 = {=drx_sl_is_enemy(stalker)} fail
+condlist_2 =  {+bar_visitors_stalker_fanat_squad_death} fail 
+on_complete = %=complete_task_inc_goodwill(10:stalker)%
+reward_item = wpn_knife7:conserva:bread:greencard:yellowcard
+
+[fanat_2_photo_qwest] 
+icon = 02-15
+prior = 30
+storyline = false
+title = {=actor_has_item(photo_qwest)} fanat_2_photo_qwest_1_st, fanat_2_photo_qwest_0_st 
+descr = {=actor_has_item(photo_qwest)} fanat_2_photo_qwest_1_descr, fanat_2_photo_qwest_0_descr
+target = bar_visitors_stalker_fanat_squad
+condlist_0 = {+fanat_2_photo_qwest_en} complete, {+bar_visitors_stalker_fanat_squad_death} fail 
+condlist_1 = {=drx_sl_is_enemy(stalker)} fail 
+on_complete = %=complete_task_inc_goodwill(10:stalker)%
+<!-- =================квест Свободы=================== -->
+[task_svoboda_mest_zachistka]
+icon = 01-07
+prior = 120
+storyline = false
+title = {+pripayt_vostok_fre_qwest_5_mertv} task_svoboda_mest_zachistka_5_st, {+pripayt_vostok_fre_qwest_4_mertv} task_svoboda_mest_zachistka_4_st, {+pripayt_vostok_fre_qwest_3_mertv} task_svoboda_mest_zachistka_3_st, {+pripayt_vostok_fre_qwest_2_mertv} task_svoboda_mest_zachistka_2_st, {+pripayt_vostok_fre_qwest_1_mertv} task_svoboda_mest_zachistka_1_st, {+pripayt_vostok_fre_qwest_0_mertv} task_svoboda_mest_zachistka_00_st, task_svoboda_mest_zachistka_000_st
+descr = {+pripayt_vostok_fre_qwest_5_mertv} task_svoboda_mest_zachistka_5_descr, {+pripayt_vostok_fre_qwest_4_mertv} task_svoboda_mest_zachistka_4_descr, {+pripayt_vostok_fre_qwest_3_mertv} task_svoboda_mest_zachistka_3_descr, {+pripayt_vostok_fre_qwest_2_mertv} task_svoboda_mest_zachistka_2_descr, {+pripayt_vostok_fre_qwest_1_mertv} task_svoboda_mest_zachistka_1_descr, {+pripayt_vostok_fre_qwest_0_mertv} task_svoboda_mest_zachistka_00_descr, task_svoboda_mest_zachistka_000_descr
+target = {+pripayt_vostok_fre_qwest_5_mertv} jup_a6_freedom_leader_squad, {+pripayt_vostok_fre_qwest_4_mertv} pripayt_vostok_fre_qwest_5_restr, {+pripayt_vostok_fre_qwest_3_mertv} pripayt_vostok_fre_qwest_4_restr, {+pripayt_vostok_fre_qwest_2_mertv} pripayt_vostok_fre_qwest_3_restr, {+pripayt_vostok_fre_qwest_1_mertv} pripayt_vostok_fre_qwest_2_restr, {+pripayt_vostok_fre_qwest_0_mertv} pripayt_vostok_fre_qwest_1_restr, pripayt_vostok_fre_qwest_0_squad
+condlist_0 = {+svoboda_mest_zachistka_end} complete
+condlist_1 = {=drx_sl_is_enemy(freedom)} fail
+condlist_2 = {+jup_a6_freedom_leaderdeath} fail
+on_init = %=create_squad(pripayt_vostok_fre_qwest_0_squad:pri_a18)%
+on_complete = %=reward_random_money(35000:50000) =complete_task_inc_goodwill(100:freedom)%
+reward_item = adrenalin:yadylin:mre_3:greencard:yellowcard
+
+[task_svoboda_mest_spasenie]
+icon = 03-16
+prior = 140
+storyline = false
+title = {+svoboda_mest_spasisokhranii_end} task_svoboda_mest_spasenie_3_st, {+svoboda_mest_spasisokhranii_restr} task_svoboda_mest_spasenie_2_st, {+svoboda_mest_spasisokhranii} task_svoboda_mest_spasenie_1_st, task_svoboda_mest_spasenie_0_st
+descr = {+svoboda_mest_spasisokhranii_end} task_svoboda_mest_spasenie_3_descr, {+svoboda_mest_spasisokhranii_restr} task_svoboda_mest_spasenie_2_descr, {+svoboda_mest_spasisokhranii} task_svoboda_mest_spasenie_1_descr, task_svoboda_mest_spasenie_0_descr
+target = {+svoboda_mest_spasisokhranii_end} jup_a6_freedom_leader_squad, {+svoboda_mest_spasisokhranii_restr} mest_fre_wound, {+svoboda_mest_spasisokhranii} jup_a6_mest_fre_wound, mest_fre_wound
+condlist_0 = {+svoboda_mest_spasenie_end} complete, {+mest_fre_wound_death} fail
+condlist_1 = {=drx_sl_is_enemy(freedom)} fail
+condlist_2 = {+jup_a6_freedom_leaderdeath} fail
+on_init = %=create_squad(mest_fre_wound_squad:pas_b400_hall)%
+on_complete = %=complete_task_inc_goodwill(20:freedom)%
+reward_item = wpn_knife11:yellowcard:yellowcard
+<!-- =================квест Свободы=================== -->
+<!-- =================квест долговцев=================== -->
+[dolg_story_task_1]
+icon = 01-21
+prior = 200
+on_init = %=create_squad(dolg_story_task_1_suskers:gar_smart_terrain_6_6)%
+storyline = false
+title = {+dolg_story_task_1_suskers_dead} dolg_story_task_1_name, dolg_story_task_1_name1
+descr = dolg_story_task_1_descr
+target = {+dolg_story_task_1_suskers_dead} bar_dolg_general_petrenko_stalker_squad, {+dolg_story_task_dop_1_started} dolg_story_task_1_suskers, nil
+condlist_0 = {+dolg_story_task_1_done} complete
+condlist_1 = {=drx_sl_is_enemy(dolg)} fail
+condlist_2 = {+new_duty_new_start_1_death} fail
+reward_money = 12100
+on_complete = %=complete_task_inc_goodwill(10:dolg)%
+
+[dolg_story_task_1_dop]
+icon = 01-21
+prior = 200
+storyline = false
+title = {=actor_has_item(pda_freon) =actor_has_item(pda_flibuster)} dolg_story_task_1_dop_name, dolg_story_task_1_dop_name2
+descr = dolg_story_task_1_dop_descr
+target = {=actor_has_item(pda_freon) =actor_has_item(pda_flibuster)} bar_dolg_general_petrenko_stalker_squad, nil
+condlist_0 = {+dolg_story_task_1_dop_done} complete, {+prosrali_dolg_story_task_1_dop} fail
+condlist_1 = {+new_duty_new_start_1_death} fail
+condlist_2 = {=drx_sl_is_enemy(dolg)} fail
+reward_money = 3100	
+on_complete = %=complete_task_inc_goodwill(10:dolg)%
+	
+[dolg_story_task_2]
+icon = 01-19
+prior = 200
+on_init = %=create_squad(dolg_story_task_2_gigant:ds_ptr) =create_squad(new_duty_new_start_1_fake_1_squad:val_smart_terrain_4_0) =create_squad(dolg_story_task_2_bandit:val_smart_terrain_5_10)%
+storyline = false
+title = {+dolg_story_task_2_gigant_dead} dolg_story_task_2_name, dolg_story_task_2_name1
+descr = dolg_story_task_2_descr
+target = {+dolg_story_task_2_gigant_dead} bar_dolg_general_petrenko_stalker_squad, {+dolg_story_task_2_dop_done} dolg_story_task_2_gigant, nil
+condlist_0 = {+dolg_story_task_2_done} complete
+condlist_1 = {=drx_sl_is_enemy(dolg)} fail
+reward_money = 25200
+on_complete = %=complete_task_inc_goodwill(10:dolg)%
+
+[dolg_story_task_2_dop]
+icon = 03-06
+prior = 200
+storyline = false
+title = {+dolg_story_task_2_bandit_dead} dolg_story_task_2_dop_name, dolg_story_task_2_dop_name1
+descr = dolg_story_task_2_dop_descr
+target = {+dolg_story_task_2_bandit_dead} new_duty_new_start_1_fake_1, dolg_story_task_2_bandit
+condlist_0 = {+dolg_story_task_2_dop_done} complete
+condlist_1 = {+ucf_pula_squad_death} fail
+condlist_2 = {=drx_sl_is_enemy(dolg)} fail
+reward_item = grenade_f1:grenade_f1:grenade_f1:medkit_army:greencard:yellowcard
+on_complete = %=complete_task_inc_goodwill(10:dolg)%
+
+[dolg_story_task_3]
+icon = 02-09
+prior = 200
+on_init = %=create_squad(dolg_story_task_3_burers:trc_sim_15)%
+storyline = false
+title = {+dolg_story_task_3_burers_dead} dolg_story_task_3_name, dolg_story_task_3_name1
+descr = dolg_story_task_3_descr
+target = {+dolg_story_task_3_burers_dead} bar_dolg_general_petrenko_stalker_squad, dolg_story_task_3_burers
+condlist_0 = {+dolg_story_task_3_done} complete
+condlist_1 = {+dolg_story_task_3_done1} complete
+condlist_2 = {=drx_sl_is_enemy(dolg)} fail
+on_complete = %=complete_task_inc_goodwill(25:dolg)%
+reward_money = 16300
+	
+[dolg_story_task_4]
+icon = 03-03
+prior = 200
+on_init = %=create_squad(dolg_story_task_4_contoller:mil_smart_terrain_4_3)%
+storyline = false
+title = {+dolg_story_task_4_contoller_dead} dolg_story_task_4_name, dolg_story_task_4_name1
+descr = dolg_story_task_4_descr
+target = {+dolg_story_task_4_contoller_dead} bar_dolg_general_petrenko_stalker_squad, dolg_story_task_4_contoller
+condlist_0 = {+dolg_story_task_4_done} complete
+condlist_1 = {=drx_sl_is_enemy(dolg)} fail
+on_complete = %=complete_task_inc_goodwill(50:dolg)%
+reward_money = 20400
+
+[dolg_story_task_4_dop]
+icon = 03-10
+prior = 200
+storyline = false
+title = {=actor_has_item(pda_pinya)} dolg_story_task_4_dop_name1, dolg_story_task_4_dop_name
+descr = dolg_story_task_4_dop_descr
+target = {=actor_has_item(pda_pinya)} bar_dolg_general_petrenko_stalker_squad, nil
+condlist_0 = {+dolg_story_task_4_dop_done} complete
+condlist_1 = {=drx_sl_is_enemy(dolg)} fail
+on_complete = %=complete_task_inc_goodwill(10:dolg)%
+reward_money = 12400
+	
+[dolg_story_task_5]
+icon = 02-10
+prior = 200
+on_init = %=create_squad(dolg_story_task_5_chemera:red_smart_terrain_monsters)%
+storyline = false
+title = {+dolg_story_task_5_chemera_dead} dolg_story_task_5_name, dolg_story_task_5_name1
+descr = dolg_story_task_5_descr
+target = {+dolg_story_task_5_chemera_dead} bar_dolg_general_petrenko_stalker_squad, {=actor_has_item(pda_neytral_red_forest_hunter_1)} dolg_story_task_5_chemera, nil
+condlist_0 = {+dolg_story_task_5_done} complete
+condlist_1 = {=drx_sl_is_enemy(dolg)} fail
+on_complete = %=complete_task_inc_goodwill(70:dolg)%
+reward_money = 25500
+reward_item = wpn_knife9:yellowcard:yellowcard
+
+[task_duty_final_kmb_5]
+icon = 03-09
+prior = 20
+storyline = false
+title = {=actor_has_item(izdelie62)} task_duty_final_kmb_5_4_st, {+pogovoril_s_kardanom} task_duty_final_kmb_5_3_st, {+pogovoril_s_osvedomitelem} task_duty_final_kmb_5_2_st, task_duty_final_kmb_5_1_st
+descr = {=actor_has_item(izdelie62)} task_duty_final_kmb_5_4_descr, {+pogovoril_s_kardanom} task_duty_final_kmb_5_3_descr, {+pogovoril_s_osvedomitelem} task_duty_final_kmb_5_2_descr, task_duty_final_kmb_5_1_descr
+target = {=actor_has_item(izdelie62)} bar_dolg_leader_squad, nil
+condlist_0 = {+duty_final_kmb_5_has_gauss_done} complete, {+bar_dolg_leader_squad_death} fail
+condlist_1 = {=drx_sl_is_enemy(dolg)} fail
+condlist_2 = {=drx_sl_is_enemy(stalker)} fail
+on_complete = %=complete_task_inc_goodwill(200:dolg)%
+reward_item = adrenalin:briefcase:medkit_army:stimpack_army
+<!-- =================квест долговцев=================== -->
+<!-- =================Death Lamp=================== -->
+[task_sakhar_find_death_lamp]
+icon = 02-20
+prior = 20
+storyline = false
+title = {=actor_has_item(af_death_lamp) =actor_has_item(zapis_text_doc_af_death_lamp)} task_sakhar_find_death_lamp_9_st, {+witches_jel_not_dangerous} task_sakhar_find_death_lamp_81_st, {=actor_has_item(af_sky_part)} task_sakhar_find_death_lamp_8_st, {=actor_has_item(zapis_text_doc_af_death_lamp)} task_sakhar_find_death_lamp_7_st, {+dialog_fanat_info_death_lamp_info} task_sakhar_find_death_lamp_6_st, {+info_dialog_barmen_poisk_uchenii_end_info} task_sakhar_find_death_lamp_5_st, {=actor_has_item(flesh_scientist_city_wounded_flash)} task_sakhar_find_death_lamp_4_st, {+dialog_barmen_poisk_uchenii_end_info} task_sakhar_find_death_lamp_3_st, {+dialog_fanat_poisk_uchenii_start_info} task_sakhar_find_death_lamp_2_st, task_sakhar_find_death_lamp_1_st
+descr = {=actor_has_item(af_death_lamp) =actor_has_item(zapis_text_doc_af_death_lamp)} task_sakhar_find_death_lamp_9_descr, {+witches_jel_not_dangerous} task_sakhar_find_death_lamp_81_descr, {=actor_has_item(af_sky_part)} task_sakhar_find_death_lamp_8_descr, {=actor_has_item(zapis_text_doc_af_death_lamp)} task_sakhar_find_death_lamp_7_descr, {+dialog_fanat_info_death_lamp_info} task_sakhar_find_death_lamp_6_descr, {+info_dialog_barmen_poisk_uchenii_end_info} task_sakhar_find_death_lamp_5_descr, {=actor_has_item(flesh_scientist_city_wounded_flash)} task_sakhar_find_death_lamp_4_descr, {+dialog_barmen_poisk_uchenii_end_info} task_sakhar_find_death_lamp_3_descr, {+dialog_fanat_poisk_uchenii_start_info} task_sakhar_find_death_lamp_2_descr, task_sakhar_find_death_lamp_1_descr
+target = {=actor_has_item(af_death_lamp) =actor_has_item(zapis_text_doc_af_death_lamp)} yan_stalker_sakharov_squad, {+witches_jel_not_dangerous} nil, {=actor_has_item(af_sky_part)} nil, {=actor_has_item(zapis_text_doc_af_death_lamp)} nil, {+dialog_fanat_info_death_lamp_info} nil, {+info_dialog_barmen_poisk_uchenii_end_info} bar_visitors_stalker_fanat_squad, {=actor_has_item(flesh_scientist_city_wounded_flash)} bar_visitors_barman_stalker_trader, {+dialog_barmen_poisk_uchenii_end_info} nil, {+dialog_fanat_poisk_uchenii_start_info} bar_visitors_barman_stalker_trader, nil
+condlist_0 = {+dialog_sakhar_find_death_lamp_start_info_end} complete, {+dialog_sakhar_find_death_lamp_start_info_cancel} fail
+condlist_1 = {+dialog_sakhar_find_death_lamp_start_info_end_cancel} fail
+condlist_2 = {+dialog_doc_final_dead_lamp_choosen_one_goodman_dialog} fail
+condlist_3 = {+dialog_barmen_poisk_uchenii_end_info_cancel} fail
+condlist_4 = {+dialog_german_oazis_info_start_info_cancel} fail
+condlist_5 = {=drx_sl_is_enemy(ecolog)} fail
+condlist_6 = {=drx_sl_is_enemy(stalker)} fail
+on_complete = %=complete_task_inc_goodwill(30:stalker) =complete_task_inc_goodwill(20:ecolog) =reward_random_money(450000:550000)%
+
+[task_german_oazis_poisk_uchenii]
+icon = 02-20
+prior = 200
+storyline = false
+title = {=actor_has_item(af_oasis_heart_pda_info)} task_german_oazis_poisk_uchenii_2_st, task_german_oazis_poisk_uchenii_1_st
+descr = task_german_oazis_poisk_uchenii_descr
+target = {=actor_has_item(af_oasis_heart_pda_info)} jup_b6_scientist_nuclear_physicist, nil
+condlist_0 = {+dialog_german_oazis_info_end_info} complete
+condlist_1 = {=drx_sl_is_enemy(ecolog)} fail
+on_complete = %=complete_task_inc_goodwill(10:ecolog)%
+<!-- =================Death Lamp=================== -->
+[task_esc_nql_qwest_luis_1]
+icon = 04-01
+prior = 20
+storyline = false
+title = {=actor_has_item(flash_esc_nql_qwest_luis) +band_esc_nql_qwest_luis_squad_death} task_esc_nql_qwest_luis_1_2_st, {+band_esc_nql_qwest_luis_squad_death} task_esc_nql_qwest_luis_1_1_st, task_esc_nql_qwest_luis_1_0_st
+descr = {=actor_has_item(flash_esc_nql_qwest_luis) +band_esc_nql_qwest_luis_squad_death} task_esc_nql_qwest_luis_1_2_descr, {+band_esc_nql_qwest_luis_squad_death} task_esc_nql_qwest_luis_1_1_descr, task_esc_nql_qwest_luis_1_0_descr
+target = {=actor_has_item(flash_esc_nql_qwest_luis) +band_esc_nql_qwest_luis_squad_death} esc_nql_qwest_luis_squad, {+band_esc_nql_qwest_luis_squad_death} nil, band_esc_nql_qwest_luis_squad_squad
+on_init = %=create_squad(band_esc_nql_qwest_luis_squad:esc_smart_terrain_5_2)%
+condlist_0 = {+esc_nql_qwest_luis_info_novic_end} complete, {+esc_nql_qwest_luis_info_novic_start_cancel} fail
+condlist_1 = {=drx_sl_is_enemy(stalker)} fail
+condlist_2 = {+esc_nql_qwest_luis_death} fail
+on_complete = %=complete_task_inc_goodwill(5:stalker)%

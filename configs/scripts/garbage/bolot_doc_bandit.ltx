@@ -1,0 +1,28 @@
+[logic@bolot_doc_bandit]
+suitable = {=check_npc_name(bolot_doc_bandit)} true	
+prior = 200	
+active = walker@bolot_doc_bandit_1
+level_spot = quest_npc
+
+[walker@bolot_doc_bandit_1]
+path_walk = mar_smart_terrain_doc_doctor_gar_0_walk
+path_look = mar_smart_terrain_doc_doctor_gar_0_look
+on_info = {+kmb_help_semeran_doc_2} walker@bolot_doc_bandit_2
+def_state_moving = walk_noweap
+invulnerable = false
+combat_ignore_keep_when_attacked = false
+combat_ignore_cond = true
+gather_items_enabled = false
+corpse_detection_enabled = false
+help_wounded_enabled = true
+use_camp = false	
+anim = claim
+
+[walker@bolot_doc_bandit_2]
+path_walk = mar_smart_terrain_doc_doctor_gar_1_walk
+path_look = mar_smart_terrain_doc_doctor_gar_1_look
+commander = true
+use_camp = true
+avail_animations = animpoint_stay_table
+cover_name = gar_dock_semera_help_1 
+

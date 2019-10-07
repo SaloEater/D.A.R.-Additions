@@ -1,0 +1,96 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 9
+max_population = 3
+respawn_params = respawn@val_smart_terrain_7_5
+respawn_idle = 28800
+
+[respawn@val_smart_terrain_7_5]
+
+spawn_monster
+spawn_stalker
+spawn_bandit1
+spawn_bandit2
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_killer
+spawn_army
+spawn_monolith
+
+[spawn_monster]
+spawn_squads = simulation_tushkano_7_10, simulation_zombie, simulation_snork
+spawn_num = {=!smart_controlled(val_smart_terrain_7_5)} 3, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_novice
+spawn_num = {=smart_under_faction(val_smart_terrain_7_5:stalker)} 2, 0
+
+[spawn_bandit1]
+spawn_squads = bandit_sim_squad_novice
+spawn_num = {=smart_under_faction(val_smart_terrain_7_5:bandit) =!smart_under_faction(bar_dolg_general:bandit)} 7, {=smart_under_faction(val_smart_terrain_7_5:bandit) =smart_under_faction(bar_dolg_general:bandit)} 3, 0
+
+[spawn_bandit2]
+spawn_squads = bandit_sim_squad_advanced
+spawn_num = {=smart_under_faction(val_smart_terrain_7_5:bandit) =!smart_under_faction(bar_dolg_general:bandit)} 3, {=smart_under_faction(val_smart_terrain_7_5:bandit) =smart_under_faction(bar_dolg_general:bandit)} 1, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_novice, csky_sim_squad_advanced
+spawn_num = {=smart_under_faction(val_smart_terrain_7_5:csky)} 2, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_novice
+spawn_num = {=smart_under_faction(val_smart_terrain_7_5:dolg)} 2, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_novice 
+spawn_num = {=smart_under_faction(val_smart_terrain_7_5:freedom)} 2, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_novice, merc_sim_squad_advanced
+spawn_num = {=smart_under_faction(val_smart_terrain_7_5:killer)} 1, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_advanced
+spawn_num = {=smart_under_faction(val_smart_terrain_7_5:army)} 2, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice
+spawn_num = {=smart_under_faction(val_smart_terrain_7_5:monolith)} 2, 0
+
+
+
+
+
+[exclusive]
+
+walker_6 = darkvalley\val_smart_terrain_7_5_smart_logic.ltx
+walker_7 = darkvalley\val_smart_terrain_7_5_smart_logic.ltx
+walker_8 = darkvalley\val_smart_terrain_7_5_smart_logic.ltx
+guard_5 = darkvalley\val_smart_terrain_7_5_smart_logic.ltx
+guard_3 = darkvalley\val_smart_terrain_7_5_smart_logic.ltx
+patrol_1 = darkvalley\val_smart_terrain_7_5_smart_logic.ltx
+walker_8 = darkvalley\val_smart_terrain_7_5_smart_logic.ltx
+
+;багают
+;val_smart_terrain_7_5_camp_work_1 = darkvalley\val_smart_terrain_7_5_smart_logic.ltx
+;val_smart_terrain_7_5_camp_work_2 = darkvalley\val_smart_terrain_7_5_smart_logic.ltx
+;val_smart_terrain_7_5_camp_work_3 = darkvalley\val_smart_terrain_7_5_smart_logic.ltx
+;val_smart_terrain_7_5_camp_work_4 = darkvalley\val_smart_terrain_7_5_smart_logic.ltx
+;val_smart_terrain_7_5_camp_work_5 = darkvalley\val_smart_terrain_7_5_smart_logic.ltx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

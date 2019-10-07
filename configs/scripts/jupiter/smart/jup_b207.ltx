@@ -1,0 +1,28 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 15
+max_population = 2
+respawn_params = respawn@jup_b207
+respawn_idle = 172800
+
+
+[respawn@jup_b207]
+
+spawn_bandit
+spawn_zombied
+
+[spawn_bandit]
+spawn_squads = stalker_sim_squad_veteran, bandit_sim_squad_veteran
+spawn_num = {+bar_deactivate_radar_done} 1, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {-bar_deactivate_radar_done =!smart_controlled(jup_b207)} 1, {-bar_deactivate_radar_done =smart_under_faction(jup_b207:zombied)} 1, 0
+
+
+[exclusive]
+
+jup_b207_depot_guard_1 = jupiter\jup_b207_depot_logic.ltx
+jup_b207_depot_guard_2 = jupiter\jup_b207_depot_logic.ltx
+jup_b207_depot_guard_3 = jupiter\jup_b207_depot_logic.ltx
+jup_b207_depot_guard_4 = jupiter\jup_b207_depot_logic.ltx

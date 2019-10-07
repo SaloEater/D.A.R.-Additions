@@ -1,0 +1,30 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 28
+max_population = 1
+respawn_params = respawn@jup_b8_smart_terrain
+respawn_idle = 43200
+
+;когда логово b219 полностью заполняется, включается респавн
+[respawn@jup_b8_smart_terrain]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+spawn_monster4
+
+[spawn_monster1]
+spawn_squads = simulation_snork, simulation_snork, simulation_snork, simulation_zombie
+spawn_num = {=squad_exist(jup_b219_monster_second_controller_squad)} 4, 0
+
+[spawn_monster2]
+spawn_squads = simulation_snork, simulation_snork, simulation_snork, simulation_zombie
+spawn_num = {=squad_exist(jup_b219_monster_second_poltergeist_squad)} 4, 0
+
+[spawn_monster3]
+spawn_squads = simulation_tushkano_7_10
+spawn_num = {=squad_exist(jup_b219_monster_second_burer_squad)} 4, 0
+
+[spawn_monster4]
+spawn_squads = simulation_bloodsucker_red
+spawn_num = {=squad_exist(jup_b219_monster_second_bloodsucker_squad)} 4, 0

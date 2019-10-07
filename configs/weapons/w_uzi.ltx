@@ -1,0 +1,579 @@
+[wpn_uzi]:identity_immunities,weapon_probability,default_weapon_params
+GroupControlSection     = spawn_group
+$spawn                  = "weapons\ump45"               ; option for Level Editor
+$npc                    = on           ; option for Level Editor
+$prefetch               = 8
+scheduled               = off                                ; option for ALife Simulator
+cform                   = skeleton
+class                   = WP_LR300
+description          	= st_wpn_uzi_descr
+inv_name          		= st_wpn_uzi           ; name in inventory
+inv_name_short    		= st_wpn_uzi
+
+ef_main_weapon_type     = 2
+ef_weapon_type          = 6
+
+default_to_ruck         = false
+sprint_allowed          = true
+
+;-------------------------------------------------------------------
+cost                    = 20160
+weapon_class            = assault_rifle
+inv_weight              = 3.5
+
+upgrades                = up_gr_firstab_mp5_custom, up_gr_seconab_mp5_custom, up_gr_thirdab_mp5_custom, up_gr_fourtab_mp5_custom, up_gr_fifthab_mp5_custom, up_gr_fifthcd_mp5_custom
+installed_upgrades      =
+upgrade_scheme          = upgrade_scheme_mp5
+
+;---------------------------------------------------------------------
+hit_power            = 0.35, 0.35, 0.35, 0.35
+hit_impulse          = 15    ; size of physic impulse by bullet
+hit_type             = fire_wound            ; [] type of the wound
+fire_distance           = 500                  ; maximum fire distance that bullet can fly
+bullet_speed            = 430             ; starting bullet speed
+rpm                     = 600
+rpm_empty_click         = 120
+
+use_aim_bullet          = false                ;Поддерживается ли первая суппер пуля
+time_to_aim             = 3.0
+
+hud                     = wpn_uzi_hud
+
+misfire_probability        	= 0.005
+misfire_start_condition		= 0.825
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.0025 ;	     	= 0.0045
+misfire_end_prob = 0.0575 ;	     	= 0.045
+condition_shot_dec      	= 0.0005
+condition_queue_shot_dec	= 0.000575
+
+ammo_elapsed   		  = 32
+ammo_mag_size   	  = 32           ; clip (magazine) size
+fire_modes	 		  = 1, -1
+ammo_class			  = ammo_9x19_fmj, ammo_9x19_jhp, ammo_9x19_ap, ammo_9x19_pbp
+grenade_class           = ammo_vog-25
+
+launch_speed            = 0
+hand_dependence         = 1
+single_handed           = 0
+
+;-------------------------------------------------------------------------------------
+zoom_dof                = 0.5, 1.0, 180
+reload_dof              = 0.0, 0.5, 5, 2
+
+;-------------------------------------------------------------------------------------
+fire_dispersion_base    = 0.6  ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor = 1.125f
+crosshair_inertion   	= 5.6
+
+;отдача
+cam_return = 0 ;				= 0
+cam_relax_speed      = 13		;скорость возврата в исходное положение
+cam_relax_speed_ai   = 360
+cam_dispersion       = 0.35		;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc   = 0.2		;увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion_frac  = 0.81		;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
+cam_max_angle        = 25.0		;максимальный угол отдачи
+cam_max_angle_horz   = 25.0		;(degree) maximum shot horizontal degree
+cam_step_angle_horz  = 1.1		;(degree) size of step camera moved in horizontal position while shooting
+
+
+zoom_cam_relax_speed        = 13    ; scope & ironsight
+zoom_cam_relax_speed_ai     = 360
+zoom_cam_dispersion         = 0.43
+zoom_cam_dispersion_inc     = 0.2
+zoom_cam_dispersion_frac    = 0.35
+zoom_cam_max_angle          = 25.0
+zoom_cam_max_angle_horz     = 25.0
+zoom_cam_step_angle_horz    = 1.2
+
+PDM_disp_base 				= 0.65
+PDM_disp_vel_factor 		= 1.855
+PDM_disp_accel_factor 		= 1.855
+PDM_disp_crouch = 1.0 ;  			= 1.165
+PDM_disp_crouch_no_acc = 1.0 ; 		= 1.325
+
+fire_dispersion_condition_factor = 0.015 ; 0.001 ; = 0.01 ; 9
+
+;------------------------------------------------------------------------------
+holder_range_modifier   = 1.0                       ; во сколько раз увеличивается eye_range
+holder_fov_modifier     = 1.0
+
+min_radius = 0 ;              = 0
+max_radius = 500 ; = 250 ;              = 50
+
+hit_probability_gd_novice = 1.00 ;  = 0.80
+hit_probability_gd_stalker = 1.00 ; = 0.80
+hit_probability_gd_veteran = 1.00 ; = 0.80
+hit_probability_gd_master = 1.00 ;  = 0.80
+
+;-------------------------------------------------------------------------------
+slot                    = 2
+animation_slot          = 8
+
+
+inv_grid_width     = 4
+inv_grid_height    = 2
+inv_grid_x         = 59
+inv_grid_y         = 36
+
+upgr_icon_x			= 1724 ; 599
+upgr_icon_y			= 802 ; 559
+upgr_icon_width		= 167 ; 272
+upgr_icon_height   	= 159 ; 54
+
+kill_msg_x	        	= 0
+kill_msg_y	        	= 123
+kill_msg_width	    	= 69
+kill_msg_height	    	= 30
+
+;------------------------------------------------------------------------------------
+position					= -0.026, -0.125, -0.03
+orientation					= 0, -10, 0
+
+fire_point					= 0.0, 0.188, 0.392
+fire_point2					= 0.0, 0.188, 0.392
+
+smoke_particles         = weapons\effects\kyky_smoke
+flame_particles		   	= weapons\effects\kyky_muzzleflash
+grenade_flame_particles = weapons\generic_weapon01
+
+shell_point          		= 0.0, 0.188, 0.082
+shell_dir            		= 0.0, 1.0, 0.0
+shell_particles	 			= weapons\9x19
+
+;-------------------------------------------------------------------------------------
+strap_position         	= -0.16,-0.36,0.15			; position (offset) and orientation of the weapon when it is strapped
+strap_orientation      	= -10,-5,10					; (3rd person view in degrees)
+strap_bone0             = bip01_spine2
+strap_bone1             = bip01_spine1
+
+startup_ammo            = 90
+
+visual                  = dynamics\weapons\wpn_uzi\wpn_uzi.ogf
+
+light_disabled          = false
+light_color             = 0.6,0.5,0.3
+light_range             = 5
+light_var_color         = 0.05
+light_var_range         = 0.5
+light_time              = 0.2
+
+ph_mass                 = 3
+
+scope_status            = 0
+silencer_status         = 2
+grenade_launcher_status = 0
+
+zoom_enabled            = true
+zoom_rotate_time        = 0.25
+scope_zoom_factor       = 80 ;        = 85
+
+
+silencer_name  			= wpn_addon_silencer_9x19		; section name for the attachable silencer
+silencer_x 				= -32
+silencer_y 				= 02
+grenade_launcher_name   = wpn_addon_grenade_launcher
+grenade_launcher_x      = 126
+grenade_launcher_y      = 24
+
+;звуки
+
+snd_draw                = weapons\uzi\uzi_45_deploy
+snd_holster             = weapons\uzi\uzi_45_holster
+snd_shoot				= weapons\uzi\uzi_45_1
+snd_shoot1				= weapons\uzi\uzi_45_2
+snd_shoot2				= weapons\uzi\uzi_45_3
+snd_shoot3				= weapons\uzi\uzi_45_4
+snd_shoot4				= weapons\uzi\uzi_45_5
+snd_shoot5				= weapons\uzi\uzi_45_6
+snd_empty               = weapons\uzi\uzi45_trigger
+snd_reload              = weapons\uzi\uzi_45_reload1
+snd_shoot_grenade       = weapons\gen_grenshoot
+snd_reload_grenade      = weapons\gen_grenload, 1.0, 0.8
+snd_switch              = weapons\groza_switch, 1.0, 0.5
+snd_bore				= weapons\draw_silent
+
+snd_silncer_shot        = weapons\uzi\uzi_9mm_sil1
+snd_silncer_shot1       = weapons\uzi\uzi_9mm_sil2
+snd_silncer_shot2       = weapons\uzi\uzi_9mm_sil3
+snd_silncer_shot3       = weapons\uzi\uzi_9mm_sil4
+snd_silncer_shot4       = weapons\uzi\uzi_9mm_sil5
+snd_silncer_shot5       = weapons\uzi\uzi_9mm_sil6
+
+;silencer_flame_particles = weapons\generic_weapon01
+silencer_smoke_particles   = weapons\effects\kyky_smoke
+
+silencer_light_color    = 0.6,0.5,0.3
+silencer_light_range    = 0.01
+silencer_light_var_color = 0.05
+silencer_light_var_range = 0.5
+silencer_light_time     = 0.2
+
+;-------------------------------------------------------------------------------------
+[wpn_uzi_hud]
+zoom_hide_crosshair 	= true
+attach_place_idx	    = 0
+item_visual             = dynamics\weapons\wpn_uzi\wpn_uzi_hud.ogf
+
+hands_position			= 0.095,-0.085,0.09
+hands_orientation		= 2,2,0
+hands_position_16x9		= 0.095,-0.085,0.09
+hands_orientation_16x9	= 2,2,0
+
+item_position				= 0,0,0
+item_orientation			= 0,0,0
+
+shell_point                 = 0,0,0
+shell_dir               	= 0.0, 1.0, 0.0
+shell_bone                	= gilza
+
+fire_point					= 0,0,0
+fire_bone                   = muzzle
+fire_point2                 = 0.0,-0.011,0.553
+fire_bone2                	= wpn_body
+
+anm_show					= kyky_uzi_draw
+anm_hide                	= kyky_uzi_holster
+anm_idle                	= kyky_uzi_idle, idle
+anm_idle_sprint         	= kyky_uzi_idle_sprint
+anm_idle_moving         	= kyky_uzi_idle_move
+anm_shots               	= kyky_uzi_shoot, shoot
+anm_reload              	= kyky_uzi_reload, reload
+;; anm_reload_empty         = uzi_reload, reload
+anm_idle_aim            	= kyky_uzi_idle_aim
+anm_bore                	= kyky_uzi_idle
+
+aim_hud_offset_pos = -0.083700,0.040500,0.045000
+aim_hud_offset_rot = 0.033000,0.035050,0.000000
+
+aim_hud_offset_pos_16x9 = -0.083700,0.040500,0.045000
+aim_hud_offset_rot_16x9 = 0.033000,0.035050,0.000000
+
+gl_hud_offset_pos       = 0,0,0
+gl_hud_offset_rot       = 0,0,0
+gl_hud_offset_pos_16x9  = 0,0,0
+gl_hud_offset_rot_16x9  = 0,0,0
+
+lean_hud_offset_pos     = 0,0,0
+lean_hud_offset_rot     = 0,0,0
+;=============================================================
+[wpn_micro_uzi]:wpn_uzi
+
+ef_main_weapon_type     = 2
+ef_weapon_type			= 5
+
+hand_dependence		 	= 1
+single_handed			= 1
+
+slot 			 		= 1
+animation_slot			= 1
+
+cost                    = 16960
+weapon_class            = assault_rifle
+inv_weight              = 1.5
+
+inv_name          		= st_wpn_micro_uzi           ; name in inventory
+inv_name_short    		= st_wpn_micro_uzi
+description          	= st_wpn_micro_uzi_descr
+
+hit_power            = 0.32, 0.32, 0.32, 0.32
+bullet_speed            = 395             ; starting bullet speed
+rpm                     = 1200
+
+inv_grid_width     = 2
+inv_grid_height    = 2
+inv_grid_x         = 53
+inv_grid_y         = 29
+
+snd_reload              = weapons\mac\mac_reload
+snd_shoot				= weapons\uzi\mini_uzi1
+snd_shoot1				= weapons\uzi\mini_uzi2
+snd_shoot2				= weapons\uzi\mini_uzi3
+snd_shoot3				= weapons\uzi\mini_uzi4
+snd_shoot4				= weapons\uzi\mini_uzi5
+snd_shoot5				= weapons\uzi\mini_uzi6
+
+ammo_elapsed            = 25
+ammo_mag_size           = 25
+
+shell_particles	 		= weapons\9x19
+
+rpm                     = 1700
+
+scope_zoom_factor       = 95 ;        = 85
+
+silencer_name  			= wpn_addon_silencer_9x19
+
+misfire_probability        	= 0.005
+misfire_start_condition		= 0.84
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.0025 ;	     	= 0.0045
+misfire_end_prob = 0.0575 ;	     	= 0.045
+condition_shot_dec      	= 0.00065
+condition_queue_shot_dec	= 0.00065
+
+fire_dispersion_base    = 0.85  ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor = 1.03f
+crosshair_inertion	= 4.1
+
+hud			= wpn_micro_uzi_hud
+
+visual             = dynamics\weapons\wpn_uzi\wpn_micro_uzi.ogf
+
+[wpn_micro_uzi_hud]:wpn_uzi_hud
+
+item_visual             = dynamics\weapons\wpn_uzi\wpn_micro_uzi_hud.ogf
+
+hands_position				= 0.033,-0.1895,0.039
+hands_orientation			= 2,2,0
+hands_position_16x9				= 0.033,-0.1895,0.039
+hands_orientation_16x9			= 2,2,0
+
+item_position				= 0
+item_orientation			= 0
+
+shell_point             = 0
+shell_dir               = 0, 1, 0
+shell_bone              = slide
+
+fire_point				= 0,0,0
+fire_bone               = barrel
+fire_point2			= -0.030000,0.074500,-0.037000
+fire_bone2                = wpn_body
+
+anm_show                     = mac11_draw
+anm_hide                     = mac11_holster
+anm_idle                     = mac11_idle
+anm_idle_sprint         = mac11_idle_sprint
+anm_idle_moving         = mac11_idle_moving
+anm_shots               = mac11_shoot, shoot
+anm_reload              = mac11_reload, reload
+anm_idle_aim            = mac11_idle_aim
+anm_bore                = mac11_idle_bore
+
+aim_hud_offset_pos = -0.155300,0.056500,-0.136100
+aim_hud_offset_rot = 0.035000,0.037150,0.000000
+
+aim_hud_offset_pos_16x9 = -0.155300,0.056500,-0.136100
+aim_hud_offset_rot_16x9 = 0.035000,0.037150,0.000000
+
+;=============================================================
+[wpn_mini_uzi]:wpn_uzi
+
+inv_name          		= st_wpn_mini_uzi           ; name in inventory
+inv_name_short    		= st_wpn_mini_uzi
+description          	= st_wpn_mini_uzi_descr
+
+silencer_name  			= wpn_addon_silencer_9x19
+silencer_x 				= -33
+silencer_y 				= 00
+
+cost                    = 19725
+inv_weight              = 2.5
+
+hit_power            = 0.323, 0.323, 0.323, 0.323
+bullet_speed            = 397             ; starting bullet speed
+rpm                     = 950
+
+fire_dispersion_base    = 0.72  ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor = 1.15f
+crosshair_inertion	= 4.7
+
+misfire_probability        	= 0.005
+misfire_start_condition		= 0.84
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.0025 ;	     	= 0.0045
+misfire_end_prob = 0.0575 ;	     	= 0.045
+condition_shot_dec      	= 0.00065
+condition_queue_shot_dec	= 0.00065
+
+inv_grid_width     = 2
+inv_grid_height    = 2
+inv_grid_x         = 50
+inv_grid_y         = 25
+
+;отдача
+cam_return = 0 ;				= 0
+cam_relax_speed      = 9		;скорость возврата в исходное положение
+cam_relax_speed_ai   = 360
+cam_dispersion       = 0.5		;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc   = 0.3		;увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion_frac  = 0.9		;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
+cam_max_angle        = 50.0		;максимальный угол отдачи
+cam_max_angle_horz   = 50.0		;(degree) maximum shot horizontal degree
+cam_step_angle_horz  = 1.0		;(degree) size of step camera moved in horizontal position while shooting
+
+zoom_cam_relax_speed        = 12    ; scope & ironsight
+zoom_cam_relax_speed_ai     = 360
+zoom_cam_dispersion         = 0.67
+zoom_cam_dispersion_inc     = 0.4
+zoom_cam_dispersion_frac    = 0.7
+zoom_cam_max_angle          = 50.0
+zoom_cam_max_angle_horz     = 50.0
+zoom_cam_step_angle_horz    = 1.35
+
+PDM_disp_base 				= 0.65
+PDM_disp_vel_factor 		= 1.855
+PDM_disp_accel_factor 		= 1.855
+PDM_disp_crouch = 1.0 ;  			= 1.165
+PDM_disp_crouch_no_acc = 1.0 ; 		= 1.325
+
+hud			= wpn_mini_uzi_hud
+
+snd_shoot				= weapons\uzi\mini_uzi1
+snd_shoot1				= weapons\uzi\mini_uzi2
+snd_shoot2				= weapons\uzi\mini_uzi3
+snd_shoot3				= weapons\uzi\mini_uzi4
+snd_shoot4				= weapons\uzi\mini_uzi5
+snd_shoot5				= weapons\uzi\mini_uzi6
+snd_reload				= weapons\uzi\mini_uzi_reload1
+snd_empty               = weapons\uzi\uzi_empty
+
+visual             = dynamics\weapons\wpn_uzi\wpn_mini_uzi_open_stock.ogf
+
+[wpn_mini_uzi_hud]:wpn_uzi_hud
+
+item_visual             = dynamics\weapons\wpn_uzi\wpn_mini_uzi_open_stock_hud.ogf
+
+anm_show					= kyky_mini_uzi_draw
+anm_hide                	= kyky_mini_uzi_holster
+anm_idle                	= kyky_mini_uzi_idle, idle
+anm_idle_sprint         	= kyky_mini_uzi_idle_sprint
+anm_idle_moving         	= kyky_mini_uzi_idle_move
+anm_shots               	= kyky_mini_uzi_shoot, shoot
+anm_reload              	= kyky_mini_uzi_reload, reload
+anm_idle_aim            	= kyky_mini_uzi_idle_aim
+anm_bore                	= kyky_mini_uzi_idle
+
+aim_hud_offset_pos = -0.082500,0.030700,0.045000
+aim_hud_offset_rot = 0.011000,0.031350,0.000000
+
+aim_hud_offset_pos_16x9 = -0.082500,0.030700,0.045000
+aim_hud_offset_rot_16x9 = 0.011000,0.031350,0.000000
+;=============================================================
+[wpn_uzi_cust]:wpn_uzi
+
+cost                    = 23060
+
+inv_name          		= st_wpn_uzi_cust        ; name in inventory
+inv_name_short    		= st_wpn_uzi_cust
+
+inv_grid_width     = 4
+inv_grid_height    = 2
+inv_grid_x         = 55
+inv_grid_y         = 36
+
+rpm                     = 775
+
+silencer_name  			= wpn_addon_silencer_9x19		; section name for the attachable silencer
+silencer_x 				= -32
+silencer_y 				= 04
+hud			= wpn_uzi_cust_hud
+
+visual             = dynamics\weapons\wpn_uzi\wpn_uzi_custom.ogf
+
+[wpn_uzi_cust_hud]:wpn_uzi_hud
+
+item_visual             = dynamics\weapons\wpn_uzi\wpn_uzi_custom_hud.ogf
+;=============================================================
+[wpn_uzi_pro]:wpn_uzi
+
+inv_name          		= st_wpn_uzi_pro       ; name in inventory
+inv_name_short    		= st_wpn_uzi_pro
+description          	= st_wpn_uzi_pro_descr
+
+inv_grid_width     = 2
+inv_grid_height    = 1
+inv_grid_x         = 47
+inv_grid_y         = 77
+
+cost                    = 20160
+inv_weight              = 2.3
+
+hit_power            = 0.32, 0.32, 0.32, 0.32
+bullet_speed            = 395             ; starting bullet speed
+rpm                     = 1050
+
+misfire_probability        	= 0.005
+misfire_start_condition		= 0.825
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.0025 ;	     	= 0.0045
+misfire_end_prob = 0.0575 ;	     	= 0.045
+condition_shot_dec      	= 0.00065
+condition_queue_shot_dec	= 0.00065
+
+;отдача
+cam_return = 0 ;				= 0
+cam_relax_speed         = 8				;скорость возврата в исходное положение
+cam_relax_speed_ai      = 360
+cam_dispersion       = 0.6		;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc   = 0.3		;увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion_frac		= 1.1			;ствол будет подыматьс¤ на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
+cam_max_angle			= 50.0			;максимальный угол отдачи
+cam_max_angle_horz		= 50.0			;(degree) maximum shot horizontal degree
+cam_step_angle_horz		= 0.6			;(degree) size of step camera moved in horizontal position while shooting
+
+zoom_cam_relax_speed        = 9    ; scope & ironsight
+zoom_cam_relax_speed_ai     = 360
+zoom_cam_dispersion         = 0.7
+zoom_cam_dispersion_inc     = 0.8
+zoom_cam_dispersion_frac    = 1.1
+zoom_cam_max_angle          = 45.0
+zoom_cam_max_angle_horz     = 45.0
+zoom_cam_step_angle_horz    = 0.6
+
+PDM_disp_base 				= 0.65
+PDM_disp_vel_factor 		= 1.35
+PDM_disp_accel_factor 		= 1.355
+PDM_disp_crouch = 1.0 ;  				= 0.925
+PDM_disp_crouch_no_acc = 1.0 ; 			= 1.135
+snd_shoot				= weapons\uzi\mini_uzi1
+snd_shoot1				= weapons\uzi\mini_uzi2
+snd_shoot2				= weapons\uzi\mini_uzi3
+snd_shoot3				= weapons\uzi\mini_uzi4
+snd_shoot4				= weapons\uzi\mini_uzi5
+snd_shoot5				= weapons\uzi\mini_uzi6
+snd_reload				= weapons\uzi\uzi_pro_reload1
+snd_empty               = weapons\uzi\uzi_empty
+
+fire_dispersion_base    = 0.82  ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor = 1.1f
+crosshair_inertion		= 4.5
+silencer_status         = 0
+
+scope_zoom_factor       = 95
+
+hud			= wpn_uzi_pro_hud
+
+visual             		= dynamics\weapons\wpn_uzi_pro\wpn_uzi_pro.ogf
+
+[wpn_uzi_pro_hud]:wpn_uzi_hud
+
+item_visual             = dynamics\weapons\wpn_uzi_pro\wpn_uzi_pro_hud.ogf
+
+hands_position			= 0.185,-0.15,0.20
+hands_orientation		= 2,2,0
+
+hands_position_16x9			= 0.185,-0.15,0.20
+hands_orientation_16x9		= 2,2,0
+
+item_position				= 0,0,0
+item_orientation			= 0,0,0
+
+anm_show					= kyky_uzi_pro_draw
+anm_hide                	= kyky_uzi_pro_holster
+anm_idle                	= kyky_uzi_pro_idle, idle
+anm_idle_sprint         	= kyky_uzi_pro_idle_sprint
+anm_idle_moving         	= kyky_uzi_pro_idle_move
+anm_shots               	= kyky_uzi_pro_shoot, shoot
+anm_reload              	= kyky_uzi_pro_reload, reload
+
+anm_idle_aim            	= kyky_uzi_pro_idle_aim
+anm_bore                	= kyky_uzi_pro_idle, idle
+
+aim_hud_offset_pos = -0.136000,0.067500,-0.090000
+aim_hud_offset_rot = 0.033000,0.033750,0.000000
+
+aim_hud_offset_pos_16x9 = -0.136000,0.067500,-0.090000
+aim_hud_offset_rot_16x9 = 0.033000,0.033750,0.000000

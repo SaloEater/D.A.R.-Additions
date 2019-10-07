@@ -1,0 +1,25 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 3
+max_population = 1
+respawn_params = respawn@cit_kanaliz2
+respawn_idle = 86400
+
+
+[respawn@cit_kanaliz2]
+
+spawn_zombied
+spawn_monster1
+spawn_monster2
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_novice, zombied_sim_squad_advanced, zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(cit_kanaliz2:zombied) -yan_labx16_switcher_primary_off} 4, 0
+
+[spawn_monster1]
+spawn_squads = simulation_tushkano, simulation_pseudodog, simulation_cat, simulation_psy_dog, simulation_cat
+spawn_num = {=!smart_controlled(cit_kanaliz2)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_psysucker
+spawn_num = {=!smart_controlled(cit_kanaliz2) =actor_week_in_zone(5) -yan_labx16_switcher_primary_off} 1, 0

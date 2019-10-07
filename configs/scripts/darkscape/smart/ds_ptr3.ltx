@@ -1,0 +1,19 @@
+[smart_terrain]
+respawn_radius = 300 ;;между заправкой и мостом
+squad_id = 12
+max_population = 2
+respawn_params = respawn@ds_ptr3
+respawn_idle = 43200
+
+[respawn@ds_ptr3]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_pseudodog
+spawn_num = {=!smart_controlled(ds_ptr3) =actor_on_level(k01_darkscape)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_boar_3_5
+spawn_num = {=!smart_controlled(ds_ptr3)} 1, 0

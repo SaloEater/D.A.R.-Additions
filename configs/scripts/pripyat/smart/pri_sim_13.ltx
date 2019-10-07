@@ -1,0 +1,29 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 35
+max_population = 2
+respawn_params = respawn@pri_sim_13
+respawn_idle = 86400
+
+[respawn@pri_sim_13]
+
+spawn_monster1
+spawn_monster2
+spawn_zombied
+
+[spawn_monster1]
+spawn_squads = simulation_tushkano_7_10
+spawn_num = {=!smart_controlled(pri_sim_13)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_rats_7_10
+spawn_num = {=!smart_controlled(pri_sim_13)} 1, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_sim_13:zombied)} 1, 0
+
+
+
+
+[exclusive]

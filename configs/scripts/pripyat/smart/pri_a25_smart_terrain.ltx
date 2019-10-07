@@ -1,0 +1,26 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 21
+max_population = 2
+respawn_params = respawn@pri_a25_smart_terrain   
+respawn_idle = 216000
+
+[respawn@pri_a25_smart_terrain]
+
+spawn_monster
+spawn_zombied
+
+[spawn_monster]
+spawn_squads = simulation_controller_6gzomb, simulation_burer, simulation_poltergeist_tele
+spawn_num = {=!smart_controlled(pri_a25_smart_terrain)} 1, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_a25_smart_terrain:zombied)} 3, 0
+
+
+[exclusive]
+pri_a25_poltergeist_1 = pripyat\pri_a25_poltergeist.ltx
+pri_a25_poltergeist_2 = pripyat\pri_a25_poltergeist.ltx
+pri_a25_poltergeist_3 = pripyat\pri_a25_poltergeist.ltx
+pri_a25_base_medic = pripyat\pri_a25_base_medic.ltx

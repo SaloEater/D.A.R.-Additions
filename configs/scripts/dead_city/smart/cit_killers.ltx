@@ -1,0 +1,90 @@
+[smart_terrain]
+respawn_radius = 300 ;cit_killers ;;база мерков
+squad_id = 4 
+max_population = 3
+respawn_params = respawn@cit_killers
+respawn_idle = 43200
+
+
+
+[respawn@cit_killers]
+
+spawn_monster1
+spawn_monster2
+spawn_killer
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_army
+spawn_monolith
+
+[spawn_monster1]
+spawn_squads = simulation_dog, simulation_snork, simulation_tushkano
+spawn_num = {=!smart_controlled(cit_killers)} 6, 0
+
+[spawn_monster2]
+spawn_squads = simulation_burer
+spawn_num = {=!smart_controlled(cit_killers)} 1, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_novice, merc_sim_squad_advanced, merc_sim_squad_advanced, merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(cit_killers:killer)} 7, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_advanced, stalker_sim_squad_veteran
+spawn_num = {=smart_under_faction(cit_killers:stalker)} 4, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_advanced, bandit_sim_squad_veteran, bandit_sim_squad_veteran, merc_sim_squad_novice, merc_sim_squad_advanced, merc_sim_squad_advanced, merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(cit_killers:bandit)} 5, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_advanced, csky_sim_squad_veteran
+spawn_num = {=smart_under_faction(cit_killers:csky)} 5, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_advanced, duty_sim_squad_veteran
+spawn_num = {=smart_under_faction(cit_killers:dolg)} 5, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_novice, freedom_sim_squad_advanced, freedom_sim_squad_veteran 
+spawn_num = {=smart_under_faction(cit_killers:freedom)} 5, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_advanced, army_sim_squad_veteran
+spawn_num = {=smart_under_faction(cit_killers:army)} 2, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(cit_killers:monolith)} 5, 0
+
+[exclusive]
+cit_killers_merc_trader = dead_city\cit_killers_smart_logic.ltx
+cit_killers_merc_mechanic = dead_city\cit_killers_smart_logic.ltx
+cit_killers_merc_medic = dead_city\cit_killers_smart_logic.ltx
+cit_killers_camp_work_1 = dead_city\cit_killers_smart_logic.ltx
+cit_killers_camp_work_2 = dead_city\cit_killers_smart_logic.ltx
+cit_killers_camp_work_3 = dead_city\cit_killers_smart_logic.ltx
+cit_killers_camp_work_4 = dead_city\cit_killers_smart_logic.ltx
+cit_killers_camp_work_5 = dead_city\cit_killers_smart_logic.ltx
+cit_killers_camp_work_6 = dead_city\cit_killers_smart_logic.ltx
+cit_killers_camp_work_7 = dead_city\cit_killers_smart_logic.ltx
+cit_killers_camp_work_8 = dead_city\cit_killers_smart_logic.ltx
+cit_killers_camp_work_9 = dead_city\cit_killers_smart_logic.ltx
+cit_killers_camp_work_10 = dead_city\cit_killers_smart_logic.ltx
+cit_killers_camp_work_11 = dead_city\cit_killers_smart_logic.ltx
+cit_killers_camp_work_12 = dead_city\cit_killers_smart_logic.ltx
+
+cit_killers_sleep_1 = dead_city\cit_killers_smart_logic.ltx
+cit_killers_sleep_2 = dead_city\cit_killers_smart_logic.ltx
+
+
+
+faction_base_defense_enemy1 = dead_city\cit_killers_smart_logic.ltx
+faction_base_defense_enemy2 = dead_city\cit_killers_smart_logic.ltx
+faction_base_defense_enemy3 = dead_city\cit_killers_smart_logic.ltx
+faction_base_defense_enemy4 = dead_city\cit_killers_smart_logic.ltx
+faction_base_defense_enemy5 = dead_city\cit_killers_smart_logic.ltx
+faction_base_defense_enemy6 = dead_city\cit_killers_smart_logic.ltx

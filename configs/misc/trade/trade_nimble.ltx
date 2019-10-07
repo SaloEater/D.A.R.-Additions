@@ -1,0 +1,65 @@
+#include "trade_discounts.ltx"
+#include "trade_presets.ltx"
+
+[trader]
+buy_condition = trade_generic_buy 
+sell_condition = trade_generic_sell
+buy_supplies = supplies_1
+buy_item_condition_factor = 0.0
+resupply_timeout = 229200
+
+discounts = discount_red_forester
+
+[trade_generic_buy]:unused,trash,mutants,misc,food,drugs,artefacts,repair
+
+[trade_generic_sell]:merchant,equipment
+briefcase
+moneybag
+
+[supplies_1]:
+
+kerosene                = 2, 0.25
+kerosene_5              = 5, 0.5
+kerosene_4              = 2, 0.25
+kerosene_3              = 2, 0.25
+kerosene_2              = 2, 0.25
+charcoal                = 2, 0.25
+charcoal_3              = 5, 0.75
+charcoal_2              = 2, 0.25
+explo_balon_gas_8       = 5, 0.75
+explo_balon_gas_7       = 2, 0.25
+explo_balon_gas_6       = 2, 0.25
+explo_balon_gas_5       = 2, 0.25
+explo_balon_gas_4       = 2, 0.25
+explo_balon_gas_3       = 2, 0.25
+explo_balon_gas_2       = 2, 0.25
+explo_balon_gas         = 2, 0.25
+explo_jerrycan_fuel_8   = 5, 0.75
+explo_jerrycan_fuel_7   = 2, 0.25
+explo_jerrycan_fuel_6   = 2, 0.25
+explo_jerrycan_fuel_5   = 2, 0.25
+explo_jerrycan_fuel_4   = 2, 0.5
+explo_jerrycan_fuel_3   = 2, 0.5
+explo_jerrycan_fuel_2   = 2, 0.5
+explo_jerrycan_fuel     = 2, 0.5
+gasmask_filter       		= 2, 1
+airtank_razgr              	= 1, 1
+maps_kit              		= 2, 1
+greencard              		= 4, 1
+cleaning_kit_p			= 2, 1
+cleaning_kit_p_3		= 2, 1
+cleaning_kit_s			= 2, 1
+cleaning_kit_s_3		= 2, 1
+cleaning_kit_r			= 2, 1
+cleaning_kit_r_3		= 2, 1
+toolkit_p				= 2, 1
+toolkit_s				= 2, 1
+toolkit_r				= 2, 1
+repairkit_p				= 2, 1
+repairkit_s				= 2, 1
+repairkit_r				= 2, 1
+sharpening_stones_4		= 2, 1
+swiss				= 2, 1
+swiss_2				= 1, 1
+swiss_4				= 1, 1
+swiss_8				= 1, 1

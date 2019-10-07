@@ -1,0 +1,73 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 1
+max_population = 2
+respawn_params = respawn@jup_a10_smart_terrain   
+respawn_idle = 86400
+
+
+[respawn@jup_a10_smart_terrain]
+
+spawn_monster1
+spawn_monster2
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_killer
+spawn_army
+spawn_monolith
+spawn_zombied
+
+[spawn_monster1]
+spawn_squads = simulation_dog
+spawn_num = {=!smart_controlled(jup_a10_smart_terrain)} 7, 0
+
+[spawn_monster2]
+spawn_squads = simulation_tushkano_7_10, simulation_tushkano_7_10, simulation_controller_5dog, simulation_controller
+spawn_num = {=!smart_controlled(jup_a10_smart_terrain)} 1, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_a10_smart_terrain:stalker)} 3, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_a10_smart_terrain:bandit)} 3, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_a10_smart_terrain:csky)} 3, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_a10_smart_terrain:dolg)} 3, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_veteran 
+spawn_num = {=smart_under_faction(jup_a10_smart_terrain:freedom)} 3, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_a10_smart_terrain:killer)} 3, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_veteran, army_sim_squad_elite
+spawn_num = {=smart_under_faction(jup_a10_smart_terrain:army)} 2, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_a10_smart_terrain:monolith)} 3, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_a10_smart_terrain:zombied)} 1, 0
+
+
+
+[exclusive]
+jup_a10_bandit_guard_1 = jupiter\jup_a10_bandit_guard_1.ltx
+jup_a10_bandit_guard_2 = jupiter\jup_a10_bandit_guard_2.ltx
+jup_a10_bandit_guard_3 = jupiter\jup_a10_bandit_guard_3.ltx
+jup_a10_bandit_leader  = jupiter\jup_a10_bandit_leader.ltx

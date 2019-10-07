@@ -1,0 +1,140 @@
+[smart_terrain]
+respawn_radius = 150;zat_stalker_base_smart
+squad_id = 1
+def_restr = zat_a2_sr_noweap
+safe_restr = zat_a2_sr_light
+smart_control = smart_control
+respawn_params = respawn@zat_stalker_base_smart
+max_population = 4
+respawn_idle = 86400
+
+
+[respawn@zat_stalker_base_smart]
+
+spawn_monster
+spawn_stalker0
+spawn_stalker
+spawn_bandit0
+spawn_bandit
+spawn_csky0
+spawn_csky
+spawn_dolg0
+spawn_dolg
+spawn_freedom0
+spawn_freedom
+spawn_killer0
+spawn_killer
+spawn_monolith
+
+[spawn_monster]
+spawn_squads = simulation_rats_7_10
+spawn_num = {=!smart_controlled(zat_stalker_base_smart)} 2, 0
+
+[spawn_stalker0]
+spawn_squads = zat_stalker_base_smart_stalker0
+spawn_num = {=!squad_exist(zat_stalker_base_smart_stalker0) =smart_under_faction(zat_stalker_base_smart:stalker) +bar_deactivate_radar_done} 1, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran
+spawn_num = {=squad_exist(zat_stalker_base_smart_stalker0) =smart_under_faction(zat_stalker_base_smart:stalker) +bar_deactivate_radar_done} 3, 0
+
+[spawn_bandit0]
+spawn_squads = zat_stalker_base_smart_bandit0
+spawn_num = {=smart_under_faction(zat_stalker_base_smart:bandit) +bar_deactivate_radar_done} 1, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_veteran
+spawn_num = {=squad_exist(zat_stalker_base_smart_bandit0) =smart_under_faction(zat_stalker_base_smart:bandit) +bar_deactivate_radar_done} 3, 0
+
+[spawn_csky0]
+spawn_squads = zat_stalker_base_smart_csky0
+spawn_num = {=smart_under_faction(zat_stalker_base_smart:csky) +bar_deactivate_radar_done} 1, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_veteran
+spawn_num = {=squad_exist(zat_stalker_base_smart_csky0) =smart_under_faction(zat_stalker_base_smart:csky) +bar_deactivate_radar_done} 3, 0
+
+[spawn_dolg0]
+spawn_squads = zat_stalker_base_smart_dolg0
+spawn_num = {=smart_under_faction(zat_stalker_base_smart:dolg) +bar_deactivate_radar_done} 1, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_veteran
+spawn_num = {=squad_exist(zat_stalker_base_smart_dolg0) =smart_under_faction(zat_stalker_base_smart:dolg) +bar_deactivate_radar_done} 3, 0
+
+[spawn_freedom0]
+spawn_squads = zat_stalker_base_smart_freedom0 
+spawn_num = {=smart_under_faction(zat_stalker_base_smart:freedom) +bar_deactivate_radar_done} 1, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_veteran 
+spawn_num = {=squad_exist(zat_stalker_base_smart_freedom0) =smart_under_faction(zat_stalker_base_smart:freedom) +bar_deactivate_radar_done} 3, 0
+
+[spawn_killer0]
+spawn_squads = zat_stalker_base_smart_killer0
+spawn_num = {=smart_under_faction(zat_stalker_base_smart:killer) +bar_deactivate_radar_done} 1, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {=squad_exist(zat_stalker_base_smart_killer0) =smart_under_faction(zat_stalker_base_smart:killer) +bar_deactivate_radar_done} 3, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_stalker_base_smart:monolith)} 1, 0
+
+
+[smart_control]
+noweap_zone = zat_a2_sr_noweap
+ignore_zone = zat_a2_sr_light
+alarm_start_sound = zat_a2_base_alarm
+alarm_stop_sound = zat_a2_base_relax
+
+[exclusive]
+zat_stalker_base_smart_stalker_barmen = zaton\zat_stalker_base_smart_stalker_barmen.ltx
+zat_stalker_base_smart_bandit_barmen = zaton\zat_stalker_base_smart_bandit_barmen.ltx
+zat_stalker_base_smart_csky_barmen = zaton\zat_stalker_base_smart_csky_barmen.ltx
+zat_stalker_base_smart_dolg_barmen = zaton\zat_stalker_base_smart_dolg_barmen.ltx
+zat_stalker_base_smart_freedom_barmen = zaton\zat_stalker_base_smart_freedom_barmen.ltx
+zat_stalker_base_smart_killer_barmen = zaton\zat_stalker_base_smart_killer_barmen.ltx
+;;;zat_stalker_base_smart_mechanic = zaton\zat_stalker_base_smart_mechanic.ltx
+
+
+
+;zat_b38_stalker_medic = zaton\zat_b38_stalker_medic.ltx
+;generic jobs
+zat_a2_guarder_1 = zaton\zat_a2_logic.ltx
+zat_a2_guarder_2 = zaton\zat_a2_logic.ltx
+zat_a2_guarder_3 = zaton\zat_a2_logic.ltx
+zat_a2_guarder_4 = zaton\zat_a2_logic.ltx
+zat_a2_guarder_5 = zaton\zat_a2_logic.ltx
+zat_a2_guarder_6 = zaton\zat_a2_logic.ltx
+zat_a2_guarder_7 = zaton\zat_a2_logic.ltx
+zat_a2_animp_1 = zaton\zat_a2_logic.ltx
+zat_a2_animp_2 = zaton\zat_a2_logic.ltx
+zat_a2_animp_3 = zaton\zat_a2_logic.ltx
+zat_a2_animp_4 = zaton\zat_a2_logic.ltx
+zat_a2_animp_5 = zaton\zat_a2_logic.ltx
+zat_a2_animp_6 = zaton\zat_a2_logic.ltx
+zat_a2_animp_7 = zaton\zat_a2_logic.ltx
+zat_a2_animp_8 = zaton\zat_a2_logic.ltx
+zat_a2_animp_9 = zaton\zat_a2_logic.ltx
+zat_a2_animp_10 = zaton\zat_a2_logic.ltx
+zat_a2_animp_11 = zaton\zat_a2_logic.ltx
+zat_a2_animp_12 = zaton\zat_a2_logic.ltx
+zat_a2_animp_13 = zaton\zat_a2_logic.ltx
+zat_a2_animp_14 = zaton\zat_a2_logic.ltx
+zat_a2_animp_15 = zaton\zat_a2_logic.ltx
+zat_a2_animp_16 = zaton\zat_a2_logic.ltx
+zat_a2_animp_17 = zaton\zat_a2_logic.ltx
+zat_a2_animp_18 = zaton\zat_a2_logic.ltx
+zat_a2_animp_19 = zaton\zat_a2_logic.ltx
+zat_a2_animp_20 = zaton\zat_a2_logic.ltx
+zat_a2_animp_21 = zaton\zat_a2_logic.ltx
+zat_a2_animp_22 = zaton\zat_a2_logic.ltx
+zat_a2_animp_23 = zaton\zat_a2_logic.ltx
+zat_a2_animp_24 = zaton\zat_a2_logic.ltx
+zat_a2_animp_25 = zaton\zat_a2_logic.ltx
+zat_a2_animp_26 = zaton\zat_a2_logic.ltx
+;test jobs
+;zat_a2_barmen_trade = zaton\zat_a2_logic_addon.ltx
+;zat_a2_mechanic_trade = zaton\zat_a2_logic_addon.ltx

@@ -1,0 +1,20 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 10
+max_population = 2
+respawn_params = respawn@jup_b202
+respawn_idle = 86400
+
+[respawn@jup_b202]
+
+spawn_monster
+spawn_stalker
+
+[spawn_monster]
+spawn_squads = simulation_dog_5_7, simulation_tushkano_7_10
+spawn_num = {=!smart_controlled(jup_b202)} 1, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran, bandit_sim_squad_veteran, duty_sim_squad_veteran
+spawn_num = {+bar_deactivate_radar_done} 1, 0
+

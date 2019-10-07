@@ -1,0 +1,42 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 43
+max_population = 1
+;respawn_only_smart = true
+respawn_params = respawn@jup_sim_5
+respawn_idle = 86400
+
+
+[respawn@jup_sim_5]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+spawn_monster4
+spawn_monster5
+spawn_monster6
+
+[spawn_monster1]
+spawn_squads = simulation_psy_dog, simulation_dog_mix, simulation_cat_3_5, simulation_psy_dog_squad, simulation_dog_5_7, simulation_cat_3_5, simulation_cat_3_5, simulation_cat_3_5, simulation_dog_5_7, simulation_dog_5_7
+spawn_num = 1
+
+[spawn_monster2]
+spawn_squads = simulation_zombie, simulation_snork
+spawn_num = {=squad_exist(jup_b208_contr_3sn)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_zombie, simulation_snork
+spawn_num = {=squad_exist(jup_b208_contr_2sn_2gzomb)} 1, 0
+
+[spawn_monster4]
+spawn_squads = simulation_zombie, simulation_snork
+spawn_num = {=squad_exist(jup_b208_contr_4gzomb)} 1, 0
+
+[spawn_monster5]
+spawn_squads = simulation_tushkano_7_10
+spawn_num = {=squad_exist(jup_b208_burer)} 1, 0
+
+[spawn_monster6]
+spawn_squads = simulation_bloodsucker_red
+spawn_num = {=squad_exist(jup_b208_bloodsucker)} 1, 0
+

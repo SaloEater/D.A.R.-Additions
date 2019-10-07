@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<game_dialogs>
+
+
+<dialog id="gar_bar_leader_gate_dialog">
+    <phrase_list>
+		    <phrase id="0"> <!--npc auto-line-->
+                <text/>
+				<next>dummy</next>
+            </phrase>
+		    <phrase id="dummy"> <!--actor auto-line-->
+                <text/>
+				<next>start</next>
+            </phrase>
+		
+		<phrase id="break"> <!-- universal exit line-->
+			<text>actor_break_dialog_2</text>
+			<script_text>dialog_manager.create_bye_phrase</script_text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		
+		<phrase id="start">
+			<text>dm_hello_general_2</text>
+			<next>00</next>
+			<next>break</next>
+		</phrase>
+		
+		<phrase id="00">
+			<dont_has_info>gar_bar_gates_paid</dont_has_info>
+			<dont_has_info>gar_bar_gates_passed</dont_has_info>
+            <text>gar_bar_leader_gate_dialog_actor0</text>
+			<next>01</next>
+        </phrase>
+		<phrase id="01">
+            <text>gar_bar_leader_gate_dialog_text01</text>
+			<next>011</next>
+			<next>01112</next>
+			<next>011113</next>
+			<next>011114</next>
+        </phrase>
+		<phrase id="011">
+            <text>gar_bar_leader_gate_dialog_actor011</text>
+			<next>0111</next>
+        </phrase>
+		<phrase id="0111">
+            <text>gar_bar_leader_gate_dialog_text0111</text>
+			<next>01111</next>
+			<next>01112</next>
+        </phrase>
+			<phrase id="01111">
+                <precondition>dialogs.actor_has_money_for_garbage_pass</precondition>
+				<text>gar_bar_leader_gate_dialog_actor01111</text>
+				<next>011111</next>
+			</phrase>
+				<phrase id="011111">
+					<text>gar_bar_leader_gate_dialog_text011111</text>
+					<action>dialogs.actor_take_money_for_garbage_pass</action>
+					<give_info>gar_bar_gates_paid</give_info>
+				</phrase>
+			
+			<phrase id="01112">
+				<text>gar_bar_leader_gate_dialog_actor01112</text>
+				<next>011121</next>
+			</phrase>
+				<phrase id="011121">
+					<text>gar_bar_leader_gate_dialog_text011121</text>
+				</phrase>
+				
+			<phrase id="011113">
+		<precondition>nql.check_dolg</precondition>
+				<text>gar_bar_leader_gate_dialog_actor21111</text>
+				<next>0111131</next>
+			</phrase>
+			<phrase id="0111131">
+					<text>gar_bar_leader_gate_dialog_text211111</text>
+					<give_info>gar_bar_gates_paid</give_info>
+			<action>dialogs.break_dialog</action>
+			</phrase>			
+			<phrase id="011114">
+		<precondition>nql.has_bar_perekhod_prabor_money</precondition>
+				<text>gar_bar_leader_gate_dialog_actor31111</text>
+				<next>0111141</next>
+			</phrase>		
+			<phrase id="0111141">
+		<precondition>nql.has_bar_perekhod_prabor_money</precondition>
+				<text>gar_bar_leader_gate_dialog_actor311111</text>
+				<next>01111411</next>
+				<next>01112</next>				
+			</phrase>
+			<phrase id="01111411">
+					<text>gar_bar_leader_gate_dialog_text3111111</text>
+					<give_info>gar_bar_gates_paid</give_info>
+			<action>nql.sell_bar_perekhod_prabor_money</action>
+			<action>transitions.open_level_changer_gar_space_restrictor_to_bar_1</action>
+			<action>dialogs.break_dialog</action>
+			</phrase>					
+    </phrase_list>
+</dialog>
+
+
+</game_dialogs>

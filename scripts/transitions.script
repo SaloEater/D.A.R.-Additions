@@ -1,0 +1,260 @@
+--[[
+open_transition(sr_name, one)
+check_rnd_transitions()
+rnd_open_transition()
+]]
+
+function show_transition(sr_name)
+	for k1,v1 in pairs(transitions_list.sr_always_open[transitions_utils.load_var('transitions_faction')] or transitions_list.sr_always_open['general']) do
+		for k2,v2 in pairs(v1) do
+			if v2 == sr_name then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function open_transition(sr_name)
+	for k1,v1 in pairs(transitions_list.sr_transitions) do
+		for k2,v2 in pairs(v1) do
+			if v2 == sr_name then
+				for k3, v3 in pairs(v1) do
+					enable_transition(v3)
+					send_mess(v3)
+				end
+				return
+			end
+		end
+	end
+	callstack()
+	abort('Неверное имя перехода: %s', sr_name)
+end
+
+function check_rnd_transitions()
+	for k1,v1 in pairs(transitions_list.sr_random) do
+		for k2,v2 in pairs(v1) do
+			if check_spot(ret_id_spot_hint(v2)) == false then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function rnd_open_transition()
+	local r = math.random(table.size(transitions_list.sr_random))
+	local tbl = transitions_list.sr_random[r]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return rnd_open_transition()
+		end
+	end
+end
+
+function check_spot(id, spot)
+	if (spot and level.map_has_object_spot(id,spot) ~= 0) then
+		return true
+	end
+	return false
+end
+
+function ret_id_spot_hint(sr_name)
+	local sr_teleport_ini = ini_file("sr_teleport_sections.ltx")
+	local id = get_object_story_id(sr_name)
+	local spot = sr_teleport_ini:line_exist(sr_name,"spot") and sr_teleport_ini:r_string_ex(sr_name,"spot")
+	local hint = sr_teleport_ini:line_exist(sr_name,"hint") and sr_teleport_ini:r_string_ex(sr_name,"hint")
+	local fullname = sr_teleport_ini:line_exist(sr_name,"fullname") and sr_teleport_ini:r_string_ex(sr_name,"fullname")
+	return id, spot, hint, fullname
+end
+
+function enable_transition(sr_name)
+	local id, spot, hint = ret_id_spot_hint(sr_name)
+	if check_spot(id, spot) == true then
+		return
+	end
+	hint = hint and game.translate_string(hint)
+	level.map_add_object_spot_ser(id, spot ,hint)
+	transitions_utils.save_var('transitions_'..sr_name, true)
+end
+
+function send_mess(sr_name)
+	local id, spot, hint, fullname = ret_id_spot_hint(sr_name)
+	--news_manager.send_tip(db.actor,game.translate_string("st_access_allowed")..[[: "]]..game.translate_string(hint)..[["]],0,"tourist",5000,nil)
+	news_manager.send_tip(db.actor,game.translate_string("st_access_allowed")..[[: "]]..game.translate_string(fullname)..[["]],0,"tourist",5000,nil)
+end
+
+function actor_on_item_use(item)
+	if item:section() == 'greencard'	or
+		item:section() == 'yellowcard'	or
+		item:section() == 'redcard'		then
+		if check_rnd_transitions() == true then
+			rnd_open_transition()
+		end
+	end
+end
+
+function on_game_start()
+    RegisterScriptCallback("actor_on_item_use",actor_on_item_use)
+end
+
+function open_level_changer_esc_space_restrictor_to_darkscape_1() 
+	open_transition('esc_space_restrictor_to_darkscape_1') 
+end
+function open_level_changer_ds_space_restrictor_to_escape_1() 
+	open_transition('ds_space_restrictor_to_escape') 
+end
+
+function open_level_changer_esc_space_restrictor_to_marsh_1() 
+	open_transition('esc_space_restrictor_to_marsh_1') 
+end
+function open_level_changer_mar_space_restrictor_to_escape_1() 
+	open_transition('mar_space_restrictor_to_escape_1') 
+end
+function open_level_changer_esc_space_restrictor_to_garbage_1() 
+	open_transition('esc_space_restrictor_to_garbage_1') 
+end
+function open_level_changer_gar_space_restrictor_to_escape_1() 
+	open_transition('gar_space_restrictor_to_escape_1') 
+end
+function open_level_changer_val_space_restrictor_to_darkscape() 
+	open_transition('val_space_restrictor_to_darkscape') 
+end
+function open_level_changer_ds_space_restrictor_to_darkvalley() 
+	open_transition('ds_space_restrictor_to_darkvalley') 
+end
+
+function open_level_changer_gar_space_restrictor_to_agroprom_1() 
+	open_transition('gar_space_restrictor_to_agroprom_1') 
+end
+function open_level_changer_agr_space_restrictor_to_garbage_1() 
+	open_transition('agr_space_restrictor_to_garbage_1') 
+end
+function open_level_changer_gar_space_restrictor_to_bar_1() 
+	open_transition('gar_space_restrictor_to_bar_1') 
+end
+function open_level_changer_bar_space_restrictor_to_garbage_01() 
+	open_transition('bar_space_restrictor_to_garbage_01') 
+end
+function open_level_changer_gar_space_restrictor_to_darkvalley_1() 
+	open_transition('gar_space_restrictor_to_darkvalley_1') 
+end
+function open_level_changer_val_space_restrictor_to_garbage_1() 
+	open_transition('val_space_restrictor_to_garbage_1') 
+end
+function open_level_changer_bar_space_restrictor_to_tc() 
+	open_transition('bar_space_restrictor_to_tc') 
+end
+function open_level_changer_tc_space_restrictor_to_bar() 
+	open_transition('tc_space_restrictor_to_bar') 
+end
+function open_level_changer_bar_space_restrictor_to_military_01() 
+	open_transition('bar_space_restrictor_to_military_01') 
+end
+function open_level_changer_mil_space_restrictor_to_bar_1() 
+	open_transition('mil_space_restrictor_to_bar_1') 
+end
+function open_level_changer_bar_space_restrictor_to_rostok_01() 
+	open_transition('bar_space_restrictor_to_rostok_01') 
+end
+function open_level_changer_ros_space_restrictor_to_bar_1() 
+	open_transition('ros_space_restrictor_to_bar_1') 
+end
+function open_level_changer_ros_space_restrictor_to_yantar_1() 
+	open_transition('ros_space_restrictor_to_yantar_1') 
+end
+
+function open_level_changer_agr_space_restrictor_to_yantar_1() 
+	open_transition('agr_space_restrictor_to_yantar_1') 
+end
+function open_level_changer_yan_space_restrictor_to_agroprom_1() 
+	open_transition('yan_space_restrictor_to_agroprom_1') 
+end
+
+function open_level_changer_yan_space_restrictor_to_rostok_1() 
+	open_transition('yan_space_restrictor_to_rostok_1') 
+end
+function open_level_changer_mil_space_restrictor_to_dead_city_1() 
+	open_transition('mil_space_restrictor_to_dead_city_1') 
+end
+function open_level_changer_cit_space_restrictor_to_military() 
+	open_transition('cit_space_restrictor_to_military') 
+end
+function open_level_changer_mil_space_restrictor_to_red_1() 
+	open_transition('mil_space_restrictor_to_red_1') 
+end
+function open_level_changer_red_space_restrictor_to_military_1() 
+	open_transition('red_space_restrictor_to_military_1') 
+end
+function open_level_changer_lim_space_restrictor_to_red_forest() 
+	open_transition('lim_space_restrictor_to_red_forest') 
+end
+function open_level_changer_red_space_restrictor_to_limansk() 
+	open_transition('red_space_restrictor_to_limansk') 
+end
+function open_level_changer_zaton_space_restrictor_to_stancia_1() 
+	open_transition('zaton_space_restrictor_to_stancia_1') 
+end
+function open_level_changer_aes_space_restrictor_to_zaton() 
+	open_transition('aes_space_restrictor_to_zaton') 
+end
+function open_level_changer_aes_space_restrictor_to_aes2() 
+	open_transition('aes_space_restrictor_to_aes2') 
+end
+function open_level_changer_aes2_space_restrictor_to_aes1() 
+	open_transition('aes2_space_restrictor_to_aes1') 
+end
+function open_level_changer_pri_space_restrictor_to_cop_pripyat() 
+	open_transition('pri_space_restrictor_to_cop_pripyat') 
+end
+function open_level_changer_cop_pripyat_space_restrictor_to_soc_pripyat() 
+	open_transition('cop_pripyat_space_restrictor_to_soc_pripyat') 
+end
+function open_level_changer_jup_space_restrictor_to_zaton() 
+	open_transition('jup_space_restrictor_to_zaton') 
+end
+function open_level_changer_zaton_space_restrictor_to_jupiter() 
+	open_transition('zaton_space_restrictor_to_jupiter') 
+end
+function open_level_changer_red_space_restricor_to_jupiter() 
+	open_transition('red_space_restricor_to_jupiter') 
+end
+function open_level_changer_jupiter_space_restrictor_to_red_forest() 
+	open_transition('jupiter_space_restrictor_to_red_forest') 
+end
+function open_level_changer_rad_space_restrictor_to_red_forest() 
+	open_transition('rad_space_restrictor_to_red_forest') 
+end
+function open_level_changer_red_space_restrictor_to_radar_1() 
+	open_transition('red_space_restrictor_to_radar_1') 
+end
+function open_level_changer_rad_space_restrictor_to_pripyat_01() 
+	open_transition('pri_space_restrictor_to_radar') 
+end
+function open_level_changer_rad_rad_space_restrictor_to_pripyat_01() 
+	open_transition('rad_space_restrictor_to_pripyat_01') 
+end
+
+function open_level_changer_jupiter_space_restrictor_to_jupiter_ug() 
+	open_transition('jupiter_space_restrictor_to_jupiter_ug') 
+end
+function open_level_changer_jupiter_ug_space_restrictor_to_jupiter() 
+	open_transition('jupiter_ug_space_restrictor_to_jupiter') 
+end
+
+function open_level_changer_val_space_restrictor_to_tc() 
+	open_transition('val_space_restrictor_to_tc') 
+end
+function open_level_changer_tc_space_restrictor_to_darkvalley() 
+	open_transition('tc_space_restrictor_to_darkvalley') 
+end
+
+function open_level_changer_mar_space_restrictor_to_agroprom_1() 
+	open_transition('mar_space_restrictor_to_agroprom_1') 
+end
+function open_level_changer_agr_space_restrictor_to_marsh_1() 
+	open_transition('agr_space_restrictor_to_marsh_1') 
+end

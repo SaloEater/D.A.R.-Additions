@@ -1,0 +1,100 @@
+;camping
+[logic@esc_smart_terrain_5_2_camp_work_1]
+active = animpoint@esc_smart_terrain_5_2_camp_work_1
+suitable = {!surge_started} true
+prior = 10
+
+[logic@esc_smart_terrain_5_2_camp_work_2]
+active = animpoint@esc_smart_terrain_5_2_camp_work_2
+suitable = {!surge_started} true
+prior = 45
+
+[logic@esc_smart_terrain_5_2_camp_work_3]
+active = animpoint@esc_smart_terrain_5_2_camp_work_3
+suitable = {!surge_started} true
+prior = 10
+
+[logic@esc_smart_terrain_5_2_camp_work_4]
+active = animpoint@esc_smart_terrain_5_2_camp_work_4
+suitable = {!surge_started} true
+prior = 45
+
+[logic@esc_smart_terrain_5_2_camp_work_5]
+active = animpoint@esc_smart_terrain_5_2_camp_work_5
+suitable = {!surge_started} true
+prior = 45
+
+[animpoint@esc_smart_terrain_5_2_camp_work_1]
+cover_name = esc_smart_terrain_5_2_animpoint_kamp1
+use_camp = true
+turn_on_campfire = true
+
+[animpoint@esc_smart_terrain_5_2_camp_work_2]
+cover_name = esc_smart_terrain_5_2_animpoint_kamp2
+use_camp = true
+turn_on_campfire = true
+
+[animpoint@esc_smart_terrain_5_2_camp_work_3]
+cover_name = esc_smart_terrain_5_2_animpoint_kamp3
+use_camp = true
+turn_on_campfire = true
+
+[animpoint@esc_smart_terrain_5_2_camp_work_4]
+cover_name = esc_smart_terrain_5_2_animpoint_kamp4
+use_camp = true
+turn_on_campfire = true
+
+[animpoint@esc_smart_terrain_5_2_camp_work_5]
+cover_name = esc_smart_terrain_5_2_animpoint_kamp5
+use_camp = true
+turn_on_campfire = true
+
+
+
+
+[logic@esc_smart_terrain_5_2_robber]
+active = walker@wait
+suitable = {=npc_community(bandit) !robbed_on_level !is_squad_commander} true, false
+prior = 100
+post_combat_time = 0, 0
+
+[walker@wait] ;Ждем игрока
+;combat_ignore_cond = {=fighting_dist_ge(7) !health_le(0.98) !check_enemy_name(actor)} true, false
+path_walk = guard_1_walk
+path_look = guard_1_look
+def_state_moving1 = walk
+def_state_moving2 = rush
+on_info = {=is_alive -sim_robbery_end !actor_enemy =dist_to_actor_le(10)} remark@tell_actor
+meet = no_meet
+
+[remark@tell_actor] ;Видим игрока
+target = story | actor
+anim = threat_na
+meet = no_meet
+on_info = %=play_sound(robbery_scene_stop)%
+on_game_timer = 50 | beh@to_actor
+
+[beh@to_actor] ;Идём к игроку
+meet = meet
+gather_items_enabled = false
+corpse_detection_enabled = false
+behavior_state = beh_move
+target = actor
+keep_distance = near
+near_desired_dist = 1
+walk_dist = 5
+on_info  = {=has_enemy} walker@wait
+on_info2 = {+sim_robbery_end} walker@wait
+on_info3 = {=actor_enemy} walker@wait
+on_info4 = {=dist_to_actor_ge(10)} %=play_sound(robbery_scene_kill_actor) =set_npc_squad_enemy_to_actor% walker@wait
+
+[meet] ;Разговариваем с игроком
+target = actor
+close_distance = 1.5
+close_victim = actor
+close_anim = threat_na
+use = {!actor_enemy =dist_to_actor_le(3)} self, false
+meet_dialog = sim_robbery_dialog
+allow_break = false
+trade_enable = false
+on_info = {=has_enemy} walker@wait

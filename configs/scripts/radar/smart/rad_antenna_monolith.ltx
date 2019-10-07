@@ -1,0 +1,20 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 3
+max_population = 2
+respawn_params = respawn@rad_antenna_monolith
+respawn_idle = 86400
+
+
+[respawn@rad_antenna_monolith]
+
+spawn_monolith
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_dog, simulation_cat, simulation_pseudodog, simulation_snork
+spawn_num = {=!smart_controlled(rad_antenna_monolith)} 2, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(rad_antenna_monolith:monolith) -bar_deactivate_radar_done} 2, 0

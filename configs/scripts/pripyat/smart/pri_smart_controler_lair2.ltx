@@ -1,0 +1,15 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 5
+max_population = 1
+respawn_params = respawn@pri_smart_controler_lair2
+respawn_idle = 172800
+
+
+[respawn@pri_smart_controler_lair2]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_controller
+spawn_num = {=!smart_controlled(pri_smart_controler_lair2)} 1, 0

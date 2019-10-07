@@ -1,0 +1,21 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 41
+max_population = 2
+;respawn_only_smart = true
+respawn_params = respawn@jup_sim_21
+respawn_idle = 86400
+
+
+[respawn@jup_sim_21]
+
+spawn_monster
+spawn_csky
+
+[spawn_monster]
+spawn_squads = simulation_boar, simulation_flesh, simulation_cat
+spawn_num = {=!smart_controlled(jup_sim_21)} 1, 0
+
+[spawn_csky]
+spawn_squads = stalker_sim_squad_veteran
+spawn_num = {+bar_deactivate_radar_done} 1, 0

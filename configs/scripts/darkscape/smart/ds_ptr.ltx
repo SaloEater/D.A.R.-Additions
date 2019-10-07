@@ -1,0 +1,19 @@
+[smart_terrain]
+respawn_radius = 300 ;;мост
+squad_id = 10
+max_population = 2
+respawn_params = respawn@ds_ptr
+respawn_idle = 43200
+
+[respawn@ds_ptr]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_dog_5_7
+spawn_num = {=!smart_controlled(ds_ptr) =actor_on_level(k01_darkscape)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_dog_mix, simulation_psy_dog
+spawn_num = {=!smart_controlled(ds_ptr) =actor_week_in_zone(9) =actor_on_level(k01_darkscape)} 1, 0

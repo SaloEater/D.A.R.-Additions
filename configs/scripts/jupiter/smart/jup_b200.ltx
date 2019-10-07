@@ -1,0 +1,60 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 9
+max_population = 2
+respawn_params = respawn@jup_b200   
+respawn_idle = 86400
+
+
+[respawn@jup_b200]
+
+spawn_monster
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_killer
+spawn_army
+spawn_monolith
+spawn_zombied
+
+[spawn_monster]
+spawn_squads = simulation_zombie, simulation_snork, simulation_cat
+spawn_num = {=!smart_controlled(jup_b200)} 2, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_b200:stalker)} 1, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_b200:bandit)} 1, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_b200:csky)} 1, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_b200:dolg)} 1, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_veteran 
+spawn_num = {=smart_under_faction(jup_b200:freedom)} 1, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_b200:killer)} 1, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_veteran, army_sim_squad_elite
+spawn_num = {=smart_under_faction(jup_b200:army)} 1, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_b200:monolith)} 1, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_b200:zombied)} 1, 0

@@ -1,0 +1,117 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 25
+max_population = 3
+respawn_idle = 43200
+respawn_params = respawn@pri_a17
+
+[respawn@pri_a17]
+
+spawn_monster1
+spawn_monster2
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_killer
+spawn_army
+spawn_ecolog
+spawn_monolith
+spawn_zombied
+
+[spawn_monster1]
+spawn_squads = simulation_zombie
+spawn_num = {=!smart_controlled(pri_a17)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_snork
+spawn_num = {=!smart_controlled(pri_a17)} 2, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_a17:stalker)} 2, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_a17:bandit)} 3, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_a17:csky)} 3, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_a17:dolg)} 3, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_veteran 
+spawn_num = {=smart_under_faction(pri_a17:freedom)} 3, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_a17:killer)} 3, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_elite
+spawn_num = {=smart_under_faction(pri_a17:army)} 4, 0
+
+[spawn_ecolog]
+spawn_squads = ecolog_sim_squad_novice, ecolog_sim_squad_novice, ecolog_sim_squad_advanced, ecolog_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_a17:ecolog)} 2, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_a17:monolith)} 3, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_a17:zombied)} 2, 0
+
+
+
+
+
+[exclusive]
+monster_1 	= pripyat\pri_a17_logic.ltx
+monster_2	= pripyat\pri_a17_logic.ltx
+monster_3 	= pripyat\pri_a17_logic.ltx
+monster_4 	= pripyat\pri_a17_logic.ltx
+monster_5 	= pripyat\pri_a17_logic.ltx
+monster_6 	= pripyat\pri_a17_logic.ltx
+monster_7 	= pripyat\pri_a17_logic.ltx
+monster_8 	= pripyat\pri_a17_logic.ltx
+monster_9 	= pripyat\pri_a17_logic.ltx
+monster_10 	= pripyat\pri_a17_logic.ltx
+
+
+pri_a17_sim_chimera = pripyat\pri_a17_sim_chimera.ltx
+pri_a17_military_captain_tarasov = pripyat\pri_a17_military_captain_tarasov.ltx
+pri_a17_military_prapor_valentyr = pripyat\pri_a17_military_prapor_valentyr.ltx
+pri_a17_military_sergeant_morozov = pripyat\pri_a17_military_sergeant_morozov.ltx
+pri_a17_military_lieutenant_podorojniy = pripyat\pri_a17_military_lieutenant_podorojniy.ltx
+pri_a17_military_captain_tarasov_dead = pripyat\pri_a17_military_captain_tarasov.ltx
+pri_a17_military_prapor_valentyr_dead = pripyat\pri_a17_military_prapor_valentyr.ltx
+pri_a17_military_sergeant_morozov_dead = pripyat\pri_a17_military_sergeant_morozov.ltx
+pri_a17_military_lieutenant_podorojniy_dead = pripyat\pri_a17_military_lieutenant_podorojniy.ltx
+pri_a17_monolith_patrol_1 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_patrol_2 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_patrol_lead = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_patrol_1_dead = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_patrol_2_dead  = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_patrol_lead_dead  = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_preacher = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_ambusher_1 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_ambusher_2 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_ambusher_3 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_ambusher_4 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_ambusher_5 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_ambusher_6 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_ambusher_7 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_ambusher_8 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_ambusher_9 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_ambusher_10 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_sniper_1 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_sniper_2 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_sniper_3 = pripyat\pri_a17_monolith_logic.ltx
+pri_a17_monolith_sniper_4 = pripyat\pri_a17_monolith_logic.ltx

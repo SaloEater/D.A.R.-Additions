@@ -1,0 +1,20 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 8
+max_population = 1
+respawn_params = respawn@rad_pseudodogs 
+respawn_idle = 172800
+
+
+[respawn@rad_pseudodogs]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_controller_3sn_3gzomb, simulation_controller_6gzomb, simulation_controller_2sn_4zomb, simulation_controller_4zomb_str, simulation_controller_5sn
+spawn_num = {-bar_deactivate_radar_done} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_bloodsucker_2strong, simulation_bloodsucker_2weak
+spawn_num = {+bar_deactivate_radar_done} 1, 0

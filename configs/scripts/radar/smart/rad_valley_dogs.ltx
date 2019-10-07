@@ -1,0 +1,25 @@
+[smart_terrain] ;дорога, танк, костры с костями
+respawn_radius = 300
+squad_id = 12
+max_population = 1
+respawn_params = respawn@rad_valley_dogs
+respawn_idle = 86400
+
+
+[respawn@rad_valley_dogs]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_dog, simulation_pseudodog, simulation_dog_5_7, simulation_snork, simulation_psy_dog, simulation_cat
+spawn_num = {=!smart_controlled(rad_valley_dogs)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_snork
+spawn_num = {=!smart_controlled(rad_valley_dogs) =actor_week_in_zone(3)} 1, 0
+
+[spawn_monster3]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {-bar_deactivate_radar_done} 2, 0

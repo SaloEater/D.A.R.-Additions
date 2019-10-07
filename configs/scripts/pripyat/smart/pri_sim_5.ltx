@@ -1,0 +1,25 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 6
+max_population = 3
+respawn_params = respawn@pri_sim_5
+respawn_idle = 43200
+
+
+[respawn@pri_sim_5]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_dog
+spawn_num = {=!smart_controlled(pri_sim_5)} 4, 0
+
+[spawn_monster2]
+spawn_squads = simulation_psy_dog
+spawn_num = {=!smart_controlled(pri_sim_5)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_cat_3_5
+spawn_num = {=!smart_controlled(pri_sim_5) =actor_week_in_zone(6)} 1, 0

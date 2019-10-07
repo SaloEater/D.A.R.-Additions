@@ -1,0 +1,14 @@
+[smart_terrain]
+respawn_radius = 900 ;туннель, где лежал фримен
+squad_id = 6
+max_population = 1
+respawn_params = respawn@ros_smart_monster5
+respawn_idle = 129600
+
+[respawn@ros_smart_monster5]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = burer_ros_smart_monster5, bloodsucker_ros_smart_monster5, controller_psy_ros_smart_monster5
+spawn_num = {=!smart_controlled(ros_smart_monster5)} 1, 0

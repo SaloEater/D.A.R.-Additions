@@ -1,0 +1,1110 @@
+first_update_time = nil
+
+function on_game_start()
+	RegisterScriptCallback("on_game_load",on_game_load)
+	RegisterScriptCallback("actor_on_update",actor_on_update)
+	RegisterScriptCallback("actor_on_first_update",actor_on_first_update)
+	RegisterScriptCallback("actor_on_before_hit",actor_on_before_hit)
+	RegisterScriptCallback("on_key_press",on_key_press)
+	RegisterScriptCallback("on_level_changing",on_level_changing)
+	RegisterScriptCallback("actor_on_before_death",actor_on_before_death)
+end 
+
+function on_game_load()
+	--loadDefaultConsoleSettings()
+	rebind_savescum()
+	
+	if (RENDERER ~= STATIC_LIGHT) then
+		get_console():execute("vid_restart")
+	end
+	
+	printf("-FLUSH-")
+	get_console():execute("flush")
+end
+
+function rebind_savescum()
+	if (axr_main.config:r_value("mm_options","enable_only_campfire",1,false) == true) then
+		get_console():execute("unbind console")
+	end
+end
+
+function loadDefaultConsoleSettings()
+	local console=get_console()
+		
+	console:execute("r__color_add_b 0.0")
+	console:execute("r__color_add_g 0.0")
+	console:execute("r__color_add_r 0.0")
+
+	--console:execute("r2_vibrance_val 0.5")
+	--console:execute("r2_aberration_val 0.3")
+	console:execute("r2_allow_r1_lights off")
+	console:execute("r2_gloss_factor 8")
+	
+	console:execute("r2_dof_near 0")
+	console:execute("r2_dof_focus 0.5")
+	
+	console:execute("r2_ls_bloom_fast off")
+	console:execute("r2_ls_bloom_kernel_b 0.7")
+	console:execute("r2_ls_bloom_kernel_g 10")
+	console:execute("r2_ls_bloom_speed 100")
+	console:execute("r2_ls_bloom_threshold 1")
+	console:execute("r2_ls_depth_bias -0.0003")
+	console:execute("r2_ls_depth_scale 1.00001")
+	console:execute("r2_ls_dsm_kernel 0.7")
+	console:execute("r2_ls_psm_kernel 0.7")
+	console:execute("r2_ls_ssm_kernel 0.7")
+	--console:execute("r2_mblur 0.1")
+	console:execute("r2_sun_depth_far_bias -0.00002")
+	console:execute("r2_sun_depth_far_scale 1.")
+	console:execute("r2_sun_depth_near_bias 0.00001")
+	console:execute("r2_sun_depth_near_scale 1.")
+	console:execute("r2_sun_far 100.")
+	console:execute("r2_sun_focus on")
+	console:execute("r2_sun_lumscale 1.4")
+	console:execute("r2_sun_lumscale_amb 0.2")
+	console:execute("r2_sun_lumscale_hemi 0.6")
+	console:execute("r2_sun_near 30.")
+	console:execute("r2_sun_near_border 0.75")
+	console:execute("r2_sun_tsm on")
+	console:execute("r2_sun_tsm_bias -0.01")
+	console:execute("r2_sun_tsm_proj 0.3")
+	
+	console:execute("r2_sss_blend 0.01")
+	console:execute("r2_sss_phase1 0.1")
+	console:execute("r2_sss_phase2 0.06")
+	console:execute("r2_sss_radius 0.5")
+	
+	console:execute("r2_tf_mipbias -0.5")
+	console:execute("r2_tonemap on")
+	console:execute("r2_tonemap_adaptation 5")
+	console:execute("r2_tonemap_amount 1")
+	console:execute("r2_tonemap_lowlum 0.4")
+	console:execute("r2_tonemap_middlegray 0.9")
+	console:execute("r3_dynamic_wet_surfaces_near 10")
+	console:execute("r3_dynamic_wet_surfaces_far 100")
+	console:execute("r3_dynamic_wet_surfaces_sm_res 1024")
+	--]]
+end
+
+function actor_on_before_death(whoID,flags)
+	--[[
+	
+	--]]
+end
+
+
+function on_level_changing()	
+	local sim,gg = alife(),game_graph()
+	local actor_gv = sim and gg:vertex(sim:actor().m_game_vertex_id)
+		
+	local level_from = level.name()
+	local level_to = sim:level_name(actor_gv:level_id())
+	
+	if (utils.levels_linked(level_from,level_to)) then
+		printf("time_skip")
+		--level.change_game_time(0,math.random(1,2),math.random(30,50))
+	end
+
+	printf("level_change "..level_from.." - "..level_to)
+	
+	disable_info("sim_robbery_end")
+	disable_info("gar_bar_gates_passed")
+	disable_info("gar_safe_open")
+end
+
+local dy = 0
+
+function on_key_press(key)
+
+	local bind = dik_to_bind(key)
+	if bind == key_bindings.kWPN_4 then
+		hit_key()
+	end
+	
+	if (DEV_DEBUG_DEV) then
+	
+		if (key == 34) then --G
+			--ui_itm_drawn_map.drawn_map_ui("itm_map_redforest")
+			--db.actor.radiation = -1
+		end
+
+		if (key == 35) then --H
+		end
+
+		if (key == 36) then --J
+			--xr_effects.damage_actor_items()
+			--itms_manager.randomize_artefacts()
+		end
+
+		if (key == 37) then --K
+			get_console():execute("demo_record 1")
+		end
+
+		if (key == 38) then --L
+			utils.getCoords()
+		end
+		
+		if (key == 79) then --NP1
+			dy = dy-10
+		end
+		
+		if (key == 80) then --NP2
+			dy = dy+10
+		end
+		
+		if (key == 81) then --NP3
+		end
+		
+		if (key == 73) then --NP9
+			local wpn = db.actor:active_item()
+			if not (wpn) then return end
+
+			if (IsWeapon(wpn)) then
+				wpn:set_weapon_condition_type(0)
+			end
+		end
+		
+		if (key == 27) then --скобка вправо
+			local days = 0
+			local hours = 0
+			local minutes = 10
+			if (level) then
+				level.change_game_time(days,hours,minutes)
+				level_weathers.get_weather_manager():select_weather(true)
+			end
+		end
+		
+		if (key == 26) then --скобка влево
+			local days = 0
+			local hours = 1
+			local minutes = 0
+			if (level) then
+				level.change_game_time(days,hours,minutes)
+				level_weathers.get_weather_manager():select_weather(true)
+			end
+		end
+	end
+end
+
+function actor_on_first_update()
+	first_update_time = time_global()
+	
+	if (level.name() == "fake_start") then return end
+	
+	if not has_alife_info("game_started") then
+		--xr_effects.disable_level_changer(nil,nil,{"val_level_changer_to_labx18"})
+		xr_effects.damage_actor_items()
+		
+		game_relations.change_actor_relation("bandit", -900)
+		game_relations.change_factions_community_num("stalker",db.actor:id(), 0)
+		game_relations.change_factions_community_num("dolg",db.actor:id(), 0)
+		game_relations.change_factions_community_num("freedom",db.actor:id(), 0)
+		game_relations.change_factions_community_num("csky",db.actor:id(), 0)
+		game_relations.change_factions_community_num("ecolog",db.actor:id(), 0)
+		game_relations.change_factions_community_num("killer",db.actor:id(), 0)
+		game_relations.change_factions_community_num("army",db.actor:id(), 0)
+		game_relations.change_factions_community_num("bandit",db.actor:id(), 0)
+		game_relations.change_factions_community_num("monolith",db.actor:id(), 0)
+		
+		if (DEV_DEBUG_DEV) and (axr_main.config:r_value("mm_options","enable_debug_hud",1,false) == true) then
+			game_relations.change_factions_community_num("killer",db.actor:id(), 600)
+			game_relations.change_factions_community_num("army",db.actor:id(), 600)
+			game_relations.change_factions_community_num("bandit",db.actor:id(), 600)
+		end
+
+		-- WARNiNG -- 			
+		--
+		local sec = "itm_repairkit_tier_1"
+		local pos = vector():set(100.72,14.58,179.36)
+		local gv_id = 761
+		local lv_id = 252579
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		--
+		sec = "itm_repairkit_tier_2"
+		pos = vector():set(45.36,2.51,80.72)
+		gv_id = 3616
+		lv_id = 230
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		--
+		sec = "itm_repairkit_tier_3"
+		pos = vector():set(-139.86,-6.19,-64.10)
+		gv_id = 2772
+		lv_id = 6166
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		--		
+		sec = "itm_drugkit"
+		pos = vector():set(234.82,9.50,-7.600)
+		gv_id = 4147
+		lv_id = 1365443
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		--
+		pos = vector():set(-140.99, -23.00, -358.58)
+		gv_id = 451
+		lv_id = 114065
+		sec = "wpn_rpg7"
+		local wpn = alife():create(sec,pos,lv_id,gv_id)
+		wpn.condition = 0.5
+		
+		--
+		pos = vector():set(-79.56, 1.87, 8.72)
+		gv_id = 698
+		lv_id = 112760
+		sec = "dok_5"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		--
+		pos = vector():set(-79.56, 2.07, 8.72)
+		gv_id = 698
+		lv_id = 112760
+		sec = "dok_8"
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		--
+		pos = vector():set(-79.25, 2.66, 8.72)
+		gv_id = 698
+		lv_id = 112760
+		sec = "adrenalin"
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		--
+		pos = vector():set(-79.80, 2.66, 8.72)
+		gv_id = 698
+		lv_id = 112760
+		sec = "rebirth"
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		--
+		pos = vector():set(-79.56, 2.66, 8.72)
+		gv_id = 698
+		lv_id = 112760
+		sec = "stimpack_army"
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		--
+		pos = vector():set(-79.56, 2.96, 8.72)
+		gv_id = 698
+		lv_id = 112760
+		sec = "stimpack_scientic"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(99.82, -19.46, 12.68)
+		gv_id = 3727
+		lv_id = 7511
+		sec = "wpn_usp_nimble"
+		alife():create(sec,pos,lv_id,gv_id)
+		wpn.condition = 0.6
+
+		-- 
+		pos = vector():set(-125.41, 0.72, 37.60)
+		gv_id = 725
+		lv_id = 82699
+		sec = "wpn_tt33"
+		alife():create(sec,pos,lv_id,gv_id)
+		wpn.condition = 0.75
+
+		-- 
+		pos = vector():set(102.93, 4.33, 123.78)
+		gv_id = 2972
+		lv_id = 216372
+		sec = "wpn_mp5_nimble"
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		-- 
+		pos = vector():set(-82.72, -15.80, 78.20)
+		gv_id = 5093
+		lv_id = 3039
+		sec = "wpn_ak74m_nimble"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(5.19, 1.03, -6.51)
+		gv_id = 4063
+		lv_id = 6098
+		sec = "wpn_ak12_ac10632"
+		alife():create(sec,pos,lv_id,gv_id)
+		wpn.condition = 0.95
+
+		-- 
+		pos = vector():set(17.98, 0.36, 27.19)
+		gv_id = 4120
+		lv_id = 7931
+		sec = "wpn_sig220_nimble"
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		--
+		pos = vector():set(-69.02, -23.85, 63.41)
+		gv_id = 5080
+		lv_id = 5190
+		sec = "wastelander_outfit"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(5.91, 0.97, 0.72)
+		gv_id = 4063
+		lv_id = 6240
+		sec = "moneybag"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(-30.30, -19.66, 26.04)
+		gv_id = 4131
+		lv_id = 937
+		sec = "moneybag"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(-27.01, -14.47, 2.30)
+		gv_id = 4117
+		lv_id = 1254
+		sec = "detector_04"
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		--
+		pos = vector():set(170.23, 38.10, 144.94)
+		gv_id = 3288
+		lv_id = 200263
+		sec = "ammo_gauss"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		--
+		pos = vector():set(171.89, 38.10, 144.91)
+		gv_id = 3288
+		lv_id = 201405
+		sec = "ammo_gauss"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		--
+		pos = vector():set(5.91, 21.39, -216.46)
+		gv_id = 3580
+		lv_id = 206418
+		sec = "ammo_gauss"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		--
+		pos = vector():set(18.02, 21.38, -246.92)
+		gv_id = 3580
+		lv_id = 218627
+		sec = "ammo_gauss"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(31.26, 21.39, -229.41)
+		gv_id = 3580
+		lv_id = 231180
+		sec = "wpn_gauss"
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		--
+		pos = vector():set(136.44, 29.33, 239.52)
+		gv_id = 4892
+		lv_id = 475762
+		sec = "wpn_mosin"
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		--
+		pos = vector():set(136.54, 29.43, 239.62)
+		gv_id = 4892
+		lv_id = 475762
+		sec = "wpn_addon_scope_pu"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(114.33, 16.79, -148.19)
+		gv_id = 9
+		lv_id = 207006
+		sec = "drink_crow"
+		alife():create(sec,pos,lv_id,gv_id)				
+		
+		--
+		pos = vector():set(136.30, 29.30, 239.50)
+		gv_id = 4892
+		lv_id = 475762
+		sec = "ammo_7.62x54_ap"
+		alife():create(sec,pos,lv_id,gv_id)	
+
+		--
+		pos = vector():set(112.04, 2.37, 184.51)
+		gv_id = 4451
+		lv_id = 1156455
+		sec = "mili_maps"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(-105.19, 34.25, 615.77)
+		gv_id = 2878
+		lv_id = 67
+		sec = "rebirth"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(27.50, 12.33, -1.11)
+		gv_id = 4859
+		lv_id = 39736
+		sec = "rebirth"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(65.18, 4.13, -0.87)
+		gv_id = 4859
+		lv_id = 39736
+		sec = "gasmask_filter"
+		alife():create(sec,pos,lv_id,gv_id)	
+		
+		-- 
+		pos = vector():set(156.84, 9.50, -137.87)
+		gv_id = 4148
+		lv_id = 1231928
+		sec = "wpn_k98"
+		alife():create(sec,pos,lv_id,gv_id)
+		wpn.condition = 0.9
+
+		-- 
+		pos = vector():set(114.41, 3.13, 180.60)
+		gv_id = 4451
+		lv_id = 1164785
+		sec = "wpn_addon_scope_zf4"
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		-- 
+		pos = vector():set(-26.51, 17.71, 267.08)
+		gv_id = 212
+		lv_id = 132319
+		sec = "wpn_addon_scope_pu"
+		alife():create(sec,pos,lv_id,gv_id)			
+
+		-- 
+		pos = vector():set(-280.21, 15.79, 21.89)
+		gv_id = 152
+		lv_id = 7136
+		sec = "vodka_quality_3"
+		alife():create(sec,pos,lv_id,gv_id)	
+
+		-- 
+		pos = vector():set(-279.03, 15.56, 21.44)
+		gv_id = 152
+		lv_id = 7136
+		sec = "ammo_12x76_zhekan"
+		alife():create(sec,pos,lv_id,gv_id)	
+		
+		-- 
+		pos = vector():set(62.27, -3.40, 34.15)
+		gv_id = 4154
+		lv_id = 1070819
+		sec = "wpn_sil_kzrzp"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(412.90, -1.16, 226.14)
+		gv_id = 4379
+		lv_id = 1641769
+		sec = "ammo_7.92x33_ap"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		--
+		pos = vector():set(412.95, 5.90, 258.63)
+		gv_id = 4142
+		lv_id = 1645736
+		sec = "bottle_metal_3"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		--
+		pos = vector():set(131.33, 30.06, 236.95)
+		gv_id = 4892
+		lv_id = 475505
+		sec = "af_gratis"
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		-- 
+		pos = vector():set(-432.51, 2.74, 6.92)
+		gv_id = 4149
+		lv_id = 131494
+		sec = "drug_anabiotic"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		--
+		pos = vector():set(-426.44, 26.06, -382.66)
+		gv_id = 4138
+		lv_id = 138111
+		sec = "wpn_binoc"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(-15.20, 0.00, 74.62)
+		gv_id = 4849
+		lv_id = 6566
+		sec = "wpn_hunter_silent"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(-15.35, 0.15, 74.75)
+		gv_id = 4849
+		lv_id = 6566
+		sec = "ammo_30carbine_fmj"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(69.01, 4.35, 11.98)
+		gv_id = 4859
+		lv_id = 39741
+		sec = "wpn_m79"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(57.60, 1.78, -11.92)
+		gv_id = 4858
+		lv_id = 34118
+		sec = "dolg_pantsir_outfit"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		--
+		pos = vector():set(447.79, 33.56, -453.71)
+		gv_id = 4698
+		lv_id = 1427941
+		sec = "helm_spartan"
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		-- 
+		pos = vector():set(53.56, 1.89, 11.65)
+		gv_id = 4848
+		lv_id = 36295
+		sec = "ammo_m209"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		--
+		pos = vector():set(-240.27, -6.00, 81.55)
+		gv_id = 1892
+		lv_id = 13934
+		sec = "wpn_desert_eagle"
+		alife():create(sec,pos,lv_id,gv_id)
+		wpn.condition = 0.85
+		
+		--
+		pos = vector():set(7.20, -16.34, 65.37)
+		gv_id = 3788
+		lv_id = 3833
+		sec = "wpn_toz34_nimble"		
+		alife():create(sec,pos,lv_id,gv_id)
+		wpn.condition = 0.9
+
+		--
+		pos = vector():set(395.83, 19.42, 289.95)
+		gv_id = 1408
+		lv_id = 858921
+		sec = "wpn_type63"		
+		alife():create(sec,pos,lv_id,gv_id)
+		wpn.condition = 0.85
+
+		-- 
+		pos = vector():set(-161.11, 3.88,-55.43)
+		gv_id = 2772
+		lv_id = 4639
+		sec = "wpn_hand_pickaxe"		
+		alife():create(sec,pos,lv_id,gv_id)
+		wpn.condition = 0.5
+
+		-- 
+		pos = vector():set(74.77, 5.24,-3.97)
+		gv_id = 650
+		lv_id = 231710
+		sec = "wpn_hand_pickaxe"		
+		alife():create(sec,pos,lv_id,gv_id)
+		wpn.condition = 0.75
+		
+		-- 
+		pos = vector():set(31.15, 21.35, -231.72)
+		gv_id = 3580
+		lv_id = 231173
+		sec = "device_glowstick"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(-109.70, 37.74, -490.74)
+		gv_id = 3602
+		lv_id = 77217
+		sec = "device_glowstick"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(172.37, 37.37, 147.03)
+		gv_id = 3288
+		lv_id = 201408
+		sec = "device_glowstick"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(109.59, -1.33, 178.72)
+		gv_id = 4451
+		lv_id = 1155252
+		sec = "device_glowstick"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(-2.95, 4.60, 36.46)
+		gv_id = 4154
+		lv_id = 938433
+		sec = "device_glowstick"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(165.67, -0.78, -139.15)
+		gv_id = 4158
+		lv_id = 1242701
+		sec = "device_glowstick"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(412.97, -0.95, 232.21)
+		gv_id = 4142
+		lv_id = 1643764
+		sec = "device_glowstick"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(25.88, 12.62, 0.00)
+		gv_id = 4859
+		lv_id = 39736
+		sec = "device_glowstick"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(132.58, 30.10, 235.17)
+		gv_id = 4918
+		lv_id = 367676
+		sec = "device_glowstick"
+		alife():create(sec,pos,lv_id,gv_id)
+		
+		-- 
+		pos = vector():set(6.46, -13.33, 61.52)
+		gv_id = 3788
+		lv_id = 4039
+		sec = "device_glowstick"
+		alife():create(sec,pos,lv_id,gv_id)
+
+		-- 
+		pos = vector():set(-15.65, 0.45, 74.62)
+		gv_id = 4849
+		lv_id = 6566
+		sec = "device_kerosinka"
+		alife():create(sec,pos,lv_id,gv_id)	
+		
+		give_info("game_started")
+		
+		if IsLastStandMode() then
+			give_info("story_mode_disabled")
+			give_info("yan_labx16_switcher_1_off")
+			give_info("yan_labx16_switcher_2_off")
+			give_info("yan_labx16_switcher_3_off")
+			give_info("yan_labx16_switcher_primary_off")
+			give_info("bar_deactivate_radar_done")
+			give_info("warlab_deactivate_generators_done")
+		end
+		
+		
+	end
+	
+	if (has_alife_info("perk_steady_hands")) then
+		db.actor:set_actor_recoil_coeff(0.4)
+	end
+	
+end
+
+local hit_to_section = {
+	[hit.light_burn] = "light_burn_immunity",
+	[hit.burn] = "burn_immunity",
+	[hit.strike] = "strike_immunity",
+	[hit.shock] = "shock_immunity",
+	[hit.wound] = "wound_immunity",
+	[hit.radiation] = "radiation_immunity",
+	[hit.telepatic] = "telepatic_immunity",
+	[hit.chemical_burn] = "chemical_burn_immunity",
+	[hit.explosion] = "explosion_immunity",
+	[hit.fire_wound] = "fire_wound_immunity",
+}
+
+function actor_on_before_hit(s_hit,bone_id)
+--[[
+	printf("HIT TYPE: "..tostring(hit_to_section[s_hit.type]))
+	printf("HIT BONE: "..tostring(bone_id))
+	printf("HIT INDX: "..tostring(s_hit.bone_index))
+	printf("HIT PWER: "..tostring(s_hit.power))
+	printf("HITED BY: "..tostring(s_hit.draftsman and s_hit.draftsman:name()))
+--]]
+
+	--hit by zone
+	
+	if not db.actor then return end
+		
+	if (bone_id == 65535) then
+		local full_protection = (db.actor:item_in_slot(12) ~= nil) and (db.actor:get_current_outfit() ~= nil)
+		if not full_protection then full_protection = (db.actor:get_current_outfit() ~= nil) and (dinamic_hud.helmets[db.actor:get_current_outfit():section()] ~= nil) end
+		
+		local zone = (s_hit.type == hit.radiation) or (s_hit.type == hit.chemical_burn) or (s_hit.type == hit.burn)
+		
+		if zone and not full_protection then
+		
+			local extra_hit = s_hit
+			if (s_hit.type == hit.radiation) then 		extra_hit.power = extra_hit.power*1.0 end
+			if (s_hit.type == hit.chemical_burn) then 	extra_hit.power = extra_hit.power*3.0 end
+			if (s_hit.type == hit.burn) then 			extra_hit.power = extra_hit.power*2.0 end
+			
+			db.actor:hit(extra_hit)
+			--printf("no full protection")
+		end
+	end
+end
+
+
+function set_recoil(recoil)
+	db.actor:set_actor_recoil_coeff(recoil)
+end
+
+
+local inertion = 0
+function actor_on_update()
+
+
+	UpdateTorch()
+	UpdateShoot()
+	UpdateHud()
+	UpdatePsy()
+	
+	hit_animation()
+	
+	if (not first_update_time) or (first_update_time+3000 > time_global()) then
+		return
+	end
+	
+	--[[
+	local radia = 2 - db.actor:get_radiation_detector()
+	
+	if (radia == 0) then radia = 0.01 end
+	if (radia == 2) then radia = 0 end
+	printf(radia)
+	--]]
+	--[[
+	local item = db.actor:active_item() or db.actor:active_detector()
+	local ui = item and item:get_3d_ui()
+	
+	local actor_rad = db.actor:get_radiation_detector()
+	
+	if (ui) then
+		
+		local xml				= CScriptXmlInit()
+		local ctrl
+		xml:ParseFile			("hud_ui_3d.xml")
+		ctrl					= ui
+		canvas					= xml:InitStatic("test:canvas:static",ui)
+	
+		local dx = math.ceil(radia*4)
+		
+		printf("UI "..actor_rad.." dx "..dx)
+		
+		canvas:SetTextureRect(Frect():set(102*dx,0+dy,100+102*dx,100+dy))
+		
+		--canvas:SetTextureRect(Frect():set(0+dx,0+dy,100+dx,100+dy))
+		
+	end
+	--]]
+end
+
+
+
+local TorchType = -1
+local off_time = 0
+local torch_lag = false
+
+
+
+function UpdateTorch()
+
+	local torch = db.actor:object("device_torch")
+	if not db.actor:object("device_torch") then return end
+	local upd = db.actor:object("wpn_upd")
+	local cond = upd and upd:condition() or 0
+	
+	if (axr_battery.is_jammed()) then
+		cond = utils.clamp(cond,0,0.051)
+	end
+	
+	local base = 1.0
+	local c = 1
+	
+	if (upd) and (axr_main.config:r_value("mm_options","enable_use_battery",1,false) == true) then
+		c = utils.clamp(cond,0.2,1)
+	end
+		
+	torch:torch2_set_color_r(base*c)
+	torch:torch2_set_color_g(base*c)
+	torch:torch2_set_color_b((base-0.1)*c)
+	torch:torch2_set_offset_x(0.2)
+	torch:torch2_set_offset_y(0.1)
+	torch:torch2_set_range(24)
+	torch:torch2_set_radius(90)
+	
+	---[[
+	if (off_time > 0) then 
+		off_time = off_time-1 
+	end
+	
+	if (off_time == 0) and (not torch_lag) and (itms_manager.Torch2) and (cond > 0.05) and (cond < 0.3) then	
+		if (math.random(50+cond*400)) == 1 then
+			torch_lag = true
+		end
+	end
+	
+	if (off_time == 0) and (torch_lag) then	
+		if (itms_manager.Torch2) then
+			off_time = 3+math.random(3)
+			itms_manager.Torch2 = false
+			torch:enable_torch2(false)
+		else
+			itms_manager.Torch2 = true
+			torch:enable_torch2(true)
+			torch_lag = false
+		end
+	end
+	--]]
+	if itms_manager.TorchType == TorchType then return end
+	
+	if itms_manager.TorchType == 2 then
+		torch:torch_switch_spot(true)
+		torch:torch_set_range(80)
+		torch:torch_set_radius(25)
+		torch:torch_set_animation("light_torch_01")
+		torch:torch_set_texture("internal\\torch1")
+		torch:torch_set_offset_y(0.1)
+		torch:torch_set_offset_z(0.4)
+	elseif itms_manager.TorchType == 1 then
+		torch:torch_switch_spot(true)
+		torch:torch_set_range(60)
+		torch:torch_set_radius(50)
+		torch:torch_set_animation("light_torch_01")
+		torch:torch_set_texture("internal\\torch1")
+		torch:torch_set_offset_y(0.1)
+		torch:torch_set_offset_z(0.4)
+	elseif itms_manager.TorchType == 3 then
+		torch:torch_switch_spot(false)
+		torch:torch_set_range(8)
+		torch:torch_set_radius(60)
+		torch:torch_set_texture("internal\\torch_gas")
+		torch:torch_set_animation("empty")
+		torch:torch_set_color_r(0.0)
+		torch:torch_set_color_g(0.4)
+		torch:torch_set_color_b(0.3)
+		torch:torch_set_color_a(1.0)
+		torch:torch_set_offset_y(-0.1)
+		torch:torch_set_offset_z(0.35)
+	elseif itms_manager.TorchType == 4 then
+		torch:torch_switch_spot(false)
+		torch:torch_set_range(6)
+		torch:torch_set_radius(60)
+		torch:torch_set_inertion(20)
+		torch:torch_set_texture("internal\\torch_gas")
+		torch:torch_set_animation("empty")
+		torch:torch_set_color_r(0.40)
+		torch:torch_set_color_g(0.22)
+		torch:torch_set_color_b(0.0)
+		torch:torch_set_color_a(1.0)
+		torch:torch_set_offset_y(-0.1)
+		torch:torch_set_offset_z(0.35)
+	else
+		torch:torch_switch_spot(true)
+		torch:torch_set_range(0)
+		torch:torch_set_radius(0)
+		torch:torch_set_inertion(14)
+		torch:torch_set_animation("empty")
+		torch:torch_set_color_r(0.0)
+		torch:torch_set_color_g(0.0)
+		torch:torch_set_color_b(0.0)
+		torch:torch_set_color_a(3.0)
+		--[[
+		torch:torch_set_range(12)
+		torch:torch_set_radius(95)
+		torch:torch_set_inertion(4)
+		torch:torch_set_color_r(0.9)
+		torch:torch_set_color_g(0.9)
+		torch:torch_set_color_b(0.8)
+		torch:torch_set_color_a(0.5)
+		torch:torch_set_animation("empty")
+		torch:torch_set_texture("internal\\torch_metro")
+		--]]
+		--[[
+		torch:torch_set_offset_z(-1.5)
+		torch:torch_set_range(7)
+		torch:torch_set_radius(130)
+		torch:torch_set_inertion(20)
+		torch:torch_set_animation("koster_01")
+		torch:torch_set_texture("internal\\torch_gas")
+		--]]
+	end
+	
+	TorchType = itms_manager.TorchType
+end
+
+function UpdateHud()
+	
+	local hud = get_hud()
+	if not (hud) then return end
+	local borders = hud:GetCustomStatic("hud_borders")
+	
+	if (axr_main.config:r_value("mm_options","enable_letterbox",1,false) == false) then
+		if (borders) then
+			hud:RemoveCustomStatic("hud_borders")
+		end
+	else
+		if (not borders) then
+			hud:AddCustomStatic("hud_borders")
+		end
+	end
+end
+
+
+local shoot_upd = time_global()
+
+function UpdateShoot()
+	
+	if (time_global() < shoot_upd) then return end
+	shoot_upd = shoot_upd + 150
+	
+	local wpn = db.actor:active_item()
+	if not (wpn) then return end
+end
+
+local upd_time = 0
+local psy_time = time_global()
+function UpdatePsy()
+	
+	if time_global() < upd_time then return end
+	upd_time = time_global()+100
+				
+	local psy_bonus = 0.002
+	
+	local power_inertion = ((1.1-db.actor.power)*1.5)^2
+	local psy_inertion = (1.0-db.actor.psy_health)*4
+	local inertion = math.max(power_inertion,psy_inertion)
+	db.actor:set_actor_zoom_inertion(inertion)
+	--printf(inertion)
+	
+	--[[
+	local rnd = math.random(2000)
+	
+	if (rnd < (1-db.actor.psy_health)*100) then
+		--printf("PSY: GRAY")
+		level.add_pp_effector("shoot\\grey_s5.ppe", 998, false)
+	end
+	
+	if (db.actor.psy_health < 0.9) and (rnd < (1-db.actor.psy_health)*100) then
+		--printf("PSY: SHOCK")
+		level.add_pp_effector("shock.ppe", 998, false)
+	end
+	
+	if (db.actor.psy_health < 0.8) and (rnd < (1-db.actor.psy_health)*100) then
+		--printf("PSY: BLOOD")
+		level.add_pp_effector("bloody.ppe", 998, false)
+	end
+	
+	if (db.actor.psy_health < 0.75) and (time_global() > psy_time) then
+		psy_time = time_global()+30000+math.random(0,4)*5000
+		xr_sound.set_sound_play(db.actor:id(),"wounded_psy_"..math.random(1,6))
+	end
+	-]]
+end
+
+
+local anm_state = 0
+local anm_slot = 13
+
+local hit_slot = {
+	[0] = true,
+	[2] = true,
+	[3] = true,
+	[4] = true,
+	[5] = true,
+	[6] = true,
+}
+
+function hit_key()
+	
+	if (actor_menu.get_mode() ~= 0) then return end
+	
+	if not (hit_slot[db.actor:active_slot()]) then return end
+
+	if (anm_state ~= 0) or (dinamic_hud.is_mask_cleaning()) then
+		--printf("hit_key "..anm_state)
+		return 
+	end
+
+	if (db.actor:active_detector()) then return end
+	
+	if not db.actor:item_in_slot(1) then return end
+	
+	local knife_name = "animation_hit_"..db.actor:item_in_slot(1):section()
+	
+	local anm = db.actor:item_in_slot(anm_slot)
+	if (anm) then 
+		alife():release(alife_object(anm:id()))
+		return
+	end
+	
+	anm_state = 1
+	last_slot = db.actor:active_slot() or 0
+	
+	local wpn = db.actor:item_in_slot(db.actor:active_slot())
+	if (wpn) then wpn:switch_state(3) end
+	
+    alife():create(knife_name,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id())
+	
+	
+	--db.actor:hide_weapon()
+end
+
+local anm_time = 200
+local anm_start = 0
+
+function hit_animation()
+	local wpn = db.actor:item_in_slot(last_slot)
+	
+	if (anm_state == 1) then
+		--db.actor:restore_weapon()
+		db.actor:activate_slot(anm_slot)
+		if (wpn) then wpn:switch_state(3) end
+		anm_start = time_global()
+		anm_state = 2
+	elseif (anm_state == 2) and (db.actor:active_slot() == anm_slot) and (time_global() > anm_start+150) then
+		anm_start = time_global()
+		anm_state = 3
+		local anm = db.actor:item_in_slot(anm_slot)
+		if (anm) then 
+			level.add_cam_effector('shoot\\s3_e1_1.anm', 8063, false,'')
+			if (has_alife_info("perk_knife_master")) then
+				anm:switch_state(6)
+			else
+				anm:switch_state(5)
+			end
+		end
+	elseif (anm_state == 3) and (time_global() > anm_start+anm_time) then
+		local anm = db.actor:item_in_slot(anm_slot)
+		if (anm) then alife():release(alife_object(anm:id())) end
+		anm_state = 4
+	elseif (anm_state == 4) and (time_global() > anm_start+anm_time+20) then
+		db.actor:activate_slot(last_slot)
+		anm_state = 5
+	elseif (anm_state == 5) and (time_global() > anm_start+anm_time+700) then
+		anm_state = 0
+	elseif (anm_state ~= 0) and (db.actor:active_slot() ~= anm_slot) and (time_global() > anm_start+anm_time+700) then
+		anm_state = 0
+	end
+end
+
+--[[
+
+discounts = {=actor_week_in_zone(9)} discount_9, {=actor_week_in_zone(8)} discount_8, {=actor_week_in_zone(7)} discount_7, {=actor_week_in_zone(6)} discount_6, {=actor_week_in_zone(5)} discount_5, {=actor_week_in_zone(4)} discount_4, {=actor_week_in_zone(3)} discount_3, {=actor_week_in_zone(2)} discount_2, {=actor_week_in_zone(1)} discount_1 
+
+function isZoneFood
+
+--]]

@@ -1,0 +1,38 @@
+[smart_terrain]
+respawn_radius = 300 ;;вход со стороны складов
+squad_id = 6
+max_population = 1
+respawn_params = respawn@cit_killers_2
+respawn_idle = 86400
+
+
+[respawn@cit_killers_2]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_dog, simulation_flesh, simulation_pseudodog, simulation_cat, simulation_snork
+spawn_num = {=!smart_controlled(cit_killers_2) =!actor_week_in_zone(9)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_dog_mix, simulation_flesh, simulation_dog_5_7, simulation_cat, simulation_snork_2_5, simulation_gigant
+spawn_num = {=!smart_controlled(cit_killers_2) =actor_week_in_zone(9)} 1, 0
+
+[exclusive]
+faction_base_defense_enemy1 = dead_city\cit_killers_2_smart_logic.ltx
+faction_base_defense_enemy2 = dead_city\cit_killers_2_smart_logic.ltx
+faction_base_defense_enemy3 = dead_city\cit_killers_2_smart_logic.ltx
+faction_base_defense_enemy4 = dead_city\cit_killers_2_smart_logic.ltx
+faction_base_defense_enemy5 = dead_city\cit_killers_2_smart_logic.ltx
+faction_base_defense_enemy6 = dead_city\cit_killers_2_smart_logic.ltx
+
+cit_killers_2_zombie_13 = dead_city\deadcity_zombie_logic.ltx
+cit_killers_2_zombie_14 = dead_city\deadcity_zombie_logic.ltx
+cit_killers_2_zombie_15 = dead_city\deadcity_zombie_logic.ltx
+cit_killers_2_zombie_16 = dead_city\deadcity_zombie_logic.ltx
+cit_killers_2_zombie_17 = dead_city\deadcity_zombie_logic.ltx
+cit_killers_2_zombie_18 = dead_city\deadcity_zombie_logic.ltx
+cit_killers_2_zombie_19 = dead_city\deadcity_zombie_logic.ltx
+cit_killers_2_zombie_20 = dead_city\deadcity_zombie_logic.ltx
+cit_killers_2_zombie_21 = dead_city\deadcity_zombie_logic.ltx

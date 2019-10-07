@@ -1,0 +1,28 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 17
+max_population = 2
+respawn_params = respawn@pri_b303
+respawn_idle = 86400
+
+[respawn@pri_b303]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_burer
+spawn_num = {=!smart_controlled(pri_b303)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_poltergeist_tele
+spawn_num = {=!smart_controlled(pri_b303)} 1, 0
+
+[exclusive]
+pri_b303_burer_01 = pripyat\pri_b303_burer_01.ltx
+
+monster_1 	= pripyat\pri_b303_logic.ltx
+monster_2	= pripyat\pri_b303_logic.ltx
+monster_3 	= pripyat\pri_b303_logic.ltx
+monster_4 	= pripyat\pri_b303_logic.ltx
+monster_5 	= pripyat\pri_b303_logic.ltx

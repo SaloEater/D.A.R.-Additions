@@ -1,0 +1,19 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 7
+max_population = 1
+respawn_params = respawn@mil_smart_terrain_4_2
+respawn_idle = 216000 ;5
+
+[respawn@mil_smart_terrain_4_2]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = psy_mil_smart_terrain_4_2
+spawn_num = {=!smart_controlled(mil_smart_terrain_4_2)} 1, 0
+
+[spawn_monster2]
+spawn_squads = bloodsucker_mil_smart_terrain_4_2
+spawn_num = {=!smart_controlled(mil_smart_terrain_4_2) =squad_exist(bloodsucker_mil_smart_terrain_4_3)} 1, 0

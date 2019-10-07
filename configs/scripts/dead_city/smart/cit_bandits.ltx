@@ -1,0 +1,32 @@
+[smart_terrain]
+respawn_radius = 300 ;cit_bandits ;;большое здание с колоннами
+squad_id = 1
+max_population = 1
+respawn_params = respawn@cit_bandits
+respawn_idle = 259200
+
+
+[respawn@cit_bandits]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = bloodsucker_cit_bandits
+spawn_num = {=!smart_controlled(cit_bandits) =!squad_exist(bloodsucker_cit_bandits)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_bloodsucker_red
+spawn_num = {=!smart_controlled(cit_bandits) =actor_week_in_zone(9) =squad_exist(bloodsucker_cit_bandits)} 4, {=!smart_controlled(cit_bandits) =squad_exist(bloodsucker_cit_bandits)} 2, 0
+
+
+
+[exclusive]
+cit_bandits_zombie_5 = dead_city\deadcity_zombie_logic.ltx
+cit_bandits_zombie_6 = dead_city\deadcity_zombie_logic.ltx
+cit_bandits_zombie_7 = dead_city\deadcity_zombie_logic.ltx ;умирают по дороге на электре
+cit_bandits_zombie_8 = dead_city\deadcity_zombie_logic.ltx
+cit_bandits_zombie_9 = dead_city\deadcity_zombie_logic.ltx
+cit_bandits_zombie_10 = dead_city\deadcity_zombie_logic.ltx
+cit_bandits_zombie_11 = dead_city\deadcity_zombie_logic.ltx
+cit_bandits_zombie_12 = dead_city\deadcity_zombie_logic.ltx

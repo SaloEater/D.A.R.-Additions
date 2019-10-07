@@ -1,0 +1,915 @@
+--[[
+Copyright (C) 2012 Alundaio
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+
+Modified to craft system by Lanforse
+Modified to craft system for D.A.R.(Gratis)
+--]]
+-------------------------------------------------------------------
+
+local ini = system_ini()
+local parts_id = {}
+
+local Recepies = {}
+
+local Recepies1 = {
+
+{"helm_cloth_mask", 	1, "synthrope", "textile_patch_b", "textile_patch_b", "-"},
+{"af_iam", 				1, "lead_box", "copper_coil", "explo_jerrycan_fuel_0", "wpn_hand_hammer"},
+{"device_flashlight", 	1, "mirror", "flashlight_broken", "copper_coil", "batteries_ccell"},
+{"device_torch_dummy", 	1, "headlamp", "flashlight_broken", "welding_goggles", "batteries"},
+{"af_camelbak", 		1, "flask_3", "textile_patch_m", "rope", "caffeine"},
+{"beadspread", 			1, "synthrope", "textile_patch_b", "textile_patch_b", "textile_patch_b"},
+{"itm_sleepbag", 		1, "synthrope", "textile_patch_m", "tarpaulin", "beadspread"},
+{"itm_backpack", 		1, "synthrope", "textile_patch_e", "walkie", "tarpaulin"},
+{"backpack_light", 		1, "synthrope", "rope", "af_frames", "itm_backpack"},
+{"belt_pouch", 			1, "synthrope", "rope", "textile_patch_e", "tarpaulin"},
+{"itm_qr", 			    1, "swiss", "rope", "jar", "walkie"},
+{"cooking", 			1, "cutlery", "jar", "-", "-"},
+{"cooking", 			2, "cutlery", "cutlery", "jar", "jar"},
+{"cooking", 			3, "cutlery", "cutlery", "cutlery", "explo_jerrycan_fuel_0"},
+{"wood_stove", 			1, "explo_balon_gas_0", "explo_jerrycan_fuel_0", "swiss", "wpn_hand_hammer"},
+{"af_ironplate", 		1, "explo_jerrycan_fuel_0", "rope", "textile_patch_m",	"wpn_hand_axe"},
+{"wpn_knife", 		    1, "explo_jerrycan_fuel_0", "sharpening_stones_2", "wpn_hand_hammer", "-"},
+
+{"mine_wire", 	1, "grenade_rgd5", "synthrope", "jar", "-"},
+{"mine_wire", 	1, "grenade_f1", "synthrope", "jar", "-"},
+{"mine_wire", 	1, "grenade_gd-05", "synthrope", "jar", "-"},
+{"mine_wire", 	1, "grenade_light", "synthrope", "explo_metalcan_powder", "jar"},
+{"mine_wire", 	1, "grenade_smoke", "synthrope", "explo_metalcan_powder", "jar"},
+{"mine_wire", 	1, "ammo_og-7b", "grenade_light", "synthrope", "jar"},
+{"mine_wire", 	1, "ammo_og-7b", "grenade_smoke", "synthrope", "jar"},
+
+{"ammo_12x70_buck",			10, "ammo_bad", "ammo_bad", "jar", "explo_metalcan_powder"},
+{"ammo_12x76_zhekan",		10, "ammo_bad", "ammo_bad", "jar", "explo_metalcan_powder"},
+{"matches", 			5, "guitar_a", "porn2", "-", "-"},
+{"matches", 			5, "guitar_a", "survivalguide", "-", "-"},
+{"matches", 			5, "guitar_a", "porn", "-", "-"},
+{"matches", 			5, "guitar_a", "old_book", "-", "-"},
+{"matches", 			10, "explo_metalcan_powder", "survivalguide", "-", "-"},
+{"matches", 			10, "explo_metalcan_powder", "old_book", "-", "-"},
+{"matches", 			10, "explo_metalcan_powder", "porn", "-", "-"},
+
+}
+
+local Recepies1_m = {
+
+{"kit_hunt", 			1, "backpack_light", "grooming", "wpn_knife3", "sharpening_stones_4"},
+{"wpn_knife3", 		    1, "explo_balon_gas_0", "sharpening_stones_3", "swiss_3", "wpn_hand_axe"},
+
+{"wpn_ak74u", 			1, "swiss_4", "jar", "spareparts", "wpn_ak74"},
+{"wpn_toz34_obrez", 	1, "swiss", "jar", "spareparts", "wpn_toz34"},
+{"wpn_bm16", 			1, "swiss", "jar", "spareparts", "wpn_bm16_full"},
+{"wpn_mp133_short", 	1, "swiss_2", "jar", "spareparts", "wpn_mp133"},
+{"wpn_mp153_short", 	1, "swiss_2", "jar", "spareparts", "wpn_mp153"},
+{"wpn_sks_short", 		1, "swiss_3", "jar", "spareparts", "wpn_sks"},
+{"wpn_svt40_short", 	1, "swiss_3", "jar", "spareparts", "wpn_svt40"},
+{"wpn_mosin_short", 	1, "swiss_3", "jar", "spareparts", "wpn_mosin"},
+
+{"ied_rpg", 		1, "ammo_og-7b", "grenade_light", "synthrope", "-"},
+{"ied_rpg", 		1, "ammo_og-7b", "grenade_smoke", "synthrope", "-"},
+{"ied_rpg", 		1, "ammo_og-7b", "grenade_rgd5", "synthrope", "-"},
+{"ied_rpg", 		1, "ammo_og-7b", "grenade_f1", "synthrope", "-"},
+{"ied_rpg", 		1, "ammo_og-7b", "grenade_gd-05", "synthrope", "-"},
+
+{"wpn_tt33", 			1, "swiss", "wpn_tt33", "wpn_tt33", "wpn_tt33"},
+{"wpn_pm", 				1, "swiss", "wpn_pm", "wpn_pm", "wpn_pm"},
+{"wpn_pb", 				1, "swiss", "wpn_pb", "wpn_pb", "wpn_pb"},
+{"wpn_fort", 			1, "swiss", "wpn_fort", "wpn_fort", "wpn_fort"},
+{"wpn_beretta", 		1, "swiss", "wpn_beretta", "wpn_beretta", "wpn_beretta"},
+{"wpn_hpsa", 			1, "swiss", "wpn_hpsa", "wpn_hpsa", "wpn_hpsa"},
+{"wpn_colt1911", 		1, "swiss", "wpn_colt1911", "wpn_colt1911", "wpn_colt1911"},
+
+{"wpn_ak74", 			1, "wpn_ak74u", "swiss", "spareparts", "wpn_ak74"},
+{"wpn_toz34", 			1, "wpn_toz34_obrez", "swiss", "spareparts", "wpn_toz34"},
+{"wpn_bm16_full", 		1, "wpn_bm16", "swiss", "spareparts", "wpn_bm16_full"},
+{"wpn_mp133", 			1, "wpn_mp133_short", "swiss", "spareparts", "wpn_mp133"},
+{"wpn_mp153", 			1, "wpn_mp153_short", "swiss", "spareparts", "wpn_mp153"},
+{"wpn_sks", 			1, "wpn_sks_short", "swiss", "spareparts", "wpn_sks"},
+{"wpn_svt40", 			1, "wpn_svt40_short", "swiss", "spareparts", "wpn_svt40"},
+{"wpn_mosin", 			1, "wpn_mosin_short", "swiss", "spareparts", "wpn_mosin"},
+
+{"sewing_kit_b_4",     	1, "glue_b_2", "synthrope", "swiss", "textile_patch_m"},
+{"armor_repair_fa_2",   1, "glue_a", "textile_patch_m", "textile_patch_b", "textile_patch_b"},
+{"sewing_kit_a_2",      1, "glue_a_2", "textile_patch_e", "swiss", "synthrope"},
+{"sewing_kit_h",        1, "sewing_kit_b_4", "textile_patch_e", "textile_patch_e", "synthrope"},
+{"helmet_repair_kit", 	1, "helmet_repair_kit_0", "armor_repair_fa_2", "glue_e", "textile_patch_e"},
+{"armor_repair_pro", 	1, "armor_repair_pro_0", "sewing_kit_h", "textile_patch_e", "textile_patch_b"},
+{"toolkit_p", 	        1, "toolkit_p_0", "cleaning_kit_p_3", "spareparts", "grease"},
+{"toolkit_s", 	        1, "toolkit_s_0", "cleaning_kit_s_3", "spareparts", "grease"},
+{"toolkit_r", 	        1, "toolkit_r_0", "cleaning_kit_r_3", "spareparts", "grease"},
+{"repairkit_p", 	    1, "repairkit_p_0", "cleaning_kit_p_3", "spareparts", "steel_wool"},
+{"repairkit_s", 	    1, "repairkit_s_0", "cleaning_kit_s_3", "spareparts", "steel_wool"},
+{"repairkit_r", 	    1, "repairkit_r_0", "cleaning_kit_r_3", "spareparts", "steel_wool"},
+   
+}
+
+local Recepies1_l = {
+
+{"ammo_9x18_fmj",		5, "ammo_bad", "ammo_bad", "-", "-"},
+{"ammo_9x19_fmj",		5, "ammo_bad", "ammo_bad", "-", "-"},
+{"ammo_11.43x23_fmj",	5, "ammo_bad", "ammo_bad", "-", "-"},
+{"ammo_7.62x25_p",		5, "ammo_bad", "ammo_bad", "-", "-"},
+{"ammo_357_hp_mag",		5, "ammo_bad", "ammo_bad", "-", "-"},
+{"ammo_5.45x39_fmj",	5, "ammo_bad", "ammo_bad", "ammo_bad", "-"},
+{"ammo_5.56x45_ss190",	5, "ammo_bad", "ammo_bad", "ammo_bad", "-"},
+{"ammo_9x39_pab9",		5, "ammo_bad", "ammo_bad", "ammo_bad", "-"},
+{"ammo_7.62x39_fmj",	5, "ammo_bad", "ammo_bad", "ammo_bad", "-"},
+{"ammo_7.62x51_fmj",	5, "ammo_bad", "ammo_bad", "ammo_bad", "-"},
+{"ammo_7.62x54_ap",		5, "ammo_bad", "ammo_bad", "ammo_bad", "ammo_bad"},
+{"ammo_7.62x54_7h1",	5, "ammo_bad", "ammo_bad", "ammo_bad", "ammo_bad"},
+{"ammo_7.92x33_fmj",	5, "ammo_bad", "ammo_bad", "ammo_bad", "ammo_bad"},
+{"ammo_7.92x33_ap",		5, "ammo_bad", "ammo_bad", "ammo_bad", "ammo_bad"},
+
+}
+
+local Recepies2 = {
+
+{"geiger", 				1, "radio", "capacitors", "colophony", "copper_coil"},
+{"device_flashlight", 	1, "mirror", "flashlight_broken", "copper_coil", "batteries_ccell"},
+{"device_torch_dummy", 	1, "headlamp", "flashlight_broken", "welding_goggles", "batteries"},
+{"detector_craft",		1, "walkie", "capacitors", "transistors", "textolite"},
+{"itm_qr", 			    1, "swiss", "rope", "jar", "walkie"},
+{"wpn_knife4", 			1, "wpn_hand_pickaxe", "sharpening_stones_4", "swiss_4", "wpn_hand_hammer"},
+{"kit_hunt", 			1, "backpack_light", "grooming", "wpn_knife3", "sharpening_stones_4"},
+{"wpn_knife3", 		    1, "explo_balon_gas_0", "sharpening_stones_3", "swiss_3", "wpn_hand_axe"},
+{"wpn_knife12", 		1, "explo_balon_gas_0", "sharpening_stones_4", "swiss_8", "wpn_hand_axe"},
+
+{"mine_wire", 	1, "grenade_rgd5", "synthrope", "jar", "-"},
+{"mine_wire", 	1, "grenade_f1", "synthrope", "jar", "-"},
+{"mine_wire", 	1, "grenade_gd-05", "synthrope", "jar", "-"},
+{"mine_wire", 	1, "grenade_light", "synthrope", "explo_metalcan_powder", "jar"},
+{"mine_wire", 	1, "grenade_smoke", "synthrope", "explo_metalcan_powder", "jar"},
+{"mine_wire", 	1, "ammo_og-7b", "grenade_light", "synthrope", "jar"},
+{"mine_wire", 	1, "ammo_og-7b", "grenade_smoke", "synthrope", "jar"},
+{"ied_rpg", 	1, "ammo_og-7b", "grenade_light", "synthrope", "-"},
+{"ied_rpg", 	1, "ammo_og-7b", "grenade_smoke", "synthrope", "-"},
+{"ied_rpg", 	1, "ammo_og-7b", "grenade_rgd5", "synthrope", "-"},
+{"ied_rpg", 	1, "ammo_og-7b", "grenade_f1", "synthrope", "-"},
+{"ied_rpg", 	1, "ammo_og-7b", "grenade_gd-05", "synthrope", "-"},
+{"ied", 	1, "explo_metalcan_powder", "explo_metalcan_powder", "grenade_light", "jar"},
+{"ied", 	1, "explo_metalcan_powder", "explo_metalcan_powder", "grenade_smoke", "jar"},
+{"ied", 	1, "grenade_rgd5", "explo_metalcan_powder", "explo_metalcan_powder", "jar"},
+{"ied", 	1, "grenade_f1", "explo_metalcan_powder", "explo_metalcan_powder", "jar"},
+{"ied", 	1, "grenade_gd-05", "explo_metalcan_powder", "explo_metalcan_powder", "jar"},
+
+{"ammo_12x70_buck",			10, "ammo_bad", "ammo_bad", "jar", "explo_metalcan_powder"},
+{"ammo_12x76_zhekan",		10, "ammo_bad", "ammo_bad", "jar", "explo_metalcan_powder"},
+{"ammo_9x18_fmj",		5, "ammo_bad", "ammo_bad", "-", "-"},
+{"ammo_9x19_fmj",		5, "ammo_bad", "ammo_bad", "-", "-"},
+{"ammo_11.43x23_fmj",	5, "ammo_bad", "ammo_bad", "-", "-"},
+{"ammo_7.62x25_p",		5, "ammo_bad", "ammo_bad", "-", "-"},
+{"ammo_5.7x28_ss190",	5, "ammo_bad", "ammo_bad", "-", "-"},
+{"ammo_357_hp_mag",		5, "ammo_bad", "ammo_bad", "-", "-"},
+{"ammo_5.45x39_fmj",			5, "ammo_bad", "ammo_bad", "ammo_bad", "-"},
+{"ammo_5.56x45_ss190",			5, "ammo_bad", "ammo_bad", "ammo_bad", "-"},
+{"ammo_9x39_pab9",				5, "ammo_bad", "ammo_bad", "ammo_bad", "-"},
+{"ammo_7.62x39_fmj",			5, "ammo_bad", "ammo_bad", "ammo_bad", "-"},
+{"ammo_7.62x51_fmj",			5, "ammo_bad", "ammo_bad", "ammo_bad", "-"},
+{"ammo_7.62x54_ap",				5, "ammo_bad", "ammo_bad", "ammo_bad", "ammo_bad"},
+{"ammo_7.62x54_7h1",			5, "ammo_bad", "ammo_bad", "ammo_bad", "ammo_bad"},
+{"ammo_7.92x33_fmj",			5, "ammo_bad", "ammo_bad", "ammo_bad", "ammo_bad"},
+{"ammo_7.92x33_ap",				5, "ammo_bad", "ammo_bad", "ammo_bad", "ammo_bad"},
+{"ammo_30carbine_fmj",			5, "ammo_bad", "ammo_bad", "ammo_bad", "ammo_bad"},
+{"ammo_44mag",					5, "ammo_bad", "ammo_bad", "ammo_bad", "ammo_bad"},
+{"ammo_50ae",					5, "ammo_bad", "ammo_bad", "ammo_bad", "ammo_bad"},
+{"ammo_magnum_300",				5, "ammo_bad", "ammo_bad", "ammo_bad", "ammo_bad"},
+
+}
+
+local Recepies2_m = {
+
+{"wpn_tt33", 			1, "swiss", "wpn_tt33", "wpn_tt33", "wpn_tt33"},
+{"wpn_pm", 				1, "swiss", "wpn_pm", "wpn_pm", "wpn_pm"},
+{"wpn_pb", 				1, "swiss", "wpn_pb", "wpn_pb", "wpn_pb"},
+{"wpn_fort", 			1, "swiss", "wpn_fort", "wpn_fort", "wpn_fort"},
+{"wpn_beretta", 		1, "swiss", "wpn_beretta", "wpn_beretta", "wpn_beretta"},
+{"wpn_hpsa", 			1, "swiss", "wpn_hpsa", "wpn_hpsa", "wpn_hpsa"},
+{"wpn_cz75", 			1, "swiss", "wpn_cz75", "wpn_cz75", "wpn_cz75"},
+{"wpn_gsh18", 			1, "swiss", "wpn_gsh18", "wpn_gsh18", "wpn_gsh18"},
+{"wpn_glock", 			1, "swiss", "wpn_glock", "wpn_glock", "wpn_glock"},
+{"wpn_walther", 		1, "swiss", "wpn_walther", "wpn_walther", "wpn_walther"},
+{"wpn_mp443", 			1, "swiss", "wpn_mp443", "wpn_mp443", "wpn_mp443"},
+{"wpn_fnx45", 			1, "swiss", "wpn_fnx45", "wpn_fnx45", "wpn_fnx45"},
+{"wpn_colt1911", 		1, "swiss", "wpn_colt1911", "wpn_colt1911", "wpn_colt1911"},
+{"wpn_sig220", 			1, "swiss", "wpn_sig220", "wpn_sig220", "wpn_sig220"},
+{"wpn_usp", 			1, "swiss", "wpn_usp", "wpn_usp", "wpn_usp"},
+
+{"wpn_ak74", 			1, "wpn_ak74u", "swiss", "spareparts", "wpn_ak74"},
+{"wpn_toz34", 			1, "wpn_toz34_obrez", "swiss", "spareparts", "wpn_toz34"},
+{"wpn_bm16_full", 		1, "wpn_bm16", "swiss", "spareparts", "wpn_bm16_full"},
+{"wpn_mp133", 			1, "wpn_mp133_short", "swiss", "spareparts", "wpn_mp133"},
+{"wpn_mp153", 			1, "wpn_mp153_short", "swiss", "spareparts", "wpn_mp153"},
+{"wpn_sks", 			1, "wpn_sks_short", "swiss", "spareparts", "wpn_sks"},
+{"wpn_svt40", 			1, "wpn_svt40_short", "swiss", "spareparts", "wpn_svt40"},
+{"wpn_mosin", 			1, "wpn_mosin_short", "swiss", "spareparts", "wpn_mosin"},
+
+{"mine_wire", 		 1, "grenade_rgd5", "copper_coil", "jar", "-"},
+{"mine_wire", 		1, "grenade_f1", "copper_coil", "jar", "-"},
+{"mine_wire", 		1, "grenade_gd-05", "copper_coil", "jar", "-"},
+{"mine_wire", 		1, "grenade_light", "copper_coil", "explo_metalcan_powder", "jar"},
+{"mine_wire", 		1, "grenade_smoke", "copper_coil", "explo_metalcan_powder", "jar"},
+{"mine_wire", 		1, "ammo_og-7b", "grenade_light", "copper_coil", "jar"},
+{"mine_wire", 		1, "ammo_og-7b", "grenade_smoke", "copper_coil", "jar"},
+{"ied_rpg", 	1, "ammo_og-7b", "grenade_light", "copper_coil", "-"},
+{"ied_rpg", 	1, "ammo_og-7b", "grenade_smoke", "copper_coil", "-"},
+{"ied_rpg", 	1, "ammo_og-7b", "grenade_rgd5", "copper_coil", "-"},
+{"ied_rpg", 	1, "ammo_og-7b", "grenade_f1", "copper_coil", "-"},
+{"ied_rpg", 	1, "ammo_og-7b", "grenade_gd-05", "copper_coil", "-"},
+
+{"af_ironplate", 		1, "explo_jerrycan_fuel_0", "rope", "textile_patch_m",	"wpn_hand_axe"},
+{"af_plates", 			1, "explo_balon_gas_0", "rope", "textile_patch_e",	"wpn_hand_axe"},
+{"wpn_sil_9mm",		    	1, "af_ironplate", "spareparts", "af_frames", "wpn_hand_hammer"},
+{"wpn_sil_gemtech",		1, "af_ironplate", "spareparts", "af_frames", "wpn_hand_hammer"},
+{"wpn_sil_45",		    	1, "af_ironplate", "spareparts", "af_frames", "wpn_hand_hammer"},
+{"wpn_sil_tgp-a",		1, "af_plates", "spareparts", "af_frames", "wpn_hand_hammer"},
+{"wpn_sil_nato",		1, "af_plates", "spareparts", "af_frames", "wpn_hand_hammer"},
+{"wpn_sil_pbs1",		1, "af_plates", "spareparts", "af_frames", "wpn_hand_hammer"},
+{"wpn_sil_kzrzp",		1, "af_plates", "spareparts", "af_frames", "wpn_hand_hammer"},
+{"wpn_sil_9a91",		1, "af_plates", "spareparts", "af_frames", "wpn_hand_hammer"},
+
+{"ammo_9x18_fmj",		7, "ammo_bad", "ammo_bad", "jar", "swiss"},
+{"ammo_9x19_fmj",		7, "ammo_bad", "ammo_bad", "jar", "swiss"},
+{"ammo_11.43x23_fmj",	7, "ammo_bad", "ammo_bad", "jar", "swiss"},
+{"ammo_7.62x25_p",		7, "ammo_bad", "ammo_bad", "jar", "swiss"},
+{"ammo_5.7x28_ss190",	7, "ammo_bad", "ammo_bad", "jar", "swiss"},
+{"ammo_357_hp_mag",		7, "ammo_bad", "ammo_bad", "jar", "swiss"},
+{"ammo_44mag",					7, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_50ae",					7, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_5.45x39_fmj",			7, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_5.56x45_ss190",			7, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_9x39_pab9",				7, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_7.62x39_fmj",			7, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_7.62x51_fmj",			7, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_7.62x54_ap",				7, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_7.62x54_7h1",			7, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_7.92x33_fmj",			7, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_7.92x33_ap",				7, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_30carbine_fmj",			7, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_magnum_300",				7, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"}, 
+
+}
+
+local Recepies2_l = {
+
+}
+
+local Recepies3 = {
+
+{"af_aac", 				1, "af_iam", "af_iam", "geiger", "batteries_ccell"},
+{"af_iam", 				1, "lead_box", "copper_coil", "explo_jerrycan_fuel_0", "wpn_hand_hammer"},
+{"af_camelbak", 		1, "flask_3", "textile_patch_m", "rope", "caffeine"},
+{"af_cooler",		    1, "lead_box", "geiger", "batteries", "flask_3"},
+{"af_surge",		    1, "af_frames", "detector_craft", "capacitors", "capacitors"},
+{"af_freon",		    1, "af_iam", "detector_craft", "batteries_ccell", "flask_3"},
+{"detector_craft",		1, "walkie", "capacitors", "transistors", "textolite"},
+{"geiger", 				1, "radio", "capacitors", "colophony", "copper_coil"},
+{"device_flashlight", 	1, "flashlight_broken", "mirror", "copper_coil", "batteries_ccell"},
+{"device_torch_dummy", 	1, "headlamp", "welding_goggles", "flashlight_broken", "batteries"},
+{"af_kevlar", 			1, "synthrope", "textile_patch_e", "textile_patch_e", "glue_a"},
+
+{"sewing_kit_b_4",     	1, "glue_b_2", "synthrope", "swiss", "textile_patch_m"},
+{"armor_repair_fa_2",   1, "glue_a", "textile_patch_m", "textile_patch_b", "textile_patch_b"},
+{"sewing_kit_a_2",      1, "glue_a_2", "textile_patch_e", "swiss", "synthrope"},
+{"sewing_kit_h",        1, "sewing_kit_b_4", "textile_patch_e", "textile_patch_e", "synthrope"},
+{"helmet_repair_kit", 	1, "helmet_repair_kit_0", "armor_repair_fa_2", "glue_e", "textile_patch_e"},
+{"armor_repair_pro", 	1, "armor_repair_pro_0", "sewing_kit_h", "textile_patch_e", "textile_patch_b"},
+{"toolkit_p", 	        1, "toolkit_p_0", "cleaning_kit_p_3", "spareparts", "grease"},
+{"toolkit_s", 	        1, "toolkit_s_0", "cleaning_kit_s_3", "spareparts", "grease"},
+{"toolkit_r", 	        1, "toolkit_r_0", "cleaning_kit_r_3", "spareparts", "grease"},
+{"repairkit_p", 	    1, "repairkit_p_0", "cleaning_kit_p_3", "spareparts", "steel_wool"},
+{"repairkit_s", 	    1, "repairkit_s_0", "cleaning_kit_s_3", "spareparts", "steel_wool"},
+{"repairkit_r", 	    1, "repairkit_r_0", "cleaning_kit_r_3", "spareparts", "steel_wool"},
+
+}
+
+local Recepies3_m = {
+
+{"wpn_fn57", 			1, "swiss", "wpn_fn57", "wpn_fn57", "wpn_fn57"},
+{"wpn_tt33", 			1, "swiss", "wpn_tt33", "wpn_tt33", "wpn_tt33"},
+{"wpn_c96", 			1, "swiss", "wpn_c96", "wpn_c96", "wpn_c96"},
+{"wpn_m712", 			1, "swiss", "wpn_m712", "wpn_m712", "wpn_m712"},
+{"wpn_pm", 				1, "swiss", "wpn_pm", "wpn_pm", "wpn_pm"},
+{"wpn_pb", 				1, "swiss", "wpn_pb", "wpn_pb", "wpn_pb"},
+{"wpn_fort", 			1, "swiss", "wpn_fort", "wpn_fort", "wpn_fort"},
+{"wpn_beretta", 		1, "swiss", "wpn_beretta", "wpn_beretta", "wpn_beretta"},
+{"wpn_hpsa", 			1, "swiss", "wpn_hpsa", "wpn_hpsa", "wpn_hpsa"},
+{"wpn_cz75", 			1, "swiss", "wpn_cz75", "wpn_cz75", "wpn_cz75"},
+{"wpn_gsh18", 			1, "swiss", "wpn_gsh18", "wpn_gsh18", "wpn_gsh18"},
+{"wpn_glock", 			1, "swiss", "wpn_glock", "wpn_glock", "wpn_glock"},
+{"wpn_walther", 		1, "swiss", "wpn_walther", "wpn_walther", "wpn_walther"},
+{"wpn_mp443", 			1, "swiss", "wpn_mp443", "wpn_mp443", "wpn_mp443"},
+{"wpn_fnx45", 			1, "swiss", "wpn_fnx45", "wpn_fnx45", "wpn_fnx45"},
+{"wpn_fnp45", 			1, "swiss", "wpn_fnp45", "wpn_fnp45", "wpn_fnp45"},
+{"wpn_colt1911", 		1, "swiss", "wpn_colt1911", "wpn_colt1911", "wpn_colt1911"},
+{"wpn_sig220", 			1, "swiss", "wpn_sig220", "wpn_sig220", "wpn_sig220"},
+{"wpn_usp", 			1, "swiss", "wpn_usp", "wpn_usp", "wpn_usp"},
+{"wpn_mp412", 			1, "swiss", "wpn_mp412", "wpn_mp412", "wpn_mp412"},
+{"wpn_desert_eagle", 	1, "swiss", "wpn_desert_eagle", "wpn_desert_eagle", "wpn_desert_eagle"},
+{"wpn_aps", 			1, "swiss", "wpn_aps", "wpn_aps", "wpn_aps"},
+{"wpn_oc33", 			1, "swiss", "wpn_oc33", "wpn_oc33", "wpn_oc33"},
+{"wpn_vz61", 			1, "swiss", "wpn_vz61", "wpn_vz61", "wpn_vz61"},
+
+{"wpn_ak74", 			1, "wpn_ak74u", "swiss", "spareparts", "wpn_ak74"},
+{"wpn_toz34", 			1, "wpn_toz34_obrez", "swiss", "spareparts", "wpn_toz34"},
+{"wpn_bm16_full", 		1, "wpn_bm16", "swiss", "spareparts", "wpn_bm16_full"},
+{"wpn_mp133", 			1, "wpn_mp133_short", "swiss", "spareparts", "wpn_mp133"},
+{"wpn_mp153", 			1, "wpn_mp153_short", "swiss", "spareparts", "wpn_mp153"},
+{"wpn_sks", 			1, "wpn_sks_short", "swiss", "spareparts", "wpn_sks"},
+{"wpn_svt40", 			1, "wpn_svt40_short", "swiss", "spareparts", "wpn_svt40"},
+{"wpn_mosin", 			1, "wpn_mosin_short", "swiss", "spareparts", "wpn_mosin"},
+
+{"wpn_sil_9mm",		    1, "wpn_sil_gemtech", "swiss", "steel_wool", "spareparts"},
+{"wpn_sil_gemtech",		1, "wpn_sil_9mm", "swiss", "steel_wool", "spareparts"},
+{"wpn_sil_45",		    1, "wpn_sil_9a91", "swiss_2", "steel_wool", "spareparts"},
+{"wpn_sil_9a91",		1, "wpn_sil_45", "swiss_2", "steel_wool", "spareparts"},
+{"wpn_sil_tgp-a",		1, "wpn_sil_nato", "swiss_3", "steel_wool", "spareparts"},
+{"wpn_sil_nato",		1, "wpn_sil_tgp-a", "swiss_3", "steel_wool", "spareparts"},
+{"wpn_sil_pbs1",		1, "wpn_sil_kzrzp", "swiss_4", "steel_wool", "spareparts"},
+{"wpn_sil_kzrzp",		1, "wpn_sil_pbs1", "swiss_4", "steel_wool", "spareparts"},
+
+{"ammo_12x70_buck",			10, "ammo_bad", "ammo_bad", "jar", "explo_metalcan_powder"},
+{"ammo_12x76_zhekan",		10, "ammo_bad", "ammo_bad", "jar", "explo_metalcan_powder"},
+{"ammo_9x18_fmj",		10, "ammo_bad", "ammo_bad", "jar", "swiss"},
+{"ammo_9x19_fmj",		10, "ammo_bad", "ammo_bad", "jar", "swiss"},
+{"ammo_11.43x23_fmj",	10, "ammo_bad", "ammo_bad", "jar", "swiss"},
+{"ammo_7.62x25_p",		10, "ammo_bad", "ammo_bad", "jar", "swiss"},
+{"ammo_5.7x28_ss190",	10, "ammo_bad", "ammo_bad", "jar", "swiss"},
+{"ammo_357_hp_mag",		10, "ammo_bad", "ammo_bad", "jar", "swiss"},
+{"ammo_44mag",			10, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_50ae",			10, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_5.45x39_fmj",	10, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_5.56x45_ss190",	10, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_9x39_pab9",		10, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_7.62x39_fmj",	10, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_7.62x51_fmj",	10, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_7.62x54_ap",		10, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_7.62x54_7h1",	10, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_7.92x33_fmj",	10, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_7.92x33_ap",		10, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_30carbine_fmj",	10, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"},
+{"ammo_magnum_300",		10, "ammo_bad", "ammo_bad", "ammo_bad", "swiss"}, 
+{"ammo_gauss_cardan",	7, "af_electra_flash", "batteries_ccell", "capacitors", "textolite"},
+{"ammo_gauss",			10, "ammo_gauss_cardan", "capacitors", "transistors", "textolite"},
+
+}
+
+local Recepies3_l = {
+
+}
+
+local Recepies4 = {
+
+{"tea", 		        2, "mineral_water", "marijuana", "caffeine", "mint"},
+{"tea_2", 		        2, "mineral_water_2", "marijuana", "caffeine_2", "mint_2"},
+{"tea_3", 		        2, "mineral_water_3", "marijuana", "caffeine_3", "mint_3"},
+{"cocaine", 	        1, "morphine", "marijuana", "drug_antidot", "drug_psy_blockade_2"},
+{"cocaine", 	        2, "morphine", "marijuana", "drug_antidot_2", "drug_psy_blockade_4"},
+{"adrenalin", 	        1, "morphine", "cocaine", "cocaine", "glucose_s"},
+{"adrenalin", 	        2, "morphine", "drug_anabiotic", "cocaine", "glucose"},
+{"survival_kit", 		1, "medkit", "antirad", "bandage",	"antibio_sulfad"},
+{"survival_kit", 		1, "medkit", "antirad", "bandage",	"drug_charcoal_5"},
+{"medkit_army", 		1, "medkit", "morphine", "bandage", "-"},
+{"medkit_army", 		1, "medkit", "salicidic_acid", "bandage", "-"},
+{"medkit_scientic", 	1, "medkit", "antirad", "tetanus", "antibio_sulfad_3"},
+{"medkit_scientic", 	1, "medkit", "antirad", "tetanus", "drug_coagulant_5"},
+{"stimpack", 			1, "medkit", "morphine", "stimpack_good", "-"},
+{"stimpack", 			1, "medkit", "salicidic_acid", "stimpack_good", "-"},
+{"stimpack_army", 		1, "medkit_army", 	"drug_coagulant_5", "stimpack_good", "-"},
+{"stimpack_army", 		1, "medkit_army", 	"antibio_sulfad_3", "stimpack_good", "-"},
+{"stimpack_scientic", 	1, "medkit_scientic", "drug_coagulant_5", "drug_radioprotector_2", "stimpack_good"},
+{"stimpack_scientic", 	1, "medkit_scientic", "drug_coagulant_5", "drug_antidot_2", "stimpack_good"},
+{"bandage", 	        1, "bottle_metal", "textile_patch_b", "-", "-"},
+{"bandage", 	        2, "bottle_metal_2", "textile_patch_b", "textile_patch_b", "-"},
+{"bandage", 	        3, "bottle_metal_3", "textile_patch_b", "textile_patch_b", "textile_patch_b"},
+{"bandage", 	        1, "vodka", "textile_patch_b", "-", "-"},
+{"bandage", 	        2, "vodka_2", "textile_patch_b", "textile_patch_b", "-"},
+{"bandage", 	        3, "vodka_3", "textile_patch_b", "textile_patch_b", "textile_patch_b"},
+{"bandage", 	        1, "vodka_quality", "textile_patch_b", "-", "-"},
+{"bandage", 	        2, "vodka_quality_2", "textile_patch_b", "textile_patch_b", "-"},
+{"bandage", 	        3, "vodka_quality_3", "textile_patch_b", "textile_patch_b", "textile_patch_b"},
+{"joint", 		        3, "marijuana", "cigarettes_3", "-", "-"},
+{"joint", 		        3, "marijuana", "cigarettes_lucky_3", "-", "-"},
+{"joint", 		        3, "marijuana", "cigar1_3", "-", "-"},
+{"joint", 		        3, "marijuana", "cigar2_3", "-", "-"},
+{"joint", 		        3, "marijuana", "cigar3_3", "-", "-"},
+{"joint", 		        3, "marijuana", "cigarettes_russian_3", "-", "-"},
+{"joint", 		        4, "marijuana", "porn2", "-", "-"},
+{"joint", 		        5, "marijuana", "porn", "-", "-"},
+{"joint", 		        6, "marijuana", "book3", "-", "-"},
+{"cigar", 		        1, "hand_rolling_tobacco", "-", "-", "-"},
+{"cigar", 		        2, "hand_rolling_tobacco_2", "-", "-", "-"},
+{"cigar", 		        3, "hand_rolling_tobacco_3", "-", "-", "-"},
+{"cigar1", 		        2, "tobacco", "picture_woman", "-", "-"},
+{"cigar1_2", 		    4, "tobacco_2", "cards", "-", "-"},
+{"cigar1_3", 		    6, "tobacco_3", "book1", "-", "-"},
+{"cigar2", 		        2, "tobacco", "cards", "-", "-"},
+{"cigar2_2", 		    4, "tobacco_2", "book1", "-", "-"},
+{"cigar2_3", 		    6, "tobacco_3", "book2", "-", "-"},
+{"cigar3", 		        2, "tobacco", "book1", "-", "-"},
+{"cigar3_2", 		    4, "tobacco_2", "book2", "-", "-"},
+{"cigar3_3", 		    6, "tobacco_3", "old_book", "-", "-"},
+{"cigarettes_lucky", 		      2, "tobacco", "survivalguide", "-", "-"},
+{"cigarettes_lucky_2", 		      4, "tobacco_2", "porn2", "-", "-"},
+{"cigarettes_lucky_3", 		      6, "tobacco_3", "porn", "-", "-"},
+{"cigarettes", 		        	2, "tobacco", "survivalguide", "-", "-"},
+{"cigarettes_2", 		        4, "tobacco_2", "porn2", "-", "-"},
+{"cigarettes_3", 		        6, "tobacco_3", "porn", "-", "-"},
+{"cigarettes_russian", 		        2, "tobacco", "porn2", "-", "-"},
+{"cigarettes_russian_2", 		    4, "tobacco_2", "porn", "-", "-"},
+{"cigarettes_russian_3", 		    6, "tobacco_3", "book3", "-", "-"},
+{"stimpack_good", 		1, "vodka", "textile_patch_b", "stimpack_bad", "-"},
+{"stimpack_good", 		2, "vodka_2", "textile_patch_b", "stimpack_bad", "stimpack_bad"},
+{"stimpack_good", 		3, "vodka_3", "stimpack_bad", "stimpack_bad", "stimpack_bad"},
+{"stimpack_good", 		1, "bottle_metal", "textile_patch_b", "stimpack_bad", "-"},
+{"stimpack_good", 		2, "bottle_metal_2", "textile_patch_b", "stimpack_bad", "stimpack_bad"},
+{"stimpack_good", 		3, "bottle_metal_3", "stimpack_bad", "stimpack_bad", "stimpack_bad"},
+{"stimpack_good", 		1, "vodka_quality", "textile_patch_b", "stimpack_bad", "-"},
+{"stimpack_good", 		2, "vodka_quality_2", "textile_patch_b", "stimpack_bad", "stimpack_bad"},
+{"stimpack_good", 		3, "vodka_quality_3", "stimpack_bad", "stimpack_bad", "stimpack_bad"},
+
+}
+
+local Recepies4_m = {
+{"yadylin", 	1, "tetanus", "drug_coagulant_5", "cocaine", "antibio_sulfad_3"},
+
+}
+
+local Recepies4_l = {
+{"stimpack_good", 		1, "vodka", "textile_patch_b", "stimpack_bad", "-"},
+
+}
+
+local Recepies5 = {
+
+{"tea", 		        1, "mineral_water", "marijuana", "caffeine", "mint"},
+{"tea_2", 		        1, "mineral_water_2", "marijuana", "caffeine_2", "mint_2"},
+{"tea_3", 		        1, "mineral_water_3", "marijuana", "caffeine_3", "mint_3"},
+{"bandage", 	        1, "bottle_metal", "textile_patch_b", "-", "-"},
+{"bandage", 	        2, "bottle_metal_2", "textile_patch_b", "textile_patch_b", "-"},
+{"bandage", 	        3, "bottle_metal_3", "textile_patch_b", "textile_patch_b", "textile_patch_b"},
+{"bandage", 	        1, "vodka", "textile_patch_b", "-", "-"},
+{"bandage", 	        2, "vodka_2", "textile_patch_b", "textile_patch_b", "-"},
+{"bandage", 	        3, "vodka_3", "textile_patch_b", "textile_patch_b", "textile_patch_b"},
+{"bandage", 	        1, "vodka_quality", "textile_patch_b", "-", "-"},
+{"bandage", 	        2, "vodka_quality_2", "textile_patch_b", "textile_patch_b", "-"},
+{"bandage", 	        3, "vodka_quality_3", "textile_patch_b", "textile_patch_b", "textile_patch_b"},
+{"stimpack_good", 		1, "vodka", "textile_patch_b", "stimpack_bad", "-"},
+{"stimpack_good", 		2, "vodka_2", "textile_patch_b", "stimpack_bad", "stimpack_bad"},
+{"stimpack_good", 		3, "vodka_3", "stimpack_bad", "stimpack_bad", "stimpack_bad"},
+{"stimpack_good", 		1, "bottle_metal", "textile_patch_b", "stimpack_bad", "-"},
+{"stimpack_good", 		2, "bottle_metal_2", "textile_patch_b", "stimpack_bad", "stimpack_bad"},
+{"stimpack_good", 		3, "bottle_metal_3", "stimpack_bad", "stimpack_bad", "stimpack_bad"},
+{"stimpack_good", 		1, "vodka_quality", "textile_patch_b", "stimpack_bad", "-"},
+{"stimpack_good", 		2, "vodka_quality_2", "textile_patch_b", "stimpack_bad", "stimpack_bad"},
+{"stimpack_good", 		3, "vodka_quality_3", "stimpack_bad", "stimpack_bad", "stimpack_bad"},
+{"cigar", 		        1, "hand_rolling_tobacco", "-", "-", "-"},
+{"cigar", 		        2, "hand_rolling_tobacco_2", "-", "-", "-"},
+{"cigar", 		        3, "hand_rolling_tobacco_3", "-", "-", "-"},
+{"cigar1", 		        2, "tobacco", "picture_woman", "-", "-"},
+{"cigar1_2", 		        4, "tobacco_2", "cards", "-", "-"},
+{"cigar1_3", 		        6, "tobacco_3", "book1", "-", "-"},
+{"cigar2", 		        2, "tobacco", "cards", "-", "-"},
+{"cigar2_2", 		        4, "tobacco_2", "book1", "-", "-"},
+{"cigar2_3", 		        6, "tobacco_3", "book2", "-", "-"},
+{"cigar3", 		        2, "tobacco", "book1", "-", "-"},
+{"cigar3_2", 		        4, "tobacco_2", "book2", "-", "-"},
+{"cigar3_3", 		        6, "tobacco_3", "old_book", "-", "-"},
+{"cigarettes_lucky", 		        2, "tobacco", "survivalguide", "-", "-"},
+{"cigarettes_lucky_2", 		        4, "tobacco_2", "porn2", "-", "-"},
+{"cigarettes_lucky_3", 		        6, "tobacco_3", "porn", "-", "-"},
+{"cigarettes", 		        2, "tobacco", "survivalguide", "-", "-"},
+{"cigarettes_2", 		        4, "tobacco_2", "porn2", "-", "-"},
+{"cigarettes_3", 		        6, "tobacco_3", "porn", "-", "-"},
+{"cigarettes_russian", 		        2, "tobacco", "porn2", "-", "-"},
+{"cigarettes_russian_2", 		        4, "tobacco_2", "porn", "-", "-"},
+{"cigarettes_russian_3", 		        6, "tobacco_3", "book3", "-", "-"},
+{"joint", 		        3, "marijuana", "cigarettes_3", "-", "-"},
+{"joint", 		        3, "marijuana", "cigarettes_lucky_3", "-", "-"},
+{"joint", 		        3, "marijuana", "cigar1_3", "-", "-"},
+{"joint", 		        3, "marijuana", "cigar2_3", "-", "-"},
+{"joint", 		        3, "marijuana", "cigar3_3", "-", "-"},
+{"joint", 		        3, "marijuana", "cigarettes_russian_3", "-", "-"},
+{"joint", 		        4, "marijuana", "porn2", "-", "-"},
+{"joint", 		        5, "marijuana", "porn", "-", "-"},
+{"joint", 		        6, "marijuana", "book3", "-", "-"},
+}
+
+local Recepies5_m = {
+
+}
+
+local Recepies5_l = {
+{"stimpack_good", 		1, "vodka", "textile_patch_b", "stimpack_bad", "-"},
+
+}
+
+
+class "load_item" (CUIListBoxItem)
+function load_item:__init(height) super(height)
+	self.file_name		= "filename"
+	
+	self.can_craft = false
+
+	self:SetTextColor(GetARGB(255, 170, 170, 170))
+
+	self.fn = self:GetTextItem()
+	self.fn:SetFont(GetFontLetterica18Russian())
+	self.fn:SetEllipsis(true)
+end
+
+function load_item:__finalize()
+end
+
+class "craft_ui" (CUIScriptWnd)
+function craft_ui:__init(owner,section) super()
+	self.owner = owner
+	self.section = section
+	
+	Recepies = {}
+	local Recepies_add = {}
+	if 		(section == "itm_repairkit_tier_1") 	then Recepies_add = Recepies1
+	elseif 	(section == "itm_repairkit_tier_2") 	then Recepies_add = Recepies2
+	elseif 	(section == "itm_repairkit_tier_3") 	then Recepies_add = Recepies3
+	elseif 	(section == "itm_drugkit")				then Recepies_add = Recepies4
+	elseif 	(section == "grooming")				then Recepies_add = Recepies5 end	
+	for k,v in pairs(Recepies_add) do
+		table.insert(Recepies,v)
+	end
+	
+	if db.actor:has_info("perk_craft") then
+		Recepies_add = {}
+		if 		(section == "itm_repairkit_tier_1") 	then Recepies_add = Recepies1_m
+		elseif 	(section == "itm_repairkit_tier_2") 	then Recepies_add = Recepies2_m
+		elseif 	(section == "itm_repairkit_tier_3") 	then Recepies_add = Recepies3_m
+		elseif 	(section == "itm_drugkit")				then Recepies_add = Recepies4_m
+		elseif 	(section == "grooming")				then Recepies_add = Recepies5_m end		
+		for k,v in pairs(Recepies_add) do
+			table.insert(Recepies,v)
+		end
+	end
+	
+	
+	if IsLastStandMode() then
+		Recepies_add = {}
+		if 		(section == "itm_repairkit_tier_1") 	then Recepies_add = Recepies1_l
+		elseif 	(section == "itm_repairkit_tier_2") 	then Recepies_add = Recepies2_l
+		elseif 	(section == "itm_repairkit_tier_3") 	then Recepies_add = Recepies3_l
+		elseif 	(section == "itm_drugkit")				then Recepies_add = Recepies4_l
+		elseif 	(section == "grooming")				then Recepies_add = Recepies5_l end		
+		for k,v in pairs(Recepies_add) do
+			table.insert(Recepies,v)
+		end
+	end
+	
+	
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function craft_ui:__finalize()
+end
+
+function craft_ui:FillCraftList()
+	self.list_box_craft:RemoveAll()
+	for i = 1, #Recepies do
+		self:AddItemToList(Recepies[i][1],self.list_box_craft,Recepies[i][2])
+	end
+end
+
+function craft_ui:InitControls()
+	self:SetWndRect			(Frect():set(0,0,1024,768))
+	self:SetWndPos			(vector2():set(240,120))
+
+	self:SetAutoDelete(true)
+
+	self.xml				= CScriptXmlInit()
+	local ctrl
+	self.xml:ParseFile			("ui_itm_main.xml")
+
+	ctrl					= CUIWindow()
+	self.xml:InitWindow			("itm_craft:file_item:main",0,ctrl)
+
+	self.file_item_main_sz	= vector2():set(ctrl:GetWidth(),ctrl:GetHeight())
+
+	self.xml:InitWindow			("itm_craft:file_item:fn",0,ctrl)
+	self.file_item_fn_sz	= vector2():set(ctrl:GetWidth(),ctrl:GetHeight())
+
+	self.xml:InitWindow			("itm_craft:file_item:fd",0,ctrl)
+	self.file_item_fd_sz	= vector2():set(ctrl:GetWidth(),ctrl:GetHeight())
+	
+	self.form				= self.xml:InitStatic("itm_craft:form",self)
+
+	self.form:SetWndPos(vector2():set(0, 0))
+
+	
+	-- Tool picture
+	self.icon_tool = self.xml:InitStatic("itm_craft:form:icon_tool",self.form)
+
+	-- Tool Title
+	local used_name = game.translate_string(alun_utils.read_from_ini(nil,self.section,"inv_name","string","error"))
+	self.caption_tool = self.xml:InitTextWnd("itm_craft:form:caption_tool",self.form)
+	self.caption_tool:SetText(used_name)
+	
+	--Craft Window Title
+	self.xml:InitTextWnd("itm_craft:form:caption_craft_title",self.form)
+	self.xml:InitTextWnd("itm_craft:form:caption_material_title",self.form)
+	
+
+	local inv_grid_width = alun_utils.read_from_ini(ini,self.section,"inv_grid_width","float",0)
+	local inv_grid_height = alun_utils.read_from_ini(ini,self.section,"inv_grid_height","float",0)
+	local inv_grid_x = alun_utils.read_from_ini(ini,self.section,"inv_grid_x","float",0)
+	local inv_grid_y = alun_utils.read_from_ini(ini,self.section,"inv_grid_y","float",0)
+
+	local x1 = inv_grid_x*50
+	local y1 = inv_grid_y*50
+
+	local w = inv_grid_width*50
+	local h = inv_grid_height*50
+
+	local x2 = x1 + w
+	local y2 = y1 + h
+
+	self.icon_tool:InitTexture("ui\\ui_icon_equipment")
+	self.icon_tool:SetTextureRect(Frect():set(x1,y1,x2,y2))
+
+	self.list_box_craft		= self.xml:InitListBox("itm_craft:form:list_craft",self.form)
+	
+	self.list_box_craft:ShowSelectedItem(true)
+	self:Register(self.list_box_craft, "list_window_parts")
+	
+	
+	self.caption_part1 = self.xml:InitTextWnd("itm_craft:form:caption_part1",self.form)
+	self.caption_part2 = self.xml:InitTextWnd("itm_craft:form:caption_part2",self.form)
+	self.caption_part3 = self.xml:InitTextWnd("itm_craft:form:caption_part3",self.form)
+	self.caption_part4 = self.xml:InitTextWnd("itm_craft:form:caption_part4",self.form)
+	
+	self.icon_part1 = self.xml:InitStatic("itm_craft:form:icon_part1",self.form)
+	self.icon_part2 = self.xml:InitStatic("itm_craft:form:icon_part2",self.form)
+	self.icon_part3 = self.xml:InitStatic("itm_craft:form:icon_part3",self.form)
+	self.icon_part4 = self.xml:InitStatic("itm_craft:form:icon_part4",self.form)
+	
+	self.icon_part1:InitTexture("ui\\ui_icon_equipment")
+	self.icon_part2:InitTexture("ui\\ui_icon_equipment")
+	self.icon_part3:InitTexture("ui\\ui_icon_equipment")
+	self.icon_part4:InitTexture("ui\\ui_icon_equipment")
+	
+	self.icon_part1:SetTextureRect(Frect():set(0,0,0,0))
+	self.icon_part2:SetTextureRect(Frect():set(0,0,0,0))
+	self.icon_part3:SetTextureRect(Frect():set(0,0,0,0))
+	self.icon_part4:SetTextureRect(Frect():set(0,0,0,0))
+	
+	ctrl					= self.xml:Init3tButton("itm_craft:form:btn_ok",	self.form)
+	self:Register			(ctrl, "button_ok")
+
+	ctrl = self.xml:Init3tButton	("itm_craft:form:btn_cancel",	self.form)
+	self:Register			(ctrl, "button_back")
+end
+
+function craft_ui:InitCallBacks()
+	self:AddCallback("button_ok",		ui_events.BUTTON_CLICKED,         self.OnButton_ok,			self)
+	self:AddCallback("button_back",		ui_events.BUTTON_CLICKED,             self.OnButton_back_clicked,	self)
+
+	self:AddCallback("list_window", ui_events.LIST_ITEM_CLICKED, 			  self.OnListItemClicked,		self)
+	self:AddCallback("list_window", ui_events.WINDOW_LBUTTON_DB_CLICK,		  self.OnListItemDbClicked,		self)
+
+	self:AddCallback("list_window_parts", ui_events.LIST_ITEM_CLICKED, 		  self.OnPartsListItemClicked,		self)
+	self:AddCallback("list_window_parts", ui_events.WINDOW_LBUTTON_DB_CLICK,  self.OnPartsListItemDbClicked,	self)
+end
+
+function craft_ui:OnPartsListItemClicked()
+	
+	parts_id = {}
+	found = {false,false,false,false}
+	
+	if self.list_box_craft:GetSize()==0 then return end
+
+	local item = self.list_box_craft:GetSelectedItem()
+	if not (item) then return end
+	
+	
+	self.caption_part1:SetText("")
+	self.caption_part2:SetText("")
+	self.caption_part3:SetText("")
+	self.caption_part4:SetText("")
+	self.caption_part1:SetTextColor(GetARGB(200, 255, 0, 0))
+	self.caption_part2:SetTextColor(GetARGB(200, 255, 0, 0))
+	self.caption_part3:SetTextColor(GetARGB(200, 255, 0, 0))
+	self.caption_part4:SetTextColor(GetARGB(200, 255, 0, 0))
+	
+	self.icon_part1:SetTextureRect(Frect():set(0,0,0,0))
+	self.icon_part2:SetTextureRect(Frect():set(0,0,0,0))
+	self.icon_part3:SetTextureRect(Frect():set(0,0,0,0))
+	self.icon_part4:SetTextureRect(Frect():set(0,0,0,0))
+		
+	local index = self.list_box_craft:GetSelectedIndex()
+	if index == -1 then return end
+		
+	local Recepie = Recepies[index+1]
+	
+	if not (Recepie) then return end
+	
+	local tmp_x = 120
+	local tmp_y = 25
+	local size_k = 0.7
+	
+	if (Recepie[3]) then
+		local sec = Recepie[3]
+				
+		local function search(temp, item)
+			if (not found[1]) and (item:section() == sec) and (not parts_id[item:id()]) then
+				found[1] = true
+				parts_id[item:id()] = true
+				self.caption_part1:SetTextColor(GetARGB(200, 0, 255, 0))
+			end
+		end
+		db.actor:iterate_inventory(search,nil)
+		
+		if (sec == "-") then found[1] = true	end
+		
+		local name = alun_utils.read_from_ini(ini,sec,"inv_name","string","")
+		self.caption_part1:SetText(game.translate_string(name))
+		local inv_grid_width = alun_utils.read_from_ini(ini,sec,"inv_grid_width","float",0)
+		local inv_grid_height = alun_utils.read_from_ini(ini,sec,"inv_grid_height","float",0)
+		local inv_grid_x = alun_utils.read_from_ini(ini,sec,"inv_grid_x","float",0)
+		local inv_grid_y = alun_utils.read_from_ini(ini,sec,"inv_grid_y","float",0)
+		local x1 = inv_grid_x*50
+		local y1 = inv_grid_y*50
+		local width = inv_grid_width*50
+		local height = inv_grid_height*50
+		local x2 = x1 + width
+		local y2 = y1 + height
+		local pos = self.icon_part1:GetWndPos()
+		self.icon_part1:SetTextureRect(Frect():set(x1,y1,x2,y2))
+		self.icon_part1:SetWndPos(vector2():set(tmp_x-width/3,90+tmp_y-height/2))
+		self.icon_part1:SetWndSize(vector2():set(width*size_k,height*size_k))
+	end
+	
+	if (Recepie[4]) then
+		local sec = Recepie[4]
+
+		local function search(temp, item)
+			if (not found[2]) and (item:section() == sec) and (not parts_id[item:id()]) then
+				found[2] = true
+				parts_id[item:id()] = true
+				self.caption_part2:SetTextColor(GetARGB(200, 0, 255, 0))
+			end
+		end
+		db.actor:iterate_inventory(search,nil)
+			
+		if (sec == "-") then found[2] = true	end
+		
+		local name = alun_utils.read_from_ini(ini,sec,"inv_name","string","")
+		self.caption_part2:SetText(game.translate_string(name))
+		local inv_grid_width = alun_utils.read_from_ini(ini,sec,"inv_grid_width","float",0)
+		local inv_grid_height = alun_utils.read_from_ini(ini,sec,"inv_grid_height","float",0)
+		local inv_grid_x = alun_utils.read_from_ini(ini,sec,"inv_grid_x","float",0)
+		local inv_grid_y = alun_utils.read_from_ini(ini,sec,"inv_grid_y","float",0)
+		local x1 = inv_grid_x*50
+		local y1 = inv_grid_y*50
+		local width = inv_grid_width*50
+		local height = inv_grid_height*50
+		local x2 = x1 + width
+		local y2 = y1 + height
+		self.icon_part2:SetTextureRect(Frect():set(x1,y1,x2,y2))
+		local pos = self.icon_part2:GetWndPos()
+		self.icon_part2:SetWndPos(vector2():set(tmp_x-width/3,175+tmp_y-height/2))
+		self.icon_part2:SetWndSize(vector2():set(width*size_k,height*size_k))
+	end
+	
+	if (Recepie[5]) then
+		local sec = Recepie[5]
+
+		local function search(temp, item)
+			if (not found[3]) and (item:section() == sec) and (not parts_id[item:id()]) then
+				found[3] = true
+				parts_id[item:id()] = true
+				self.caption_part3:SetTextColor(GetARGB(200, 0, 255, 0))
+			end
+		end
+		db.actor:iterate_inventory(search,nil)
+		
+		if (sec == "-") then found[3] = true	end
+		
+		local name = alun_utils.read_from_ini(ini,sec,"inv_name","string","")
+		self.caption_part3:SetText(game.translate_string(name))
+		local inv_grid_width = alun_utils.read_from_ini(ini,sec,"inv_grid_width","float",0)
+		local inv_grid_height = alun_utils.read_from_ini(ini,sec,"inv_grid_height","float",0)
+		local inv_grid_x = alun_utils.read_from_ini(ini,sec,"inv_grid_x","float",0)
+		local inv_grid_y = alun_utils.read_from_ini(ini,sec,"inv_grid_y","float",0)
+		local x1 = inv_grid_x*50
+		local y1 = inv_grid_y*50
+		local width = inv_grid_width*50
+		local height = inv_grid_height*50
+		local x2 = x1 + width
+		local y2 = y1 + height
+		self.icon_part3:SetTextureRect(Frect():set(x1,y1,x2,y2))
+		local pos = self.icon_part3:GetWndPos()
+		self.icon_part3:SetWndPos(vector2():set(tmp_x-width/3,260+tmp_y-height/2))
+		self.icon_part3:SetWndSize(vector2():set(width*size_k,height*size_k))
+	end	
+	
+	if (Recepie[6]) then
+		local sec = Recepie[6]
+
+		local function search(temp, item)
+			if (not found[4]) and (item:section() == sec) and (not parts_id[item:id()]) then
+				found[4] = true
+				parts_id[item:id()] = true
+				self.caption_part4:SetTextColor(GetARGB(200, 0, 255, 0))
+			end
+		end
+		db.actor:iterate_inventory(search,nil)
+		
+		if (sec == "-") then found[4] = true	end
+		
+		local name = alun_utils.read_from_ini(ini,sec,"inv_name","string","")
+		self.caption_part4:SetText(game.translate_string(name))
+		local inv_grid_width = alun_utils.read_from_ini(ini,sec,"inv_grid_width","float",0)
+		local inv_grid_height = alun_utils.read_from_ini(ini,sec,"inv_grid_height","float",0)
+		local inv_grid_x = alun_utils.read_from_ini(ini,sec,"inv_grid_x","float",0)
+		local inv_grid_y = alun_utils.read_from_ini(ini,sec,"inv_grid_y","float",0)
+		local x1 = inv_grid_x*50
+		local y1 = inv_grid_y*50
+		local width = inv_grid_width*50
+		local height = inv_grid_height*50
+		local x2 = x1 + width
+		local y2 = y1 + height
+		self.icon_part4:SetTextureRect(Frect():set(x1,y1,x2,y2))
+		local pos = self.icon_part4:GetWndPos()
+		self.icon_part4:SetWndPos(vector2():set(tmp_x-width/3,345+tmp_y-height/2))
+		self.icon_part4:SetWndSize(vector2():set(width*size_k,height*size_k))
+	end
+	
+	self.can_craft = found[1] and found[2] and found[3] and found[4]
+end
+
+function craft_ui:OnPartsListItemDbClicked()
+	self:OnButton_ok()
+end
+
+function craft_ui:OnButton_back_clicked()
+	--alife():create(self.section,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id())
+	self:HideDialog()
+end
+
+function craft_ui:OnKeyboard(dik, keyboard_action)
+	local bind = dik_to_bind(dik)
+	CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+	if (keyboard_action == ui_events.WINDOW_KEY_PRESSED) then
+		if (dik == DIK_keys.DIK_RETURN) then
+			self:OnButton_ok()
+		elseif (dik == DIK_keys.DIK_ESCAPE) then
+			self:OnButton_back_clicked()
+		elseif (bind == key_bindings.kUSE) then
+			self:OnButton_back_clicked()
+		end
+	end
+	return true
+end
+
+function craft_ui:OnButton_ok()
+	if not self.can_craft then return end
+	local index = self.list_box_craft:GetSelectedIndex()
+	if index == -1 then return end
+	
+	local result = Recepies[index+1][1]
+	local num	 = Recepies[index+1][2]
+	
+	if (string.find(result,"ammo_")) then
+		create_ammo(result,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),0,num)
+	else
+		for i = 1, num do
+			alife():create(result,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id())
+		end
+	end
+	
+	for k,v in pairs(parts_id) do
+		alife():release(alife_object(k),true)
+	end
+	
+	if (actor_effects) then
+		actor_effects.use_item("toolkit_u_dummy")
+	end
+	
+	self:HideDialog()
+end
+
+function craft_ui:AddItemToList(sec,listbox,num)
+	local _itm			= load_item(self.file_item_main_sz.y)
+	local inv_name 		= game.translate_string(alun_utils.read_from_ini(nil,sec,"inv_name","string","error")) or "none"
+	_itm:SetWndSize		(self.file_item_main_sz)
+	_itm.fn:SetWndPos(vector2():set(0,0))
+	_itm.fn:SetWndSize	(self.file_item_fn_sz)
+	_itm.fn:SetText		(inv_name)
+	_itm.section		= sec
+	
+	--if (num > 1) then
+		_itm.fage     = _itm:AddTextField("x"..num)
+		_itm.fage:SetFont	(GetFontLetterica16Russian())
+		_itm.fage:SetWndPos	(vector2():set(self.file_item_fn_sz.x+4, 0))
+		_itm.fage:SetWndSize(self.file_item_fd_sz)
+	--end
+	
+	listbox:AddExistingItem(_itm)
+end

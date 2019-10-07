@@ -1,0 +1,24 @@
+[smart_terrain]
+respawn_radius = 300;mar_smart_terrain_10_7 ;;между мех.двором и сгоревшим хутором
+squad_id = 3
+max_population = 1
+respawn_params = respawn@mar_smart_terrain_10_7
+respawn_idle = 86400
+
+[respawn@mar_smart_terrain_10_7]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_boar, simulation_flesh, simulation_dog, simulation_dog, simulation_tushkano
+spawn_num = {=!smart_controlled(mar_smart_terrain_10_7)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_pseudodog
+spawn_num = {=!smart_controlled(mar_smart_terrain_10_7) =actor_week_in_zone(5)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_cat_3_5
+spawn_num = {=!smart_controlled(mar_smart_terrain_10_7) =actor_week_in_zone(7)} 1, 0

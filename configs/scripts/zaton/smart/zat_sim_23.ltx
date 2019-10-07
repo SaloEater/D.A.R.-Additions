@@ -1,0 +1,20 @@
+[smart_terrain]
+respawn_radius = 300;zat_sim_23
+squad_id = 12
+max_population = 1
+respawn_params = respawn@zat_sim_23
+respawn_idle = 259200
+
+
+[respawn@zat_sim_23]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = zat_sim_23_bloodsucker
+spawn_num = {=!smart_controlled(zat_sim_23) =!squad_exist(zat_sim_23_bloodsucker)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_bloodsucker_green
+spawn_num = {=!smart_controlled(zat_sim_23) =squad_exist(zat_sim_23_bloodsucker) =actor_week_in_zone(9)} 5, {=!smart_controlled(zat_sim_23) =squad_exist(zat_sim_23_bloodsucker)} 2, 0

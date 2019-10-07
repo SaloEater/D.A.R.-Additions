@@ -1,0 +1,43 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 26
+max_population = 2
+respawn_params = respawn@jup_b47
+respawn_idle = 43200
+
+[respawn@jup_b47]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+spawn_monster4
+spawn_monster5
+
+[spawn_monster1]
+spawn_squads = simulation_snork, simulation_snork, simulation_snork, simulation_fracture, simulation_zombie
+spawn_num = {=squad_exist(jup_b219_contr_5sn)} 4, 0
+
+[spawn_monster2]
+spawn_squads = simulation_snork, simulation_snork, simulation_snork, simulation_fracture, simulation_zombie
+spawn_num = {=squad_exist(jup_b219_contr_3sn_3gzomb)} 4, 0
+
+[spawn_monster3]
+spawn_squads = simulation_snork, simulation_snork, simulation_snork, simulation_fracture, simulation_zombie
+spawn_num = {=squad_exist(jup_b219_contr_6gzomb)} 4, 0
+
+[spawn_monster4]
+spawn_squads = simulation_tushkano, simulation_tushkano_7_10, simulation_rats
+spawn_num = {=squad_exist(jup_b219_burer)} 4, 0
+
+[spawn_monster5]
+spawn_squads = simulation_bloodsucker_red
+spawn_num = {=squad_exist(jup_b219_bloodsucker)} 4, 0
+
+
+
+[exclusive]
+jup_a9_dog_01 = jupiter\jup_a9_dogs.ltx
+jup_a9_dog_02 = jupiter\jup_a9_dogs.ltx
+jup_a9_dog_03 = jupiter\jup_a9_dogs.ltx
+jup_a9_dog_04 = jupiter\jup_a9_dogs.ltx
+jup_a9_dog_05 = jupiter\jup_a9_dogs.ltx

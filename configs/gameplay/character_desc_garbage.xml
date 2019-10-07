@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding="windows-1251"?>
+<xml>
+	<specific_character id="gar_3_5_leader" team_default="1">
+   <name>nastavnic_band_1</name>
+    <icon>ui_inGame2_bandit_4abc</icon>
+    <map_icon x="1" y="0"></map_icon>
+    <bio>Опытный сталкер. Детальная информация отсутствует.</bio>
+    <class>gar_3_5_leader</class>
+    <community>bandit</community>
+    <terrain_sect>stalker_terrain</terrain_sect>
+    <snd_config>characters_voice\human_02\bandit\</snd_config>
+    <rank>7112</rank>
+    <reputation>-2253</reputation>
+    <money min="1000" max="1000" infinitive="0" />
+    <visual>actors\stalker_bandit\stalker_bandit4c</visual>
+    <supplies>
+        [spawn] \n
+        wpn_desert_eagle \n
+        ammo_50ae \n
+	bandage \n
+        medkit \n
+	</supplies>
+	<barter_mode>1</barter_mode>
+#include "gameplay\character_criticals_4.xml"
+    <actor_dialog>bandit_kmb_00_end</actor_dialog>
+    <actor_dialog>bandit_kmb_01_start</actor_dialog>
+    <actor_dialog>bandit_kmb_01_start_alt</actor_dialog>
+    <actor_dialog>bandit_kmb_01_end</actor_dialog>
+	<actor_dialog>bandit_kmb_02_start</actor_dialog>
+	<actor_dialog>bandit_kmb_02_end</actor_dialog>
+	<actor_dialog>bandit_kmb_01_fraer_mertv</actor_dialog>
+	<actor_dialog>bandit_kmb_pda_fraer</actor_dialog>
+	<actor_dialog>kmb_help_semera_decan_start</actor_dialog>
+	<actor_dialog>kmb_help_semera_decan_end</actor_dialog>
+	<actor_dialog>kmb_band_duty_premission</actor_dialog>
+    <actor_dialog>actor_break_dialog</actor_dialog>
+    </specific_character>
+	
+	
+	<specific_character id="gar_3_5_trader" team_default="1">
+    <name>GENERATE_NAME_bandit_trader</name>
+	<icon>ui_inGame2_bandit_a</icon>
+    <map_icon x="1" y="0"></map_icon>
+    <bio>Опытный сталкер. Детальная информация отсутствует.</bio>
+    <class>gar_3_5_trader</class>
+    <community>bandit</community>
+    <terrain_sect>stalker_terrain</terrain_sect>
+    <snd_config>characters_voice\human_01\bandit\</snd_config>
+    <rank>1515</rank>
+    <reputation>1153</reputation>
+    <barter_mode>1</barter_mode>	
+    <money min="1000" max="1000" infinitive="0" />
+        <visual>actors\stalker_bandit\stalker_bandit_exo</visual>
+    <supplies>
+        [spawn] \n
+        wpn_tt33 = 1 \n
+        ammo_7.62x25_ps = 1 \n
+		bandage = 1 \n		
+		greencard = 1 \n
+		yellowcard = 1 \n
+	</supplies>
+#include "gameplay\character_criticals_4.xml"
+    <actor_dialog>dm_add_repair</actor_dialog>
+    <actor_dialog>actor_break_dialog</actor_dialog>
+    </specific_character>
+	
+	
+	<specific_character id="gar_3_5_medic" team_default="1">
+    <name>nastavnic_band_4</name>
+	<icon>ui_inGame2_bandit_2a_merc</icon>
+    <map_icon x="1" y="0"></map_icon>
+    <bio>Опытный сталкер. Детальная информация отсутствует.</bio>
+    <class>gar_3_5_medic</class>
+    <community>trader</community>
+    <terrain_sect>stalker_terrain</terrain_sect>
+    <snd_config>characters_voice\human_03\bandit\</snd_config>
+    <rank>3112</rank>
+    <reputation>-153</reputation>
+    <money min="1000000" max="1000000" infinitive="1" />
+    <visual>actors\stalker_bandit\stalker_bandit_2a_merc</visual>
+    <supplies>
+        [spawn] \n
+        wpn_pm = 1 \n
+        ammo_9x18_fmj = 1 \n
+	</supplies>
+	<barter_mode>1</barter_mode>
+#include "gameplay\character_criticals_4.xml"
+
+	<actor_dialog>dm_ordered_task_dialog</actor_dialog>
+	<actor_dialog>dm_ordered_task_completed_dialog</actor_dialog>
+	<actor_dialog>dm_ordered_task_cancel_dialog</actor_dialog>	
+	<actor_dialog>jup_a6_stalker_medik_need_health_care</actor_dialog>
+	<actor_dialog>clear_bad_stimpack_medic</actor_dialog>	
+    <actor_dialog>actor_break_dialog</actor_dialog>
+    </specific_character>
+	
+	
+	<specific_character id="gar_bar_dolg_leader" team_default = "1">
+    <name>gar_prapor_name</name>
+    <icon>ui_npc_u_stalker_do_balon_4</icon>
+    <map_icon x="1" y="0"></map_icon>
+    <bio>ќпытный сталкер. ƒетальна¤ информаци¤ отсутствует.</bio>
+    <class>gar_bar_dolg_leader</class>
+    <community>dolg</community> <terrain_sect>stalker_terrain</terrain_sect>
+	<snd_config>characters_voice\human_01\dolg\</snd_config>
+    <rank>3092</rank>
+    <reputation>-1140</reputation>
+    <money min="2500" max="5000" infinitive="0"/>
+    <visual>actors\stalker_dolg\stalker_do_balon_4</visual>
+    <supplies>
+        [spawn] \n
+        wpn_abakan \n
+        ammo_5.45x39_ap \n	
+	</supplies>
+	<barter_mode>1</barter_mode>
+	<start_dialog>gar_bar_leader_gate_dialog</start_dialog>
+    <actor_dialog>actor_break_dialog</actor_dialog>
+#include "gameplay\character_criticals_4.xml"
+    </specific_character>
+
+</xml>

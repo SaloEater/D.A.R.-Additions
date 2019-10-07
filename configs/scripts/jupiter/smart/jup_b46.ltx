@@ -1,0 +1,25 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 25
+max_population = 1
+respawn_params = respawn@jup_b46
+respawn_idle = 8640
+ 
+
+[respawn@jup_b46]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_rats
+spawn_num = {=!smart_controlled(jup_b46)} 5, 0
+
+[spawn_monster2]
+spawn_squads = simulation_tushkano
+spawn_num = {=!smart_controlled(jup_b46)} 5, 0
+
+[spawn_monster3]
+spawn_squads = simulation_rats_7_10, simulation_tushkano_7_10
+spawn_num = {=!smart_controlled(jup_b46)} 1, 0

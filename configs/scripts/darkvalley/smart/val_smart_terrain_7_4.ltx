@@ -1,0 +1,75 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 8
+max_population = 2
+respawn_params = respawn@val_smart_terrain_7_4
+respawn_idle = 14000
+
+[respawn@val_smart_terrain_7_4]
+
+spawn_bandit
+spawn_monster1
+spawn_monster2
+
+[spawn_bandit]
+spawn_squads = val_smart_terrain_7_4_random_bandit
+spawn_num = {=smart_under_faction(val_smart_terrain_7_4:bandit)} 10, 0
+
+[spawn_monster1]
+spawn_squads = simulation_dog
+spawn_num = {=!smart_controlled(val_smart_terrain_7_4)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_tushkano
+spawn_num = {=!smart_controlled(val_smart_terrain_7_4)} 1, 0
+
+
+[exclusive]
+
+val_bandit_boss = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+val_bandit_guard_boss = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+
+val_bandit_drug = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+
+bandit_barman = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+bar_visitor_1   = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+bar_visitor_2  = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+bar_visitor_3  = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+
+robber_1  = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+robber_2  = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+robber_3  = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+
+val_smart_terrain_7_4_bandit_trader =  darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+faction_base_defense_enemy1 = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+faction_base_defense_enemy2 = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+faction_base_defense_enemy3 = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+faction_base_defense_enemy4 = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+faction_base_defense_enemy5 = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+faction_base_defense_enemy6 = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+
+watchtower = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+watchtower2 = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+guard_2 = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+walker_1 = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+walker_2 = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+walker_5 = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+walker_6 = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+walker_7 = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+patrol_1 = darkvalley\val_smart_terrain_7_4_smart_logic.ltx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

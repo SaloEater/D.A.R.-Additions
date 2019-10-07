@@ -1,0 +1,28 @@
+[smart_terrain]
+respawn_radius = 300;mar_smart_terrain_8_8 ;;Сгоревший хутор
+squad_id = 23
+max_population = 2
+respawn_params = respawn@mar_smart_terrain_8_8
+respawn_idle = 86400
+
+[respawn@mar_smart_terrain_8_8]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_flesh, simulation_dog, simulation_flesh
+spawn_num = {=!smart_controlled(mar_smart_terrain_8_8)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_cat, simulation_pseudodog, simulation_dog_mix, simulation_dog_5_7
+spawn_num = {=!smart_controlled(mar_smart_terrain_8_8) =actor_week_in_zone(4)} 2, 0
+
+[spawn_monster3]
+spawn_squads = simulation_bloodsucker_2weak, simulation_bloodsucker_green, simulation_snork_2_5, simulation_psy_dog_squad, simulation_psy_dog
+spawn_num = {=!smart_controlled(mar_smart_terrain_8_8) =actor_week_in_zone(7)} 2, 0
+
+
+[exclusive]
+mar_smart_terrain_8_8_collector_work = marsh\mar_smart_terrain_8_8_smart_logic.ltx

@@ -1,0 +1,1304 @@
+local stateReload = 7
+
+first_update_time = nil
+
+function on_game_start()
+	--RegisterScriptCallback("on_game_load",on_game_load)
+	--RegisterScriptCallback("actor_on_update",actor_on_update)
+	--RegisterScriptCallback("actor_on_first_update",actor_on_first_update)
+	--RegisterScriptCallback("actor_on_before_hit",actor_on_before_hit)
+	RegisterScriptCallback("on_key_press",on_key_press)
+	
+	RegisterScriptCallback("on_key_release",on_key_release)
+	
+	--RegisterScriptCallback("on_level_changing",on_level_changing)
+	--RegisterScriptCallback("actor_on_before_death",actor_on_before_death)
+	
+	RegisterScriptCallback("CUIActorMenu_OnItemDropped",drag_item)
+	
+	RegisterScriptCallback("CUIActorMenu_OnItemFocusReceive",on_item_focus)
+	
+	RegisterScriptCallback("actor_on_weapon_jammed", weapon_jammed)
+	
+	--RegisterScriptCallback("actor_item_to_ruck", on_item_focus)
+	
+	
+	RegisterScriptCallback("actor_on_hud_animation_end", animation_end)
+	
+	
+	AddUniqueCall(main_loop)
+	
+	
+end 
+
+local flag_weapon_jammed = false
+
+function weapon_jammed()
+	
+	flag_weapon_jammed = true
+	
+	--printf("weapon_jammed")
+
+end
+
+function serializeTable(val, name, skipnewlines, depth)
+    skipnewlines = skipnewlines or false
+    depth = depth or 0
+
+    local tmp = string.rep(" ", depth)
+
+    if name then tmp = tmp .. name .. " = " end
+
+    if type(val) == "table" then
+        tmp = tmp .. "{" .. (not skipnewlines and "\n" or "")
+
+        for k, v in pairs(val) do
+            tmp =  tmp .. serializeTable(v, k, skipnewlines, depth + 1) .. "," .. (not skipnewlines and "\n" or "")
+        end
+
+        tmp = tmp .. string.rep(" ", depth) .. "}"
+    elseif type(val) == "number" then
+        tmp = tmp .. tostring(val)
+    elseif type(val) == "string" then
+        tmp = tmp .. string.format("%q", val)
+    elseif type(val) == "boolean" then
+        tmp = tmp .. (val and "true" or "false")
+    else
+        tmp = tmp .. "\"[inserializeable datatype:" .. type(val) .. "]\""
+    end
+
+    return tmp
+end
+
+
+function isMagazine(item)
+
+	--printf("isMagazine")
+
+	local is_mag = system_ini():r_bool_ex(item:section(),"is_mag")
+
+	if(is_mag == true) then
+		
+		--printf("val %s", is_mag)
+
+		return true
+		
+	end
+	
+	return false
+
+end
+
+function IsAmmoForMagazine(weapon_mag, ammo_box)
+
+	local ammos = alun_utils.parse_list(system_ini(),weapon_mag:section(),"ammo_class",true)
+	if (ammos[ammo_box:section()]) then 
+		return true 
+	end
+	--[[
+	local sim = alife()
+	for i=2,3 do
+		local wpn = db.actor:item_in_slot(i)
+		if (wpn) then
+			local ammos = alun_utils.parse_list(system_ini(),wpn:section(),"ammo_class",true)
+			if (ammos[sec]) then 
+				return true 
+			end
+		end
+	end
+	]]
+	return false
+end
+
+
+function unload_mag_functor(weapon)
+
+
+	local is_mag = isMagazine(weapon)
+	local is_weapon = IsWeapon(weapon)
+	
+	if(is_mag) then
+		
+		local ammo = GetMagAmmo(weapon) --weapon:get_ammo_in_magazine()
+		
+		if(ammo > 0) then
+			return "eject_ammo"
+		end
+		
+	end
+	
+	
+	if(is_mag == false and is_weapon == true) then
+	
+		if(IsMagInPlace(weapon)) then
+			
+			return "eject_mag"
+	
+		end
+	end
+	
+	--[[
+	-- Return if the weapon is invalid.
+	if (not weapon) then
+		return
+	end
+	
+	-- Return if the weapon has no parent section.
+	local parent_section = system_ini():r_string_ex(weapon:section(),"parent_section")
+	if (not parent_section or weapon:section() == parent_section) then
+		return
+	end
+	
+	-- Return if the weapon is not in the actor's inventory.
+	local p = weapon:parent()
+	if not (p and p:id() == db.actor:id()) then 
+		return
+	end
+	
+	-- Return the context option to detach an addon.
+	return game.translate_string("st_detach_scope") .. "asd"
+	
+	]]
+	
+	--printf("0" .. weapon.custom)
+	
+	-------------------------------------------------
+	local id = weapon:id()
+	local wObj = alife_object(id)
+	
+	local data = stpk_utils.get_weapon_data(wObj)
+	
+	
+	--data.ammo_mag_size = 12
+	
+	--printf("wpn %s", data.inv_weight)
+	
+	--data.inv_weight = 1.0
+	
+	--data.ammo_current = 10
+	--data.custom = "asd"
+	--data.condition = 0.9
+	
+	--stpk_utils.set_weapon_data(data,wObj)
+	
+	--printf("1" .. weapon.custom)
+	if (data.custom_data ~= nil) then
+	--printf("get " .. data.custom_data)
+	
+	end
+	
+	--isMagazine(weapon)
+	
+	--return "unload mag"
+end
+
+-- Called when the context option is clicked.
+function unload_mag_action_functor(weapon)
+
+	local is_mag = isMagazine(weapon)
+	local is_weapon = IsWeapon(weapon)
+	
+	-- eject ammo from magazine
+	
+	if(is_mag) then
+		
+		local ammo = GetMagAmmo(weapon) --weapon:get_ammo_in_magazine()
+		
+		if(ammo > 0) then
+			MagEjectAmmo(weapon)
+
+		end
+		
+	end
+
+
+	-- eject magazine from weapon
+
+	if(is_mag == false and is_weapon == true) then
+	
+		if(IsMagInPlace(weapon)) then
+			
+			WeaponEjectMag(weapon)
+	
+			WeaponSetMagData(weapon, "")
+	
+		end
+	end
+
+	--[[
+	--detach_addon(weapon)
+	
+	--weapon:set_condition(0.5)
+	
+	--weapon.custom = "un"
+	----------------------------------------------
+	local id = weapon:id()
+	local wObj = alife_object(id)
+	
+	local data = stpk_utils.get_weapon_data(wObj)
+	
+	
+	--data.ammo_mag_size = 12
+	
+	--printf("wpn %s", data.inv_weight)
+	
+	--data.inv_weight = 1.0
+	
+	--data.ammo_current = 10
+	--data.custom_data = "asd"
+	--data.condition = 0.9
+	
+	--printf("set " .. data.custom_data)
+	
+	stpk_utils.set_weapon_data(data,wObj)
+	--printf("unloading mag")
+	]]
+	
+end
+
+function IsMagInPlace(weapon)
+	
+	local currentMag = WeaponGetMagData(weapon)
+	
+	local currentMagClass = currentMag[1]
+	
+	if(system_ini():section_exist(currentMagClass)) then
+		
+		return true
+		
+	end
+	
+	return false
+end
+
+
+function WeaponEjectMag(weapon)
+
+	local currentMag = WeaponGetMagData(weapon)
+	
+	local currentMagClass = currentMag[1]
+	
+	--printf("WeaponEjectMag: class" .. currentMagClass)
+	
+	local currentAmmoName = currentMag[2]
+
+	local weapon_ammo = weapon:get_ammo_in_magazine() --currentMag[3]
+
+	-- set ammo to 0
+	weapon:set_ammo_elapsed(0)
+	
+	-- create new mag in invetory
+	local new_ammo_mag = alife():create(currentMagClass,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(), db.actor:id())
+
+	local data = stpk_utils.get_weapon_data(new_ammo_mag)
+	
+	data.ammo_elapsed = weapon_ammo
+	data.ammo_current = weapon_ammo
+	data.ammo_type = weapon:get_ammo_type()
+	
+	--currentMagClass = "X"
+	
+	data.custom_data = currentMagClass .. ":" .. currentAmmoName .. ":" .. weapon_ammo 
+	
+	--printf("WeaponEjectMag: custom_data : " .. data.custom_data)
+	
+	stpk_utils.set_weapon_data(data,new_ammo_mag)
+	
+	--local new_se_obj = alife():create(currentMagClass, db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			
+	
+
+end
+
+function MagEjectAmmo(mag)
+	
+	local magData = WeaponGetMagData(mag)
+	
+	local magClass = magData[1]
+	local magAmmoClass = magData[2]
+	local magAmmoCount = magData[3]
+	
+	create_ammo(magAmmoClass,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),0, tonumber(magAmmoCount))
+					
+	WeaponSetMagData(mag, magClass .. ":" .. magAmmoClass .. ":" .. "0")
+	
+	xr_sound.set_sound_play(db.actor:id(),"inv_unload")
+	
+end
+
+function ValidateMag(mag)
+	
+	local id = mag:id()
+	local wObj = alife_object(id)
+	
+	local data = stpk_utils.get_weapon_data(wObj)
+
+	if(data.custom_data == "") then
+		
+		--printf("ValidateMag new item")
+		
+		WeaponSetMagData(mag, "X:X:0")
+	end
+end
+
+function UpdateMagazineUI(item)
+
+	--printf("UpdateMagazineUI:isMagazine" )
+
+	if(isMagazine(item)) then
+	
+		--printf("ValidateMag" )
+	
+		ValidateMag(item)
+	
+		--printf("UpdateMagazineUI" )
+	
+		local currentMag = WeaponGetMagData(item)
+		
+		--printf("UpdateMagazineUI2")
+
+		--printf("currentMag data" .. currentMag)
+		
+		local curretnAmmoName = currentMag[2]
+		local currentMagAmmo = currentMag[3]
+		
+		-- disable
+		--item:set_ammo_elapsed(currentMagAmmo)
+	
+	
+		--local ammo_box_size = item:ammo_get_count()
+		local current_ammo = currentMagAmmo --item:get_ammo_in_magazine()
+		local wpn_ammo_max = system_ini():r_u32(item:section(), "max_mag_size")
+	
+		--printf(current_ammo)
+		--printf(wpn_ammo_max)
+	
+		new_condition = current_ammo / wpn_ammo_max
+	
+		--printf(tostring(new_condition))
+	
+		item:set_condition(new_condition)
+		
+		-- adjust ammo type
+		if(item:get_ammo_name() ~= curretnAmmoName) then
+			local ammo_type = item:get_ammo_type()
+			ammo_type = math.abs(ammo_type-1)
+			item:set_ammo_type(ammo_type)
+		end
+	
+		--printf("ammo to mag " .. ammo_box_size .. " / " .. wpn_ammo_size)
+	
+	end
+	
+end
+
+function WeaponRemovableScopeAttached(weapon)
+-- Return if the weapon is invalid.
+	if (not weapon) then
+		return false
+	end
+	
+	-- Return if the weapon has no parent section.
+	local parent_section = system_ini():r_string_ex(weapon:section(),"parent_section")
+	if (not parent_section or weapon:section() == parent_section) then
+		return false
+	end
+	
+	-- Return if the weapon is not in the actor's inventory.
+	local p = weapon:parent()
+	if not (p and p:id() == db.actor:id()) then 
+		return false
+	end
+	
+	-- Return the context option to detach an addon.
+	return true
+end
+
+function GetLastSectionPart(section)
+
+	local parts = alun_utils.str_explode(section,"_")
+
+	local lastPart = parts[table.getn(parts)]
+	
+	return lastPart
+end
+
+function on_item_focus(item)
+	
+	if(isMagazine(item)) then 
+		-- Highlight all weapons for this magazine.
+		local weapons = alun_utils.parse_list(system_ini(), item:section(), "compatible_weapons")
+		local inventory = ActorMenu.get_actor_menu()
+		if not (weapons or (inventory and inventory:IsShown())) then return end
+		for i=1,#weapons do 
+			inventory:highlight_section_in_slot(weapons[i],EDDListType.iActorBag)
+		end
+	end
+	
+	
+	-- update weapon without magazine but with bullets
+	
+	if(not isMagazine(item) and IsWeapon(item) ) then
+	
+	
+		local weaponBase = item:section()
+	
+		--local weaponBaseParts = alun_utils.str_explode(item:section(),"_")
+	
+		--local scopeClass = weaponBaseParts[table.getn(weaponBaseParts)]
+	
+		local weapon_ammo = item:get_ammo_in_magazine()
+	
+		if(weapon_ammo == 0) then return end
+	
+		local lastPart = GetLastSectionPart(weaponBase)
+	
+		--printf("on_item_focus")
+	
+		local tempData = WeaponGetMagData(item)
+		
+		--printf("on_item_focus2")
+	
+		
+		local tempMagClass = tempData[1]
+		
+		-- get old mag data if available
+		if(IsMagInPlace(item) and system_ini():section_exist(tempMagClass)) then
+		
+		
+			local currentMagClass = tempData[1]
+			
+			local currentAmmoName = tempData[2]
+			
+			local currentMagAmmo = weapon_ammo
+			
+			WeaponSetMagData(item, currentMagClass .. ":" .. currentAmmoName .. ":" .. currentMagAmmo)
+		
+		else
+		
+			-- remove the scope part
+			if((WeaponRemovableScopeAttached(item) or lastPart == "short" or lastPart == "nimble") and not system_ini():section_exist("mag_" .. weaponBase)) then
+			
+				-- lets strip the scope postfix
+				--local nameparts = 
+				
+				
+				
+				--printf("WeaponRemovableScopeAttached: %s", nameparts[table.getn(nameparts)])
+				
+				local basetemp = alun_utils.str_explode(weaponBase,"_" .. lastPart)
+				
+				weaponBase = basetemp[1]
+				
+				--printf("WeaponRemovableScopeAttached: base class : " .. weaponBase)
+				
+			
+			end
+			
+			
+			lastPart = GetLastSectionPart(weaponBase)
+			-- remove nimble part if exists (those can occur like weapon_nimble_scope)
+			if(lastPart == "nimble" and not system_ini():section_exist("mag_" .. weaponBase)) then
+			
+				local basetemp = alun_utils.str_explode(weaponBase,"_" .. lastPart)
+				
+				weaponBase = basetemp[1]
+				
+
+			
+			end
+			
+			local currentMagClass = "mag_" .. weaponBase
+			
+			local currentAmmoName = item:get_ammo_name()
+			
+			local currentMagAmmo = weapon_ammo
+			
+			WeaponSetMagData(item, currentMagClass .. ":" .. currentAmmoName .. ":" .. currentMagAmmo)
+			
+		end
+		--local mag_ammo_count = GetMagAmmo(item) --item:get_ammo_in_magazine()
+		--local mag_class_name = "mag_" .. weaponBase --item:section() -- store this in custom_data of the weapon
+		--local mag_current_ammo_type = item:get_ammo_name()
+		
+		-- check if there is a magazine already
+		
+		-- local currentMag = WeaponGetMagData(weapon)
+		
+
+		
+	end
+		
+		
+	
+	
+	UpdateMagazineUI(item)
+	
+	--[[
+	if (RepairTools[section]) then 
+		local ini = system_ini()
+		local repair_type = ini:r_string_ex(section,"repair_type")
+		if not (repair_type) then 
+			return
+		end
+		
+		local function itr(obj)
+			if (repair_type == "weapon" and IsWeapon(obj)) then 
+				return true 
+			elseif (repair_type == "outfit") and (IsOutfit(obj) or IsHeadgear(obj)) then 
+				return true
+			elseif (repair_type == "all") then 
+				local cls = obj:clsid()
+				if (IsWeapon(nil,cls) or IsOutfit(nil,cls) or IsHeadgear(nil,cls)) then 
+					return true 
+				end
+			end
+			return false
+		end 
+		
+		ActorMenu.get_actor_menu():highlight_for_each_in_slot(itr)
+	end 
+	--]]
+end 
+
+function on_key_release(key)
+
+	--printf("flag_weapon_jammed: %s", flag_weapon_jammed)
+
+	local bind = dik_to_bind(key)
+	if (bind == key_bindings.kWPN_RELOAD) then
+		--printf("Reload override")
+
+		if(flag_weapon_jammed == false) then
+		
+			local loading_state = false
+
+			local weapon = db.actor:active_item()
+
+			db.actor:inventory_for_each(
+				function (item)
+					if isMagazine(item) and db.actor:is_on_belt(item) then
+					
+						
+						
+						if(IsWeapon(weapon)) then
+							
+							--belted_items[item:id()] = item:section()
+							
+							
+							
+							if(loading_state == false) then
+								
+								loading_state = WeaponAttemptToLoadMagazine(weapon, item)
+								
+								
+							end
+							
+						end
+					
+						
+					end
+				end
+			)
+			
+			
+			if(loading_state) then
+			
+				PlayReloadAnimation(weapon)
+				
+			end
+		
+		end
+		
+			
+		if(flag_weapon_jammed) then
+		
+			--printf("Unjamming weapon")
+		
+			flag_weapon_jammed = false
+		end
+
+		
+	end
+
+
+end
+
+function PlayReloadAnimation(weapon)
+
+	--printf("PlayReloadAnimation")
+
+	--[[
+	local sec2 = weapon:section()
+	
+	local reload_type = "rifle_reload"
+	if (system_ini():r_string_ex(sec2, "repair_type") == "pistol") then reload_type = "pistol_reload" end
+	local snd = sound_object(system_ini():r_string_ex(sec2, "snd_reload"))
+	snd:play(db.actor,0,sound_object.s2d)
+	actor_effects.use_item(reload_type)
+	]]
+
+	weapon:switch_state(stateReload)
+	
+	
+	--xr_effects.disable_ui_inventory(db.actor, nil)
+	--xr_effects.disable_ui_lite_with_imput(db.actor, nil)
+	
+	--level.disable_input()
+	
+	--local hud = get_hud()
+	--hud:HideActorMenu()
+	
+	
+	
+	--weapon:set_ammo_elapsed(3)
+end
+
+local is_loading = false
+
+local loading_mode = ""
+
+local timer = 0;
+
+function StopLoading()
+	
+	is_loading = false
+	loading_item1 = nil
+	loading_item2 = nil
+
+end
+
+
+local next_ammo_count = 0
+--local last_weapon_state = 0
+
+local post_animation_reload = false
+
+function animation_end(item,section,motion,state,slot)
+--function animation_end()
+	
+	--printf("hud_animation_end [%s] sec=%s motion=%s state=%s slot=%s",item and item:name(),section,motion,state,slot) 
+	if(item and state == 2 and post_animation_reload and slot ~= 7) then
+		
+		--printf("cancel animation")
+		
+		item:set_ammo_elapsed(next_ammo_count)
+		
+		post_animation_reload = false
+		
+			
+			
+			local tempData = WeaponGetMagData(item)
+			
+			local currentMagClass = tempData[1]
+			
+			local currentAmmoName = tempData[2]
+			
+			local currentMagAmmo = next_ammo_count
+			
+			WeaponSetMagData(item, currentMagClass .. ":" .. currentAmmoName .. ":" .. currentMagAmmo)
+		
+		
+		
+		WeaponEjectMag(item)
+		
+		WeaponSetMagData(item, "")
+		
+	end
+
+	
+	if(item and state == stateReload and post_animation_reload) then
+		item:set_ammo_elapsed(next_ammo_count)
+		
+		post_animation_reload = false
+	end
+
+	
+end
+
+
+function main_loop()
+	
+	--[[
+	if(db.actor) then
+		local wpn = db.actor:item_in_slot(db.actor:active_slot())
+		if (wpn) then
+			
+			local current_weapon_state = wpn:get_state()
+		
+			if(last_weapon_state == stateReload and last_weapon_state ~= current_weapon_state and IsWeaponInHands()) then 
+				
+				--wpn:set_ammo_elapsed(next_ammo_count)
+				
+				printf("final reload")
+				
+			end
+			
+			last_weapon_state = current_weapon_state
+			
+			--printf("switch state to (%s) ", tostring(state_test))
+			--wpn:switch_state(state_test) 
+			
+			--state_test = state_test + 1
+		end
+	end
+	]]
+	
+	--[[
+	local wpn = db.actor:item_in_slot(db.actor:active_slot())
+	if (wpn) then
+	
+		if(wpn:get_state() == stateReload) then 
+			
+			printf("7")
+			
+		end
+		
+		
+		--printf("switch state to (%s) ", tostring(state_test))
+		--wpn:switch_state(state_test) 
+		
+		--state_test = state_test + 1
+	end
+	]]
+	
+	local tg = time_global()
+	
+	
+	
+	if(is_loading) then
+	
+		--printf("main_loop " .. tostring(tg))
+		
+		if(timer < tg) then
+			
+			timer = tg + 400 
+			
+			xr_sound.set_sound_play(db.actor:id(),"inv_ammo")
+			
+			if(loading_mode == "ammo_to_mag") then
+			
+				MagazineAttemptLoadingWithBullets(loading_item1, loading_item2)
+			
+			end
+			
+			
+			
+			else
+			
+			timer = timer - 1
+			
+			
+		end
+		
+
+	end
+	
+	--[[
+    local tg = time_global()
+    if (_tmr and tg < _tmr) then
+        return false
+    end
+    _tmr = tg + 2000    -- if you change this value timed artefact multipliers will need changes
+ 
+    if not (db.actor) then
+        return false
+    end
+	
+	]]
+	
+	return
+end
+
+local state_test = 0
+
+function on_key_press(key)
+
+	StopLoading()
+
+	
+	if (key == 34) then --G
+	
+		
+		
+		-- switch state
+		printf("switch state")
+		local wpn = db.actor:item_in_slot(db.actor:active_slot())
+		if (wpn) then
+		
+			printf("switch state to (%s) ", tostring(state_test))
+			wpn:switch_state(state_test) 
+			
+			--wpn:set_ammo_elapsed(2)
+			
+			state_test = state_test + 1
+		end
+	
+		--[[
+		--ui_itm_drawn_map.drawn_map_ui("itm_map_redforest")
+		--db.actor.radiation = -1
+		printf("test G")
+		
+		
+		
+		--local belted_items = {}
+		
+		is_loading = not is_loading
+		
+		printf(is_loading)
+		]]
+		
+	end
+	
+
+
+
+end
+
+function WeaponSetMagData(weapon, magClass)
+
+	--printf("magClass " .. magClass)
+
+	local wObj = alife_object(weapon:id())
+	local data = stpk_utils.get_weapon_data(wObj)
+	data.custom_data = magClass
+	stpk_utils.set_weapon_data(data,wObj)
+		
+end
+
+function WeaponGetMagData(weapon)
+	
+	local wObj = alife_object(weapon:id())
+	local data = stpk_utils.get_weapon_data(wObj)
+	
+	--printf("WeaponGetMagData: (" .. data.custom_data .. ")")
+	
+	--return data.custom_data
+	
+	return alun_utils.str_explode(data.custom_data,":")
+end
+
+function GetMagAmmo(mag)
+	local wObj = alife_object(mag:id())
+	local data = stpk_utils.get_weapon_data(wObj)
+	
+	local magData = alun_utils.str_explode(data.custom_data,":")
+	
+	return tonumber(magData[3]) 
+
+end
+
+function SetMagAmmo(mag, magAmmoCount)
+	local wObj = alife_object(mag:id())
+	local data = stpk_utils.get_weapon_data(wObj)
+	
+	local magData = alun_utils.str_explode(data.custom_data,":")
+	
+	local magClass = magData[1]
+	local magAmmoClass = magData[2]
+	--local magAmmoCount = magData[2]
+	
+	data.custom_data = magClass .. ":" .. magAmmoClass .. ":" .. magAmmoCount
+	
+	stpk_utils.set_weapon_data(data,wObj)
+	
+end
+
+
+function cloneMe(weapon)
+
+	local old_weapon = alife_object(weapon:id())
+	if (old_weapon) then
+		local new_weapon = alife():clone_weapon(old_weapon, weapon:section(), old_weapon.position, old_weapon.m_level_vertex_id, old_weapon.m_game_vertex_id, old_weapon.parent_id, false)
+		if (new_weapon) then
+			-- Release the addon and old unmodified weapon.
+			--local addon_object = alife_object(item:id())
+			--alife():release(addon_object, true)
+			alife():release(old_weapon, true)
+			
+			-- Register the new modified weapon.
+			alife():register(new_weapon)
+			
+			--printf("cloned")
+		end
+	end
+end
+
+function IsAppropriateMagazine(weapon, magazine)
+	
+	local weaponBase = weapon:section()
+	
+	--[[
+	
+	-- section makes no sense
+	
+	-- check if its scoped
+	local scope_status = system_ini():r_u32(weapon:section(), "scope_status")
+	
+	if(scope_status == 1) then
+	
+		local nameparts = alun_utils.str_explode(weapon:section(),"_")
+		
+		local scopeClass = nameparts[table.getn(nameparts)]
+		
+		printf("IsAppropriateMagazine: %s", nameparts[table.getn(nameparts)])
+		
+		local basetemp = alun_utils.str_explode(weapon:section(),"_" .. scopeClass)
+		
+		weaponBase = basetemp[1]
+		
+		printf("IsAppropriateMagazine: base class : " .. weaponBase)
+		
+		
+		
+	end
+	
+	]]
+	
+	local compatible_weapons = alun_utils.parse_list(system_ini(),magazine:section(),"compatible_weapons")--system_ini():r_string(magazine:section(), "compatible_weapons")
+	
+	for _,v in pairs(compatible_weapons) do
+		if v == weaponBase then
+			-- do something
+			
+			--printf("IsAppropriateMagazine: COMPATIBLE mag found : ")
+			
+			return true
+			
+			--break
+		end
+	end
+	
+	--printf("IsAppropriateMagazine: INCOMPATIBLE mag ")
+	
+	return false
+
+end
+
+
+function WeaponAttemptToLoadMagazine(weapon, item)
+
+	--printf("WeaponAttemptToLoadMagazine state:" .. weapon:get_state())
+
+	if(isMagazine(item) and IsWeapon(weapon) and IsAppropriateMagazine(weapon, item)) then
+		
+		if(weapon:get_state() == stateReload) then return false end
+		
+	
+	
+		--printf("Ammo Class: " .. item:get_ammo_name())
+		
+		
+		local weapon_ammo = weapon:get_ammo_in_magazine()
+		
+		local mag_ammo_count = GetMagAmmo(item) --item:get_ammo_in_magazine()
+		local mag_class_name = item:section() -- store this in custom_data of the weapon
+		--local mag_current_ammo_type = item:get_ammo_name()
+		
+		-- check if there is a magazine already
+		
+		local currentWeaponData = WeaponGetMagData(weapon)
+		
+		local currentWeaponMagClass = currentWeaponData[1]
+		
+		local currentWeaponAmmoName = currentWeaponData[2]
+		
+		local currentMagData = WeaponGetMagData(item)
+		
+		local currentMagAmmoName = currentMagData[2]
+		
+		--local currentMagAmmo = currentWeaponData[3]
+		
+		
+		-- make sure we can load the ammo with current mag, required for caliber changes
+		local weapon_current_ammo = weapon:get_ammo_name()
+		local ammo_group_types = alun_utils.parse_list(system_ini(),"ag_" .. weapon_current_ammo,"ammo_class",true)
+		--printf(serializeTable(ammo_group_types))
+		--printf(tostring(ammo_group_types[item:get_ammo_name()]))
+		--printf("looking for : " .. tostring(item:get_ammo_name()))
+		--if(not ammo_group_types[currentMagAmmoName]) then return false end
+	
+		if(ammo_group_types[currentMagAmmoName] and ammo_group_types[weapon_current_ammo]) then
+			-- everything ok
+			
+			--printf("everything ok")
+			
+		else
+		
+			--printf("return false")
+		
+			return false
+			
+			
+		end
+		
+		
+		if (currentWeaponMagClass ~= "") then
+			-- we have a mag in place lets remove it
+			
+			WeaponEjectMag(weapon)
+		
+			--printf("ammmoooo" .. weapon_ammo)
+		
+			--new_ammo_magobj
+			--new_ammo_mag.ammo_elapsed = weapon_ammo
+		
+			--cloneMe(new_ammo_mag)
+		
+			
+		
+			
+		
+		
+			-- update ammo type
+			--current_ammo_type = weapon:get_ammo_type()
+			--new_ammo_mag:set_ammo_type(current_ammo_type)
+		end
+		
+		-- make sure we have a valid ammo name to compare to
+		if(currentWeaponAmmoName == nil) then 
+			currentWeaponAmmoName = weapon:get_ammo_name()
+		end
+		
+		if(currentWeaponAmmoName ~= currentMagAmmoName) then
+		
+			--printf("changing ammo type")
+			--printf("%s ~= %s", currentWeaponAmmoName, currentMagAmmoName)
+		
+			-- set new ammo type
+			--local ammo_type = item:get_ammo_type()
+			local ammo_type = weapon:get_ammo_type()
+			
+			ammo_type = math.abs(ammo_type-1)
+			weapon:set_ammo_type(ammo_type)
+			
+			
+			
+		end
+		
+		-- load ammo into weapon
+
+		if(IsWeaponInHands()) then
+			
+			post_animation_reload = true
+			
+			next_ammo_count = mag_ammo_count
+			
+		else
+			weapon:set_ammo_elapsed(mag_ammo_count)
+		
+		end
+		
+		-- remove mag
+		alife():release(alife_object(item:id()), true)
+		
+		-- save ammo mag class name in custom data for later ejection
+
+		--printf("new class: " .. mag_class_name)
+
+		WeaponSetMagData(weapon, mag_class_name .. ":" .. currentMagAmmoName .. ":" .. mag_ammo_count)
+		
+		
+		return true
+		
+	end
+	
+	return false
+end
+
+
+
+function IsWeaponInHands()
+	local wpn = db.actor:item_in_slot(db.actor:active_slot())
+	if (wpn) then
+		return true
+	end
+	
+	return false
+end
+
+function MagazineAttemptLoadingWithBullets(item, weapon)
+
+	local ammo_box_size = item:ammo_get_count()
+	local wpn_ammo_size = GetMagAmmo(weapon)--weapon:get_ammo_in_magazine()
+
+	local wpn_ammo_max = system_ini():r_u32(weapon:section(), "max_mag_size")
+
+	--printf("ammo to mag " .. ammo_box_size .. " / " .. wpn_ammo_size)
+
+	local check = IsAmmoForMagazine(weapon, item) and wpn_ammo_size < wpn_ammo_max
+
+	--printf("mag ammo class: " .. weapon:get_ammo_name())
+
+	local magData = WeaponGetMagData(weapon)
+
+	local current_mag_ammo_name = magData[2]
+
+	--local same_ammo = weapon:get_ammo_name() == item:section()
+	local same_ammo = current_mag_ammo_name == item:section()
+
+	--printf("%s = %s", current_mag_ammo_name , item:section())
+
+	if(check) then
+	
+		-- different ammo and ammo count is 0
+		if (same_ammo == false and wpn_ammo_size == 0) then
+			
+			-- change ammo type before loading
+			
+			
+			
+			local ammo_type = weapon:get_ammo_type()
+			ammo_type = math.abs(ammo_type-1)
+			weapon:set_ammo_type(ammo_type)
+			
+			
+			--printf("changing ammo:" .. tostring(ammo_type))
+		end
+	
+		if (same_ammo == false and wpn_ammo_size > 0) then
+			
+			--printf("wrong ammo type")
+			
+			StopLoading()
+			
+		else
+	
+			--printf("ammocheck OK")
+			
+			-- Update ammo box count
+			item:ammo_set_count(ammo_box_size - 1)
+			
+			-- Update mag count
+			--weapon:set_ammo_elapsed(wpn_ammo_size + 1)
+			SetMagAmmo(weapon, wpn_ammo_size + 1)
+			
+			--WeaponSetMagData(weapon, weapon:section() .. ":" .. weapon:get_ammo_name() .. ":" .. wpn_ammo_size + 1)
+			WeaponSetMagData(weapon, weapon:section() .. ":" .. item:section() .. ":" .. wpn_ammo_size + 1)
+			
+			xr_sound.set_sound_play(db.actor:id(),"inv_ammo")
+			
+			-- remove empty ammo
+			if ((ammo_box_size - 1) == 0 ) then
+			
+				local ammo_box_object = alife_object(item:id())
+				alife():release(ammo_box_object, true)
+				
+				StopLoading()
+			end
+			
+		end
+		
+		UpdateMagazineUI(weapon)
+	
+	else
+		StopLoading()
+	end
+	
+	
+
+end
+
+
+-- Attaches a scope to a weapon via drag-and-drop.
+function drag_item(item, weapon, from_slot, to_slot)
+
+	if(item:id() == weapon:id()) then
+		return
+	end
+
+	--printf(IsAmmo(item))
+
+	--printf(isMagazine(weapon))
+
+	if(IsAmmo(item) and isMagazine(weapon)) then
+	
+		if(is_loading) then
+			StopLoading()
+		end
+	
+		is_loading = true
+		loading_item1 = item
+		loading_item2 = weapon
+		loading_mode = "ammo_to_mag"
+	
+		else
+		
+		StopLoading()
+	
+	end
+	
+	
+	-- mag dropped on weapon
+	local loading_state = WeaponAttemptToLoadMagazine(weapon, item)
+	
+	if(loading_state) then
+		PlayReloadAnimation(weapon)
+	end
+	
+--[[
+	printf("drag_item: "..tostring(item:section()).." (" .. item:clsid() .. ") " ..tostring(weapon:section()))
+
+	local ini = system_ini()
+
+
+	-------------------------------------------------
+	local id = weapon:id()
+	local wObj = alife_object(id)
+	
+	local data = stpk_utils.get_weapon_data(wObj)
+	
+	
+	--data.ammo_mag_size = 12
+	
+	--printf("wpn %s", data.inv_weight)
+	
+	--data.inv_weight = 1.0
+	
+	--data.ammo_current = 10
+	data.ammo_elapsed = 5
+	--data.condition = 0.9
+	
+	stpk_utils.set_weapon_data(data,wObj)
+	
+	cloneMe(weapon)
+	
+	
+	
+	
+	--weapon:set_ammo_elapsed(9)
+	
+	printf("writing file")
+	
+	-- Opens a file in append mode
+	file = io.open("test.lua", "a")
+
+	-- appends a word test to the last line of the file
+	--file:write(type(weapon))
+	--file:write(type(weapon:section()))
+	--file:write(type(wObj))
+	
+	file:write(serializeTable(data))
+	
+
+	-- closes the open file
+	file:close()
+	
+	
+	--weapon.ammo_mag_size = 10
+	-------------------------------------------------
+	
+	--local wpn = db.actor:active_item()
+	
+	--printf("wpn %s", wpn.ammo_mag_size)
+	-------------------------------------------------
+	local ammo_mag_size = ini:r_string_ex(weapon:section(),"ammo_mag_size")
+
+	printf("val %s", ammo_mag_size)
+	
+	-------------------------------------------------
+	
+	]]
+end
+
+

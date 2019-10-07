@@ -1,0 +1,30 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 6
+max_population = 3
+respawn_params = respawn@jup_b19
+respawn_idle = 86400
+
+
+[respawn@jup_b19]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+spawn_zombied
+
+[spawn_monster1]
+spawn_squads = simulation_zombie_3_6, simulation_snork_2_5
+spawn_num = {=!smart_controlled(jup_b19)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_cat_3_5, simulation_tushkano_7_10, simulation_dog_5_7
+spawn_num = {=!smart_controlled(jup_b19)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_fracture, simulation_poltergeist_tele
+spawn_num = {=!smart_controlled(jup_b19) =actor_week_in_zone(9)} 1, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_b19:zombied)} 2, 0

@@ -1,0 +1,16 @@
+[smart_terrain]
+respawn_radius = 300;zat_sim_8
+squad_id = 3
+max_population = 2
+respawn_params = respawn@zat_sim_8
+respawn_idle = 259200
+
+
+[respawn@zat_sim_8]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_boar_3_5, simulation_boar_flesh, simulation_flesh, simulation_boar, simulation_cat, simulation_cat_3_5, simulation_psy_dog, simulation_pseudodog, simulation_snork, simulation_snork_2_5, simulation_fracture
+spawn_num = {=!smart_controlled(zat_sim_8)} 1, 0
+

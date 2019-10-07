@@ -1,0 +1,25 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 15
+max_population = 1
+respawn_params = respawn@pri_smart_snork_lair2
+respawn_idle = 8640
+
+
+[respawn@pri_smart_snork_lair2]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_rat
+spawn_num = 5
+
+[spawn_monster2]
+spawn_squads = simulation_tushkano
+spawn_num = 9
+
+[spawn_monster3]
+spawn_squads = simulation_tushkano_7_10
+spawn_num = {=!smart_controlled(pri_smart_monolith_stalker4) =actor_week_in_zone(9)} 1, 0

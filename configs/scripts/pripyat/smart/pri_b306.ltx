@@ -1,0 +1,96 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 15
+max_population = 3
+respawn_params = respawn@pri_b306   
+respawn_idle = 28800
+
+
+[respawn@pri_b306]
+
+spawn_monster
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_killer
+spawn_army
+spawn_ecolog
+spawn_monolith
+
+[spawn_monster]
+spawn_squads = simulation_zombie, simulation_fracture, simulation_snork, simulation_tushkano_7_10, simulation_rats_7_10, simulation_cat
+spawn_num = {=!smart_controlled(pri_b306)} 4, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b306:stalker)} 4, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b306:bandit)} 4, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b306:csky)} 4, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b306:dolg)} 3, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_veteran 
+spawn_num = {=smart_under_faction(pri_b306:freedom)} 3, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b306:killer)} 5, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_elite
+spawn_num = {=smart_under_faction(pri_b306:army)} 5, 0
+
+[spawn_ecolog]
+spawn_squads = ecolog_sim_squad_advanced, ecolog_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b306:ecolog)} 5, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b306:monolith)} 5, 0
+
+
+[exclusive]
+pri_b306_monolith_5_1 = pripyat\pri_b306_logic.ltx
+pri_b306_monolith_5_2 = pripyat\pri_b306_logic.ltx
+pri_b306_monolith_5_3 = pripyat\pri_b306_logic.ltx
+pri_b306_monolith_5_4 = pripyat\pri_b306_logic.ltx
+pri_b306_monolith_4_1 = pripyat\pri_b306_logic.ltx
+pri_b306_monolith_4_2 = pripyat\pri_b306_logic.ltx
+pri_b306_monolith_4_3 = pripyat\pri_b306_logic.ltx
+pri_b306_monolith_4_4 = pripyat\pri_b306_logic.ltx
+pri_b306_zombied_4_1 = pripyat\pri_b306_logic.ltx
+pri_b306_monolith_3_1 = pripyat\pri_b306_logic.ltx
+pri_b306_monolith_3_2 = pripyat\pri_b306_logic.ltx
+pri_b306_monolith_3_3 = pripyat\pri_b306_logic.ltx
+pri_b306_monolith_3_4 = pripyat\pri_b306_logic.ltx
+pri_b306_zombied_3_1 = pripyat\pri_b306_logic.ltx
+pri_b306_zombied_3_2 = pripyat\pri_b306_logic.ltx
+pri_b306_zombied_3_3 = pripyat\pri_b306_logic.ltx
+pri_b306_zombied_3_4 = pripyat\pri_b306_logic.ltx
+pri_b306_zombied_3_5 = pripyat\pri_b306_logic.ltx
+pri_b306_zombied_2_1 = pripyat\pri_b306_logic.ltx
+pri_b306_zombied_2_2 = pripyat\pri_b306_logic.ltx
+pri_b306_zombied_2_3 = pripyat\pri_b306_logic.ltx
+pri_b306_zombied_2_4 = pripyat\pri_b306_logic.ltx
+pri_b306_zombied_2_5 = pripyat\pri_b306_logic.ltx
+pri_b306_zombied_2_6 = pripyat\pri_b306_logic.ltx
+pri_b306_zombied_2_7 = pripyat\pri_b306_logic.ltx
+pri_b306_zombied_2_8 = pripyat\pri_b306_logic.ltx
+;b306 attack after lab from b35
+pri_b306_merc_1 = pripyat\pri_b306_mercs_logic.ltx
+pri_b306_merc_2 = pripyat\pri_b306_mercs_logic.ltx
+pri_b306_merc_3 = pripyat\pri_b306_mercs_logic.ltx
+pri_b306_merc_4 = pripyat\pri_b306_mercs_logic.ltx
+pri_b306_merc_5 = pripyat\pri_b306_mercs_logic.ltx
+pri_b306_merc_6 = pripyat\pri_b306_mercs_logic.ltx

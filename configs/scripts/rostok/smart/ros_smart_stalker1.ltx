@@ -1,0 +1,19 @@
+[smart_terrain]
+respawn_radius = 900 ;;вход со стороны Бара.
+squad_id = 15
+max_population = 1
+respawn_params = respawn@ros_smart_stalker1
+respawn_idle = 172800
+
+[respawn@ros_smart_stalker1]
+
+spawn_monster
+spawn_zombied
+
+[spawn_monster]
+spawn_squads = simulation_dog, simulation_zombie
+spawn_num = {=!smart_controlled(bar_visitors)} 1, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_advanced
+spawn_num = {=smart_under_faction(bar_visitors:zombied)} 1, 0

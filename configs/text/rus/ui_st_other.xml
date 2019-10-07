@@ -1,0 +1,1088 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="hardcore_lives_left">
+		<text>У вас осталось %s жизн(ей)</text>
+	</string>
+	<string id="hardcore_remove_saves">
+		<text>Ты проиграл, Сталкер...</text>
+	</string>
+	<string id="Btn_Cancel">
+		<text>Отменить</text>
+	</string>
+	<string id="Btn_No">
+		<text>Нет</text>
+	</string>
+	<string id="Btn_OK">
+		<text>OK</text>
+	</string>
+	<string id="Btn_Yes">
+		<text>Да</text>
+	</string>
+	<string id="global_map">
+		<text>Карта Зоны</text>
+	</string>
+	<string id="mm_mp_pda_hunt">
+		<text>Бонус за КПК</text>
+	</string>
+	<string id="mp_only_one_voting">
+		<text>Разрешено только одно активное голосование</text>
+	</string>
+	<string id="st_game">
+		<text>Игра</text>
+	</string>
+	<string id="st_item_used">
+		<text>Использовано</text>
+	</string>
+	<string id="st_level">
+		<text>Уровень</text>
+	</string>
+	<string id="st_loading_ai_objects">
+		<text>Загрузка ИИ объектов</text>
+	</string>
+	<string id="st_loading_alife_simulator">
+		<text>Сервер: Загрузка симуляции жизни</text>
+	</string>
+	<string id="st_loading_cform">
+		<text>Загрузка формы объектов</text>
+	</string>
+	<string id="st_loading_details">
+		<text>Загрузка детальных объектов</text>
+	</string>
+	<string id="st_loading_geometry">
+		<text>Загрузка геометрии</text>
+	</string>
+	<string id="st_loading_saved_game">
+		<text>Загрузка игры</text>
+	</string>
+	<string id="st_loading_sectors_portals">
+		<text>Загрузка секторов и порталов</text>
+	</string>
+	<string id="st_loading_shaders">
+		<text>Загрузка шейдеров</text>
+	</string>
+	<string id="st_loading_spatial_db">
+		<text>Загрузка базы пространств</text>
+	</string>
+	<string id="st_loading_textures">
+		<text>Загрузка текстур</text>
+	</string>
+	<string id="st_mp_direct_ip">
+		<text>Прямой IP</text>
+	</string>
+	<string id="st_no_active_task">
+		<text>Нет активного задания</text>
+	</string>
+	<string id="st_not_enough_money">
+		<text>Недостаточно денег</text>
+	</string>
+	<string id="st_not_enough_money_npc">
+		<text>У NPC недостаточно денег</text>
+	</string>
+	<string id="st_opening_stream">
+		<text>Открытие потока</text>
+	</string>
+	<string id="st_prefetching_objects">
+		<text>Кэширование объектов</text>
+	</string>
+	<string id="st_rubles">
+		<text>рублей.</text>
+	</string>
+	<string id="st_server_connecting">
+		<text>Сервер: Соединение</text>
+	</string>
+	<string id="st_server_starting">
+		<text>Сервер: Старт</text>
+	</string>
+	<string id="st_validating_cdkey">
+		<text>Проверка ключа</text>
+	</string>
+	<string id="st_video">
+		<text>Видео</text>
+	</string>
+	<string id="ui_inv_repair">
+		<text>Починить</text>
+	</string>
+	<string id="ui_st_cant_run_r2">
+		<text>Вы не можете запустить второй рендер на вашем компьютере</text>
+	</string>
+	<string id="ui_st_conn_cdkey_disabled">
+		<text>Ошибка соединения: Ваш CD-key заблокирован. Свяжитесь со службой поддержки.</text>
+	</string>
+	<string id="ui_st_conn_cdkey_in_use">
+		<text>Ошибка соединения: такой CD-key уже используется</text>
+	</string>
+	<string id="ui_st_conn_cdkey_invalid">
+		<text>Ошибка соединения: неверный CD-key</text>
+	</string>
+	<string id="ui_st_conn_invalid_host">
+		<text>Ошибка соединения: неверный хост</text>
+	</string>
+	<string id="ui_st_conn_invalid_pass">
+		<text>Ошибка соединения: неверный пароль</text>
+	</string>
+	<string id="ui_st_conn_new_patch">
+		<text>Доступен новый патч.\n Версия: %s\n %s\nХотите загрузить его сейчас?</text>
+	</string>
+	<string id="ui_st_conn_no_new_patch">
+		<text>Нет новых патчей</text>
+	</string>
+	<string id="ui_st_conn_rejected_server">
+		<text>Ошибка соединения: соединение прервано сервером</text>
+	</string>
+	<string id="ui_st_conn_sess_full">
+		<text>Ошибка соединения: сервер заполнен</text>
+	</string>
+	<string id="ui_st_conn_version_differs">
+		<text>Ошибка соединения: различные версии</text>
+	</string>
+	<string id="ui_st_connecting_to_masterserver">
+		<text>Соединение с мастер-сервером</text>
+	</string>
+	<string id="ui_st_days">
+		<text>дн.</text>
+	</string>
+	<string id="ui_st_error">
+		<text>Ошибка</text>
+	</string>
+	<string id="ui_st_error_loading">
+		<text>Ошибка загрузки</text>
+	</string>
+	<string id="ui_st_file_exist_owerwrite_q">
+		<text>Файл с таким именем уже существует. Перезаписать?</text>
+	</string>
+	<string id="ui_st_file_name_is_empty">
+		<text>Имя файла пустое</text>
+	</string>
+	<string id="ui_st_hours">
+		<text>час.</text>
+	</string>
+	<string id="ui_st_kicked_by_battleye">
+		<text>был отключён защитой BattlEye:</text>
+	</string>
+	<string id="ui_st_kicked_by_server">
+		<text>Отключён. Причина - </text>
+	</string>
+	<string id="ui_st_leave">
+		<text>Уйти</text>
+	</string>
+	<string id="ui_st_load_game_confirm">
+		<text>Загрузка игры приведёт к потере несохранённых данных.\n \nЖелаете продолжить?</text>
+	</string>
+	<string id="ui_st_mins">
+		<text>мин.</text>
+	</string>
+	<string id="ui_st_months">
+		<text>мес.</text>
+	</string>
+	<string id="ui_st_opponent_items">
+		<text>Рюкзак</text>
+	</string>
+	<string id="ui_st_params">
+		<text>Параметры</text>
+	</string>
+	<string id="ui_st_patch_download_error">
+		<text>Невозможно загрузить патч.</text>
+	</string>
+	<string id="ui_st_patch_download_success">
+		<text>Патч успешно загружен. Желаете установить?</text>
+	</string>
+	<string id="ui_st_price">
+		<text>Цена</text>
+	</string>
+	<string id="ui_st_secs">
+		<text>сек.</text>
+	</string>
+	<string id="mp_si_sec">
+		<text>сек.</text>
+	</string>
+	<string id="ui_st_select_one_map">
+		<text>Пожалуйста, выберите хотя бы одну карту</text>
+	</string>
+	<string id="ui_st_take_all">
+		<text>Взять всё</text>
+	</string>
+	<string id="ui_st_time_remains">
+		<text>Осталось</text>
+	</string>
+	<string id="ui_st_voting_disabled">
+		<text>Голосование отключено</text>
+	</string>
+	<string id="ui_st_want_to_leave_game_q">
+		<text>Вы действительно хотите покинуть игру?</text>
+	</string>
+	<string id="ui_total_price">
+		<text>Всего</text>
+	</string>
+	<string id="ui_st_inv_repair">
+		<text>Ремонт</text>
+	</string>
+	<string id="ui_repair_button_hint">
+		<text>Починить выбранную вещь</text>
+	</string>
+	<string id="st_save_uni_travel_generic">
+		<text>переход по локации</text>
+	</string>
+	<string id="st_save_uni_travel_zat_to_jup">
+		<text>переход с Затона на «Янов»</text>
+	</string>
+	<string id="st_save_uni_travel_zat_to_pri">
+		<text>переход с Затона в Припять</text>
+	</string>
+	<string id="st_save_uni_travel_jup_to_zat">
+		<text>переход с «Янова» на Затон</text>
+	</string>
+	<string id="st_save_uni_travel_jup_to_pri">
+		<text>переход с «Янова» в Припять</text>
+	</string>
+	<string id="st_save_uni_travel_pri_to_zat">
+		<text>переход из Припяти на Затон</text>
+	</string>
+	<string id="st_save_uni_travel_pri_to_jup">
+		<text>переход из Припяти на «Янов»</text>
+	</string>
+	<string id="st_save_uni_pri_to_labx8">
+		<text>переход из Припяти в X8</text>
+	</string>
+	<string id="st_save_uni_labx8_to_pri">
+		<text>переход из X8 в Припять</text>
+	</string>
+	<string id="st_save_uni_surge_start">
+		<text>выброс</text>
+	</string>
+	<string id="st_save_zat_a1_game_start">
+		<text>начало игры</text>
+	</string>
+	<string id="st_save_zat_a2_reached_skadovsk">
+		<text>прибытие на «Скадовск»</text>
+	</string>
+	<string id="st_save_jup_b9_searched_heli_1">
+		<text>исследован «Скат-1»</text>
+	</string>
+	<string id="st_save_zat_b100_searched_heli_2">
+		<text>исследован «Скат-2»</text>
+	</string>
+	<string id="st_save_zat_b28_searched_heli_3">
+		<text>исследован «Скат-3»</text>
+	</string>
+	<string id="st_save_jup_b8_searched_heli_4">
+		<text>исследован «Скат-4»</text>
+	</string>
+	<string id="st_save_zat_b101_searched_heli_5">
+		<text>исследован «Скат-5»</text>
+	</string>
+	<string id="st_save_zat_b18_noah_showed_teleport">
+		<text>путь на плато</text>
+	</string>
+	<string id="st_save_jup_b217_arrived_to_jup">
+		<text>прибытие на «Янов»</text>
+	</string>
+	<string id="st_save_jup_a9_got_underpass_docs">
+		<text>найден путь в Припять</text>
+	</string>
+	<string id="st_save_jup_b15_drunk_with_zulu">
+		<text>к отряду примкнул Зулус</text>
+	</string>
+	<string id="st_save_jup_a10_gonna_return_debt">
+		<text>возврат долга Вано</text>
+	</string>
+	<string id="st_save_jup_b218_vano_in_squad">
+		<text>к отряду примкнул Вано</text>
+	</string>
+	<string id="st_save_jup_b206_got_anomalous_plant">
+		<text>взято аномальное растение</text>
+	</string>
+	<string id="st_save_jup_b218_sokolov_in_squad">
+		<text>к отряду примкнул Соколов</text>
+	</string>
+	<string id="st_save_jup_b218_strider_in_squad">
+		<text>к отряду примкнул Бродяга</text>
+	</string>
+	<string id="st_save_jup_b218_travel_jup_to_pas">
+		<text>отряд собран</text>
+	</string>
+	<string id="st_save_pas_b400_underpass_start">
+		<text>прибытие в путепровод</text>
+	</string>
+	<string id="st_save_uni_travel_pas_to_pri">
+		<text>выход в Припять</text>
+	</string>
+	<string id="st_save_pri_a16_arrived_to_pri">
+		<text>найдены военные</text>
+	</string>
+	<string id="st_save_pri_a17_hospital_start">
+		<text>захват неизвестного оружия</text>
+	</string>
+	<string id="st_save_pri_a20_found_dead_recon">
+		<text>найдена разведгруппа</text>
+	</string>
+	<string id="st_save_pri_a18_met_reinforcement">
+		<text>прибыло подкрепление</text>
+	</string>
+	<string id="st_save_pri_a18_searched_antenna">
+		<text>исследована «антенна»</text>
+	</string>
+	<string id="st_save_pri_a21_approached_mad_sentry">
+		<text>найден пропавший часовой</text>
+	</string>
+	<string id="st_save_pri_a21_killed_controller">
+		<text>убит контролёр возле часового</text>
+	</string>
+	<string id="st_save_zat_a23_entered_test_center">
+		<text>вход в испытательный цех</text>
+	</string>
+	<string id="st_save_zat_a23_got_gauss_docs">
+		<text>найдена документация на гаусс-пушку</text>
+	</string>
+	<string id="st_save_pri_a22_found_dead_squad">
+		<text>найден погибший боец</text>
+	</string>
+	<string id="st_save_pri_a25_gonna_place_explosive">
+		<text>вход в детский сад</text>
+	</string>
+	<string id="st_save_pri_a25_freed_medic">
+		<text>спасён военный медик</text>
+	</string>
+	<string id="st_save_pri_a28_talked_with_ssu">
+		<text>установлена связь с командованием</text>
+	</string>
+	<string id="st_save_pri_a28_evacutaion_start">
+		<text>начало эвакуации из Припяти</text>
+	</string>
+	<string id="st_save_pri_a28_evacuation_end">
+		<text>достигнуты вертолёты эвакуации</text>
+	</string>
+	<string id="st_save_uni_zone_to_reality">
+		<text>уход из Зоны</text>
+	</string>
+	<string id="st_save_jup_b209_placed_mutant_scanner">
+		<text>датчик присутствия мутантов</text>
+	</string>
+	<string id="st_save_jup_a12_gave_artefact_for_hostage">
+		<text>выкуплен заложник</text>
+	</string>
+	<string id="st_save_jup_a12_met_with_liberators">
+		<text>освобождение заложника</text>
+	</string>
+	<string id="st_save_jup_b6_arrived_to_ash_heap">
+		<text>замеры аномалии «Пепелище»</text>
+	</string>
+	<string id="st_save_jup_b6_arrived_to_fen">
+		<text>замеры аномалии «Плавни»</text>
+	</string>
+	<string id="st_save_zat_b38_met_with_grouse">
+		<text>логово кровососов</text>
+	</string>
+	<string id="st_save_jup_b19_arrived_to_kopachy">
+		<text>отправка в Копачи</text>
+	</string>
+	<string id="st_save_zat_b40_warned_by_mercs">
+		<text>подход к станции переработки отходов</text>
+	</string>
+	<string id="st_save_zat_b7_met_with_robbers">
+		<text>наезд на сталкеров</text>
+	</string>
+	<string id="st_save_zat_b33_got_container">
+		<text>найден контейнер в тайнике</text>
+	</string>
+	<string id="st_save_zat_b106_arrived_to_chimera_lair">
+		<text>охота на химеру</text>
+	</string>
+	<string id="st_save_jup_b16_passed_labyrinth">
+		<text>найден «Оазис»</text>
+	</string>
+	<string id="st_save_pri_b35_ready_to_snipe">
+		<text>начало операции «Один выстрел»</text>
+	</string>
+	<string id="st_save_jup_b1_entered_railroad_tunnel">
+		<text>поиск источника пси-излучения</text>
+	</string>
+	<string id="st_save_jup_b47_got_admin_docs">
+		<text>административные документы</text>
+	</string>
+	<string id="st_save_zat_b103_warned_by_mercs">
+		<text>подход к цехам подстанции</text>
+	</string>
+	<string id="st_save_zat_b5_met_with_others">
+		<text>сделка возле лесничества</text>
+	</string>
+	<string id="st_save_jup_b207_arrived_to_duty_depot">
+		<text>склад «Долга»</text>
+	</string>
+	<string id="st_save_zat_b14_got_altered_wheel">
+		<text>найден источник странного свечения</text>
+	</string>
+	<string id="st_save_pri_b301_arrived_to_help_zulu">
+		<text>найден Зулус</text>
+	</string>
+	<string id="st_save_zat_b42_arrived_to_controler_lair">
+		<text>опасная пещера</text>
+	</string>
+	<string id="ui_st_upgrade">
+		<text>Ремонт/модификация</text>
+	</string>
+	<string id="ui_st_buy">
+		<text>Купить</text>
+	</string>
+	<string id="ui_st_sell">
+		<text>Продать</text>
+	</string>
+	<string id="ui_st_trade">
+		<text>Торговля</text>
+	</string>
+	<string id="ui_st_exit_hint">
+		<text>Закрыть окно ($$ACTION_USE$$)</text>
+	</string>
+	<string id="ui_st_trade_hint">
+		<text>Открыть окно торговли ($$ACTION_SPRINT_TOGGLE$$)</text>
+	</string>
+	<string id="ui_st_upgrade_hint">
+		<text>Открыть окно ремонта и модификации ($$ACTION_SPRINT_TOGGLE$$)</text>
+	</string>
+	<string id="ui_st_take_all_hint">
+		<text>Переместить все вещи в свой рюкзак ($$ACTION_SPRINT_TOGGLE$$)</text>
+	</string>
+	<string id="ui_st_buy_hint">
+		<text>Купить выбранные вещи</text>
+	</string>
+	<string id="ui_st_sell_hint">
+		<text>Продать выбранные вещи</text>
+	</string>
+	<string id="st_save_pri_a28_evacuation_heli">
+		<text>отлёт вертолётов эвакуации</text>
+	</string>
+
+	<!-- Call of Chernobyl -->
+	<!-- Companions -->
+	<string id="st_companion_state_stealth_disabled">
+		<text>Откл. режим скрытности</text>
+	</string>
+	<string id="st_companion_state_stealth_enabled">
+		<text>Вкл. режим скрытности</text>
+	</string>
+
+	<string id="st_disable_looting">
+		<text>Откл. обыск тел</text>
+	</string>
+	<string id="st_enable_looting">
+		<text>Вкл. обыск тел</text>
+	</string>
+	<string id="st_set_companion_to_attack_only_actor_combat_enemy_state">
+		<text>Режим защиты</text>
+	</string>
+	<string id="st_set_companion_to_attack_state">
+		<text>Агрессивный режим</text>
+	</string>
+	<string id="st_set_companion_to_ignore_combat_state">
+		<text>Пассивный режим</text>
+	</string>
+	<string id="st_move_to_point">
+		<text>Следовать к точке</text>
+	</string>
+	<string id="st_set_companion_to_follow_state">
+		<text>Режим следования</text>
+	</string>
+	<string id="st_set_companion_to_loot_corpse_state">
+		<text>Обыскивает тела</text>
+	</string>
+	<string id="st_set_companion_to_loot_items_state">
+		<text>Поднимает предметы</text>
+	</string>
+
+	<string id="st_set_companion_to_patrol_state">
+		<text>Режим патрулирования</text>
+	</string>
+	<string id="st_set_companion_to_stealth_state">
+		<text>Режим скрытности</text>
+	</string>
+	<string id="st_set_companion_to_wait_state">
+		<text>Режим ожидания</text>
+	</string>
+
+	<!-- Sleep deprivation -->
+	<string id="st_sleep">
+		<text>Спать</text>
+	</string>
+	<string id="st_sleep_awake">
+		<text>Вам не нужен отдых</text>
+	</string>
+	<string id="st_sleep_awake_wired">
+		<text>Вы не можете спать из-за действия кофеина</text>
+	</string>
+	<string id="st_sleep_bleeding">
+		<text>Вы не можете! У вас опасное кровотечение.</text>
+	</string>
+	<string id="st_sleep_bleeding_irradiated">
+		<text>Вы не можете! Вы облучены и истекаете кровью.</text>
+	</string>
+	<string id="st_sleep_deprived">
+		<text>Вы были убиты во время обморока</text>
+	</string>
+	<string id="st_sleep_event">
+		<text>Вы не можете спать во время катаклизма</text>
+	</string>
+	<string id="st_sleep_exhausted">
+		<text>Вы слишком устали, нужно отдохнуть.</text>
+	</string>
+	<string id="st_sleep_exhausted_final">
+       	<text>Вы на грани обморока. Необходим отдых.</text>
+	</string>
+	<string id="st_sleep_irradiated">
+		<text>Вы не можете! У Вас высокий уровень облучения.</text>
+	</string>
+
+	<!-- Stash placement -->
+	<string id="st_stash_created">
+		<text>Тайник создан</text>
+	</string>
+	<string id="st_stash_placed">
+		<text>Ваш рюкзак уже где-то лежит</text>
+	</string>
+	<string id="st_stash_unsafe">
+		<text>Здесь нельзя делать тайник</text>
+	</string>
+
+
+	<!--     game.translate_string("")      -->
+
+	<!-- Miscellaneous -->
+	<string id="st_body_decayed">
+		<text>Тело слишком повреждено</text>
+	</string>
+	<string id="st_future_maps_descr">
+		<text>Вы не можете здесь пройти.</text>
+	</string>
+	<string id="st_hold_then_release">
+		<text>Удерживайте клавишу</text>
+	</string>
+	<string id="st_invalid_position">
+		<text>Позиция вне карты</text>
+	</string>
+	<string id="st_lamp_disconnected">
+		<text>Фонарь отключён от UPD</text>
+	</string>
+	<string id="st_lamp_equipped">
+		<text>Налобный фонарь подключён</text>
+	</string>
+	<string id="st_level_changer_descr">
+		<text>Перейти на следующую локацию?</text>
+	</string>
+	<string id="st_travel_already_here">
+		<text>Вы уже находитесь в нужном месте</text>
+	</string>
+	<string id="st_travel_event">
+		<text>Небезопасно перемещаться, пока рядом враги</text>
+	</string>
+	<string id="st_travel_lost">
+		<text>Вы не знаете дорогу.</text>
+	</string>
+	<string id="st_travel_permitted">
+		<text>Нельзя перемещаться в другую локацию</text>
+	</string>
+	<string id="st_travel_overloaded">
+		<text>Вы слишком перегружены</text>
+	</string>
+	<string id="st_wish_granted">
+		<text>ЖЕЛАНИЕ ИСПОЛНЕНО!</text>
+	</string>
+
+	<!-- Dead Air -->
+	<string id="st_body_knife_bad">
+		<text>Нож в слишком плохом состоянии</text>
+	</string>
+	<string id="st_body_knife_needed">
+		<text>Необходим нож</text>
+	</string>
+	<string id="st_body_knife_weak">
+		<text>Для этого мутанта нужен нож получше</text>
+	</string>
+	<string id="st_key_notbinded">
+		<text>…</text>
+	</string>
+	<string id="st_only_campfire_load">
+		<text>Загрузка при живом игроке отключена</text>
+	</string>
+	<string id="st_only_campfire_quit">
+		<text>Завершение игры при живом игроке отключено</text>
+	</string>
+	<string id="st_only_campfire_save">
+		<text>Ручные сохранения отключены</text>
+	</string>
+	<string id="st_rad_level">
+		<text>Уровень заражения</text>
+	</string>
+	<string id="st_repair_mod_message_box_ask">
+		<text>Вы действительно хотите починить %s?\n\n%c[255,1,255,1]+%s%</text>
+	</string>
+	<string id="st_repair_mod_message_box_condition_to_high">
+		<text>Этих инструментов недостаточно, чтобы починить этот предмет.</text>
+	</string>
+	<string id="st_repair_mod_message_box_condition_to_low">
+		<text>Данный предмет в слишком плохом состоянии для починки этими инструментами.</text>
+	</string>
+	<string id="st_upd_disconnected">
+		<text>UPD отсутствует</text>
+	</string>
+	<string id="st_upd_low">
+		<text>Низкий заряд батареи</text>
+	</string>
+	<string id="st_ui_arts">
+		<text>Артефакты</text>
+	</string>
+	<string id="st_ui_containers">
+		<text>Контейнеры</text>
+	</string>
+	<string id="st_ui_place_art">
+		<text>Положить артефакт</text>
+	</string>
+	<string id="st_ui_remove_art">
+		<text>Достать артефакт</text>
+	</string>
+	<string id="st_ui_selected">
+		<text>Выбрано</text>
+	</string>
+	<string id="ui_st_barter">
+		<text>Обменять</text>
+	</string>
+	<string id="ui_st_barter_hint">
+		<text>Обменять выбранные вещи</text>
+	</string>
+	<string id="ui_st_inv_craft">
+		<text>Создать</text>
+	</string>
+	<string id="ui_st_inv_materials">
+		<text>Материалы</text>
+	</string>
+
+	<string id="st_condition_type">
+		<text> \n \nНЕИСПРАВНОСТИ:</text>
+	</string>
+
+	<string id="st_condition_type_0">
+		<text>\n%c[0,93,0,116] • %c[0,140,140,140] отсутствуют</text>
+	</string>
+
+	<string id="st_condition_type_1">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] изношена ствольная коробка</text>
+	</string>
+
+	<string id="st_condition_type_2">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] треснута ствольная коробка</text>
+	</string>
+
+	<string id="st_condition_type_3">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] загрязнена боевая пружина</text>
+	</string>
+
+	<string id="st_condition_type_4">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] изношена боевая пружина</text>
+	</string>
+
+	<string id="st_condition_type_5">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] загрязнена возвратная пружина</text>
+	</string>
+
+	<string id="st_condition_type_6">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] деформирована возвратная пружина</text>
+	</string>
+
+	<string id="st_condition_type_7">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] расколота рукоять</text>
+	</string>
+
+	<string id="st_condition_type_8">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] сломан приклад</text>
+	</string>
+
+	<string id="st_condition_type_9">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] деформирован курок</text>
+	</string>
+
+	<string id="st_condition_type_10">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] сломан курок</text>
+	</string>
+
+	<string id="st_condition_type_11">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] загрязнён ствол</text>
+	</string>
+
+	<string id="st_condition_type_12">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] деформирован ствол</text>
+	</string>
+
+	<string id="st_condition_type_13">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] треснут ствол</text>
+	</string>
+
+	<string id="st_condition_type_14">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] деформирован спусковой крючок</text>
+	</string>
+
+	<string id="st_condition_type_15">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] сломан спусковой крючок</text>
+	</string>
+
+	<string id="st_condition_type_16">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] загрязнено шептало</text>
+	</string>
+
+	<string id="st_condition_type_17">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] деформировано шептало</text>
+	</string>
+
+	<string id="st_condition_type_18">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] сломано шептало</text>
+	</string>
+
+	<string id="st_condition_type_19">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] загрязнён ударник</text>
+	</string>
+
+	<string id="st_condition_type_20">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] деформирован ударник</text>
+	</string>
+
+	<string id="st_condition_type_21">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] сломан ударник</text>
+	</string>
+
+	<string id="st_condition_type_22">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] загрязнён затвор</text>
+	</string>
+
+	<string id="st_condition_type_23">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] деформирован затвор</text>
+	</string>
+
+	<string id="st_condition_type_24">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] треснута газоотводная трубка</text>
+	</string>
+
+	<string id="st_condition_type_25">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] 25</text>
+	</string>
+
+	<string id="st_condition_type_26">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] 26</text>
+	</string>
+
+	<string id="st_condition_type_27">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] 27</text>
+	</string>
+
+	<string id="st_condition_type_28">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] сломан сектор переводчика</text>
+	</string>
+
+	<string id="st_condition_type_29">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] деформирована прицельная планка</text>
+	</string>
+
+	<string id="st_condition_type_30">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] сорвана дульная резьба</text>
+	</string>
+
+	<string id="st_condition_type_31">
+		<text>\n%c[0,204,0,51] • %c[0,204,0,51] треснуто цевье</text>
+	</string>
+
+	<string id="st_condition_type_32">
+		<text>\n%c[0,93,0,116] • %c[0,255,0,0] ОШИБКА</text>
+	</string>
+
+
+	<string id="st_condition_type_text">
+		<text>Исправить: </text>
+	</string>
+<!--
+	<string id="st_condition_type_text_0">
+		<text>Отсутствуют</text>
+	</string>
+
+	<string id="st_condition_type_text_1">
+		<text>Изношена ствольная коробка</text>
+	</string>
+
+	<string id="st_condition_type_text_2">
+		<text>Треснута ствольная коробка</text>
+	</string>
+
+	<string id="st_condition_type_text_3">
+		<text>Загрязнена боевая пружина</text>
+	</string>
+
+	<string id="st_condition_type_text_4">
+		<text>Изношена боевая пружина</text>
+	</string>
+
+	<string id="st_condition_type_text_5">
+		<text>Загрязнена возвратная пружина</text>
+	</string>
+
+	<string id="st_condition_type_text_6">
+		<text>Деформирована возвратная пружина</text>
+	</string>
+
+	<string id="st_condition_type_text_7">
+		<text>Расколота рукоять</text>
+	</string>
+
+	<string id="st_condition_type_text_8">
+		<text>Сломан приклад</text>
+	</string>
+
+	<string id="st_condition_type_text_9">
+		<text>Деформирован курок</text>
+	</string>
+
+	<string id="st_condition_type_text_10">
+		<text>Сломан курок</text>
+	</string>
+
+	<string id="st_condition_type_text_11">
+		<text>Загрязнён ствол</text>
+	</string>
+
+	<string id="st_condition_type_text_12">
+		<text>Деформирован ствол</text>
+	</string>
+
+	<string id="st_condition_type_text_13">
+		<text>Треснут ствол</text>
+	</string>
+
+	<string id="st_condition_type_text_14">
+		<text>Деформирован спусковой крючок</text>
+	</string>
+
+	<string id="st_condition_type_text_15">
+		<text>Сломан спусковой крючок</text>
+	</string>
+
+	<string id="st_condition_type_text_16">
+		<text>Загрязнено шептало</text>
+	</string>
+
+	<string id="st_condition_type_text_17">
+		<text>Деформировано шептало</text>
+	</string>
+
+	<string id="st_condition_type_text_18">
+		<text>Сломано шептало</text>
+	</string>
+
+	<string id="st_condition_type_text_19">
+		<text>Загрязнён ударник</text>
+	</string>
+
+	<string id="st_condition_type_text_20">
+		<text>Деформирован ударник</text>
+	</string>
+
+	<string id="st_condition_type_text_21">
+		<text>Сломан ударник</text>
+	</string>
+
+	<string id="st_condition_type_text_22">
+		<text>Загрязнён затвор</text>
+	</string>
+
+	<string id="st_condition_type_text_23">
+		<text>Деформирован затвор</text>
+	</string>
+
+	<string id="st_condition_type_text_24">
+		<text>Треснута газоотводная трубка</text>
+	</string>
+
+	<string id="st_condition_type_text_25">
+		<text>25</text>
+	</string>
+
+	<string id="st_condition_type_text_26">
+		<text>26</text>
+	</string>
+
+	<string id="st_condition_type_text_27">
+		<text>27</text>
+	</string>
+
+	<string id="st_condition_type_text_28">
+		<text>Сломан сектор переводчика</text>
+	</string>
+
+	<string id="st_condition_type_text_29">
+		<text>Сломана прицельная планка</text>
+	</string>
+
+	<string id="st_condition_type_text_30">
+		<text>Сорвана дульная резьба</text>
+	</string>
+
+	<string id="st_condition_type_text_31">
+		<text>Треснуто цевье</text>
+	</string>
+
+	<string id="st_condition_type_text_32">
+		<text>Ошибка</text>
+	</string>
+-->
+
+	<string id="st_condition_type_text_0">
+		<text>Отсутствуют</text>
+	</string>
+
+	<string id="st_condition_type_text_1">
+		<text>Замена ствольной коробки</text>
+	</string>
+
+	<string id="st_condition_type_text_2">
+		<text>Замена ствольной коробки</text>
+	</string>
+
+	<string id="st_condition_type_text_3">
+		<text>Чистка боевой пружины</text>
+	</string>
+
+	<string id="st_condition_type_text_4">
+		<text>Замена боевой пружины</text>
+	</string>
+
+	<string id="st_condition_type_text_5">
+		<text>Чистка возвратной пружины</text>
+	</string>
+
+	<string id="st_condition_type_text_6">
+		<text>Выправление возвратной пружины</text>
+	</string>
+
+	<string id="st_condition_type_text_7">
+		<text>Замена рукояти</text>
+	</string>
+
+	<string id="st_condition_type_text_8">
+		<text>Замена приклада</text>
+	</string>
+
+	<string id="st_condition_type_text_9">
+		<text>Выправление курка</text>
+	</string>
+
+	<string id="st_condition_type_text_10">
+		<text>Замена курка</text>
+	</string>
+
+	<string id="st_condition_type_text_11">
+		<text>Чистка ствола</text>
+	</string>
+
+	<string id="st_condition_type_text_12">
+		<text>Выправление ствола</text>
+	</string>
+
+	<string id="st_condition_type_text_13">
+		<text>Замена ствола</text>
+	</string>
+
+	<string id="st_condition_type_text_14">
+		<text>Выправление спускового крючка</text>
+	</string>
+
+	<string id="st_condition_type_text_15">
+		<text>Замена спускового крючка</text>
+	</string>
+
+	<string id="st_condition_type_text_16">
+		<text>Чистка шептала</text>
+	</string>
+
+	<string id="st_condition_type_text_17">
+		<text>Выправление шептала</text>
+	</string>
+
+	<string id="st_condition_type_text_18">
+		<text>Замена шептала</text>
+	</string>
+
+	<string id="st_condition_type_text_19">
+		<text>Чистка ударника</text>
+	</string>
+
+	<string id="st_condition_type_text_20">
+		<text>Выправление ударника</text>
+	</string>
+
+	<string id="st_condition_type_text_21">
+		<text>Замена ударника</text>
+	</string>
+
+	<string id="st_condition_type_text_22">
+		<text>Чистка затвора</text>
+	</string>
+
+	<string id="st_condition_type_text_23">
+		<text>Выправление затвора</text>
+	</string>
+
+	<string id="st_condition_type_text_24">
+		<text>Замена газоотводной трубки</text>
+	</string>
+
+	<string id="st_condition_type_text_25">
+		<text>25</text>
+	</string>
+
+	<string id="st_condition_type_text_26">
+		<text>26</text>
+	</string>
+
+	<string id="st_condition_type_text_27">
+		<text>27</text>
+	</string>
+
+	<string id="st_condition_type_text_28">
+		<text>Замена сектора переводчика</text>
+	</string>
+
+	<string id="st_condition_type_text_29">
+		<text>Замена прицельной планки</text>
+	</string>
+
+	<string id="st_condition_type_text_30">
+		<text>Нарезка дульной резьбы</text>
+	</string>
+
+	<string id="st_condition_type_text_31">
+		<text>Замена цевья</text>
+	</string>
+
+	<string id="st_condition_type_text_32">
+		<text>Ошибка</text>
+	</string>
+	
+	<string id="st_inventory_space">
+		<text>Объём инвентаря</text>
+	</string>	
+
+	<string id="st_access_allowed">
+		<text>Доступ разрешен</text>
+	</string>	
+	<string id="st_access_denied">
+		<text>Далее Электро-Механический Барьер Блокирован - нужен Проводник (F7) или подобрать магнитный RFiD-Ключ</text>
+	</string>
+	<string id="st_upd_disconnected">
+		<text>Заряд блока батарей отсутствует</text>
+	</string>
+	<string id="st_upd_low">
+		<text>Низкий заряд блока батарей</text>
+	</string>
+	<string id="st_full_charge">
+		<text>Блок батарей полностью заряжен</text>
+	</string>
+	<string id="st_charging">
+		<text>Текущий заряд:</text>
+	</string>
+	<string id="st_rad_level">
+		<text>Уровень заражения</text>
+	</string>
+
+</string_table>

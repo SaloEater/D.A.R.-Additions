@@ -1,0 +1,40 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 5
+max_population = 1
+respawn_params = respawn@jup_b1
+respawn_idle = 432000
+
+
+[respawn@jup_b1]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+spawn_monster4
+spawn_monster5
+spawn_monster6
+
+[spawn_monster1]
+spawn_squads = jup_b1_gigant, jup_b1_chimera, jup_b1_controller_snork, jup_b1_burer, jup_b1_bloodsucker
+spawn_num = {=!smart_controlled(jup_b1)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_gigant
+spawn_num = {=squad_exist(jup_b1_gigant)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_chimera
+spawn_num = {=squad_exist(jup_b1_chimera)} 1, 0
+
+[spawn_monster4]
+spawn_squads = simulation_controller
+spawn_num = {=squad_exist(jup_b1_controller_snork)} 1, 0
+
+[spawn_monster5]
+spawn_squads = simulation_fracture
+spawn_num = {=squad_exist(jup_b1_burer)} 2, 0
+
+[spawn_monster6]
+spawn_squads = simulation_bloodsucker_black
+spawn_num = {=squad_exist(jup_b1_bloodsucker)} 2, 0

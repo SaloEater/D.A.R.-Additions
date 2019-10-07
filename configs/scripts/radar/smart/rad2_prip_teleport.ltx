@@ -1,0 +1,20 @@
+[smart_terrain] ;тупик
+respawn_radius = 300
+squad_id = 18
+max_population = 2
+respawn_params = respawn@rad2_prip_teleport
+respawn_idle = 172800
+
+
+[respawn@rad2_prip_teleport]
+
+spawn_monolith
+spawn_monster
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_advanced
+spawn_num = {-bar_deactivate_radar_done} 2, 0
+
+[spawn_monster]
+spawn_squads = simulation_gigant, simulation_pseudodog, simulation_dog_5_7
+spawn_num = {+bar_deactivate_radar_done} 1, 0

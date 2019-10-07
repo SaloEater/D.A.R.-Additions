@@ -1,0 +1,15 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 6
+max_population = 3
+respawn_params = respawn@pri_smart_giant_lair1
+respawn_idle = 129600
+
+
+[respawn@pri_smart_giant_lair1]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_gigant, simulation_controller_6gzomb, simulation_controller, simulation_controller_4zomb_str, simulation_controller_5sn, simulation_gigant, simulation_gigant, simulation_gigant, simulation_bloodsucker_2strong, simulation_bloodsucker_2weak
+spawn_num = {=!smart_controlled(pri_smart_giant_lair1)} 1, 0

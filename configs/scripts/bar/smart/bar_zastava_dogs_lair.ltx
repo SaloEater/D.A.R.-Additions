@@ -1,0 +1,35 @@
+[smart_terrain]
+respawn_radius = 150
+squad_id = 6
+max_population = 2
+respawn_params = respawn@bar_zastava_dogs_lair
+respawn_idle = 172800
+
+[respawn@bar_zastava_dogs_lair]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+spawn_bandit
+
+[spawn_monster1]
+spawn_squads = simulation_dog_5_7, simulation_pseudodog, simulation_snork, simulation_cat
+spawn_num = {=!smart_controlled(bar_zastava_dogs_lair_2) =actor_on_level(l05_bar) =!actor_week_in_zone(4)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_dog_mix, simulation_snork_2_5
+spawn_num = {=!smart_controlled(bar_zastava_dogs_lair_2) =actor_week_in_zone(7) =actor_on_level(l05_bar)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_psy_dog_squad, simulation_gigant
+spawn_num = {=!smart_controlled(bar_zastava_dogs_lair_2) =actor_week_in_zone(9) =actor_on_level(l05_bar)} 1, 0
+
+[spawn_bandit]
+spawn_squads = bandit_bar_visitors_assault_squad
+spawn_num = {=!smart_under_faction(bar_zastava:bandit) =actor_week_in_zone(4) =actor_on_level(l05_bar) =hour_between(5:19)} 1, 0
+
+
+[exclusive]
+faction_base_defense_enemy1 = bar\bar_zastava_dogs_lair_smart_logic.ltx
+faction_base_defense_enemy2 = bar\bar_zastava_dogs_lair_smart_logic.ltx
+faction_base_defense_enemy3 = bar\bar_zastava_dogs_lair_smart_logic.ltx

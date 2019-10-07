@@ -1,0 +1,16 @@
+[smart_terrain]
+respawn_radius = 300;zat_sim_28
+squad_id = 56
+max_population = 1
+;respawn_only_smart = true
+respawn_params = respawn@zat_sim_28   
+respawn_idle = 259200
+
+
+[respawn@zat_sim_28]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_cat, simulation_pseudodog, simulation_dog, simulation_fracture, simulation_zombie, simulation_zombie, simulation_zombie, simulation_flesh, simulation_boar
+spawn_num = {=!smart_controlled(zat_sim_28) =actor_week_in_zone(9)} 2, {=!smart_controlled(zat_sim_28)} 1, 0

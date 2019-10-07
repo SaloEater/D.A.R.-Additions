@@ -1,0 +1,24 @@
+[smart_terrain]
+respawn_radius = 300;zat_b14_smart_terrain 
+squad_id = 46
+max_population = 1
+respawn_params = respawn@zat_b14_smart_terrain   
+respawn_idle = 86400
+
+
+[respawn@zat_b14_smart_terrain]
+
+spawn_monster
+spawn_stalker
+
+[spawn_monster]
+spawn_squads = simulation_snork, simulation_zombie, simulation_poltergeist_tele, simulation_poltergeist_tele
+spawn_num = {=!smart_controlled(zat_b14_smart_terrain)} 1, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran, bandit_sim_squad_veteran, bandit_sim_squad_veteran, bandit_sim_squad_veteran, merc_sim_squad_veteran, merc_sim_squad_veteran, freedom_sim_squad_veteran, csky_sim_squad_veteran
+spawn_num = {=!squad_exist(zat_sim_12_monolith) =!squad_exist(zat_stalker_base_smart_monolith) =!squad_exist(zat_b5_smart_terrain_monolith) +bar_deactivate_radar_done} 1, 0
+
+
+[exclusive]
+b14_stalker_1 = zaton\zat_b14_stalker_1.ltx

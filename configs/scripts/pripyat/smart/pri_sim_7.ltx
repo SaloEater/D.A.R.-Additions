@@ -1,0 +1,49 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 30
+max_population = 2
+respawn_only_smart = true
+respawn_params = respawn@pri_sim_7
+respawn_idle = 86400
+
+
+[respawn@pri_sim_7]
+
+spawn_monster1
+spawn_monster2
+spawn_bandit
+spawn_killer
+spawn_monolith
+spawn_zombied
+
+[spawn_monster1]
+spawn_squads = simulation_psy_dog_squad, simulation_dog_mix
+spawn_num = {=!smart_controlled(pri_sim_7)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_snork, simulation_zombie, simulation_fracture, simulation_bloodsucker_red
+spawn_num = {=!smart_controlled(pri_sim_7)} 3, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_sim_7:bandit)} 2, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_sim_7:killer)} 2, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_novice, monolith_sim_squad_advanced
+spawn_num = {=smart_under_faction(pri_sim_7:monolith)} 2, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_sim_7:zombied)} 1, 0
+
+
+
+
+[exclusive]
+monster_1 	= pripyat\pri_sim_7_logic.ltx
+monster_2	= pripyat\pri_sim_7_logic.ltx
+monster_3 	= pripyat\pri_sim_7_logic.ltx

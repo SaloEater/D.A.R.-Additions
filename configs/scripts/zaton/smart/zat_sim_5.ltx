@@ -1,0 +1,15 @@
+[smart_terrain]
+respawn_radius = 300;zat_sim_5
+squad_id = 6
+max_population = 1
+respawn_params = respawn@zat_sim_5   
+;respawn_idle = 172800
+
+
+[respawn@zat_sim_5]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_chimera, simulation_cat_3_5, simulation_boar_flesh
+spawn_num = {=!smart_controlled(zat_sim_5)} 1, 0

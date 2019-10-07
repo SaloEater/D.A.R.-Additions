@@ -1,0 +1,15 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 15
+max_population = 1
+;respawn_params = respawn@yan_smart_terrain_snork_u
+respawn_idle = 86400
+
+
+[respawn@yan_smart_terrain_snork_u]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_bloodsucker_black
+spawn_num = {=!smart_controlled(yan_smart_terrain_snork_u)} 2, 0

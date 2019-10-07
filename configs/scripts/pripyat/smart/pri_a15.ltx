@@ -1,0 +1,31 @@
+[smart_terrain]
+respawn_radius = 50
+max_population = 2
+squad_id = 27
+respawn_params = respawn@pri_a15
+respawn_idle = 5760 ;15/сутки
+
+
+[respawn@pri_a15]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_rat, simulation_rats
+spawn_num = 5
+
+[spawn_monster2]
+spawn_squads = simulation_tushkano
+spawn_num = 5
+
+[exclusive]
+pri_a15_vano = pripyat\pri_a15_logic.ltx
+pri_a15_sokolov = pripyat\pri_a15_logic.ltx
+pri_a15_zulus = pripyat\pri_a15_logic.ltx
+pri_a15_wanderer = pripyat\pri_a15_logic.ltx
+pri_a15_actor = pripyat\pri_a15_logic.ltx
+pri_a15_military_tarasov = pripyat\pri_a15_logic.ltx
+pri_a15_military_2 = pripyat\pri_a15_logic.ltx
+pri_a15_military_3 = pripyat\pri_a15_logic.ltx
+pri_a15_military_4 = pripyat\pri_a15_logic.ltx

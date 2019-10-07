@@ -1,0 +1,25 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 1
+max_population = 3
+respawn_params = respawn@pri_depot
+respawn_idle = 43200
+
+
+[respawn@pri_depot]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_snork
+spawn_num = {=!smart_controlled(pri_depot)} 3, 0
+
+[spawn_monster2]
+spawn_squads = simulation_fracture
+spawn_num = {=!smart_controlled(pri_depot) =actor_week_in_zone(3)} 2, 0
+
+[spawn_monster3]
+spawn_squads = simulation_zombie
+spawn_num = {=!smart_controlled(pri_depot) =actor_week_in_zone(9)} 1, 0

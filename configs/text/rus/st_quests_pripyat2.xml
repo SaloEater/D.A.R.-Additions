@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!--===========================================================
+<
+<   CoC 1.4.08 - DoctorX Questlines 1.6
+<
+<   Modified by: DoctorX
+<   Last revised: October 07, 2016
+<
+<===========================================================-->
+
+<string_table>
+
+
+	<!-- /////////////////////////////////////////////////////////////////////////////////////////////
+	<!--
+	<!-- STORYLINE TASK TEXT STRINGS
+	<!--
+	<!--    Modified by DoctorX
+	<!--    for DoctorX Questlines 1.6
+	<!--    October 07, 2016
+	<!--
+	<!-- ----------------------------------------------------------------------------------------- -->
+
+	<!-- ----------------------------------------------------------------------------------------- -->
+	<!-- Rabbit (Monolith Trader) Default Storyline Task -->
+
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_default_task_name">
+		<text>Получить следующее задание</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_default_task_text">
+		<text>Получите следующее задание.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_default_task_about">
+		<text>Вы должны встретиться с одним из старейшин монолита. Идите к нему прямо сейчас.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_default_task_finish">
+		<text>Удачи.</text>
+	</string>
+
+	<!-- ----------------------------------------------------------------------------------------- -->
+	<!-- Rabbit (Monolith Trader) Destroy the Non-Believers Storyline Task -->
+
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_task_1_name">
+		<text>Уничтожайте неверующих</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_task_1_text">
+		<text>Возглавить нападение Монолита на неверных.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_task_1_about">
+		<text>Пришло время, сын мой. Вы должны вести своих братьев в бой. Бой беспощадный. Поразите неверных на благо Монолита.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_task_1_finish">
+		<text>Отличная работа. Вы прекрасный воин.</text>
+	</string>
+
+	<!-- ----------------------------------------------------------------------------------------- -->
+	<!-- Rabbit (Monolith Trader) Collect Supplies Storyline Task -->
+
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_task_2_name">
+		<text>Припасы: %s для Монолита</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_task_2_text">
+		<text>«Великий Провидец» поручил достать припасы: %s для Монолита.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_task_2_about">
+		<text>Братьям нужны припасы.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_task_2_fetch_about">
+		<text>Наши запасы на исходе. Ты должен отправиться на поиски недостающих вещей. Вот, то, что нужно - %s.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_task_2_fetch_finish">
+		<text>Отлично.</text>
+	</string>
+
+	<!-- ----------------------------------------------------------------------------------------- -->
+	<!-- Rabbit (Monolith Trader) Venture into the Zone Storyline Task -->
+
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_task_3_name">
+		<text>Отправиться в Зону</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_task_3_text">
+		<text>Вы должны проявить себя: совершить путешествие в Зону и выжить.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_task_3_about">
+		<text>Вы должны показать себя всемогущему Монолиту. Вы должны в одиночку совершить путешествие вглубь Зоны. Принимайте все вызовы, которые стоят перед вами. Уничтожьте всех врагов, с какими сталкнётесь. Сделайте это на благо Монолита.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_task_3_finish">
+		<text>Отлично.</text>
+	</string>
+
+	<!-- ----------------------------------------------------------------------------------------- -->
+	<!-- Cleric (Monolith Mechanic) Default Storyline Task -->
+
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_default_task_name">
+		<text>Получить следующее задание</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_default_task_text">
+		<text>Получите следующее задание.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_default_task_about">
+		<text>Ты служишь Монолиту хорошо. Поговорите с одним из старейшин и спросите, что вы можете сделать, чтобы в дальнейшем помочь нашему великому делу.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_default_task_finish">
+		<text>Удачи.</text>
+	</string>
+
+	<!-- ----------------------------------------------------------------------------------------- -->
+	<!-- Cleric (Monolith Mechanic) Recover Stolen Equipment Storyline Task -->
+
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_task_1_name">
+		<text>Вернуть оборудование</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_task_1_text">
+		<text>Вернуть оборудование Выжигателя Мозгов.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_task_1_about">
+		<text>Сталкер украл жизненно важную часть оборудования Выжигателя Мозгов. Вы должны восстановить его на благо всемогущего Монолита.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_task_1_finish">
+		<text>Отлично. Монолит ценит хорошую работу.</text>
+	</string>
+
+	<!-- ----------------------------------------------------------------------------------------- -->
+	<!-- Cleric (Monolith Mechanic) Hunt for Food Storyline Task -->
+
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_task_2_name">
+		<text>Охота</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_task_2_text">
+		<text>Охотиться на мутантов, чтобы добыть нужное.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_task_2_about">
+		<text>Мы должны пополнять наши запасы. Надо отправиться на охоту.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_task_2_finish">
+		<text>Отлично. Монолит ценит хорошую работу.</text>
+	</string>
+
+	<!-- ----------------------------------------------------------------------------------------- -->
+	<!-- Cleric (Monolith Mechanic) Monolith Weapon Arsenal Storyline Task -->
+
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_task_3_name">
+		<text>Принести «Служителю Храма» %s </text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_task_3_text">
+		<text>Для укрепления арсенала Монолита надо принести «Служителю Храма» %s.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_task_3_about">
+		<text>Необходимо пополнить арсенал Монолита оружием.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_task_3_fetch_about">
+		<text>Мы должны иметь могучий арсенал, чтобы достичь наших славных целей. Что нам нужно, так это %s. Ваш успех в значительной степени послужит делу Монолита.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_mechanic_stalker_task_3_fetch_finish">
+		<text>Отлично. Монолит ценит хорошую работу.</text>
+	</string>
+
+	<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
+
+	<!-- /////////////////////////////////////////////////////////////////////////////////////////////
+	<!--
+	<!-- CHANGE FACTIONS TASK TEXT STRINGS
+	<!--
+	<!--    Modified by DoctorX
+	<!--    for DoctorX Questlines 1.6
+	<!--    October 07, 2016
+	<!--
+	<!-- ----------------------------------------------------------------------------------------- -->
+
+	<!-- ----------------------------------------------------------------------------------------- -->
+	<!-- Rabbit (Monolith Trader) Payoff Change Factions Task -->
+
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_cf_task_1_name">
+		<text>Пожертвование для «Монолита»</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_cf_task_1_text">
+		<text>Вы хотите вступить в «Монолит», вы не будете иметь больше потребность в деньгах. Дайте «Великому Провидцу» 1000 рублей, чтобы присоединиться к братству.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_cf_task_1_about">
+		<text>Это хорошо, что вы пришли. Мы будем рады приветствовать вас в братстве Монолита, но сначала вы должны пожертвовать 1000 рублей.</text>
+	</string>
+	<string id="drx_sl_pri_monolith_monolith_trader_stalker_cf_task_1_finish">
+		<text>Хорошо. Добро пожаловать в братство Всемогущего Монолита.</text>
+	</string>
+
+	<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
+
+	<!-- /////////////////////////////////////////////////////////////////////////////////////////////
+	<!--
+	<!-- DYNAMIC TASK TEXT STRINGS
+	<!--
+	<!--    Modified by DoctorX
+	<!--    for DoctorX Questlines 1.6
+	<!--    October 07, 2016
+	<!--
+	<!-- ----------------------------------------------------------------------------------------- -->
+
+	<!-- ----------------------------------------------------------------------------------------- -->
+	<!-- Rabbit (Monolith Trader) Assault Territory Task -->
+	<string id="pri_monolith_monolith_trader_stalker_task_1_name">
+		<text>Уничтожить врагов Монолита</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_1_text">
+		<text>Необходимо подавить территориальную угрозу в данной зоне.</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_1_about">
+		<text>У меня есть важная миссия для тебя, брат. Ты должен уничтожить лагерь неверных, чтобы наши братья могли лучше закрепиться в этом месте. Ты готов?</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_1_finish">
+		<text>Задача выполнена? Хорошо. Монолит ценит хорошую работу.</text>
+	</string>
+
+
+
+	<!-- ASSASSINATION FOR MONOLITH TASK -->
+	<string id="pri_monolith_monolith_trader_stalker_task_2_name">
+		<text>Убить неверного</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_2_text">
+		<text>Сталкер хочет отключить Выжигатель Мозгов. Убейте его.</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_2_about">
+		<text>Брат, ты слышал, что недавно несколько неверных подобрались к антеннам? Они хотели отключить Выжигатель. Монолит направил нас, и братья вовремя их заметили. Теперь они мертвы. Монолит мудр и всеведущ. Недавно я узнал ещё об одном сталкере, который жаждет отключить Выжигетель. Найди и убей этого неверного.</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_2_finish">
+		<text>Ты всё хорошо сделал. Братья гордятся тобой.</text>
+	</string>
+
+
+	<!-- FIND WEAPON FOR MONOLITH TASK -->
+	<string id="pri_monolith_monolith_trader_stalker_task_3_name">
+		<text>Найти: %s</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_3_text">
+		<text>«Великий Провидец» ищет новое оружие.</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_3_about">
+		<text>Необходимо найти новое оружие для продвижения Монолита.</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_3_fetch_about">
+		<text>Мы наращиваем мощь каждый день. Нам нужно больше оружия для достижения наших целей. Ты должен найти новое оружие для нас: %s.</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_3_fetch_finish">
+		<text>Это хорошо. Братья гордятся тобой.</text>
+	</string>
+
+
+	<!-- FIND MUTANT MEAT FOR MONOLITH TASK -->
+	<string id="pri_monolith_monolith_trader_stalker_task_4_name">
+		<text>Части животных</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_4_text">
+		<text>Добыть на охоте: %s. Отдать части животных «Великому Провидцу»</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_4_about">
+		<text>Необходимо пополнить запасы еды.</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_4_fetch_about">
+		<text>Наши запасы иссякают. Ты должен выйти в Зону и поохотиться. %s - это то, что нам нужно. Помни, что эти существа - подарок Зоны. Убей их стремительно и с благодарением.</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_4_fetch_finish">
+		<text>Ты преуспел. Отлично сработано.</text>
+	</string>
+
+
+	<!-- FIND SUPPLIES FOR MONOLITH TASK -->
+	<string id="pri_monolith_monolith_trader_stalker_task_5_name">
+		<text>Поиск: %s</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_5_text">
+		<text>Найти: %s .Вернуться к «Великому Провидцу».</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_5_about">
+		<text>Необходимо найти некоторые вещи.</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_5_fetch_about">
+		<text>Ты должен обеспечить больше поставок для нас, чтобы мы могли продолжить наши великие дела. Цель поиска: %s. Добудь и возвращайся.</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_5_fetch_finish">
+		<text>Монолит ценит хорошую работу.</text>
+	</string>
+
+
+	<!-- FIND ARTEFACT FOR MONOLITH TASK -->
+	<string id="pri_monolith_monolith_trader_stalker_task_6_name">
+		<text>Найти артефакт: %s </text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_6_text">
+		<text>Найти артефакт: %s и принести «Великому Провидцу», чтобы он мог подготовить его как жертву.</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_6_about">
+		<text>Необходимо найти артефакт.</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_6_fetch_about">
+		<text>Нам нужен артефакт, чтобы принести в жертву. Готов ли ты послужить Монолиту и найти его? %s - это то, что нам нужно. Принеси его мне, чтобы мы могли провести церемонию.</text>
+	</string>
+	<string id="pri_monolith_monolith_trader_stalker_task_6_fetch_finish">
+		<text>Ты хорошо служишь Монолиту. Присоединяйся к нам сегодня в церемониальном помещении. Там будет пение.</text>
+	</string>
+
+	<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
+
+	<!-- /////////////////////////////////////////////////////////////////////////////////////////////
+	<!--
+	<!-- MECHANIC TASK TEXT STRINGS
+	<!--
+	<!--    Modified by DoctorX
+	<!--    for DoctorX Questlines 1.6
+	<!--    October 07, 2016
+	<!--
+	<!-- ----------------------------------------------------------------------------------------- -->
+
+	<!-- ----------------------------------------------------------------------------------------- -->
+	<!-- Cleric (Monolith Mechanic) Find Level 1 Toolkit Task -->
+
+	<string id="pri_monolith_monolith_mechanic_stalker_task_1_name">
+		<text>Найти «Служителю Храма» %s</text>
+	</string>
+	<string id="pri_monolith_monolith_mechanic_stalker_task_1_text">
+		<text>Необходимо принести «Служителю Храма» %s, чтобы был запас инструментов для улучшений.</text>
+	</string>
+	<string id="pri_monolith_monolith_mechanic_stalker_task_1_about">
+		<text>Мне нужно, чтобы ты помог мне, брат. Мне нужно пополнить запас специальных инструментов для починки нашего оружия.</text>
+	</string>
+	<string id="pri_monolith_monolith_mechanic_stalker_task_1_fetch_about">
+		<text>Хорошо. Мне понадобится %s. Ступай.</text>
+	</string>
+	<string id="pri_monolith_monolith_mechanic_stalker_task_1_fetch_finish">
+		<text>Ты отлично справился.</text>
+	</string>
+	<string id="pri_monolith_monolith_mechanic_stalker_task_2_name">
+		<text>Найти «Служителю Храма» %s</text>
+	</string>
+	<string id="pri_monolith_monolith_mechanic_stalker_task_2_text">
+		<text>Необходимо принести «Служителю Храма» %s. Ему нужны лучшие инструменты, чтобы восполнить комплект для улучшений.</text>
+	</string>
+	<string id="pri_monolith_monolith_mechanic_stalker_task_2_about">
+		<text>Мне нужны ещё инструменты, получше. Выполнишь мою просьбу ещё раз?</text>
+	</string>
+	<string id="pri_monolith_monolith_mechanic_stalker_task_2_fetch_about">
+		<text>Хорошо, мне нужен дополнительный набор инструментов. В нём должны быть лучшие инструменты, необходимые для работы с оружием.</text>
+	</string>
+	<string id="pri_monolith_monolith_mechanic_stalker_task_2_fetch_finish">
+		<text>Отлично. Ты принёс их.</text>
+	</string>
+	<string id="pri_monolith_monolith_mechanic_stalker_task_3_name">
+		<text>Найти «Служителю Храма» %s</text>
+	</string>
+	<string id="pri_monolith_monolith_mechanic_stalker_task_3_text">
+		<text>«Служителю Храма» нужны %s для проведения элитных модернизаций. Найдите их.</text>
+	</string>
+	<string id="pri_monolith_monolith_mechanic_stalker_task_3_about">
+		<text>Мне нужны ещё инструменты, самые лучшие. Выполнишь мою просьбу ещё раз?</text>
+	</string>
+	<string id="pri_monolith_monolith_mechanic_stalker_task_3_fetch_about">
+		<text>Мне нужны самые лучшие инструменты. Найди их, брат. И твоё оружие будет разить неверных без промаха.</text>
+	</string>
+	<string id="pri_monolith_monolith_mechanic_stalker_task_3_fetch_finish">
+		<text>Отлично. Ты принёс их. Монолит помог тебе.</text>
+	</string>
+</string_table>

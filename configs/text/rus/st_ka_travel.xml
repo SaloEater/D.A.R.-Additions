@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+    <string id="ka_travel_dialog_ask">
+        <text>%c[0,231,190,132]Мне нужна услуга проводника. Есть доступные маршруты?</text>
+    </string>
+    <string id="ka_travel_dialog_response">
+        <text>%c[0,170,150,50]У каждого проводника своя Цена, зависит от дальности и знаний об оптимальном пути. Выбирая путь - помни о репутации к фракции, что контролирует свою территорию - она не должна быть отрицательной или найдешь приключений на свою "пятую точку". Куда бы ты хотел пойти?</text>
+    </string>
+	<string id="ka_travel_dialog_nevermind">
+		<text>%c[0,175,25,25]Я передумал</text>
+	</string>
+    <string id="ka_travel_dialog_accept">
+        <text>%c[0,128,225,0]Согласен, выдвигаемся</text>
+    </string>
+    <string id="ka_travel_dialog_change">
+        <text>Стоп, мне нужно пройти по другому маршруту</text>
+    </string>
+    <string id="ka_travel_dialog_deny">
+        <text>%c[0,225,0,0]Это слишком дорого</text>
+    </string>
+	<string id="ka_travel_dialog_cost">
+		<text>%c[0,170,150,50]Это будет стоить %s рублей</text>
+	</string>
+    <string id="ka_travel_dialog_cordon">
+        <text>Деревня Новичков на Кордоне</text>
+    </string>
+    <string id="ka_travel_dialog_swamp">
+        <text>База Чистого Неба на Болотах</text>
+    </string>
+    <string id="ka_travel_dialog_warehouses">
+        <text>База Бандитов в Темной долине</text>
+    </string>
+    <string id="ka_travel_dialog_agroprom">
+        <text>База Военных на Агропроме</text>
+    </string>
+    <string id="ka_travel_dialog_bar">
+        <text>Бар «100 Рентген» на Ростке</text>
+    </string>
+    <string id="ka_travel_dialog_yantar">
+        <text>База Ученых на Янтаре</text>
+    </string>	
+    <string id="ka_travel_dialog_city">
+        <text>База Наемников в Мертвом городе</text>
+    </string>
+    <string id="ka_travel_dialog_jupiter">
+        <text>Станция Янов на Юпитере</text>
+    </string>
+    <string id="ka_travel_dialog_zaton">
+        <text>Станция переработки на Затоне</text>
+    </string>
+</string_table>

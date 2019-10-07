@@ -1,0 +1,97 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 3
+max_population = 2
+respawn_params = respawn@agr_smart_terrain_1_6
+respawn_idle = 28800
+
+[respawn@agr_smart_terrain_1_6]
+
+spawn_monster
+
+spawn_army1
+spawn_army2
+spawn_army3
+spawn_army4
+spawn_army5
+spawn_army6
+spawn_army7
+spawn_army8
+spawn_ecolog1
+spawn_ecolog2
+spawn_monolith
+spawn_zombied
+
+[spawn_monster]
+spawn_squads = monster_agr_smart_terrain_1_6
+spawn_num = {!smart_controlled(agr_smart_terrain_1_6) !actor_week_in_zone(9)} 1, 0
+
+[spawn_army1]
+spawn_squads = army_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_1_6:army) =!squad_exist(base_army_agr_smart_terrain_1_6)} 3, 0
+
+[spawn_army2]
+spawn_squads = army_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_1_6:army) =!squad_exist(base_army_agr_smart_terrain_1_6_near_1)} 3, 0
+
+[spawn_army3]
+spawn_squads = army_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_1_6:army) =!squad_exist(base_army_agr_smart_terrain_1_6_near_2)} 3, 0
+
+[spawn_army4]
+spawn_squads = army_sim_squad_advanced, army_sim_squad_veteran
+spawn_num = {=smart_under_faction(agr_smart_terrain_1_6:army) =actor_week_in_zone(6)} 7, 0
+
+[spawn_army5]
+spawn_squads = army_sim_squad_elite
+spawn_num = {=smart_under_faction(agr_smart_terrain_1_6:army) =actor_week_in_zone(9)} 3, 0
+
+[spawn_army6]
+spawn_squads = depo_army_gar_smart_terrain_3_5
+spawn_num = {=smart_under_faction(gar_smart_terrain_3_5:army)} 1, 0
+
+[spawn_army7]
+spawn_squads = nii_army_agr_smart_terrain_4_4
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4:army)} 1, 0
+
+[spawn_army8]
+spawn_squads = bunker_army_yan_smart_terrain_6_4
+spawn_num = {=smart_under_faction(agr_smart_terrain_4_4:army) =!squad_exist(yan_stalker_sakharov_squad) =!squad_exist(yan_ecolog_vasilyev_squad) =!squad_exist(yan_ecolog_semenov_squad) =!squad_exist(yan_ecolog_kruglov_squad)} 1, 0
+
+[spawn_ecolog1]
+spawn_squads = ecolog_sim_squad_novice, ecolog_sim_squad_novice, ecolog_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_1_6:army)} 1, 0
+
+[spawn_ecolog2]
+spawn_squads = army_sim_squad_advanced
+spawn_num = {=smart_under_faction(agr_smart_terrain_1_6:ecolog)} 2, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(agr_smart_terrain_1_6:monolith)} 7, 0
+
+[spawn_zombied]
+spawn_squads = monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(agr_smart_terrain_1_6:zombied)} 3, 0
+
+
+[exclusive]
+army_guard_1 = agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+army_guard_2 = agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+army_guard_3 = agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+
+agr_smart_terrain_1_6_camp_work_1 = agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+agr_smart_terrain_1_6_camp_work_2 = agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+agr_smart_terrain_1_6_camp_work_3 = agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+agr_smart_terrain_1_6_camp_work_4 = agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+agr_smart_terrain_1_6_camp_work_5 = agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+agr_smart_terrain_1_6_minigunner_excl = agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+agr_smart_terrain_1_6_army_trader =  agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+agr_smart_terrain_1_6_army_mechanic =  agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+agr_smart_terrain_1_6_army_medic =  agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+faction_base_defense_enemy1 = agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+faction_base_defense_enemy2 = agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+faction_base_defense_enemy3 = agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+faction_base_defense_enemy4 = agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+faction_base_defense_enemy5 = agroprom\agr_smart_terrain_1_6_smart_logic.ltx
+faction_base_defense_enemy6 = agroprom\agr_smart_terrain_1_6_smart_logic.ltx

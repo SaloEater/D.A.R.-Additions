@@ -1,0 +1,19 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 8
+max_population = 2
+respawn_params = respawn@trc_sim_8
+respawn_idle = 43200
+
+[respawn@trc_sim_8]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_dog, simulation_dog_5_7, simulation_pseudodog, simulation_dog, simulation_dog
+spawn_num = {=!smart_controlled(trc_sim_8)} 3, 0
+
+[spawn_monster2]
+spawn_squads = simulation_snork, simulation_snork_2_5, simulation_bloodsucker_red
+spawn_num = {=!smart_controlled(trc_sim_8) =actor_week_in_zone(6)} 1, 0

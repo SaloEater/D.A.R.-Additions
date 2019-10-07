@@ -1,0 +1,22 @@
+[smart_terrain]
+respawn_radius = 300;zat_sim_29
+squad_id = 57
+max_population = 1
+;respawn_only_smart = true
+respawn_params = respawn@zat_sim_b29
+respawn_idle = 172800
+
+
+[respawn@zat_sim_b29]
+
+
+spawn_monster1
+spawn_monolith
+
+[spawn_monster1]
+spawn_squads = simulation_psy_dog, simulation_cat, simulation_pseudodog, simulation_cat, simulation_fracture
+spawn_num = {=!smart_controlled(zat_sim_b29)} 1, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_veteran
+spawn_num = {+bar_deactivate_radar_done} 1, 0

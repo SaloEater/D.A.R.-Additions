@@ -1,0 +1,34 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 9
+max_population = 2
+respawn_params = respawn@lim_smart_terrain_8
+respawn_idle = 80000
+
+
+[respawn@lim_smart_terrain_8]
+spawn_dog
+spawn_bloodsucker1
+spawn_fracture
+spawn_snork
+spawn_bloodsucker2
+
+[spawn_dog]
+spawn_squads = simulation_psy_dog, simulation_pseudodog, simulation_dog, simulation_dog_mix
+spawn_num = 1
+
+[spawn_bloodsucker1]
+spawn_squads = simulation_bloodsucker_2weak
+spawn_num = {~50} 1, 0
+
+[spawn_fracture]
+spawn_squads = simulation_fracture
+spawn_num = {~50} 1, 0
+
+[spawn_snork]
+spawn_squads = simulation_snork, simulation_zombie
+spawn_num = {~50} 1, 0
+
+[spawn_bloodsucker2]
+spawn_squads = simulation_bloodsucker_red, simulation_bloodsucker_black
+spawn_num = 1

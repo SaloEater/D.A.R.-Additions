@@ -1,0 +1,71 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 2
+max_population = 4
+respawn_params = respawn@pri_monolith
+respawn_idle = 28800
+
+
+[respawn@pri_monolith]
+
+spawn_monster1
+spawn_monster2
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_killer
+spawn_army
+spawn_monolith
+
+[spawn_monster1]
+spawn_squads = simulation_cat
+spawn_num = {=!smart_controlled(pri_monolith)} 5, 0
+
+[spawn_monster2]
+spawn_squads = simulation_bloodsucker_2weak
+spawn_num = {=!smart_controlled(pri_monolith)} 3, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_monolith:stalker)} 5, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_monolith:bandit)} 5, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_monolith:csky)} 4, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_monolith:dolg)} 5, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_veteran 
+spawn_num = {=smart_under_faction(pri_monolith:freedom)} 5, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_monolith:killer)} 5, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_elite
+spawn_num = {=smart_under_faction(pri_monolith:army)} 5, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_monolith:monolith)} 6, 0
+
+
+[exclusive]
+prayer_1 = pripyat\pri_monolith_smart_logic.ltx
+prayer_2 = pripyat\pri_monolith_smart_logic.ltx
+prayer_3 = pripyat\pri_monolith_smart_logic.ltx
+prayer_4 = pripyat\pri_monolith_smart_logic.ltx
+prayer_5 = pripyat\pri_monolith_smart_logic.ltx
+prayer_6 = pripyat\pri_monolith_smart_logic.ltx
+pri_monolith_monolith_trader =  pripyat\pri_monolith_smart_logic.ltx
+pri_monolith_monolith_mechanic =  pripyat\pri_monolith_smart_logic.ltx

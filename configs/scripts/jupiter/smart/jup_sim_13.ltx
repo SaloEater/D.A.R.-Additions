@@ -1,0 +1,16 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 33
+max_population = 2
+respawn_params = respawn@jup_sim_13
+respawn_idle = 259200
+ 
+
+[respawn@jup_sim_13]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_boar, simulation_flesh, simulation_cat
+spawn_num = {=!smart_controlled(jup_sim_13)} 1, 0
+

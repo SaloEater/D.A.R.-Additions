@@ -1,0 +1,24 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 40
+max_population = 3
+respawn_params = respawn@jup_a9
+respawn_idle = 8640
+
+[respawn@jup_a9]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_tushkano
+spawn_num = {=!smart_controlled(jup_a9)} 10, 0
+
+[spawn_monster2]
+spawn_squads = simulation_tushkano_7_10
+spawn_num = {=!smart_controlled(jup_a9) =actor_week_in_zone(6)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_tushkano_7_10
+spawn_num = {=!smart_controlled(jup_a9) =actor_week_in_zone(9)} 1, 0

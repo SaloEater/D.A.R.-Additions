@@ -1,0 +1,202 @@
+#include "trade_discounts.ltx"
+#include "trade_presets.ltx"
+
+[trader]
+buy_condition =  trade_generic_buy
+sell_condition = trade_generic_sell
+buy_supplies = {+mar_smart_terrain_base_stalker_leader_marsh_quest_doc_given_2} supplies_4, {=actor_goodwill_ge(csky:2000)} supplies_3, {+mar_smart_terrain_base_stalker_leader_marsh_quest_doc_given_1} supplies_2,  supplies_1
+buy_item_condition_factor = 0.5
+resupply_timeout = 345600
+
+discounts = {=actor_week_in_zone(9)} discount_supplier_9, {=actor_week_in_zone(8)} discount_supplier_8, {=actor_week_in_zone(7)} discount_supplier_7, {=actor_week_in_zone(6)} discount_supplier_6, {=actor_week_in_zone(5)} discount_supplier_5, {=actor_week_in_zone(4)} discount_supplier_4, {=actor_week_in_zone(3)} discount_supplier_3, {=actor_week_in_zone(2)} discount_supplier_2, {=actor_week_in_zone(1)} discount_supplier_1 
+
+[trade_generic_buy]:supplier,drugs
+
+[trade_generic_sell]:unused,mutants,food,artefacts
+briefcase
+moneybag
+
+[supplies_1]
+
+;[repair]
+sharpening_stones_2		= 2, 0.75
+sharpening_stones_4		= 2, 1
+grease					= 2, 1
+steel_wool				= 2, 1
+toolkit_p               = 2, 0.85
+repairkit_p             = 2, 0.75
+cleaning_kit_p_3        = 2, 1
+toolkit_s               = 2, 0.85
+repairkit_s             = 2, 0.75
+cleaning_kit_s_3        = 2, 1
+toolkit_r             	= 2, 0.85
+repairkit_r             = 2, 0.75
+cleaning_kit_r_3        = 2, 1
+glue_b_2				= 2, 0.75
+glue_a_2				= 2, 0.75
+glue_e_2				= 2, 0.75
+sewing_kit_b			= 2, 0.75
+sewing_kit_b_4			= 2, 1
+sewing_kit_a			= 2, 0.75
+sewing_kit_a_4			= 2, 1
+armor_repair_fa 		= 1, 1
+armor_repair_fa_2		= 2, 0.75
+textile_patch_e			= 2, 1
+textile_patch_b			= 2, 1
+textile_patch_m			= 2, 1
+
+;[armor]
+cs_light_outfit	        = 1, 1
+cs_outfit	        	= 1, 1
+cs_stalker_outfit		= 1, 0.5
+helm_cloth_mask			= 1, 1
+helm_eo21sawnoff		= 1, 1
+helm_hardhat			= 1, 1
+helm_respirator 		= 1, 0.75
+af_iam					= 2, 0.75
+af_frames				= 1, 0.75
+af_camelbak				= 1, 0.75
+lead_box				= 2, 1
+
+;[ammo]
+ammo_5.7x28_ss190       = 4, 1
+ammo_7.62x25_p			= 3, 1
+ammo_7.62x25_ps			= 2, 0.8
+ammo_9x18_fmj			= 3, 0.8
+ammo_9x19_fmj			= 3, 1
+ammo_357_hp_mag         = 2, 1 
+ammo_12x70_buck			= 2, 1
+ammo_12x76_zhekan		= 2, 0.8
+ammo_7.62x54_ap			= 2, 0.8
+ammo_30carbine_fmj      = 3, 1
+grenade_light			= 5, 1
+grenade_rgd5			= 2, 0.75
+grenade_f1				= 2, 0.5
+
+;[WP_MAG]
+mag_wpn_tt33m		     = 1, 1
+mag_wpn_pb		     	 = 1, 1
+mag_wpn_fn57		     = 1, 1
+
+;[weapons]
+wpn_knife3              = 1, 1
+wpn_binoc	            = 1, 1
+wpn_bm16 	            = 1, 1
+wpn_winchester1892  	= 1, 1
+wpn_pp2000				= 1, 0.5
+wpn_tt33				= 1, 1
+wpn_pb					= 1, 1
+wpn_fn57                = 1, 1
+wpn_mp412               = 1, 1
+wpn_sil_9mm				= 1, 1
+
+;[items]
+batteries				= 2, 0.75
+batteries_dead			= 2, 0.75
+batteries_ccell			= 2, 0.75
+itm_sleepbag			= 1, 1
+itm_qr		            = 1, 0.75
+itm_backpack			= 1, 1
+device_flashlight		= 1, 0.5
+device_torch_dummy		= 1, 0.5
+device_lighter		    = 1, 0.5
+device_kerosinka		= 1, 0.5
+device_glowstick		= 1, 0.5
+matches					= 4, 1
+geiger					= 1, 0.75
+detector_simple			= 1, 1
+kit_hunt				= 1, 1
+bag_04					= 1, 1
+greencard				= 2, 1
+jar                     = 2, 0.5
+spareparts              = 2, 0.9
+swiss_2                   = 4, 1
+tarpaulin               = 1, 0.5
+rope                    = 2, 0.75
+synthrope               = 3, 0.75
+grease                  = 1, 0.5
+steel_wool              = 1, 0.5
+textile_patch_b         = 2, 0.5
+textile_patch_m         = 2, 0.5
+textile_patch_e         = 2, 0.5
+copper_coil             = 1, 0.5
+textolite               = 1, 0.5
+transistors             = 1, 0.5
+capacitors              = 1, 0.5
+colophony               = 1, 0.5
+explo_balon_gas_0       = 1, 0.5
+explo_jerrycan_fuel_0   = 1, 0.5
+
+
+[supplies_2]:supplies_1
+af_aac					= 2, 1
+helm_m40				= 1, 1
+cs_outfit			    = 1, 1
+cs_heavy3a_outfit		= 1, 1
+antirad_outfit          = 1, 0.5
+bag_04					= 1, 1
+af_surge				= 1, 0.5
+af_frames				= 1, 0.5
+af_grid					= 1, 0.25
+af_freon				= 1, 1
+af_cooler				= 1, 1
+af_kevlar				= 1, 0.25
+af_plates				= 1, 0.25
+af_camelbak				= 1, 1
+
+ammo_357_hp_mag_ap      = 3, 1 
+ammo_44mag      		= 3, 1
+ammo_7.62x39_ap         = 3, 1 
+ammo_7.92x33_ap         = 3, 1
+
+;[WP_MAG]
+mag_wpn_p90		     = 1, 1
+mag_wpn_type63	     = 1, 1
+
+ammo_5.7x28_ss195       = 3, 1
+wpn_addon_scope_pu     	= 1, 1
+wpn_addon_scope_zf4     = 1, 1
+wpn_knife4              = 1, 0.5
+mine                    = 1, 0.75
+
+wpn_357_cadpat      	= 1, 1
+wpn_bull				= 1, 0.5
+wpn_k98            		= 1, 0.5
+wpn_p90                 = 1, 0.5
+wpn_type63         		= 1, 0.75
+wpn_mp153            	= 1, 0.75
+wpn_fort500 			= 1, 1
+helm_ach7ex          	= 1, 1
+backpack_heavy        	= 1, 1
+detector_advanced		= 1, 0.5
+
+[supplies_3]:supplies_2
+eot           			= 1, 0.5
+ac10632           		= 1, 0.5
+wpn_m1014           	= 1, 0.5
+wpn_spas12				= 1, 0.5
+wpn_mossberg590			= 1, 0.5
+wpn_remington870		= 1, 0.5
+wastelander_outfit      = 1, 0.5
+
+[supplies_4]:supplies_2
+
+ammo_44mag_xtp       	= 2, 1
+ammo_7.92x33_fmj		= 3, 1
+
+;[WP_MAG]
+mag_wpn_svt40		    = 1, 1
+wpn_addon_scope_swm  	= 1, 1
+mag_wpn_stg44      		= 1, 1
+
+wpn_stg44          		= 1, 1
+wpn_mag44  				= 1, 1
+wpn_svt40		     	= 1, 1
+wpn_knife5              = 1, 1
+helm_cloth_mask			= 0, 1
+cs_heavy3b_outfit	    = 1, 1
+helm_battle_cs			= 1, 1
+backpack_stalker        = 1, 1
+wpn_sil_kzrzp           = 1, 1
+bag_04					= 1, 1
+wpn_vepr                = 1, 1

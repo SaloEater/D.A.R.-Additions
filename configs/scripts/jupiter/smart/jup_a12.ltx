@@ -1,0 +1,108 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 3
+max_population = 4
+respawn_params = respawn@jup_a12
+respawn_idle = 172800
+
+
+[respawn@jup_a12]
+
+spawn_monster1
+spawn_monster2
+spawn_stalker
+spawn_bandit1
+spawn_bandit2
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_killer
+spawn_army
+spawn_monolith
+spawn_zombied
+
+[spawn_monster1]
+spawn_squads = simulation_snork_2_5, simulation_dog_5_7, simulation_psy_dog, simulation_dog_mix
+spawn_num = {=!smart_controlled(jup_a12)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_poltergeist_tele, simulation_poltergeist_tele, simulation_poltergeist_tele, simulation_poltergeist_tele, simulation_controller_3sn_3gzomb, simulation_controller, simulation_controller_5dog, simulation_gigant
+spawn_num = {=!smart_controlled(jup_a12)} 1, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_a12:stalker) +bar_deactivate_radar_done} 4, 0
+
+[spawn_bandit1]
+spawn_squads = bandit_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_a12:bandit) +bar_deactivate_radar_done} 6, 0
+
+[spawn_bandit2]
+spawn_squads = bandit_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_a12:bandit) -bar_deactivate_radar_done} 2, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_a12:csky) +bar_deactivate_radar_done} 3, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_a12:dolg) +bar_deactivate_radar_done} 4, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_veteran 
+spawn_num = {=smart_under_faction(jup_a12:freedom) +bar_deactivate_radar_done} 4, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_a12:killer) +bar_deactivate_radar_done} 4, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_veteran, army_sim_squad_elite
+spawn_num = {=smart_under_faction(jup_a12:army) +bar_deactivate_radar_done} 2, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(jup_a12:monolith)} 2, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran, simulation_snork
+spawn_num = {=smart_under_faction(jup_a12:zombied)} 3, 0
+
+
+[exclusive]
+jup_a12_bandit_chief = jupiter\jup_a12_bandit_chief.ltx
+jup_a12_bandit_bodyguard_1 = jupiter\jup_a12_bandit_bodyguard_1.ltx
+jup_a12_bandit_bodyguard_2 = jupiter\jup_a12_bandit_bodyguard_2.ltx
+jup_a12_bandit_cashier = jupiter\jup_a12_bandit_cashier.ltx
+jup_a12_bandit_guard = jupiter\jup_a12_bandit_guard.ltx
+;jup_a12_stalker_prisoner = jupiter\jup_a12_stalker_prisoner.ltx
+walker_1 = jupiter\jup_a12_smart_logic.ltx
+walker_2 = jupiter\jup_a12_smart_logic.ltx
+walker_3 = jupiter\jup_a12_smart_logic.ltx
+walker_4 = jupiter\jup_a12_smart_logic.ltx
+walker_5 = jupiter\jup_a12_smart_logic.ltx
+walker_6 = jupiter\jup_a12_smart_logic.ltx
+guard_1 = jupiter\jup_a12_smart_logic.ltx
+guard_2 = jupiter\jup_a12_smart_logic.ltx
+guard_3 = jupiter\jup_a12_smart_logic.ltx
+guard_4 = jupiter\jup_a12_smart_logic.ltx
+guard_5 = jupiter\jup_a12_smart_logic.ltx
+guard_6 = jupiter\jup_a12_smart_logic.ltx
+;jup_a12_merc_right_attack = jupiter\jup_a12_merc.ltx
+;jup_a12_merc_left_attack  = jupiter\jup_a12_merc.ltx
+;jup_a12_merc_cover_attack = jupiter\jup_a12_merc.ltx
+jup_a12_surge_work_1 = jupiter\jup_a12_smart_logic.ltx
+jup_a12_surge_work_2 = jupiter\jup_a12_smart_logic.ltx
+jup_a12_surge_work_3 = jupiter\jup_a12_smart_logic.ltx
+jup_a12_surge_work_4 = jupiter\jup_a12_smart_logic.ltx
+jup_a12_surge_work_5 = jupiter\jup_a12_smart_logic.ltx
+jup_a12_surge_work_6 = jupiter\jup_a12_smart_logic.ltx
+jup_a12_surge_work_7 = jupiter\jup_a12_smart_logic.ltx
+jup_a12_surge_work_8 = jupiter\jup_a12_smart_logic.ltx
+jup_a12_surge_work_9 = jupiter\jup_a12_smart_logic.ltx
+jup_a12_surge_work_10 = jupiter\jup_a12_smart_logic.ltx
+jup_a12_surge_work_11 = jupiter\jup_a12_smart_logic.ltx
+jup_a12_surge_work_12 = jupiter\jup_a12_smart_logic.ltx
+jup_a12_surge_work_13 = jupiter\jup_a12_smart_logic.ltx
+jup_a12_surge_work_14 = jupiter\jup_a12_smart_logic.ltx

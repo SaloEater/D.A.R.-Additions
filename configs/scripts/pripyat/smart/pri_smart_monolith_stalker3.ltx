@@ -1,0 +1,25 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 8
+max_population = 2
+respawn_params = respawn@pri_smart_monolith_stalker3
+respawn_idle = 86400
+
+
+[respawn@pri_smart_monolith_stalker3]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_dog_mix, simulation_dog_5_7
+spawn_num = {=!smart_controlled(pri_smart_monolith_stalker3)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_psy_dog
+spawn_num = {=!smart_controlled(pri_smart_monolith_stalker3)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_psy_dog_squad
+spawn_num = {=!smart_controlled(pri_smart_monolith_stalker3) =actor_week_in_zone(9)} 1, 0

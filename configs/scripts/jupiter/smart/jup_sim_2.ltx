@@ -1,0 +1,20 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 40
+max_population = 1
+respawn_params = respawn@jup_sim_2
+respawn_idle = 259200
+
+
+[respawn@jup_sim_2]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = jup_sim_2_monsters
+spawn_num = {=!smart_controlled(jup_sim_2)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_gigant, simulation_bloodsucker_2weak, simulation_bloodsucker_red
+spawn_num = {=!smart_controlled(jup_sim_2)} 1, 0

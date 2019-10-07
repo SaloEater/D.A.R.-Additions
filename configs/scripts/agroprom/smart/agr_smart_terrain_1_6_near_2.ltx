@@ -1,0 +1,26 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 5
+max_population = 1
+respawn_params = respawn@agr_smart_terrain_1_6_near_2
+respawn_idle = 86400
+
+[respawn@agr_smart_terrain_1_6_near_2]
+
+spawn_monster
+spawn_army
+
+[spawn_monster]
+spawn_squads = monster_agr_smart_terrain_1_6
+spawn_num = {!smart_controlled(agr_smart_terrain_1_6_near_1) !actor_week_in_zone(9)} 1, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_novice
+spawn_num = {=smart_under_faction(agr_smart_terrain_1_6:army) +yan_labx16_switcher_primary_off} 2, 0
+
+[exclusive]
+;army_guard_1 = agroprom\agr_smart_terrain_1_6_near_2_smart_logic.ltx
+;army_guard_2 = agroprom\agr_smart_terrain_1_6_near_2_smart_logic.ltx
+;army_guard_3 = agroprom\agr_smart_terrain_1_6_near_2_smart_logic.ltx
+;
+agr_military_colonel_kovalski = agroprom\agr_smart_terrain_1_6_near_2_smart_logic.ltx

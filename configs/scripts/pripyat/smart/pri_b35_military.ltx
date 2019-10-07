@@ -1,0 +1,37 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 1
+max_population = 1
+respawn_params = respawn@pri_b35_military
+respawn_idle = 86400
+
+[respawn@pri_b35_military]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+spawn_killer
+
+[spawn_monster1]
+spawn_squads = simulation_zombie
+spawn_num = {=!smart_controlled(pri_b35_military)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_tushkano, simulation_rats, simulation_fracture
+spawn_num = {=!smart_controlled(pri_b35_military) =actor_week_in_zone(3)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_controller, simulation_controller_5rat_3tush, simulation_poltergeist_tele
+spawn_num = {=!smart_controlled(pri_b35_military) =actor_week_in_zone(9)} 1, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b35_military:killer)} 1, 0
+
+
+
+[exclusive]
+guard_1 = pripyat\pri_b35_military_logic.ltx
+guard_2 = pripyat\pri_b35_military_logic.ltx
+guard_3 = pripyat\pri_b35_military_logic.ltx
+guard_4 = pripyat\pri_b35_military_logic.ltx

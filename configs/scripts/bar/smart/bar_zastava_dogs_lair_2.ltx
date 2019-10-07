@@ -1,0 +1,30 @@
+[smart_terrain]
+respawn_radius = 200
+squad_id = 6
+max_population = 1
+respawn_params = respawn@bar_zastava_dogs_lair_2
+respawn_idle = 86400
+
+[respawn@bar_zastava_dogs_lair_2]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_dog, simulation_dog_5_7, simulation_tushkano, simulation_snork
+spawn_num = {=!smart_controlled(bar_zastava_dogs_lair_2) =actor_on_level(l05_bar)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_dog_mix, simulation_snork_2_5
+spawn_num = {=!smart_controlled(bar_zastava_dogs_lair_2) =actor_week_in_zone(4) =actor_on_level(l05_bar)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_psy_dog_squad
+spawn_num = {=!smart_controlled(bar_zastava_dogs_lair_2) =actor_week_in_zone(9) =actor_on_level(l05_bar)} 1, 0
+
+
+[exclusive]
+faction_base_defense_enemy1 = bar\bar_zastava_dogs_lair_2_smart_logic.ltx
+faction_base_defense_enemy2 = bar\bar_zastava_dogs_lair_2_smart_logic.ltx
+faction_base_defense_enemy3 = bar\bar_zastava_dogs_lair_2_smart_logic.ltx

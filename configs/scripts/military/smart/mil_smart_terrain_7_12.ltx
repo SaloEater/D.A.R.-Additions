@@ -1,0 +1,34 @@
+[smart_terrain]
+respawn_radius = 300 ;казармы
+squad_id = 13
+max_population = 1
+respawn_params = respawn@mil_smart_terrain_7_12
+respawn_idle = 86400
+
+[respawn@mil_smart_terrain_7_12]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+spawn_monster4
+spawn_monster5
+
+[spawn_monster1]
+spawn_squads = simulation_snork, simulation_zombie
+spawn_num = {=squad_exist(monster_mix_1_mil_smart_terrain_7_7)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_snork, simulation_zombie
+spawn_num = {=squad_exist(monster_mix_2_mil_smart_terrain_7_7)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_snork, simulation_zombie
+spawn_num = {=squad_exist(monster_mix_3_mil_smart_terrain_7_7)} 1, 0
+
+[spawn_monster4]
+spawn_squads = simulation_dog
+spawn_num = {=squad_exist(monster_mix_4_mil_smart_terrain_7_7)} 1, 0
+
+[spawn_monster5]
+spawn_squads = simulation_cat
+spawn_num = {=squad_exist(monster_mix_5_mil_smart_terrain_7_7)} 1, 0

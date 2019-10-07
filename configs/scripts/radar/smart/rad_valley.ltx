@@ -1,0 +1,15 @@
+[smart_terrain]
+respawn_radius = 200
+squad_id = 11
+max_population = 1
+respawn_params = respawn@rad_valley
+respawn_idle = 172800
+
+
+[respawn@rad_valley]
+
+spawn_monster1
+
+[spawn_monster1]
+spawn_squads = simulation_gigant, simulation_chimera
+spawn_num = {=!smart_controlled(rad_valley) =actor_on_level(l10_radar)} 1, 0

@@ -1,0 +1,143 @@
+[smart_terrain]
+respawn_radius = 150;mar_smart_terrain_base
+squad_id = 25
+max_population = 3
+respawn_params = respawn@mar_smart_terrain_base
+respawn_idle = 43200
+
+[respawn@mar_smart_terrain_base]
+
+spawn_monster
+
+spawn_csky_barmen
+spawn_csky_medic
+spawn_csky_trader
+
+spawn_csky1
+spawn_csky2
+
+spawn_stalker0
+spawn_stalker1
+spawn_bandit0
+spawn_bandit1
+spawn_bandit2
+spawn_army
+spawn_ecolog
+spawn_dolg0
+spawn_dolg1
+spawn_freedom0
+spawn_freedom1
+spawn_killer
+
+[spawn_monster]
+spawn_squads = monster_mar_smart_terrain_base
+spawn_num = {=!smart_controlled(mar_smart_terrain_base) =actor_week_in_zone(8)} 6, {=!smart_controlled(mar_smart_terrain_base)} 4, 0
+
+[spawn_csky_barmen]
+spawn_squads = mar_base_stalker_barmen2_squad
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:csky) =!squad_exist(mar_base_stalker_barmen_squad)} 1, 0
+
+[spawn_csky_medic]
+spawn_squads = mar_smart_terrain_base_medic_squad
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:csky) =!squad_exist(mar_smart_terrain_base_medic_squad)} 1, 0
+
+[spawn_csky_trader]
+spawn_squads = mar_smart_terrain_base_trader_squad
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:csky) =!squad_exist(mar_base_owl_stalker_trader_squad)} 1, 0
+
+[spawn_csky1]
+spawn_squads = csky_sim_squad_novice, csky_sim_squad_novice, csky_sim_squad_advanced
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:csky) =!actor_week_in_zone(3)} 5, 0
+
+[spawn_csky2] 
+spawn_squads = csky_sim_squad_novice, csky_sim_squad_advanced, csky_sim_squad_advanced, csky_sim_squad_advanced, csky_sim_squad_veteran
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:csky) =actor_week_in_zone(3)} 5, 0
+
+
+[spawn_stalker0]
+spawn_squads = mar_smart_terrain_base_trader_stalker
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:stalker)} 1, 0
+
+[spawn_stalker1]
+spawn_squads = stalker_sim_squad_novice
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:stalker) =squad_exist(mar_smart_terrain_base_trader_stalker)} 4, 0
+
+[spawn_bandit0]
+spawn_squads = mar_smart_terrain_base_trader_bandit
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:bandit)} 1, 0
+
+[spawn_bandit1]
+spawn_squads = bandit_patrol_mar_smart_terrain_base
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:bandit) =squad_exist(mar_smart_terrain_base_trader_bandit)} 3, 0
+
+[spawn_bandit2]
+spawn_squads = bandit_sim_squad_novice
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:bandit) =squad_exist(mar_smart_terrain_base_trader_bandit)} 3, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_novice, army_sim_squad_novice, army_sim_squad_advanced
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:army)} 4, 0
+
+[spawn_ecolog]
+spawn_squads = army_sim_squad_novice, army_sim_squad_novice, army_sim_squad_advanced
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:ecolog)} 4, 0
+
+[spawn_dolg0]
+spawn_squads = mar_smart_terrain_base_trader_dolg
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:dolg)} 1, 0
+
+[spawn_dolg1]
+spawn_squads = duty_sim_squad_novice
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:dolg) =squad_exist(mar_smart_terrain_base_trader_dolg)} 2, 0
+
+[spawn_freedom0]
+spawn_squads = mar_smart_terrain_base_trader_freedom
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:freedom)} 1, 0
+
+[spawn_freedom1]
+spawn_squads = freedom_sim_squad_novice
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:freedom) =squad_exist(mar_smart_terrain_base_trader_freedom)} 2, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_novice, merc_sim_squad_novice, merc_sim_squad_advanced, merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(mar_smart_terrain_base:killer)} 2, 0
+
+
+
+[exclusive]
+nastavnic_cs_squad = marsh\nastavnic_cs.ltx
+devushka_squad = marsh\devushka.ltx
+
+marsh_doctor = marsh\mar_smart_terrain_base_doctor.ltx
+dog_doctor = marsh\mar_smart_terrain_base_dog_doctor.ltx
+mar_base_stalker_barmen = marsh\mar_base_stalker_barmen.ltx
+mar_base_owl_stalker_trader = marsh\mar_base_owl_stalker_trader.ltx
+mar_base_stalker_tech = marsh\mar_base_stalker_tech.ltx
+guard_1 = marsh\mar_smart_terrain_base_smart_logic.ltx
+guard_2 = marsh\mar_smart_terrain_base_smart_logic.ltx
+mar_base_animpoint_kamp1 = marsh\mar_smart_terrain_base_smart_logic.ltx
+mar_base_animpoint_kamp2 = marsh\mar_smart_terrain_base_smart_logic.ltx
+mar_base_animpoint_kamp3 = marsh\mar_smart_terrain_base_smart_logic.ltx
+mar_base_animpoint_kamp4 = marsh\mar_smart_terrain_base_smart_logic.ltx
+mar_base_animpoint_kamp5 = marsh\mar_smart_terrain_base_smart_logic.ltx
+mar_base_animpoint_kamp6 = marsh\mar_smart_terrain_base_smart_logic.ltx
+mar_base_animpoint_kamp7 = marsh\mar_smart_terrain_base_smart_logic.ltx
+walker_1 = marsh\mar_smart_terrain_base_smart_logic.ltx
+;уточка;walker_2 = marsh\mar_smart_terrain_base_smart_logic.ltx
+walker_3 = marsh\mar_smart_terrain_base_smart_logic.ltx
+walker_4 = marsh\mar_smart_terrain_base_smart_logic.ltx
+walker_5 = marsh\mar_smart_terrain_base_smart_logic.ltx
+walker_6 = marsh\mar_smart_terrain_base_smart_logic.ltx
+walker_7 = marsh\mar_smart_terrain_base_smart_logic.ltx
+walker_8 = marsh\mar_smart_terrain_base_smart_logic.ltx
+mar_smart_terrain_base_surge_work_1 = marsh\mar_smart_terrain_base_smart_logic.ltx
+mar_smart_terrain_base_surge_work_2 = marsh\mar_smart_terrain_base_smart_logic.ltx
+mar_smart_terrain_base_surge_work_3 = marsh\mar_smart_terrain_base_smart_logic.ltx
+mar_smart_terrain_base_surge_work_4 = marsh\mar_smart_terrain_base_smart_logic.ltx
+mar_smart_terrain_base_surge_work_5 = marsh\mar_smart_terrain_base_smart_logic.ltx
+mar_smart_terrain_base_surge_work_6 = marsh\mar_smart_terrain_base_smart_logic.ltx
+mar_smart_terrain_base_stalker_guide_marsh = marsh\mar_smart_terrain_base_stalker_guide_marsh.ltx
+real_marsh_doctor = marsh\mar_smart_terrain_base_real_marsh_doctor.ltx
+faction_base_defense_enemy1 = marsh\mar_smart_terrain_base_smart_logic.ltx
+faction_base_defense_enemy2 = marsh\mar_smart_terrain_base_smart_logic.ltx
+faction_base_defense_enemy3 = marsh\mar_smart_terrain_base_smart_logic.ltx

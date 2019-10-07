@@ -1,0 +1,35 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 16
+max_population = 2
+respawn_params = respawn@pri_smart_tushkano_lair1
+respawn_idle = 86400
+
+
+[respawn@pri_smart_tushkano_lair1]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+spawn_monster4
+spawn_monster5
+
+[spawn_monster1]
+spawn_squads = simulation_dog, simulation_pseudodog, simulation_dog_5_7, simulation_dog_mix, simulation_psy_dog, simulation_psy_dog_squad
+spawn_num = {=!smart_controlled(pri_smart_tushkano_lair1)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_cat_3_5
+spawn_num = {=!smart_controlled(pri_smart_tushkano_lair1)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_bloodsucker_red
+spawn_num = {=!smart_controlled(pri_smart_tushkano_lair1) =actor_week_in_zone(2)} 1, 0
+
+[spawn_monster4]
+spawn_squads = simulation_snork
+spawn_num = {=!smart_controlled(pri_smart_tushkano_lair1)} 1, 0
+
+[spawn_monster5]
+spawn_squads = simulation_poltergeist_tele, simulation_gigant
+spawn_num = {=!smart_controlled(pri_smart_tushkano_lair1) =actor_week_in_zone(9)} 1, 0

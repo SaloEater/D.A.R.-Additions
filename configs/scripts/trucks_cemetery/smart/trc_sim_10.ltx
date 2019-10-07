@@ -1,0 +1,24 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 10
+max_population = 1
+respawn_params = respawn@trc_sim_10
+respawn_idle = 86400
+
+[respawn@trc_sim_10]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_boar, simulation_flesh, simulation_boar
+spawn_num = {=!smart_controlled(trc_sim_10)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_cat
+spawn_num = {=!smart_controlled(trc_sim_10) =actor_week_in_zone(3) =!actor_week_in_zone(9)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_cat_3_5, simulation_fracture, simulation_boar_3_5, simulation_bloodsucker_red
+spawn_num = {=!smart_controlled(trc_sim_10) =actor_week_in_zone(9)} 1, 0

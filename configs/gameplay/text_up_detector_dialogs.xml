@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+	<dialog id="up_detector_sakhar_dialog_1">
+<precondition>roa.check_rank_novice</precondition>
+		<phrase_list>
+			<phrase id="0">
+				<text>up_detector_sakhar_dialog_1_0</text>
+				<next>1</next>
+			</phrase>
+			<phrase id="1">
+				<text>up_detector_sakhar_dialog_1_1</text>
+				<next>2</next>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+				<next>6</next>
+			</phrase>
+			<phrase id="2">
+				<precondition>nql.has_otclik_standart</precondition>
+				<text>up_detector_sakhar_dialog_1_2_1</text>
+				<next>22</next>
+			</phrase>
+			<phrase id="22">
+				<text>up_detector_sakhar_dialog_1_2_2</text>
+				<next>222</next>
+				<next>6</next>
+			</phrase>
+			<phrase id="222">
+				<precondition>nql.has_money_otclik_standart</precondition>
+				<text>up_detector_sakhar_dialog_1_2_3</text>
+				<action>nql.vzyal_money_otclik_standart</action>
+				<action>nql.vzyal_otclik_standart</action>
+				<next>77</next>
+			</phrase>
+			<phrase id="3">
+				<precondition>nql.has_medved_standart</precondition>
+				<text>up_detector_sakhar_dialog_1_3_1</text>
+				<next>33</next>
+			</phrase>
+			<phrase id="33">
+				<text>up_detector_sakhar_dialog_1_3_2</text>
+				<next>333</next>
+				<next>6</next>
+			</phrase>
+			<phrase id="333">
+				<precondition>nql.has_money_medved_standart</precondition>
+				<text>up_detector_sakhar_dialog_1_3_3</text>
+				<action>nql.vzyal_money_medved_standart</action>
+				<action>nql.vzyal_medved_standart</action>
+				<next>777</next>
+			</phrase>
+			<phrase id="4">
+				<precondition>nql.has_veles_standart</precondition>
+				<text>up_detector_sakhar_dialog_1_4_1</text>
+				<next>44</next>
+			</phrase>
+			<phrase id="44">
+				<text>up_detector_sakhar_dialog_1_4_2</text>
+				<next>444</next>
+				<next>6</next>
+			</phrase>
+			<phrase id="444">
+				<precondition>nql.has_money_veles_standart</precondition>
+				<text>up_detector_sakhar_dialog_1_4_3</text>
+				<action>nql.vzyal_money_veles_standart</action>
+				<action>nql.vzyal_veles_standart</action>
+				<next>7777</next>
+			</phrase>
+			<phrase id="5">
+				<precondition>nql.has_svarog_standart</precondition>
+				<text>up_detector_sakhar_dialog_1_5_1</text>
+				<next>55</next>
+			</phrase>
+			<phrase id="55">
+				<precondition>nql.has_svarog_standart</precondition>
+				<text>up_detector_sakhar_dialog_1_5_2</text>
+				<next>555</next>
+				<next>6</next>
+			</phrase>
+			<phrase id="555">
+				<precondition>nql.has_money_svarog_standart</precondition>
+				<text>up_detector_sakhar_dialog_1_5_3</text>
+				<action>nql.vzyal_money_svarog_standart</action>
+				<action>nql.vzyal_svarog_standart</action>
+				<next>77777</next>
+			</phrase>
+			<phrase id="6">
+				<text>up_detector_sakhar_dialog_1_6</text>
+			</phrase>
+			<phrase id="77">
+				<text>up_detector_sakhar_dialog_1_77</text>
+				<action>nql.give_otclik_standart_up</action>
+			</phrase>
+			<phrase id="777">
+				<text>up_detector_sakhar_dialog_1_777</text>
+				<action>nql.give_medved_standart_up</action>
+			</phrase>
+			<phrase id="7777">
+				<text>up_detector_sakhar_dialog_1_7777</text>
+				<action>nql.give_veles_standart_up</action>
+			</phrase>
+			<phrase id="77777">
+				<text>up_detector_sakhar_dialog_1_77777</text>
+				<action>nql.give_svarog_standart_up</action>
+			</phrase>
+		</phrase_list>
+	</dialog>
+	<dialog id="dialog_informer_info_about_legend">
+		<phrase_list>
+			<phrase id="0">
+				<text>dialog_informer_info_about_legend_start_1</text>
+				<next>1</next>
+			</phrase>
+			<phrase id="1">
+				<text>dialog_informer_info_about_legend_start_2</text>
+				<next>2</next>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+				<next>6</next>
+				<next>7</next>
+				<next>8</next>
+				<next>9</next>
+				<next>10</next>
+				<next>11</next>
+				<next>12</next>
+				<next>13</next>
+				<next>14</next>
+				<next>1111</next>
+			</phrase>
+			<phrase id="2">
+				<text>dialog_informer_info_about_legend_lesnichii_1</text>
+				<next>21</next>
+			</phrase>
+			<phrase id="21">
+				<text>dialog_informer_info_about_legend_lesnichii_2</text>
+				<next>111</next>
+				<next>101010</next>
+			</phrase>
+			<phrase id="3">
+				<text>dialog_informer_info_about_legend_zver_1</text>
+				<next>31</next>
+			</phrase>
+			<phrase id="31">
+				<text>dialog_informer_info_about_legend_zver_2</text>
+				<next>111</next>
+				<next>101010</next>
+			</phrase>
+			<phrase id="4">
+				<text>dialog_informer_info_about_legend_gupi_1</text>
+				<next>41</next>
+			</phrase>
+			<phrase id="41">
+				<text>dialog_informer_info_about_legend_gupi_2</text>
+				<next>111</next>
+				<next>101010</next>
+			</phrase>
+			<phrase id="5">
+				<text>dialog_informer_info_about_legend_markobes_i_bulba_1</text>
+				<next>51</next>
+			</phrase>
+			<phrase id="51">
+				<text>dialog_informer_info_about_legend_markobes_i_bulba_2</text>
+				<next>111</next>
+				<next>101010</next>
+			</phrase>
+			<phrase id="6">
+				<text>dialog_informer_info_about_legend_ghurnalist_1</text>
+				<next>61</next>
+			</phrase>
+			<phrase id="61">
+				<text>dialog_informer_info_about_legend_ghurnalist_2</text>
+				<next>111</next>
+				<next>101010</next>
+			</phrase>
+			<phrase id="7">
+				<text>dialog_informer_info_about_legend_max_bolotniik_1</text>
+				<next>71</next>
+			</phrase>
+			<phrase id="71">
+				<text>dialog_informer_info_about_legend_max_bolotniik_2</text>
+				<next>111</next>
+				<next>101010</next>
+			</phrase>
+			<phrase id="8">
+				<text>dialog_informer_info_about_legend_cartograf_1</text>
+				<next>81</next>
+			</phrase>
+			<phrase id="81">
+				<text>dialog_informer_info_about_legend_cartograf_2</text>
+				<next>111</next>
+				<next>101010</next>
+			</phrase>
+			<phrase id="9">
+				<text>dialog_informer_info_about_legend_khimik_i_prigorshnya_1</text>
+				<next>91</next>
+			</phrase>
+			<phrase id="91">
+				<text>dialog_informer_info_about_legend_khimik_i_prigorshnya_2</text>
+				<next>111</next>
+				<next>101010</next>
+			</phrase>
+			<phrase id="10">
+				<text>dialog_informer_info_about_legend_hemyl_1</text>
+				<next>100</next>
+			</phrase>
+			<phrase id="100">
+				<text>dialog_informer_info_about_legend_hemyl_2</text>
+				<next>111</next>
+				<next>101010</next>
+			</phrase>
+			<phrase id="11">
+				<text>dialog_informer_info_about_legend_shtir_1</text>
+				<next>110</next>
+			</phrase>
+			<phrase id="110">
+				<text>dialog_informer_info_about_legend_shtir_2</text>
+				<next>111</next>
+				<next>101010</next>
+			</phrase>
+			<phrase id="12">
+				<text>dialog_informer_info_about_legend_borland_1</text>
+				<next>120</next>
+			</phrase>
+			<phrase id="120">
+				<text>dialog_informer_info_about_legend_borland_2</text>
+				<next>111</next>
+				<next>101010</next>
+			</phrase>
+			<phrase id="13">
+				<text>dialog_informer_info_about_legend_sanya_prizrak_1</text>
+				<next>130</next>
+			</phrase>
+			<phrase id="130">
+				<text>dialog_informer_info_about_legend_sanya_prizrak_2</text>
+				<next>111</next>
+				<next>101010</next>
+			</phrase>
+			<phrase id="14">
+				<text>dialog_informer_info_about_legend_senatora_1</text>
+				<next>140</next>
+			</phrase>
+			<phrase id="140">
+				<text>dialog_informer_info_about_legend_senatora_2</text>
+				<next>111</next>
+				<next>101010</next>
+			</phrase>
+			<phrase id="111">
+				<text>dialog_informer_info_about_legend_end_1</text>
+			</phrase>
+			<phrase id="101010">
+				<text>dialog_informer_info_about_legend_end_3</text>
+				<next>1010101</next>
+			</phrase>
+			<phrase id="1010101">
+				<text>dialog_informer_info_about_legend_end_4</text>
+				<next>2</next>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+				<next>6</next>
+				<next>7</next>
+				<next>8</next>
+				<next>9</next>
+				<next>10</next>
+				<next>11</next>
+				<next>12</next>
+				<next>13</next>
+				<next>14</next>
+				<next>1111</next>
+			</phrase>
+			<phrase id="1111">
+				<text>dialog_informer_info_about_legend_end_2</text>
+			</phrase>
+		</phrase_list>
+	</dialog>
+	
+	
+	
+	
+	
+	<!--dialog id="gar_decan_duty_buy_info_dialog">
+		<has_info>bandit_kmb_02_start</has_info>
+        <precondition>nql.has_pda_fraer_kmb</precondition>
+		<dont_has_info>gar_decan_duty_permission_info</dont_has_info>
+		<dont_has_info>gar_decan_duty_permission_info_fail</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>gar_decan_duty_permission_0</text>
+                <next>111</next>
+            </phrase>		
+			<phrase id="111">
+                <text>gar_decan_duty_permission_1</text>
+				<next>1111</next>
+                <next>2</next>
+            </phrase>			
+			<phrase id="1111">
+                <text>gar_decan_duty_permission_2</text>
+				<next>11111</next>
+            </phrase>			
+			<phrase id="11111">
+                <text>gar_decan_duty_permission_3</text>
+				<next>4</next>
+            </phrase>		
+			<phrase id="2">
+                <text>gar_decan_duty_permission_4</text>
+				<next>3</next>
+            </phrase>				
+			<phrase id="3">
+                <give_info>gar_decan_duty_permission_info_fail</give_info>	
+                <text>gar_decan_duty_permission_5</text>			
+            </phrase>		
+			<phrase id="4">
+                <give_info>gar_decan_duty_permission_info</give_info>	
+                <text>gar_decan_duty_permission_6</text>
+                <action>nql.give_task_drx_sl_gar_decan_duty_gp_task_1</action>	
+            </phrase>			
+        </phrase_list>
+    </dialog-->
+
+
+		<dialog id="open_level_changer_provodnik">	
+	<precondition>roa.check_rank_novice</precondition>
+		<phrase_list>
+			<phrase id="0">
+				<text>open_level_changer_provodnik_0</text>
+				<next>1</next>
+			</phrase>
+			<phrase id="1">
+				<text>open_level_changer_provodnik_00</text>
+				<next>11</next>
+				<next>1111</next>
+			</phrase>
+			<phrase id="11">
+		<precondition>nql.has_money_to_level_changer</precondition>
+				<text>open_level_changer_provodnik_1</text>
+				<next>111</next>
+			</phrase>
+			<phrase id="111">
+				<text>open_level_changer_provodnik_11</text>
+				<next>2</next>
+				<next>4</next>
+				<next>7</next>
+				<next>9</next>
+				<next>12</next>
+				<next>14</next>
+				<next>16</next>
+				<next>18</next>
+				<next>20</next>
+				<next>22</next>
+				<next>24</next>
+				<next>26</next>
+				<next>28</next>
+				<next>30</next>
+				<next>32</next>
+				<next>34</next>
+				<next>36</next>
+				<next>38</next>
+				<next>39</next>
+				<next>41</next>
+				<next>42</next>
+				<next>51</next>
+				<next>53</next>
+				<next>54</next>
+			</phrase>
+			<phrase id="2">
+        <dont_has_info>open_level_changer_1</dont_has_info>
+				<text>open_level_changer_provodnik_text_1</text>
+				<next>02</next>
+			</phrase>
+			<phrase id="02">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_esc_space_restrictor_to_marsh_1</action>
+				<give_info>open_level_changer_1</give_info>
+			</phrase>
+			<phrase id="41">
+        <dont_has_info>open_level_changer_41</dont_has_info>
+				<text>open_level_changer_provodnik_text_41</text>
+				<next>041</next>
+			</phrase>
+			<phrase id="041">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_esc_space_restrictor_to_garbage_1</action>
+				<give_info>open_level_changer_41</give_info>
+			</phrase>	
+			<phrase id="4">
+        <dont_has_info>open_level_changer_4</dont_has_info>
+				<text>open_level_changer_provodnik_text_4</text>
+				<next>04</next>
+			</phrase>
+			<phrase id="04">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_val_space_restrictor_to_darkscape</action>
+				<give_info>open_level_changer_4</give_info>
+			</phrase>	
+			<phrase id="5">
+        <dont_has_info>open_level_changer_5</dont_has_info>
+				<text>open_level_changer_provodnik_text_5</text>
+				<next>05</next>
+			</phrase>
+			<phrase id="05">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_gar_space_restrictor_to_agroprom_1</action>
+				<give_info>open_level_changer_5</give_info>
+			</phrase>
+			<phrase id="7">
+        <dont_has_info>open_level_changer_7</dont_has_info>
+				<text>open_level_changer_provodnik_text_7</text>
+				<next>07</next>
+			</phrase>
+			<phrase id="07">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_gar_space_restrictor_to_bar_1</action>
+				<give_info>open_level_changer_7</give_info>
+			</phrase>	
+			<phrase id="9">
+        <dont_has_info>open_level_changer_9</dont_has_info>
+				<text>open_level_changer_provodnik_text_9</text>
+				<next>09</next>
+			</phrase>
+			<phrase id="09">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_gar_space_restrictor_to_darkvalley_1</action>
+				<give_info>open_level_changer_9</give_info>
+			</phrase>	
+			<phrase id="12">
+        <dont_has_info>open_level_changer_12</dont_has_info>
+				<text>open_level_changer_provodnik_text_12</text>
+				<next>012</next>
+			</phrase>
+			<phrase id="012">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_bar_space_restrictor_to_tc</action>
+				<give_info>open_level_changer_12</give_info>
+			</phrase>
+			<phrase id="14">
+        <dont_has_info>open_level_changer_14</dont_has_info>
+				<text>open_level_changer_provodnik_text_14</text>
+				<next>014</next>
+			</phrase>
+			<phrase id="014">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_bar_space_restrictor_to_military_01</action>
+				<give_info>open_level_changer_14</give_info>
+			</phrase>	
+			<phrase id="16">
+        <dont_has_info>open_level_changer_16</dont_has_info>
+				<text>open_level_changer_provodnik_text_16</text>
+				<next>016</next>
+			</phrase>
+			<phrase id="016">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_bar_space_restrictor_to_rostok_01</action>
+				<give_info>open_level_changer_16</give_info>
+			</phrase>	
+			<phrase id="18">
+        <dont_has_info>open_level_changer_18</dont_has_info>
+				<text>open_level_changer_provodnik_text_18</text>
+				<next>018</next>
+			</phrase>
+			<phrase id="018">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_ros_space_restrictor_to_yantar_1</action>
+				<give_info>open_level_changer_18</give_info>
+			</phrase>			
+			<phrase id="20">
+        <dont_has_info>open_level_changer_20</dont_has_info>
+				<text>open_level_changer_provodnik_text_20</text>
+				<next>020</next>
+			</phrase>
+			<phrase id="020">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_mil_space_restrictor_to_dead_city_1</action>
+				<give_info>open_level_changer_20</give_info>
+			</phrase>		
+			<phrase id="22">
+        <dont_has_info>open_level_changer_22</dont_has_info>
+				<text>open_level_changer_provodnik_text_22</text>
+				<next>022</next>
+			</phrase>
+			<phrase id="022">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_mil_space_restrictor_to_red_1</action>
+				<give_info>open_level_changer_22</give_info>
+			</phrase>			
+			<phrase id="24">
+        <dont_has_info>open_level_changer_24</dont_has_info>
+				<text>open_level_changer_provodnik_text_24</text>
+				<next>024</next>
+			</phrase>
+			<phrase id="024">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_lim_space_restrictor_to_red_forest</action>
+				<give_info>open_level_changer_24</give_info>
+			</phrase>			
+			<phrase id="26">
+        <dont_has_info>open_level_changer_26</dont_has_info>
+				<text>open_level_changer_provodnik_text_26</text>
+				<next>026</next>
+			</phrase>
+			<phrase id="026">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_provodniki_sever_far_money_perekhod</action>
+				<action>transitions.open_level_changer_zaton_space_restrictor_to_stancia_1</action>
+				<give_info>open_level_changer_26</give_info>
+			</phrase>		
+			<phrase id="28">
+        <dont_has_info>open_level_changer_28</dont_has_info>
+				<text>open_level_changer_provodnik_text_28</text>
+				<next>028</next>
+			</phrase>
+			<phrase id="028">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_provodniki_sever_far_money_perekhod</action>
+				<action>transitions.open_level_changer_aes_space_restrictor_to_aes2</action>
+				<give_info>open_level_changer_28</give_info>
+			</phrase>		
+			<phrase id="30">
+        <dont_has_info>open_level_changer_30</dont_has_info>
+				<text>open_level_changer_provodnik_text_30</text>
+				<next>030</next>
+			</phrase>
+			<phrase id="030">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_pri_space_restrictor_to_cop_pripyat</action>
+				<give_info>open_level_changer_30</give_info>
+			</phrase>		
+			<phrase id="32">
+        <dont_has_info>open_level_changer_32</dont_has_info>
+				<text>open_level_changer_provodnik_text_32</text>
+				<next>032</next>
+			</phrase>
+			<phrase id="032">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_jup_space_restrictor_to_zaton</action>
+				<give_info>open_level_changer_32</give_info>
+			</phrase>		
+			<phrase id="34">
+        <dont_has_info>open_level_changer_34</dont_has_info>
+				<text>open_level_changer_provodnik_text_34</text>
+				<next>034</next>
+			</phrase>
+			<phrase id="034">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_red_space_restricor_to_jupiter</action>
+				<give_info>open_level_changer_34</give_info>
+			</phrase>		
+			<phrase id="36">
+        <dont_has_info>open_level_changer_36</dont_has_info>
+				<text>open_level_changer_provodnik_text_36</text>
+				<next>036</next>
+			</phrase>
+			<phrase id="036">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_rad_space_restrictor_to_red_forest</action>
+				<give_info>open_level_changer_36</give_info>
+			</phrase>			
+			<phrase id="38">
+        <dont_has_info>open_level_changer_38</dont_has_info>
+				<text>open_level_changer_provodnik_text_38</text>
+				<next>038</next>
+			</phrase>
+			<phrase id="038">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_rad_space_restrictor_to_pripyat_01</action>
+				<give_info>open_level_changer_38</give_info>
+			</phrase>		
+			<phrase id="39">
+        <dont_has_info>open_level_changer_39</dont_has_info>
+				<text>open_level_changer_provodnik_text_39</text>
+				<next>039</next>
+			</phrase>
+			<phrase id="039">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_jupiter_space_restrictor_to_jupiter_ug</action>
+				<give_info>open_level_changer_39</give_info>
+			</phrase>					
+			<phrase id="51">
+        <dont_has_info>open_level_changer_51</dont_has_info>
+				<text>open_level_changer_provodnik_text_51</text>
+				<next>051</next>
+			</phrase>
+			<phrase id="051">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_ds_space_restrictor_to_darkvalley</action>
+				<give_info>open_level_changer_51</give_info>
+			</phrase>				
+			<phrase id="53">
+        <dont_has_info>open_level_changer_53</dont_has_info>
+				<text>open_level_changer_provodnik_text_53</text>
+				<next>053</next>
+			</phrase>
+			<phrase id="053">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_mar_space_restrictor_to_agroprom_1</action>
+				<give_info>open_level_changer_53</give_info>
+			</phrase>					
+			<phrase id="54">
+        <dont_has_info>open_level_changer_54</dont_has_info>
+				<text>open_level_changer_provodnik_text_54</text>
+				<next>054</next>
+			</phrase>
+			<phrase id="054">
+				<text>open_level_changer_provodnik_text</text>
+				<action>nql.sell_money_to_level_changer</action>
+				<action>transitions.open_level_changer_yan_space_restrictor_to_rostok_1</action>
+				<give_info>open_level_changer_54</give_info>
+			</phrase>	
+			<phrase id="42">
+				<text>open_level_changer_provodnik_42</text>
+			</phrase>		
+			<phrase id="1111">
+				<text>open_level_changer_provodnik_111111111111111</text>
+			</phrase>
+		</phrase_list>
+	</dialog>	
+</game_dialogs>

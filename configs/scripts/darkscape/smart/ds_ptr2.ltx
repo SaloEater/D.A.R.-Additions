@@ -1,0 +1,19 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 11
+max_population = 1
+respawn_params = respawn@ds_ptr2
+respawn_idle = 43200
+
+[respawn@ds_ptr2]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_flesh, simulation_pseudodog
+spawn_num = {=!smart_controlled(ds_ptr2)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_snork, simulation_psy_dog
+spawn_num = {=!smart_controlled(ds_ptr2) =actor_week_in_zone(9)} 1, 0

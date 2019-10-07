@@ -1,0 +1,83 @@
+[smart_terrain]
+respawn_radius = 300;zat_b40_smart_terrain
+squad_id = 38
+respawn_params = respawn@zat_b40_smart_terrain
+max_population = 4
+;arrive_dist = 65
+respawn_idle = 28800
+
+[respawn@zat_b40_smart_terrain]
+
+spawn_monster
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_killer
+spawn_army
+spawn_ecolog
+spawn_monolith
+spawn_zombied
+
+[spawn_monster]
+spawn_squads = simulation_dog
+spawn_num = {=!squad_exist(zat_b22_barmen) =!smart_controlled(zat_b40_smart_terrain) +bar_deactivate_radar_done} 6, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran
+spawn_num = {=squad_exist(zat_b22_barmen) +bar_deactivate_radar_done} 3, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_veteran
+spawn_num = {=!squad_exist(zat_b22_barmen) =smart_under_faction(zat_b40_smart_terrain:bandit) +bar_deactivate_radar_done} 4, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_veteran, stalker_sim_squad_veteran
+spawn_num = {=squad_exist(zat_b22_barmen) +bar_deactivate_radar_done} 1, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_b40_smart_terrain:dolg) +bar_deactivate_radar_done} 4, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_veteran 
+spawn_num = {=smart_under_faction(zat_b40_smart_terrain:freedom) +bar_deactivate_radar_done} 3, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {=!squad_exist(zat_b22_barmen) =smart_under_faction(zat_b40_smart_terrain:killer) +bar_deactivate_radar_done} 4, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_veteran, army_sim_squad_elite
+spawn_num = {=!squad_exist(zat_b22_barmen) =smart_under_faction(zat_b40_smart_terrain:army) +bar_deactivate_radar_done} 1, 0
+
+[spawn_ecolog]
+spawn_squads = ecolog_sim_squad_veteran, stalker_sim_squad_veteran
+spawn_num = {=squad_exist(zat_b22_barmen) +bar_deactivate_radar_done} 1, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=!squad_exist(zat_b22_barmen) =smart_under_faction(zat_b40_smart_terrain:monolith)} 3, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_b40_smart_terrain:zombied)} 3, 0
+
+
+[exclusive]
+zat_b40_guard_leader_01 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_leader_02 = zaton\zat_b40_mercs.ltx
+;leave this for sim - killers only
+zat_b40_guard_01 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_02 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_03 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_04 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_05 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_06 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_07 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_08 = zaton\zat_b40_mercs.ltx
+
+beard_job = zaton\zat_b40_mercs.ltx
+zat_a2_stalker_mechanic = zaton\zat_a2_stalker_mechanic.ltx
+zat_b38_stalker_medic = zaton\zat_b38_stalker_medic.ltx

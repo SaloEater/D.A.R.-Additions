@@ -1,0 +1,25 @@
+[smart_terrain]
+respawn_radius = 300;zat_sim_25
+squad_id = 10
+max_population = 2
+respawn_params = respawn@zat_sim_25
+respawn_idle = 8640
+
+
+[respawn@zat_sim_25]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_rats
+spawn_num = {=!smart_controlled(zat_sim_25)} 4, 0
+
+[spawn_monster2]
+spawn_squads = simulation_tushkano
+spawn_num = {=!smart_controlled(zat_sim_25)} 4, 0
+
+[spawn_monster3]
+spawn_squads = simulation_tushkano_7_10, simulation_rats_7_10
+spawn_num = {=!smart_controlled(zat_sim_25)} 1, 0

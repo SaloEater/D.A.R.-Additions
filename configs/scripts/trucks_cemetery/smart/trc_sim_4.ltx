@@ -1,0 +1,19 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 4
+max_population = 1
+respawn_params = respawn@trc_sim_4
+respawn_idle = 43200
+
+[respawn@trc_sim_4]
+
+spawn_monster
+spawn_stalker
+
+[spawn_monster]
+spawn_squads = simulation_boar, simulation_flesh, simulation_boar
+spawn_num = {=!smart_controlled(trc_sim_4)} 2, 0
+
+[spawn_stalker]
+spawn_squads = bandit_sim_squad_advanced, stalker_sim_squad_advanced
+spawn_num = 1

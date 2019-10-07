@@ -1,0 +1,15 @@
+[smart_terrain]
+respawn_radius = 100
+squad_id = 28
+max_population = 1
+respawn_params = respawn@zat_medic_home_smart
+respawn_idle = 86400
+
+
+[respawn@zat_medic_home_smart]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_rats
+spawn_num = {=!smart_controlled(zat_medic_home_smart)} 2, 0

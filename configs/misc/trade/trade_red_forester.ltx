@@ -1,0 +1,209 @@
+#include "trade_discounts.ltx"
+#include "trade_presets.ltx"
+
+[trader]
+buy_condition = trade_generic_buy 
+sell_condition = trade_generic_sell
+buy_supplies = {+bar_deactivate_radar_done} supplies_2, supplies_1
+buy_item_condition_factor = 0.0
+resupply_timeout = 432000
+
+discounts = discount_red_forester
+
+[trade_generic_buy]:supplier
+wpn_hand_pickaxe     = 0.1, 0.1
+wpn_dynamo_hand      = 0.1, 0.1
+toolkit_p_0          = 0.1, 0.1
+repairkit_p_0        = 0.1, 0.1
+toolkit_s_0          = 0.1, 0.1
+repairkit_s_0        = 0.1, 0.1
+toolkit_r_0          = 0.1, 0.1
+repairkit_r_0        = 0.1, 0.1
+armor_repair_pro_0   = 0.1, 0.1
+helmet_repair_kit_0  = 0.1, 0.1
+glue_b               = 0.1, 0.1
+glue_b_2             = 0.1, 0.1
+glue_a               = 0.1, 0.1
+glue_a_2             = 0.1, 0.1
+glue_e               = 0.1, 0.1
+glue_e_2             = 0.1, 0.1
+armor_repair_fa      = 0.1, 0.1
+armor_repair_fa_2    = 0.1, 0.1
+helmet_repair_kit    = 0.1, 0.1
+cleaning_kit_p       = 0.1, 0.1
+cleaning_kit_p_2     = 0.1, 0.1
+cleaning_kit_p_3     = 0.1, 0.1
+cleaning_kit_s       = 0.1, 0.1
+cleaning_kit_s_2     = 0.1, 0.1
+cleaning_kit_s_3     = 0.1, 0.1
+cleaning_kit_r       = 0.1, 0.1
+cleaning_kit_r_2     = 0.1, 0.1
+cleaning_kit_r_3     = 0.1, 0.1
+toolkit_p            = 0.1, 0.1
+repairkit_p          = 0.1, 0.1
+toolkit_s            = 0.1, 0.1
+repairkit_s          = 0.1, 0.1
+toolkit_r            = 0.1, 0.1
+repairkit_r          = 0.1, 0.1
+sewing_kit_b         = 0.1, 0.1
+sewing_kit_b_2       = 0.1, 0.1
+sewing_kit_b_3       = 0.1, 0.1
+sewing_kit_b_4       = 0.1, 0.1
+sewing_kit_a         = 0.1, 0.1
+sewing_kit_a_2       = 0.1, 0.1
+sewing_kit_a_3       = 0.1, 0.1
+sewing_kit_a_4       = 0.1, 0.1
+sewing_kit_h         = 0.1, 0.1
+armor_repair_pro     = 0.1, 0.1
+sharpening_stones    = 0.1, 0.1
+sharpening_stones_2  = 0.1, 0.1
+sharpening_stones_3  = 0.1, 0.1
+sharpening_stones_4  = 0.1, 0.1
+itm_repairkit_tier_1 = 0.1, 0.1
+itm_repairkit_tier_2 = 0.1, 0.1
+itm_repairkit_tier_3 = 0.1, 0.1
+itm_drugkit          = 0.1, 0.1
+
+[trade_generic_sell]:trasher
+briefcase
+moneybag
+
+[supplies_1]:
+
+kit_hunt			= 1, 1
+wpn_knife4			= 1, 1
+backpack_travel        		= 1, 1
+wpn_hand_pickaxe        	= 1, 1
+wpn_dynamo_hand        		= 1, 1
+explo_metalcan_powder  		= 10, 1
+jar				= 10, 1
+bag_01				= 1, 1
+bag_02				= 1, 1
+bag_03				= 1, 1
+bag_04				= 1, 1
+bag_05				= 1, 1
+cleaning_kit_p			= 4, 1
+cleaning_kit_p_3		= 4, 1
+cleaning_kit_s			= 4, 1
+cleaning_kit_s_3		= 4, 1
+cleaning_kit_r			= 4, 1
+cleaning_kit_r_3		= 4, 1
+toolkit_p			= 3, 1
+toolkit_s			= 3, 1
+toolkit_r			= 3, 1
+repairkit_p			= 2, 1
+repairkit_s			= 2, 1
+repairkit_r			= 2, 1
+sharpening_stones_4		= 2, 1
+itm_repairkit_tier_1		= 1, 1
+itm_repairkit_tier_2		= 1, 1
+itm_repairkit_tier_3		= 1, 1
+itm_drugkit			= 1, 1
+batteries_dead       		= 8, 1
+batteries_ccell       		= 2, 1
+steel_wool			= 4, 1
+spareparts			= 4, 1
+synthrope			= 4, 1
+copper_coil			= 4, 1
+radio				= 2, 1
+textolite			= 2, 1
+transistors			= 2, 1
+capacitors			= 2, 1
+colophony			= 2, 1
+lead_box			= 2, 1
+itm_sleepbag         		= 1, 1
+itm_backpack       		= 1, 1
+maps_kit			= 4, 1
+greencard			= 4, 1
+journal				= 3, 1
+ammo_bad			= 20, 1
+gasmask_filter       		= 4, 1
+grooming			= 1, 1
+cooking				= 10, 1
+fieldcooker			= 1, 1
+wood_stove			= 1, 1
+device_lighter			= 1, 1
+device_flashlight		= 1, 1
+device_glowstick		= 1, 1
+device_kerosinka		= 1, 1
+kerosene_5			= 1, 1
+explo_balon_gas_8		= 1, 1
+explo_jerrycan_fuel_8		= 1, 1
+
+;[drugs]
+jgut				= 4, 1
+bandage				= 4, 1
+stimpack			= 4, 1
+rebirth				= 2, 1
+antibio_sulfad_3		= 4, 1
+drug_charcoal_5			= 2, 1
+drink_crow            		= 2, 1
+flask_3    		        = 2, 1
+bread				= 1, 1
+conserva               		= 1, 0.25
+vodka_3                		= 1, 0.5
+bottle_metal_3        		= 3, 1
+drug_lsd					= 3, 1
+yadylin              		= 3, 1
+
+antirad_outfit			= 1, 1
+stalker_graphite_outfit		= 1, 1
+helm_respirator			= 1, 1
+helm_ppm88			= 1, 1
+
+[supplies_2]:supplies_1
+;[WP_MAG]
+mag_wpn_rpk74		     = 1, 0.5
+mag_wpn_ak103m		     = 1, 0.5
+mag_wpn_aug_a3		     = 1, 0.5
+mag_wpn_fn2000		     = 1, 0.5
+mag_wpn_pkm2		     = 1, 0.5
+mag_wpn_m249		     = 1, 0.5
+mag_wpn_vssk		     = 1, 0.5
+mag_wpn_saiga12s		 = 1, 0.5
+mag_wpn_vepr12		     = 1, 0.5
+mag_wpn_glock3		     = 1, 0.5
+mag_wpn_oc33m		     = 1, 0.5
+mag_wpn_sig220m		     = 1, 0.5
+mag_wpn_m712		     = 1, 0.5
+mag_wpn_usp2		     = 1, 0.5
+mag_wpn_p90		     	 = 1, 0.5
+mag_wpn_ak74m		     = 1, 0.5
+mag_wpn_ak103m		     = 1, 0.5
+mag_wpn_rpk74m		     = 1, 0.5
+mag_wpn_aug_a3		     = 1, 0.5
+mag_wpn_usas12		     = 1, 0.5
+mag_wpn_m60m		     = 1, 0.5
+mag_wpn_scar_drum    	 = 1, 0.5
+mag_wpn_m4_drum      	 = 1, 0.5
+
+ammo_12x70_buck       	 = 2, 1
+ammo_12x76_zhekan     	 = 2, 1
+ammo_30carbine_fmj     	 = 2, 1
+ammo_357_hp_mag_ap     	 = 2, 1
+ammo_44mag_xtp			 = 2, 1
+ammo_50ae_def			 = 2, 1
+ammo_500sw 			 	 = 2, 1
+
+wpn_addon_sil_revolver 		= 1, 1
+wpn_addon_scope_susat_w500  = 1, 1
+
+wpn_hunter				= 1, 0.5
+wpn_raging				= 1, 0.5
+wpn_w500				= 1, 0.5
+wpn_pkp					= 1, 0.5
+wpn_m60					= 1, 0.5
+wpn_stg44				= 1, 0.5
+wpn_mg42				= 1, 0.5
+wpn_m1014           	= 1, 0.5
+wpn_usas12				= 1, 0.5
+wpn_spas12				= 1, 0.5
+wpn_fort500 	    	= 1, 0.5
+wpn_mossberg590			= 1, 0.5
+wpn_remington870		= 1, 0.5
+wpn_winchester1892  	= 1, 0.5
+wpn_ak74u_nimble		= 1, 0.5
+wpn_fn2000_nimble		= 1, 0.5
+wpn_toz34_nimble		= 1, 0.5
+nosorog_outfit			= 1, 0.5
+mine_wire				= 5, 1

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table> 
+	<!-- Название рестриктора -->
+	<string id="mar_space_restrictor_to_escape_fullname">
+		<text>с Болот на Кордон</text>
+	</string>
+	<string id="mar_space_restrictor_to_agroprom_fullname">
+		<text>с Болот в НИИ «Агропром»</text>
+	</string>
+	<string id="esc_space_restrictor_to_marsh_fullname">
+		<text>с Кордона на Болота</text>
+	</string>
+	<string id="esc_space_restrictor_to_garbage_fullname">
+		<text>с Кордона на Свалку</text>
+	</string>
+	<string id="esc_space_restrictor_to_darkscape_fullname">
+		<text>с Кордона в Темную Лощину</text>
+	</string>
+	<string id="ds_space_restrictor_to_escape_fullname">
+		<text>из Темной Лощины на Кордон</text>
+	</string>
+	<string id="ds_space_restrictor_to_darkvalley_fullname">
+		<text>из Темной Лощины в Темную Долину</text>
+	</string>
+	<string id="agr_space_restrictor_to_garbage_fullname">
+		<text>из НИИ «Агропром» на Свалку</text>
+	</string>
+	<string id="agr_space_restrictor_to_marsh_fullname">
+		<text>из НИИ «Агропром» на Болота</text>
+	</string>
+	<string id="agr_space_restrictor_to_yantar_fullname">
+		<text>из НИИ «Агропром» на Янтарь</text>
+	</string>
+	<string id="agr_space_restrictor_to_agr_ug_fullname">
+		<text>из НИИ «Агропром» в "подземелья Агропрома"</text>
+	</string>
+	<string id="gar_space_restrictor_to_agroprom_fullname">
+		<text>со Свалки в НИИ «Агропром»</text>
+	</string>
+	<string id="gar_space_restrictor_to_bar_fullname">
+		<text>со Свалки в Бар</text>
+	</string>
+	<string id="gar_space_restrictor_to_darkvalley_fullname">
+		<text>со Свалки в Темную Долину</text>
+	</string>
+	<string id="gar_space_restrictor_to_escape_fullname">
+		<text>со Свалки на Кордон</text>
+	</string>
+	<string id="gar_space_restrictor_to_rostok_fullname">
+		<text>со Свалки на Дикие территории</text>
+	</string>
+	<string id="val_space_restrictor_to_darkscape_fullname">
+		<text>из Темной Долина в Темную Лощину</text>
+	</string>
+	<string id="val_space_restrictor_to_garbage_fullname">
+		<text>из Темной Долины на Свалку</text>
+	</string>
+	<string id="val_space_restrictor_to_labx18_fullname">
+		<text>из Темной Долины в лабораторию Х18</text>
+	</string>
+	<string id="val_space_restrictor_to_tc_fullname">
+		<text>из Темной Долины на Кладбище техники</text>
+	</string>
+	<string id="bar_space_restrictor_to_garbage_fullname">
+		<text>из Бара на Свалку</text>
+	</string>
+	<string id="bar_space_restrictor_to_military_fullname">
+		<text>из Бара на Армейские склады</text>
+	</string>
+	<string id="bar_space_restrictor_to_rostok_fullname">
+		<text>из Бара на Дикие территории</text>
+	</string>
+	<string id="bar_space_restrictor_to_tc_fullname">
+		<text>из Бара на Кладбище техники</text>
+	</string>
+	<string id="ros_space_restrictor_to_bar_fullname">
+		<text>с Диких территорий в Бар</text>
+	</string>
+	<string id="ros_space_restrictor_to_garbage_fullname">
+		<text>с Диких территорий на Свалку</text>
+	</string>
+	<string id="ros_space_restrictor_to_yantar_fullname">
+		<text>с Диких территорий на Янтарь</text>
+	</string>
+	<string id="yan_space_restrictor_to_rostok_fullname">
+		<text>с Янтаря на Дикие территории</text>
+	</string>
+	<string id="yan_space_restrictor_to_agroprom_fullname">
+		<text>с Янтаря в НИИ «Агропром»</text>
+	</string>
+	<string id="yan_space_restrictor_to_dead_city_fullname">
+		<text>с Янтаря в Мертвый город</text>
+	</string>
+	<string id="yan_space_restrictor_to_x16_fullname">
+		<text>с Янтаря в лабораторию Х16</text>
+	</string>
+	<string id="mil_space_restrictor_to_red_fullname">
+		<text>с Армейских складов в Рыжий лес</text>
+	</string>
+	<string id="mil_space_restrictor_to_bar_fullname">
+		<text>с Армейских складов в Бар</text>
+	</string>
+	<string id="mil_space_restrictor_to_radar_fullname">
+		<text>с Армейских складов на Радар</text>
+	</string>
+	<string id="mil_space_restrictor_to_dead_city_fullname">
+		<text>с Армейских складов в Мертвый город</text>
+	</string>
+	<string id="mil_space_restrictor_to_tc_fullname">
+		<text>с Армейских складов на Кладбище техники</text>
+	</string>
+	<string id="cit_space_restrictor_to_limansk_fullname">
+		<text>из Мертвого города в Лиманск</text>
+	</string>
+	<string id="cit_space_restrictor_to_yantar_fullname">
+		<text>из Мертвого города на Янтарь</text>
+	</string>
+	<string id="cit_space_restrictor_to_military_fullname">
+		<text>из Мертвого города на Армейские склады</text>
+	</string>
+	<string id="red_space_restrictor_to_jupiter_fullname">
+		<text>из Рыжего леса в окрестности "Юпитера"</text>
+	</string>
+	<string id="red_space_restrictor_to_military_fullname">
+		<text>из Рыжего леса на Армейские склады</text>
+	</string>
+	<string id="red_space_restrictor_to_limansk_fullname">
+		<text>из Рыжего леса на Лиманск</text>
+	</string>
+	<string id="red_space_restrictor_to_radar_fullname">
+		<text>из Рыжего леса на Радар</text>
+	</string>
+	<string id="rad_space_restrictor_to_military_fullname">
+		<text>с Радара на Армейские склады</text>
+	</string>
+	<string id="rad_space_restrictor_to_red_forest_fullname">
+		<text>с Радара в Рыжий лес</text>
+	</string>
+	<string id="rad_space_restrictor_to_pripyat_fullname">
+		<text>с Радара в восточную Припять</text>
+	</string>
+	<string id="rad_space_restrictor_to_bunker_fullname">
+		<text>с Радара в лабораторию Х10</text>
+	</string>
+	<string id="lim_space_restrictor_to_dead_city_fullname">
+		<text>из Лиманска в Мертвый город</text>
+	</string>
+	<string id="lim_space_restrictor_to_red_forest_fullname">
+		<text>из Лиманска в Рыжий лес</text>
+	</string>
+	<string id="lim_space_restrictor_to_hospital_fullname">
+		<text>из Лиманска в Заброшенный госпиталь</text>
+	</string>
+	<string id="katacomb_space_restrictor_to_limansk_fullname">
+		<text>из Заброшенного госпиталя в Лиманск</text>
+	</string>
+	<string id="katacomb_space_restrictor_to_zaton_fullname">
+		<text>из Заброшенного госпиталя на Затон</text>
+	</string>
+	<string id="pri_space_restrictor_to_radar_fullname">
+		<text>из восточной Припяти на Радар</text>
+	</string>
+	<string id="pri_space_restrictor_to_stancia_fullname">
+		<text>из восточной Припяти на ЧАЭС-1</text>
+	</string>
+	<string id="pri_space_restrictor_to_cop_pripyat_fullname">
+		<text>из восточной Припяти в центральную Припять</text>
+	</string>
+	<string id="pri_space_restrictor_to_jupiter_fullname">
+		<text>из восточной Припяти в окрестности "Юпитера"</text>
+	</string>
+	<string id="pri_space_restrictor_to_jup_ug_fullname">
+		<text>из восточной Припяти в Путепровод «Припять-1»</text>
+	</string>
+	<string id="pri_space_restrictor_to_labx8_fullname">
+		<text>из восточной Припяти в лабораторию Х8</text>
+	</string>
+	<string id="aes_space_restrictor_to_pripyat_fullname">
+		<text>из ЧАЭС-1 в восточную Припять</text>
+	</string>
+	<string id="aes_space_restrictor_to_hospital_fullname">
+		<text>из ЧАЭС-1 в Заброшенный госпиталь</text>
+	</string>
+	<string id="aes_space_restrictor_to_zaton_fullname">
+		<text>из ЧАЭС-1 на Затон</text>
+	</string>
+	<string id="aes_space_restrictor_to_aes2_fullname">
+		<text>из ЧАЭС-1 на ЧАЭС-2</text>
+	</string>
+	<string id="aes_space_restrictor_to_sarcofag_fullname">
+		<text>из ЧАЭС-1 в Саркофаг</text>
+	</string>
+	<string id="aes2_space_restrictor_to_gen_fullname">
+		<text>из ЧАЭС-2 на Генераторы</text>
+	</string>
+	<string id="aes2_space_restrictor_to_aes1_fullname">
+		<text>из ЧАЭС-2 на ЧАЭС-1</text>
+	</string>
+	<string id="aes2_space_restrictor_to_hospital_fullname">
+		<text>из ЧАЭС-2 в Заброшенный госпиталь</text>
+	</string>
+	<string id="aes2_space_restrictor_to_secret_lab_fullname">
+		<text>из ЧАЭС-2 в центр управления Монолитом</text>
+	</string>
+	<string id="gen_space_restrictor_to_aes2_fullname">
+		<text>с Генераторов на ЧАЭС-2</text>
+	</string>
+	<string id="gen_space_restrictor_to_warlab_fullname">
+		<text>с Генераторов в лабораторию Х10</text>
+	</string>
+	<string id="zaton_space_restrictor_to_jupiter_fullname">
+		<text>с Затона в окрестности "Юпитера"</text>
+	</string>
+	<string id="zaton_space_restrictor_to_stancia_1_fullname">
+		<text>с Затона на ЧАЭС-1</text>
+	</string>
+	<string id="zaton_space_restrictor_to_hospital_fullname">
+		<text>с Затона в Заброшенный госпиталь</text>
+	</string>
+	<string id="jup_space_restrictor_to_zaton_fullname">
+		<text>с окрестностей "Юпитера" на Затон</text>
+	</string>
+	<string id="jup_space_restrictor_to_red_forest_fullname">
+		<text>с окрестностей "Юпитера" в Рыжий лес</text>
+	</string>
+	<string id="jup_space_restrictor_to_soc_pripyat_fullname">
+		<text>с окрестностей "Юпитера" в какую-то Припять</text>
+	</string>
+	<string id="jup_space_restrictor_to_jupiter_ug_fullname">
+		<text>с окрестностей "Юпитера" в Путепровод «Припять-1»</text>
+	</string>
+	<string id="jupiter_ug_space_restrictor_to_jupiter_fullname">
+		<text>из Путепровода «Припять-1» в окрестности "Юпитера"</text>
+	</string>
+	<string id="cop_pripyat_space_restrictor_to_soc_pripyat_fullname">
+		<text>из восточной Припять в центральную Припять</text>
+	</string>
+	<string id="tc_space_restrictor_to_darkvalley_fullname">
+		<text>из Кладбища техники в Темную Долину</text>
+	</string>
+	<string id="tc_space_restrictor_to_bar_fullname">
+		<text>из Кладбища техники в Бар</text>
+	</string>
+	<string id="tc_space_restrictor_to_military_fullname">
+		<text>из Кладбища техники на Армейские склады</text>
+	</string>
+</string_table>

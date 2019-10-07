@@ -1,0 +1,34 @@
+[logic@nastavnic_cs_squad]
+suitable = {=check_npc_name(nastavnic_cs)} true	
+prior = 200	
+active = walker@nastavnic_cs_squad_1
+level_spot = quest_npc
+
+[walker@nastavnic_cs_squad_1]
+path_walk = nastavnic_cs_squad_walk
+path_look = nastavnic_cs_squad_look
+def_state_moving = walk_noweap
+meet = meet
+invulnerable = {!actor_enemy} true, false
+combat_ignore_cond = {=actor_enemy =check_enemy_name(actor)} false, true
+combat_ignore_cond = true
+reach_distance = 10
+gather_items_enabled = false
+corpse_detection_enabled = false
+help_wounded_enabled = true
+use_camp = false	
+anim = hello
+danger = danger_ignore
+on_info = {=surge_started} walker@surge
+
+[walker@surge]
+path_walk = hide_2_walk
+path_look  = hide_2_look
+on_info = {!surge_started} walker@nastavnic_cs_squad_1
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+invulnerable = {!actor_enemy} true, false
+
+[danger_ignore]
+ignore_distance = 0

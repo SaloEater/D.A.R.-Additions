@@ -1,0 +1,20 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 11
+max_population = 1
+respawn_params = respawn@pri_smart_monster_lair1
+respawn_idle = 43200
+
+
+[respawn@pri_smart_monster_lair1]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_dog, simulation_pseudodog, simulation_dog_mix, simulation_dog_5_7
+spawn_num = {=!smart_controlled(pri_smart_monster_lair1)} 3, 0
+
+[spawn_monster2]
+spawn_squads = simulation_cat
+spawn_num = {=!smart_controlled(pri_smart_monster_lair1) =actor_week_in_zone(3)} 2, 0

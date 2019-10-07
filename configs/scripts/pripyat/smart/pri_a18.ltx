@@ -1,0 +1,49 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 24
+max_population = 1
+respawn_params = respawn@pri_a18   
+respawn_idle = 86400
+
+
+[respawn@pri_a18]
+spawn_monster
+spawn_zombied
+spawn_monolith
+
+[spawn_monster]
+spawn_squads = simulation_burer, simulation_poltergeist_tele, simulation_fracture, simulation_zombie
+spawn_num = {=!smart_controlled(pri_a18)} 1, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_advanced, zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_a18:zombied)} 1, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_a18:monolith)} 1, 0
+
+
+[exclusive]
+
+monster_1 	= pripyat\pri_a18_logic.ltx
+monster_2	= pripyat\pri_a18_logic.ltx
+monster_3 	= pripyat\pri_a18_logic.ltx
+monster_4 	= pripyat\pri_a18_logic.ltx
+monster_5 	= pripyat\pri_a18_logic.ltx
+
+monolith_1 = pripyat\pri_a18_terrain_ex_w.ltx
+monolith_2 = pripyat\pri_a18_terrain_ex_w.ltx
+monolith_3 = pripyat\pri_a18_terrain_ex_w.ltx
+monolith_4 = pripyat\pri_a18_terrain_ex_w.ltx
+monolith_5 = pripyat\pri_a18_terrain_ex_w.ltx
+
+monolith_post_guard_1 = pripyat\pri_a18_terrain_ex_w.ltx
+monolith_post_guard_2 = pripyat\pri_a18_terrain_ex_w.ltx
+monolith_post_guard_3 = pripyat\pri_a18_terrain_ex_w.ltx
+monolith_post_guard_4 = pripyat\pri_a18_terrain_ex_w.ltx
+monolith_post_guard_5 = pripyat\pri_a18_terrain_ex_w.ltx
+
+pri_a18_monolith_corridor = pripyat\pri_a18_terrain_ex_w.ltx
+
+pri_a18_monolith_2nd_corridor_1 = pripyat\pri_a18_terrain_ex_w.ltx

@@ -1,0 +1,31 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 38
+max_population = 1
+respawn_params = respawn@jup_sim_18
+respawn_idle = 259200
+
+
+[respawn@jup_sim_18]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+spawn_monster4
+
+[spawn_monster1]
+spawn_squads = jup_sim_18_gigant, jup_sim_18_controller, jup_sim_18_bloodsucker
+spawn_num = {=!smart_controlled(jup_sim_18)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_gigant
+spawn_num = {=squad_exist(jup_sim_18_gigant)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_snork
+spawn_num = {=squad_exist(jup_sim_18_controller)} 2, 0
+
+[spawn_monster4]
+spawn_squads = simulation_bloodsucker_red
+spawn_num = {=squad_exist(jup_sim_18_bloodsucker)} 1, 0
+

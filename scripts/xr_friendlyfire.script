@@ -1,0 +1,275 @@
+----------------------------------------------------------------------------------
+-- файл: xr_friendlyfire
+-- назначение: схема, если на линии огня появляется дружественный или нейтральный сталкер, то сталкеры прекращают
+-- стрельбу и меняют позицию.
+-------------------------------------------------------------------------------------------------
+-- По мотивам xStream, Rulix aka Bak. 
+-- Скрипты: makdm, 2014 для CoP 1.6.0.2 и Смерти Вопреки
+-------------------------------------------------------------------------------------------------
+-- EVALUATOR
+----------------------------------------------------------------------------------
+local inif = ini_file("ai_tweaks\\frendlyfire.ltx")
+local pre_change_time = alun_utils.read_from_ini(inif,"settings","pre_change_time","float", 15) * 1000
+local time_for_pos_search = alun_utils.read_from_ini(inif,"settings","time_for_pos_search","float", 0.5) * 1000
+
+local ini = system_ini()
+
+class "evaluator_shooting_friends" ( property_evaluator )
+function evaluator_shooting_friends:__init( storage, name ) super ( nil, "evaluator_shooting_friends" )
+	self.st = storage
+	self.st.need_change_position = false
+	self.timer = 0
+end
+
+function evaluator_shooting_friends:change_position( o )
+	local best_enemy 	= self.object:best_enemy()
+	local target_dist 	= self.object:position():distance_to( best_enemy:position() )
+	local dir_aim 		= best_enemy:position():sub( self.object:position() )
+	local tmp 			= o:object()
+	if tmp then
+		if IsStalker( tmp ) then
+			if tmp:alive() then
+				if self.object:relation( tmp ) ~= game_object.enemy then
+					if not xr_wounded.is_wounded( tmp ) then
+						local radius = 1.7
+						local friend_dist = self.object:position():distance_to( tmp:position() ) - radius
+						if friend_dist < target_dist then
+							local dir_st = tmp:position():sub( self.object:position() )
+							local x = dir_st.x * dir_aim.x + dir_st.z * dir_aim.z
+							local y = -dir_st.z * dir_aim.x + dir_st.x * dir_aim.z
+							local angle = math.atan2( y, x )
+							local div = radius / friend_dist
+							if angle >= -div and angle <= div then
+								if self.object:see( best_enemy ) and self.object:see( tmp ) then
+									return true
+								end						
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+return false
+end
+
+function evaluator_shooting_friends:evaluate()
+	
+	if self.script_timer_started == nil then 
+		self.tm_id = timing_scripts.register_binder("friendlyfire_eva", self.object:id())
+		self.script_timer_started = true
+	end 
+	timing_scripts.binder_update_start("friendlyfire_eva", self.tm_id)
+	
+	local best_enemy = self.object:best_enemy()
+	local active_item = self.object:active_item()
+	
+	if self.object:section() == "actor_visual_stalker" then
+		timing_scripts.binder_update_end("friendlyfire_eva", self.tm_id) 
+		return false
+	end
+	
+	if best_enemy == nil or active_item == nil then
+		timing_scripts.binder_update_end("friendlyfire_eva", self.tm_id) 
+		return false
+	end
+	
+	self.act_npc = self.object:motivation_action_manager():current_action_id()
+	if self.act_npc == xr_actions_id.smartcover_action or self.act_npc == xr_actions_id.smartcover_action + 2 then
+		timing_scripts.binder_update_end("friendlyfire_eva", self.tm_id) 
+		return false
+	end
+	
+	if self.st.need_change_position == true then
+		timing_scripts.binder_update_end("friendlyfire_eva", self.tm_id) 
+		return true
+	end
+	
+	if self.timer > time_global() then
+		timing_scripts.binder_update_end("friendlyfire_eva", self.tm_id) 
+		return false
+	end
+	self.timer = time_global() + pre_change_time
+	
+	for o in self.object:memory_visible_objects() do
+		if self:change_position( o ) then
+			self.st.need_change_position = true
+			timing_scripts.binder_update_end("friendlyfire_eva", self.tm_id) 
+			return true
+		end
+	end
+	timing_scripts.binder_update_end("friendlyfire_eva", self.tm_id) 
+	return false
+end
+
+----------------------------------------------------------------------------------
+-- ACTION
+----------------------------------------------------------------------------------
+class "action_not_shoot" ( action_base )
+function action_not_shoot:__init( storage ) super ( nil, "action_not_shoot" )
+	self.st = storage
+end
+
+function action_not_shoot:initialize()
+
+	action_base.initialize( self )
+	
+	self.new_point = nil
+	self.timer = 0
+	debug_info.switch_to(self, "xr_friendlyfire")
+end
+
+function action_not_shoot:execute()
+
+	action_base.execute( self )
+	
+	if self.st.need_change_position == true then
+		
+		if self.timer == 0 then
+			self.timer = time_for_pos_search + time_global()
+		end
+		
+		if self.new_point == nil and self.timer > time_global() then -- 2 сек ищем точку, на котоую будем перемещаться
+			self.object:set_desired_position()
+			self.object:set_desired_direction()
+			local enemy = self.object:best_enemy()
+			self.object:set_sight( look.fire_point, enemy:bone_position("bip01_spine") )
+			self.object:set_item( object.aim1, self.object:active_item() )
+			self.new_point = get_new_position( self.object )
+			
+			state_mgr.set_state( self.object, "assault" )
+			self.object:set_path_type( game_object.level_path )
+			self.object:set_dest_level_vertex_id( self.new_point )  -- идём в точку
+		end
+			
+		if self.new_point == nil and self.timer < time_global() then -- некуда идти, сбрасываем action
+			self.st.need_change_position = false
+			self.timer = 0
+		end
+			
+		if self.new_point ~= nil then
+			if self.object:level_vertex_id() == self.new_point then -- дошли до точки, сбрасываем action
+				self.st.need_change_position = false
+				self.new_point = nil
+				self.timer = 0
+			end
+			
+		end
+	else
+		return
+	end
+	
+end
+
+function action_not_shoot:finalize()
+
+	action_base.finalize( self )
+	debug_info.release(self, "xr_friendlyfire")
+end
+
+----------------------------------------------------------------------------------
+-- BINDER
+----------------------------------------------------------------------------------
+function add_to_binder( object, char_ini, scheme, section, storage )
+
+	local operators		= {}
+	local properties	= {}
+	
+	properties[ "shooting_friends" ] = xr_evaluators_id.shooting_friends
+	operators[ "ac_not_shoot" ] = xr_actions_id.ac_not_shoot
+	properties[ "wounded" ]		=   xr_evaluators_id.sidor_wounded_base
+		
+	local planner = object:motivation_action_manager()
+	
+	if object:character_community() == "zombied" then
+		planner:add_evaluator( properties[ "shooting_friends" ], property_evaluator_const( false ) )
+		return
+	else
+		planner:add_evaluator( properties[ "shooting_friends" ], evaluator_shooting_friends( storage, "evaluator_shooting_friends" ) )
+	end
+	
+	local new_action = action_not_shoot( storage )
+	new_action:add_precondition( world_property( stalker_ids.property_alive, true ) )
+	new_action:add_precondition( world_property( properties[ "wounded" ], false ) )
+	new_action:add_precondition( world_property( xr_evaluators_id.abuse_base, false ) )
+	new_action:add_precondition( world_property( xr_evaluators_id.ev_facer, false ) )
+	new_action:add_precondition( world_property( xr_evaluators_id.ev_steal_up, false ) )
+	new_action:add_precondition( world_property( properties[ "shooting_friends" ], true ) )
+	
+	new_action:add_effect( world_property( properties[ "shooting_friends" ], false ) )
+	planner:add_action( operators[ "ac_not_shoot" ], new_action )
+	
+	new_action = planner:action ( xr_actions_id.alife )
+	new_action:add_precondition ( world_property( properties[ "shooting_friends" ],	false ) )
+	
+	new_action = planner:action ( stalker_ids.action_combat_planner )
+	new_action:add_precondition ( world_property( properties[ "shooting_friends" ], false ) )
+	
+	new_action = planner:action ( stalker_ids.action_danger_planner )
+	new_action:add_precondition ( world_property( properties[ "shooting_friends" ], false ) )
+	
+end
+
+----------------------------------------------------------------------------------
+-- Func: set_scheme.
+----------------------------------------------------------------------------------
+function set_scheme( npc, ini, scheme, section, gulag_name )
+
+	local st = xr_logic.assign_storage_and_bind( npc, ini, scheme, section )
+	
+end
+
+----------------------------------------------------------------------------------
+-- Func: reset_scheme.
+----------------------------------------------------------------------------------
+
+function reset_scheme( npc, scheme, st, section )
+
+	local st = db.storage[ npc:id() ][ scheme ]
+	if st then
+		st.enabled = true
+	end
+end
+
+----------------------------------------------------------------------------------
+-- Func: disable_scheme.
+----------------------------------------------------------------------------------
+
+function disable_scheme( npc, scheme )
+
+	local st = db.storage[ npc:id() ][ scheme ]
+	if st then
+		st.enabled = false
+	end
+		
+end
+
+-----------------------------------------------------Вспомогательные функции
+
+function get_new_position( npc )
+
+	local node_1_vertex_id = nil
+	local node_2_vertex_id = nil
+
+	-- проверяем точку справа от НПС
+	desired_direction = vector_rotate_y( npc:direction(), math.random(50,60) )
+	node_1_vertex_id = level.vertex_in_direction( npc:level_vertex_id(), desired_direction, 4 )
+	if npc:accessible( node_1_vertex_id ) == true and node_1_vertex_id ~= npc:level_vertex_id() then
+		return node_1_vertex_id
+	else
+	-- проверяем точку слева от НПС
+	desired_direction = vector_rotate_y( npc:direction(), -math.random(50,60) )
+	node_2_vertex_id = level.vertex_in_direction( npc:level_vertex_id(), desired_direction, 4 )
+		if npc:accessible( node_2_vertex_id ) == true and node_2_vertex_id ~= npc:level_vertex_id() then
+			return node_2_vertex_id
+		end
+	end
+return nil
+end
+
+function vector_rotate_y ( v, angle )
+		angle = angle * 0.017453292519943295769236907684886
+		local c = math.cos ( angle )
+		local s = math.sin ( angle )
+		return vector ():set ( v.x * c - v.z * s, v.y, v.x * s + v.z * c )
+end

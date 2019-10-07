@@ -1,0 +1,468 @@
+
+[bandit_grenadier_pkm]:stalker
+$spawn                     = "respawn\bandit_grenadier_pkm"
+character_profile     = bandit_grenadier_pkm
+spec_rank = veteran
+community = bandit
+story_id = bandit_grenadier_pkm
+
+[bandit_grenadier_m79]:stalker
+$spawn                     = "respawn\bandit_grenadier_m79"
+character_profile     = bandit_grenadier_m79
+spec_rank = veteran
+community = bandit
+story_id = bandit_grenadier_m79
+
+[bandit_grenadier_rg6]:stalker
+$spawn                     = "respawn\bandit_grenadier_rg6"
+character_profile     = bandit_grenadier_rg6
+spec_rank = veteran
+community = bandit
+story_id = bandit_grenadier_rg6
+
+[bandit_grenadier_rpd]:stalker
+$spawn                     = "respawn\bandit_grenadier_rpd"
+character_profile     = bandit_grenadier_rpd
+spec_rank = veteran
+community = bandit
+story_id = bandit_grenadier_rpd
+
+
+
+[bar_visitors_barman_stalker_trader]:stalker_silent
+$spawn                     = "respawn\bar_visitors_barman_stalker_trader"
+immunities_sect	= stalker_immunities_strelok
+condition_sect	= stalker_condition_devushka
+character_profile     = bar_visitors_barman_stalker_trader
+story_id = bar_visitors_barman_stalker_trader
+
+[bar_visitors_garik_stalker_guard]:stalker_silent
+$spawn                     = "respawn\bar_visitors_garik_stalker_guard"
+character_profile     = bar_visitors_garik_stalker_guard
+story_id = bar_visitors_garik_stalker_guard
+
+[bar_visitors_zhorik_stalker_guard2]:stalker_silent
+$spawn                     = "respawn\bar_visitors_zhorik_stalker_guard2"
+character_profile     = bar_visitors_zhorik_stalker_guard2
+story_id = bar_visitors_zhorik_stalker_guard2
+
+[bar_visitors_informer_stalker]:stalker_silent
+$spawn                     = "respawn\bar_visitors_informer_stalker"
+immunities_sect	= stalker_immunities_strelok
+condition_sect	= stalker_condition_devushka
+character_profile     = bar_visitors_informer_stalker
+story_id = bar_visitors_informer_stalker
+
+[bar_visitors_stalker_fanat]:stalker_immune_anomaly
+$spawn                     = "respawn\bar_visitors_stalker_fanat"
+immunities_sect	= stalker_immunities_strelok
+condition_sect	= stalker_condition_devushka
+character_profile     = bar_visitors_stalker_fanat
+spec_rank = veteran
+community = stalker
+story_id = bar_visitors_stalker_fanat
+
+[bar_duty_security_squad_leader]:stalker_silent
+$spawn                     = "respawn\bar_duty_security_squad_leader"
+character_profile     = bar_duty_security_squad_leader
+story_id = bar_duty_security_squad_leader
+
+[bar_zastava_2_commander]:stalker_silent
+$spawn                     = "respawn\bar_zastava_2_commander"
+character_profile     = bar_zastava_2_commander
+story_id = bar_zastava_2_commander
+
+[bar_visitors_stalker_mechanic]:stalker_silent
+$spawn                     = "respawn\bar_visitors_stalker_mechanic"
+immunities_sect	= stalker_immunities_strelok
+condition_sect	= stalker_condition_devushka
+character_profile     = bar_visitors_stalker_mechanic
+story_id = bar_visitors_stalker_mechanic
+
+[bar_dolg_general_zoneguard_stalker]:stalker_silent
+$spawn                     = "respawn\bar_dolg_general_zoneguard_stalker"
+character_profile     = bar_dolg_general_zoneguard_stalker
+story_id = bar_dolg_general_zoneguard_stalker
+
+[bar_dolg_general_petrenko_stalker]:stalker_silent
+$spawn                     = "respawn\bar_dolg_general_petrenko_stalker"
+immunities_sect	= stalker_immunities_strelok
+condition_sect	= stalker_condition_devushka
+character_profile     = bar_dolg_general_petrenko_stalker
+story_id = bar_dolg_general_petrenko_stalker
+
+[bar_dolg_leader]:stalker_silent
+$spawn                     = "respawn\bar_dolg_leader"
+immunities_sect	= stalker_immunities_strelok
+condition_sect	= stalker_condition_devushka
+character_profile     = bar_dolg_leader
+story_id = bar_dolg_leader
+
+[bar_arena_manager]:stalker_silent
+$spawn                     = "respawn\bar_arena_manager"
+immunities_sect	= stalker_immunities_strelok
+condition_sect	= stalker_condition_devushka
+character_profile     = bar_arena_manager
+community = stalker
+story_id = bar_arena_manager
+
+[bar_arena_guard]:stalker_silent
+$spawn                     = "respawn\bar_arena_guard"
+immunities_sect	= stalker_immunities_strelok
+condition_sect	= stalker_condition_devushka
+character_profile     = bar_arena_guard
+community = stalker
+story_id = bar_arena_guard
+
+[bar_arena_savage]:stalker_zombied
+$spawn                     = "respawn\bar_arena_savage"
+character_profile     = bar_arena_savage
+community = arena_enemy
+story_id = bar_arena_savage
+custom_data			= scripts\bar\bar_arena_savage.ltx
+
+damage = bar_arena_savage_damage
+
+fire_queue_section = fire_queue_params_bar_arena_savage
+
+condition_sect					= bar_arena_savage_condition
+
+eye_fov							= 350
+
+vision_danger_section			= dummy_7_vision_danger
+vision_free_section				= dummy_7_vision_danger
+
+FireRandomMin 		 =     	20
+FireRandomMax 		 =     	50
+NoFireTimeMin 		 =    	0
+NoFireTimeMax 		 =    	0
+MinMissDistance		 =     	0.2
+MinMissFactor		 =     	0.005
+MaxMissDistance		 =    	1.5
+MaxMissFactor		 =     	0.01
+
+[bar_arena_savage_damage]
+default						= 0.4, -1, 2
+
+bip01_pelvis 				= 0.4, 4, 4
+bip01_spine 		 		= 0.4, 4, 4
+bip01_spine1 		 		= 0.4, 4, 4
+bip01_spine2 		 		= 0.4, 4, 4
+bip01_neck 			 		= 0.4, 0, 4
+bip01_head 			 		= 0.5, 0, 4
+eyelid_1 			 		= 0.9, 0, 4
+eye_left 			 		= 0.9, 0, 4
+eye_right 			 		= 0.9, 0, 4
+jaw_1 		 		 		= 0.4, 0, 4
+
+bip01_l_clavicle	 		= 0.35, 10, 0.45
+bip01_l_upperarm	 		= 0.20, 10, 0.45
+bip01_l_forearm	 	 	    = 0.10, 10, 0.25
+bip01_l_hand	 	 	    = 0.05, -1, 0.02
+bip01_l_finger0	 	 	    = 0.01, -1, 0.01
+bip01_l_finger01	 		= 0.01, -1, 0.01
+bip01_l_finger02	 		= 0.01, -1, 0.01
+bip01_l_finger1	 	 	    = 0.01, -1, 0.01
+bip01_l_finger11	 		= 0.01, -1, 0.01
+bip01_l_finger12	 		= 0.01, -1, 0.01
+bip01_l_finger2	 	 	    = 0.01, -1, 0.01
+bip01_l_finger21	 		= 0.01, -1, 0.01
+bip01_l_finger22	 		= 0.01, -1, 0.01
+
+bip01_r_clavicle	 		= 0.35, 10, 0.45
+bip01_r_upperarm	 		= 0.20, 10, 0.45
+bip01_r_forearm	 	 		= 0.10, 10, 0.25
+bip01_r_hand	 	 		= 0.05, -1, 0.02
+bip01_r_finger0	 	 		= 0.01, -1, 0.01
+bip01_r_finger01	 		= 0.01, -1, 0.01
+bip01_r_finger02	 		= 0.01, -1, 0.01
+bip01_r_finger1	 	 		= 0.01, -1, 0.01
+bip01_r_finger11	 		= 0.01, -1, 0.01
+bip01_r_finger12	 		= 0.01, -1, 0.01
+bip01_r_finger2	 	 	 	= 0.01, -1, 0.01
+bip01_r_finger21	 		= 0.01, -1, 0.01
+bip01_r_finger22	 		= 0.01, -1, 0.01
+
+bip01_l_thigh	 	 		= 0.65,  4, 0.45
+bip01_l_calf	 	 		= 0.5,  4, 0.4
+bip01_l_foot	 	 		= 0.05,  4, 0.01
+bip01_l_toe0	 	 		= 0.01, -1, 0.01
+bip01_r_thigh	 	 		= 0.65,  6, 0.45
+bip01_r_calf	 	 		= 0.5,  6, 0.4
+bip01_r_foot	 	 		= 0.05,  6, 0.01
+bip01_r_toe0	 	 		= 0.01, -1, 0.01
+
+[fire_queue_params_bar_arena_savage]  ; min < 15 < medium < 30 < max
+pstl_min_queue_size_far			= 1
+pstl_max_queue_size_far			= 1
+pstl_min_queue_interval_far		= 275
+pstl_max_queue_interval_far		= 420
+
+pstl_min_queue_size_medium		= 1
+pstl_max_queue_size_medium		= 1
+pstl_min_queue_interval_medium	= 185
+pstl_max_queue_interval_medium	= 275
+
+pstl_min_queue_size_close		= 1
+pstl_max_queue_size_close		= 1
+pstl_min_queue_interval_close	= 95
+pstl_max_queue_interval_close	= 185
+
+shtg_min_queue_size_far			= 1
+shtg_max_queue_size_far			= 1
+shtg_min_queue_interval_far		= 360
+shtg_max_queue_interval_far		= 540
+
+shtg_min_queue_size_medium		= 1
+shtg_max_queue_size_medium		= 1
+shtg_min_queue_interval_medium	= 240
+shtg_max_queue_interval_medium	= 360
+
+shtg_min_queue_size_close		= 1
+shtg_max_queue_size_close		= 3
+shtg_min_queue_interval_close	= 120
+shtg_max_queue_interval_close	= 240
+
+snp_min_queue_size_far			= 1
+snp_max_queue_size_far			= 1
+snp_min_queue_interval_far		= 500
+snp_max_queue_interval_far		= 750
+
+snp_min_queue_size_medium		= 1
+snp_max_queue_size_medium		= 1
+snp_min_queue_interval_medium	= 260
+snp_max_queue_interval_medium	= 440
+
+snp_min_queue_size_close		= 1
+snp_max_queue_size_close		= 1
+snp_min_queue_interval_close	= 290
+snp_max_queue_interval_close	= 700
+
+auto_min_queue_size_far			= 25
+auto_max_queue_size_far			= 30
+auto_min_queue_interval_far		= 440
+auto_max_queue_interval_far		= 715
+
+auto_min_queue_size_medium		= 25
+auto_max_queue_size_medium		= 30
+auto_min_queue_interval_medium	= 260
+auto_max_queue_interval_medium	= 440
+
+auto_min_queue_size_close		= 25
+auto_max_queue_size_close		= 30
+auto_min_queue_interval_close	= 240
+auto_max_queue_interval_close	= 360
+
+mchg_min_queue_size_far			= 50
+mchg_max_queue_size_far			= 100
+mchg_min_queue_interval_far		= 50
+mchg_max_queue_interval_far		= 50
+
+mchg_min_queue_size_medium		= 50
+mchg_max_queue_size_medium		= 100
+mchg_min_queue_interval_medium	= 50
+mchg_max_queue_interval_medium	= 50
+
+mchg_min_queue_size_close		= 50
+mchg_max_queue_size_close		= 100
+mchg_min_queue_interval_close	= 50
+mchg_max_queue_interval_close	= 50
+
+[bar_arena_savage_condition]
+satiety_v					= 0.00001				;скорость уменьшения сытости со временем
+radiation_v					= 0.0001				;скорость уменьшения радиации
+satiety_power_v				= 0.0005				;увеличение силы при уменьшении сытости 
+satiety_health_v			= 0.001					;увеличение здоровья при уменьшении сытости 
+satiety_critical			= 0.0					;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
+radiation_health_v			= 0.001					;уменьшение здоровья при воздействии радиации
+morale_v					= 0.0001				;скорость восстановления морали
+health_hit_part				= 1.0					;процент хита, уходящий на отнимание здоровья
+power_hit_part				= 0.0					;процент хита, уходящий на отнимание силы
+psy_health_v				= 0.1					;скорость восстановления psy-здоровья
+health_restore_v			= 0.003					;скорость восстановления здоровья
+
+sleep_health				= 1.0					;коэффициенты скоростей изменения параметров во время сна
+sleep_power					= 1.0
+sleep_satiety				= 1.0
+sleep_radiation 			= 1.0
+sleep_psy_health			= 1.0
+
+;---LIMPING STATE-----------------------------------------------------
+use_limping_state			= on ;off
+limping_threshold			= 0.5
+feel_enemy_who_just_hit_max_distance = 200
+
+
+
+bleeding_v					= 0.0
+wound_incarnation_v			= 0.0005
+min_wound_size				= 0.01
+
+
+[bar_arena_bloodsucker]:bloodsucker_arena
+$spawn                     = "respawn\bar_arena_bloodsucker"
+custom_data			= scripts\bar\bar_arena_bloodsucker.ltx
+story_id = bar_arena_bloodsucker
+
+[bar_arena_burer]:burer_arena
+$spawn                     = "respawn\bar_arena_burer"
+custom_data			= scripts\bar\bar_arena_burer.ltx
+story_id = bar_arena_burer
+
+[bar_arena_pseudodog]:pseudodog_arena
+$spawn                     = "respawn\bar_arena_pseudodog"
+custom_data			= scripts\bar\bar_arena_pseudodog.ltx
+story_id = bar_arena_pseudodog
+
+[bar_arena_snork]:snork_arena
+$spawn                     = "respawn\bar_arena_snork"
+custom_data			= scripts\bar\bar_arena_snork.ltx
+story_id = bar_arena_snork
+
+[bar_arena_stalker_1]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_1"
+character_profile     = bar_arena_stalker_1
+community = arena_enemy
+story_id = bar_arena_stalker_1
+custom_data			= scripts\bar\bar_arena_stalker_1.ltx
+
+[bar_arena_stalker_2]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_2"
+character_profile     = bar_arena_stalker_2
+community = arena_enemy
+story_id = bar_arena_stalker_2
+custom_data			= scripts\bar\bar_arena_stalker_2.ltx
+
+[bar_arena_stalker_3_1]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_3_1"
+character_profile     = bar_arena_stalker_3_1
+community = arena_enemy
+story_id = bar_arena_stalker_3_1
+custom_data			= scripts\bar\bar_arena_stalker_3_1.ltx
+
+[bar_arena_stalker_3_2]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_3_2"
+character_profile     = bar_arena_stalker_3_2
+community = arena_enemy
+story_id = bar_arena_stalker_3_2
+custom_data			= scripts\bar\bar_arena_stalker_3_2.ltx
+
+[bar_arena_stalker_4_1]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_4_1"
+character_profile     = bar_arena_stalker_4_1
+community = arena_enemy
+story_id = bar_arena_stalker_4_1
+custom_data			= scripts\bar\bar_arena_stalker_4_1.ltx
+
+[bar_arena_stalker_4_2]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_4_2"
+character_profile     = bar_arena_stalker_4_2
+community = arena_enemy
+story_id = bar_arena_stalker_4_2
+custom_data			= scripts\bar\bar_arena_stalker_4_2.ltx
+
+[bar_arena_stalker_4_3]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_4_3"
+character_profile     = bar_arena_stalker_4_3
+community = arena_enemy
+story_id = bar_arena_stalker_4_3
+custom_data			= scripts\bar\bar_arena_stalker_4_3.ltx
+
+[bar_arena_stalker_4_4]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_4_4"
+character_profile     = bar_arena_stalker_4_4
+story_id = bar_arena_stalker_4_4
+custom_data			= scripts\bar\bar_arena_stalker_4_4.ltx
+
+[bar_arena_stalker_4_5]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_4_5"
+character_profile     = bar_arena_stalker_4_5
+story_id = bar_arena_stalker_4_5
+custom_data			= scripts\bar\bar_arena_stalker_4_5.ltx
+
+[bar_arena_stalker_5_1]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_5_1"
+character_profile     = bar_arena_stalker_5_1
+community = arena_enemy
+story_id = bar_arena_stalker_5_1
+custom_data			= scripts\bar\bar_arena_stalker_5_1.ltx
+
+[bar_arena_stalker_5_2]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_5_2"
+character_profile     = bar_arena_stalker_5_2
+community = arena_enemy
+story_id = bar_arena_stalker_5_2
+custom_data			= scripts\bar\bar_arena_stalker_5_2.ltx
+
+[bar_arena_stalker_6_1]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_6_1"
+character_profile     = bar_arena_stalker_6_1
+community = arena_enemy
+story_id = bar_arena_stalker_6_1
+custom_data			= scripts\bar\bar_arena_stalker_6_1.ltx
+
+[bar_arena_stalker_6_2]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_6_2"
+character_profile     = bar_arena_stalker_6_2
+community = arena_enemy
+story_id = bar_arena_stalker_6_2
+custom_data			= scripts\bar\bar_arena_stalker_6_2.ltx
+
+[bar_arena_stalker_6_3]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_6_3"
+character_profile     = bar_arena_stalker_6_3
+community = arena_enemy
+story_id = bar_arena_stalker_6_3
+custom_data			= scripts\bar\bar_arena_stalker_6_3.ltx
+
+[bar_arena_stalker_6_4]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_6_4"
+character_profile     = bar_arena_stalker_6_4
+community = arena_enemy
+story_id = bar_arena_stalker_6_4
+custom_data			= scripts\bar\bar_arena_stalker_6_4.ltx
+
+[bar_arena_stalker_6_5]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_6_5"
+character_profile     = bar_arena_stalker_6_5
+community = arena_enemy
+story_id = bar_arena_stalker_6_5
+custom_data			= scripts\bar\bar_arena_stalker_6_5.ltx
+
+[bar_arena_stalker_6_6]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_6_6"
+character_profile     = bar_arena_stalker_6_6
+community = arena_enemy
+story_id = bar_arena_stalker_6_6
+custom_data			= scripts\bar\bar_arena_stalker_6_6.ltx
+
+[bar_arena_stalker_7]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_7"
+character_profile     = bar_arena_stalker_7
+community = arena_enemy
+story_id = bar_arena_stalker_7
+custom_data			= scripts\bar\bar_arena_stalker_7.ltx
+
+[bar_arena_stalker_8_1]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_8_1"
+character_profile     = bar_arena_stalker_8_1
+story_id = bar_arena_stalker_8_1
+custom_data			= scripts\bar\bar_arena_stalker_8_1.ltx
+
+[bar_arena_stalker_8_2]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_8_2"
+character_profile     = bar_arena_stalker_8_2
+story_id = bar_arena_stalker_8_2
+custom_data			= scripts\bar\bar_arena_stalker_8_2.ltx
+
+[bar_arena_stalker_8_3]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_8_3"
+character_profile     = bar_arena_stalker_8_3
+story_id = bar_arena_stalker_8_3
+custom_data			= scripts\bar\bar_arena_stalker_8_3.ltx
+
+[bar_arena_stalker_8_4]:stalker_arena
+$spawn                     = "respawn\bar_arena_stalker_8_4"
+character_profile     = bar_arena_stalker_8_4
+story_id = bar_arena_stalker_8_4
+custom_data			= scripts\bar\bar_arena_stalker_8_4.ltx

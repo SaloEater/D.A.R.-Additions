@@ -1,0 +1,20 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 10
+max_population = 1
+respawn_params = respawn@rad_snork2  
+respawn_idle = 86400
+
+
+[respawn@rad_snork2]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = snork_rad_snork2
+spawn_num = {=!squad_exist(snork_rad_snork2) -bar_deactivate_radar_done} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_cat
+spawn_num = {+bar_deactivate_radar_done} 2, 0

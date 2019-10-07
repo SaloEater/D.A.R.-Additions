@@ -1,0 +1,94 @@
+[smart_terrain]
+respawn_radius = 900 ;бункер ученых
+squad_id = 13
+max_population = 1
+respawn_params = respawn@yan_smart_terrain_6_4
+respawn_idle = 86400
+
+
+[respawn@yan_smart_terrain_6_4]
+
+spawn_monster
+spawn_ecolog1
+spawn_ecolog2
+spawn_ecolog3
+spawn_stalker
+spawn_csky
+spawn_killer
+spawn_army
+spawn_monolith
+spawn_zombied
+
+[spawn_monster]
+spawn_squads = bunker_rats_yan_smart_terrain_6_4
+spawn_num = {=!smart_controlled(yan_smart_terrain_6_4)} 2, 0
+
+[spawn_ecolog1]
+spawn_squads = yan_ecolog_guard_squad
+spawn_num = {=smart_under_faction(yan_smart_terrain_6_4:ecolog)} 4, 0
+
+[spawn_ecolog2]
+spawn_squads = yan_ecolog_squad
+spawn_num = {=smart_under_faction(yan_smart_terrain_6_4:ecolog)} 2, 0
+
+[spawn_ecolog3]
+spawn_squads = ecolog_sim_squad_advanced, ecolog_sim_squad_veteran, ecolog_sim_squad_novice
+spawn_num = {=smart_under_faction(yan_smart_terrain_6_4:ecolog)} 4, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_advanced, stalker_sim_squad_advanced, stalker_sim_squad_veteran
+spawn_num = {=smart_under_faction(yan_smart_terrain_6_4:stalker)} 2, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_advanced, csky_sim_squad_veteran
+spawn_num = {=smart_under_faction(yan_smart_terrain_6_4:csky)} 4, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(yan_smart_terrain_6_4:killer)} 2, 0
+
+[spawn_army]
+spawn_squads = ecolog_sim_squad_advanced, ecolog_sim_squad_veteran
+spawn_num = {=smart_under_faction(yan_smart_terrain_6_4:army)} 3, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(yan_smart_terrain_6_4:monolith)} 4, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_novice, zombied_sim_squad_advanced, zombied_sim_squad_advanced, zombied_sim_squad_advanced, zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(yan_smart_terrain_6_4:zombied)} 4, 0
+
+
+
+[exclusive]
+nastavnic_eco_squad	= yantar\nastavnic_eco.ltx
+yan_saharov	= yantar\yan_saharov.ltx
+yan_kruglov = yantar\yan_scientists.ltx
+yan_semenov = yantar\yan_scientists.ltx
+yan_vasiliev = yantar\yan_scientists.ltx
+yan_bunker_guards = yantar\yan_scientists.ltx
+yan_smart_terrain_6_4_zombie_wave_1 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+yan_smart_terrain_6_4_zombie_wave_2 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+yan_smart_terrain_6_4_zombie_wave_3 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+yan_smart_terrain_6_4_zombie_wave_4 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+yan_smart_terrain_6_4_zombie_wave_5 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+yan_smart_terrain_6_4_zombie_wave_6 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+yan_smart_terrain_6_4_zombie_wave_7 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+yan_smart_terrain_6_4_zombie_wave_8 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+yan_smart_terrain_6_4_zombie_wave_9 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+yan_smart_terrain_6_4_zombie_wave_10 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+yan_smart_terrain_6_4_zombie_wave_11 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+yan_smart_terrain_6_4_zombie_wave_12 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+yan_smart_terrain_6_4_zombie_wave_13 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+yan_smart_terrain_6_4_zombie_wave_14 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+yan_smart_terrain_6_4_zombie_wave_15 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+
+ecolog_guard_1 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+ecolog_guard_2 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+ecolog_guard_3 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+ecolog_guard_4 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+ecolog_1 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+ecolog_2 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+ecolog_3 = yantar\yan_smart_terrain_6_4_smart_logic.ltx
+ecolog_4 = yantar\yan_smart_terrain_6_4_smart_logic.ltx

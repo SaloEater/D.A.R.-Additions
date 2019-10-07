@@ -1,0 +1,70 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 4
+max_population = 0
+respawn_params = respawn@bar_zastava
+respawn_idle = 43200
+
+[respawn@bar_zastava]
+
+spawn_monster
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_freedom
+spawn_killer
+spawn_army
+spawn_monolith
+spawn_zombied
+
+[spawn_monster]
+spawn_squads = simulation_dog, simulation_zombie, simulation_snork
+spawn_num = {=!smart_controlled(bar_zastava)} 1, 0
+
+[spawn_stalker]
+spawn_squads = squad_stalker_bar_zastava
+spawn_num = {=smart_under_faction(bar_visitors:stalker)} 1, 0
+
+[spawn_bandit]
+spawn_squads = squad_bandit_bar_zastava
+spawn_num = {=smart_under_faction(bar_visitors:bandit)} 1, 0
+
+[spawn_csky]
+spawn_squads = squad_csky_bar_zastava
+spawn_num = {=smart_under_faction(bar_visitors:csky)} 1, 0
+
+[spawn_freedom]
+spawn_squads = squad_freedom_bar_zastava 
+spawn_num = {=smart_under_faction(bar_visitors:freedom)} 1, 0
+
+[spawn_killer]
+spawn_squads = squad_killer_bar_zastava
+spawn_num = {=smart_under_faction(bar_visitors:killer)} 1, 0
+
+[spawn_army]
+spawn_squads = squad_army_bar_zastava
+spawn_num = {=smart_under_faction(bar_visitors:army)} 1, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_veteran, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(bar_visitors:monolith)} 1, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_advanced
+spawn_num = {=smart_under_faction(bar_visitors:zombied)} 1, 0
+
+
+[exclusive]
+duty_guard1 = bar\bar_zastava_smart.ltx
+duty_guard2 = bar\bar_zastava_smart.ltx
+duty_guard3 = bar\bar_zastava_smart.ltx
+duty_guard4 = bar\bar_zastava_smart.ltx
+;duty_guard5 = bar\bar_zastava_smart.ltx
+duty_guard6 = bar\bar_zastava_smart.ltx
+duty_guard7 = bar\bar_zastava_smart.ltx
+duty_guard8 = bar\bar_zastava_smart.ltx
+;duty_guard9 = bar\bar_zastava_smart.ltx
+bar_zastava_minigunner_excl = bar\bar_zastava_smart.ltx
+faction_base_defense_enemy1 = bar\bar_zastava_smart.ltx
+faction_base_defense_enemy2 = bar\bar_zastava_smart.ltx
+faction_base_defense_enemy3 = bar\bar_zastava_smart.ltx

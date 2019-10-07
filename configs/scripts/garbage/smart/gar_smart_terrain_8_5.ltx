@@ -1,0 +1,19 @@
+[smart_terrain]
+respawn_radius = 300 ;;место с большим камнем, где Васян в чн отстреливался
+squad_id = 19
+max_population = 2
+respawn_params = respawn@gar_smart_terrain_8_5
+respawn_idle = 43200
+
+[respawn@gar_smart_terrain_8_5]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_cat
+spawn_num = {=!smart_controlled(gar_smart_terrain_8_5)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_cat_3_5
+spawn_num = {=!smart_controlled(gar_smart_terrain_8_5) =actor_week_in_zone(7)} 1, 0

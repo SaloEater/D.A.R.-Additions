@@ -1,0 +1,961 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+<!-- ==============================NQl============================= -->
+<!-- первое задание наставника -->
+	<string id="fanat_kmb_1_1_st">
+		<text>КМБ: разобраться с кабанами</text>
+	</string>
+	<string id="fanat_kmb_1_3_st">
+		<text>КМБ: поговорить с Бергамотом</text>
+	</string>
+	<string id="fanat_kmb_1_4_st">
+		<text>КМБ: добраться до аномальной зоны</text>
+	</string>
+	<string id="fanat_kmb_1_5_st">
+		<text>КМБ: поговорить с Бергамотом</text>
+	</string>
+	<string id="fanat_kmb_1_9_st">
+		<text>КМБ: достать артефакт</text>
+	</string>
+	<string id="fanat_kmb_1_6_st">
+		<text>КМБ: вернуться в деревню</text>
+	</string>
+	<string id="fanat_kmb_1_7_st">
+		<text>КМБ: поговорить с Бергамотом</text>
+	</string>
+	<string id="fanat_kmb_1_8_st">
+		<text>КМБ: поговорить с Бергамотом</text>
+	</string>
+	<string id="task_fanat_kmb_1_descr">
+		<text>КМБ: отправиться на охоту</text>
+	</string>
+	<string id="fanat_kmb_2_1_st">
+		<text>КМБ: найти тайник</text>
+	</string>
+	<string id="fanat_kmb_2_2_st">
+		<text>КМБ: поговорить с Бергамотом</text>
+	</string>
+	<string id="task_fanat_kmb_1_2_descr">
+		<text>Бергамот, по-видимому, опытный сталкер. Он решил научить меня искать тайники. Тайник находится где-то в пределах деревни новичков, на дереве</text>
+	</string>
+	<string id="mar_kmb_1_1_st">
+		<text>КМБ: разобраться с болотными плотями</text>
+	</string>
+	<string id="mar_kmb_1_3_st">
+		<text>КМБ: поговорить с Тропником</text>
+	</string>
+	<string id="mar_kmb_1_4_st">
+		<text>КМБ: добраться до аномальной зоны</text>
+	</string>
+	<string id="mar_kmb_1_5_st">
+		<text>КМБ: поговорить с Тропником</text>
+	</string>
+	<string id="mar_kmb_1_9_st">
+		<text>КМБ: достать артефакт</text>
+	</string>
+	<string id="mar_kmb_1_6_st">
+		<text>КМБ: вернуться в деревню</text>
+	</string>
+	<string id="mar_kmb_1_7_st">
+		<text>КМБ: поговорить с Тропником</text>
+	</string>
+	<string id="mar_kmb_1_8_st">
+		<text>КМБ: поговорить с Тропником</text>
+	</string>
+	<string id="task_mar_kmb_1_descr">
+		<text>КМБ: Пройтись с Иваном Тропником по основам выживания в Зоне</text>
+	</string>
+	<string id="mar_kmb_2_1_st">
+		<text>КМБ: найти тайник</text>
+	</string>
+	<string id="mar_kmb_2_2_st">
+		<text>КМБ: поговорить с Тропником</text>
+	</string>
+	<string id="task_mar_kmb_1_2_descr">
+		<text>Иван Тропник, по-видимому, опытный сталкер. Он решил научить меня искать тайники. Тайник находится где-то в пределах базы чистого неба, не далеко от главного здания</text>
+	</string>
+	<string id="esc_talk_wolf_1_quest_st">
+		<text>Легкие деньги: поговорить с Волком</text>
+	</string>
+	<string id="esc_talk_wolf_1_quest_desc">
+		<text>Сидорович сказал, что бы я поговорил с Волком</text>
+	</string>
+	<string id="esc_task_wolf_1_quest_0_st">
+		<text>Легкие деньги: найти динамит</text>
+	</string>		
+	<string id="esc_task_wolf_1_quest_1_st">
+		<text>Легкие деньги: принести Волку динамит</text>
+	</string>
+	<string id="esc_task_wolf_1_quest_desc">
+		<text>Волк попросил найти заказанный им динамит, который находится где-то на АТП</text>
+	</string>	
+	<string id="mil_kmb_00_text_0_st">
+		<text>Доложить о прибытии</text>
+	</string>
+	<string id="mil_kmb_00_descr">
+		<text>Доложить командиру о прибытии на блокпост</text>
+	</string>
+	<string id="title_mishen_military_01_name_st">
+		<text>Тир: поразить все мишени</text>
+	</string>
+	<string id="title_mishen_military_02_name_st">
+		<text>Тир: доложить майору</text>
+	</string>	
+	<string id="descr_mishen_military_text_st">
+		<text>Тир: добраться до стрельбища и поразить все мишени</text>
+	</string>
+	<string id="title_mil_gruz_0_name_st">
+		<text>Будни срочника: поговорить с ефрейтором Нефедовым</text>
+	</string>
+	<string id="title_mil_gruz_1_name_st">
+		<text>Будни срочника: зачистить местность и забрать груз.</text>
+	</string>
+	<string id="title_mil_gruz_2_name_st">
+		<text>Будни срочника: убедиться, что это нужный майору груз</text>
+	</string>
+	<string id="title_mil_gruz_3_name_st">
+		<text>Будни срочника: отдать майору груз</text>
+	</string>
+	<string id="descr_mil_gruz_1_text_st">
+		<text>Будничное задание срочника: выполнить приказ от выше стоящего по званию и перехватить важный груз</text>
+	</string>
+	<string id="title_mil_kmb_3_0_name_st">
+		<text>Путь в зону: пробиться на базу военных в НИИ "Агропром"</text>
+	</string>
+	<string id="title_mil_kmb_3_1_name_st">
+		<text>Путь в зону: поговорить с майором</text>
+	</string>
+	<string id="descr_kmb_3_text_st">
+		<text>Пробиться на базу военных в НИИ "Агропром"</text>
+	</string>	
+	<string id="title_mishen_duty_01_name_st">
+		<text>КМБ: отправиться на стрельбище и поразить мишени</text>
+	</string>	
+	<string id="title_mishen_duty_02_name_st">
+		<text>КМБ: доложить генералу</text>
+	</string>	
+	<string id="duty_kmb_00_text_0_st">
+		<text>Поговорить с лидером группировки "Долг"</text>
+	</string>		
+	<string id="duty_kmb_00_descr">
+		<text>Поговорить с лидером группировки "Долг"</text>
+	</string>			
+	<string id="descr_mishen_duty_text_st">
+		<text>Отправиться на стрельбище и поразить мишени</text>
+	</string>	
+	<string id="duty_kmb_2_text_0_st">
+		<text>Первый рейд: поговорить с Фрегатом</text>
+	</string>	
+	<string id="duty_kmb_2_text_1_st">
+		<text>Первый рейд: отнести припасы Лейтенанту Стаценко</text>
+	</string>	
+	<string id="duty_kmb_2_text_2_st">
+		<text>Первый рейд: обследовать примерное место обитание стаи кровососов</text>
+	</string>	
+	<string id="duty_kmb_2_text_3_st">
+		<text>Первый рейд: убедиться, что Фрегат жив</text>
+	</string>	
+	<string id="duty_kmb_2_text_4_st">
+		<text>Первый рейд: доложить Лейтенанту Стаценко</text>
+	</string>	
+	<string id="duty_kmb_2_text_5_st">
+		<text>Первый рейд: добраться до Бара</text>
+	</string>	
+	<string id="duty_kmb_2_text_6_st">
+		<text>Первый рейд: поговорить с Фрегатом</text>
+	</string>	
+	<string id="duty_kmb_2_text_7_st">
+		<text>Первый рейд: доложить обо всем генералу</text>
+	</string>	
+	<string id="descr_duty_kmb_2_text_st">
+		<text>Отправиться в первый рейд: передать припасы бойцам на свалке и в случае чего помощь им</text>
+	</string>		
+	<string id="title_naim_kmb_1_0_name_st">
+		<text>Проверка: пройти первый круг испытания</text>
+	</string>	
+	<string id="descr_naim_kmb_1_text_st">
+		<text>Что бы заслужить уважение у наемников нужно пройти крещение Зоной и вернуться живым</text>
+	</string>
+	<string id="title_naim_kmb_2_0_name_st">
+		<text>Проверка: пройти второй круг испытания, убив кровососа</text>
+	</string>	
+	<string id="title_naim_kmb_2_1_name_st">
+		<text>Проверка: вернуться на базу</text>
+	</string>	
+	<string id="descr_naim_kmb_2_text_st">
+		<text>Чтобы заслужить уважение у наемников нужно уничтожить кровососа и вернуться живым</text>
+	</string>	
+	<string id="title_naim_kmb_3_0_name_st">
+		<text>Проверка: пройти третий круг испытания, уничтожив отряд неизвестных</text>
+	</string>	
+	<string id="title_naim_kmb_3_1_name_st">
+		<text>Проверка: вернуться на базу</text>
+	</string>		
+	<string id="descr_naim_kmb_3_text_st">
+		<text>Что бы заслужить уважение у наемников нужно уничтожить отряд неизвестных и вернуться живым</text>
+	</string>	
+	<string id="bandit_kmb_00_text_0_st">
+		<text>Поговорить с местным Смотрящим</text>
+	</string>	
+	<string id="bandit_kmb_00_descr">
+		<text>Влиться в ряды местной ОПГ</text>
+	</string>		
+	<string id="mono_kmb_00_text_0_st">
+		<text>Ориентация в пространстве</text>
+	</string>				
+	<string id="mono_kmb_00_descr">
+		<text>Узнать кто ты и как ты тут оказался</text>
+	</string>		
+	<string id="mono_kmb_1_text_0_st">
+		<text>Прийти на помощь Слэгару и остальным бойцам</text>
+	</string>
+	<string id="mono_kmb_1_text_1_st">
+		<text>Идти на штурм заброшенной больницы</text>
+	</string>
+	<string id="mono_kmb_1_text_2_st">
+		<text>Судя по всему неверные разделились и одна из групп не верных отправилось в садик</text>
+	</string>
+	<string id="mono_kmb_1_text_22_st">
+		<text>Показать найденный ПДА Слэгару</text>
+	</string>	
+	<string id="mono_kmb_1_text_3_st">
+		<text>Не верные привели ученых, их нужно немедленно ликвидировать (школа)</text>
+	</string>
+	<string id="mono_kmb_1_text_3_1_st">
+		<text>Доложить Слэгару</text>
+	</string>
+	<string id="kmb_mon_1_4_st">
+		<text>Доложить Мэрвину</text>
+	</string>
+	<string id="kmb_mon_1_descr">
+		<text>По словам Мэрвина, в городе появились неверные. Его разведчик Слэгар засек какую-то странную активность. Необходимо оказать ему помощь</text>
+	</string>
+	<string id="mono_kmb_2_text_0_st">
+		<text>Отправиться в электроаномалию за подношением</text>
+	</string>
+	<string id="mono_kmb_2_text_1_st">
+		<text>Вернуться к Асмодеусу</text>
+	</string>
+	<string id="kmb_mon_2_descr">
+		<text>Отправиться в электроаномалию за подношением Монолиту</text>
+	</string>
+	<string id="mono_kmb_3_text_0_st">
+		<text>Уничтожить монстра</text>
+	</string>
+	<string id="mono_kmb_3_text_1_st">
+		<text>Вернуться к Асмодеусу</text>
+	</string>
+	<string id="kmb_mon_3_descr">
+		<text>Уничтожить монстра во славу Монолита</text>
+	</string>
+	<string id="mono_kmb_4_text_0_st">
+		<text>Далекий путь</text>
+	</string>
+	<string id="kmb_mon_4_descr">
+		<text>Далекий путь поговорить с Мэрвином</text>
+	</string>	
+	<string id="free_kmb_1_text_1_1_st">
+		<text>Трудности жизни: проверить тайник</text>
+	</string>
+	<string id="free_kmb_1_text_1_st">
+		<text>Трудности жизни: отправиться с полученными данными на базу свободы</text>
+	</string>
+	<string id="free_kmb_1_text_0_st">
+		<text>Трудности жизни: осмотреть лагерь</text>
+	</string>
+	<string id="free_kmb_1_descr_1">
+		<text>Были слышны предсмертные крики, стоит осмотреть лагерь</text>
+	</string>
+	<string id="free_kmb_1_descr_2">
+		<text>Найти схрон на "Пожарной каланче"</text>
+	</string>
+	<string id="free_kmb_1_descr">
+		<text>Отправиться с полученными данными на базу свободы и поговорить с Локи</text>
+	</string>
+	<string id="eco_kmb_2_alt_text_0_st">
+		<text>Стажер: отправиться на Агропром и взять детектор у майора Кузнецова</text>
+	</string>
+	<string id="eco_kmb_2_alt_text_1_st">
+		<text>Стажер: сделать первый замер</text>
+	</string>
+	<string id="eco_kmb_2_alt_text_2_st">
+		<text>Стажер: сделать второй замер</text>
+	</string>
+	<string id="eco_kmb_2_alt_text_3_st">
+		<text>Стажер: сделать третий замер.</text>
+	</string>
+	<string id="eco_kmb_2_alt_text_4_st">
+		<text>Стажер: сделать четвертый замер</text>
+	</string>
+	<string id="eco_kmb_2_alt_text_5_st">
+		<text>Стажер: отправиться на базу</text>
+	</string>
+	<string id="eco_kmb_2_alt_text_6_st">
+		<text>Стажер: поговорить с Сахаровым</text>
+	</string>
+	<string id="eco_kmb_2_alt_descr">
+		<text>Сделать замеры.</text>
+	</string>
+	<string id="eco_kmb_1_text_0_st">
+		<text>Стажер: взять охранника Фриза и отправиться на помощь</text>
+	</string>
+	<string id="eco_kmb_1_text_1_st">
+		<text>Стажер: вернуться на базу и отчитаться</text>
+	</string>
+	<string id="eco_kmb_1_descr_0">
+		<text>Отправиться на помощь коллеге в сторону западного входа на завод</text>
+	</string>
+	<string id="eco_kmb_2_descr">
+		<text>Сделать замеры по маркерам подсвеченными на виртуальной карте</text>
+	</string>
+	<string id="eco_kmb_2_text_0_st">
+		<text>Стажер: поговорить с Фризом</text>
+	</string>
+	<string id="eco_kmb_2_text_1_st">
+		<text>Стажер: сделать первый замер</text>
+	</string>
+	<string id="eco_kmb_2_text_2_st">
+		<text>Стажер: сделать второй замер</text>
+	</string>
+	<string id="eco_kmb_2_text_3_st">
+		<text>Стажер: сделать третий замер</text>
+	</string>
+	<string id="eco_kmb_2_text_4_st">
+		<text>Стажер: сделать четвертый замер</text>
+	</string>
+	<string id="eco_kmb_2_text_5_st">
+		<text>Стажер: вернуться в бункер</text>
+	</string>
+	<string id="eco_kmb_2_text_1_1_st">
+		<text>Стажер: отправиться на Агропром и взять детектор у майора Кузнецова</text>
+	</string>
+	<string id="eco_kmb_2_text_6_st">
+		<text>Стажер: поговорить с Фризом</text>
+	</string>
+	<string id="eco_kmb_2_text_7_st">
+		<text>Стажер: поговорить с Сахаровым</text>
+	</string>
+	<string id="eco_kmb_1_text_0_alt_st">
+		<text>Стажер: отправиться на помощь</text>
+	</string>
+	<string id="eco_kmb_1_text_1_alt_st">
+		<text>Стажер: вернуться на базу и отчитаться</text>
+	</string>
+	<string id="eco_kmb_1_descr_0_alt">
+		<text>Стажер: отправиться на помощь коллеге в сторону западного входа на завод</text>
+	</string>
+	
+	<string id="mil_eco_text_0_st">
+		<text>Отправиться в восточную Припять к месту сигнала</text>
+	</string>
+	<string id="mil_eco_text_1_st">
+		<text>Отправиться к школе</text>
+	</string>
+	<string id="mil_eco_text_2_st">
+		<text>Сопроводить экологов на военную базу на Агропроме</text>
+	</string>
+	<string id="mil_eco_text_22_st">
+		<text>Переговорить с ученым</text>
+	</string>
+	<string id="mil_eco_text_3_st">
+		<text>Забрать награду.</text>
+	</string>
+	<string id="mil_eco_descr_0">
+		<text>Кузнецов указал место сигнала в восточной Припяти</text>
+	</string>
+	<string id="mil_eco_descr_1">
+		<text>Из ПДА погибшего солдата выяснилось, что ученый прячется в школе</text>
+	</string>
+	<string id="mil_eco_descr_2">
+		<text>Ученый обнаружен, осталось сопроводить его на Агропром</text>
+	</string>
+	<string id="mil_eco_descr_22">
+		<text>Ученый на месте, необходимо переговорить с ним</text>
+	</string>
+	<string id="mil_eco_descr_3">
+		<text>Забрать награду у Кузнецова</text>
+	</string>	
+	<string id="eco_kmb_2_text_alt_5_st">
+		<text>Отправиться обратно в бункер ученых</text>
+	</string>	
+	<string id="eco_kmb_2_text_alt_6_st">
+		<text>Поговорить с Сахаровым</text>
+	</string>
+	<!--------------------------- devushka ----------->
+	<string id="toz34_sk2_return">
+		<text>Отнести "ТОЗ-34 Заказной" Хип и патроны к нему</text>
+	</string>
+	<string id="toz34_sk2_find">
+		<text>Найти "ТОЗ-34 Заказной" для Хип и патроны к нему</text>
+	</string>
+	<string id="toz34_return_descr">
+		<text>Хип попросила меня отыскать "ТОЗ-34 Заказной" и пачку дроби 12x70. И где его искать?..</text>
+	</string>	
+	<string id="artefacts_to_sidor_return">
+		<text>Принести артефакты Сидоровичу</text>
+	</string>
+	<string id="artefacts_to_sidor_find">
+		<text>Найти артефакты для Сидоровича</text>
+	</string>
+	<string id="artefacts_to_sidor_return_descr">
+		<text>Хип попросила помочь найти артефакты для Сидоровича: "Выверт", "Огненный шар" и "Лунный свет"</text>
+	</string>	
+	<string id="go_to_barmen_1_st">
+		<text>Посетить Бармена</text>
+	</string>
+	<string id="go_to_barmen_2_st">
+		<text>Посетить Бармена</text>
+	</string>
+	<string id="go_to_barmen_descr">
+		<text>Нужно сходить вместе с Хип к Бармену, чтобы он нам помог</text>
+	</string>		
+	<string id="go_to_lukash_1_st">
+		<text>Встретиться и поговорить с Информатором</text>
+	</string>
+	<string id="go_to_lukash_2_st">
+		<text>Встретиться и поговорить с Информатору</text>
+	</string>
+	<string id="go_to_lukash_descr">
+		<text>Нужно сходить вместе с Хип к Информатору и выяснить, кто преследует Хип</text>
+	</string>	
+	<string id="go_to_boroda_1_st">
+		<text>Отнести Бороде контейнер с припасами</text>
+	</string>
+	<string id="go_to_boroda_2_st">
+		<text>Отнести Бороде контейнер с припасами</text>
+	</string>
+	<string id="go_to_boroda_descr">
+		<text>В обмен на услугу, Бармен попросил нас отнести Бороде контейнер с припасами</text>
+	</string>	
+	<string id="go_to_loki_1_st">
+		<text>Отнести Гавайцу контейнер с припасами</text>
+	</string>
+	<string id="go_to_loki_2_st">
+		<text>Отнести Гавайцу контейнер с припасами</text>
+	</string>
+	<string id="go_to_loki_descr">
+		<text>В обмен на услугу, Бармен попросил нас отнести Гавайцу контейнер с припасами</text>
+	</string>	
+	<string id="task_devushka_help_done3">
+		<text>Разобраться с бандитами</text>
+	</string>	
+	<string id="task_devushka_help_done3_descr">
+		<text>В качестве награды, Бармен дал координаты бандитов, необходимо разобраться с этим раз и навсегда</text>
+	</string>	
+	<string id="task_devushka_help_done4_1">
+		<text>Отправиться на встречу с представителем бандитов</text>
+	</string>	
+	<string id="task_devushka_help_done4_2">
+		<text>Разобраться с Гжегошем.</text>
+	</string>	
+	<string id="task_devushka_help_done4_descr">
+		<text>Необходимо собрать 500 тыс. для бандитов, взамен на слив отморозка Гжегоша</text>
+	</string>		
+	<!--------------------------- devushka ----------->
+	<!--------------------------- decan ----------->
+	<string id="bandit_kmb_01_descr">
+		<text>Добыть шкатулку Декана</text>
+	</string>		
+	<string id="bandit_kmb_01_text_1_st">
+		<text>Найти Семёру.</text>
+	</string>		
+	<string id="bandit_kmb_01_text_2_st">
+		<text>Направиться к месту стрелки</text>
+	</string>		
+	<string id="bandit_kmb_01_text_3_st">
+		<text>Перетереть со сталкером</text>
+	</string>		
+	<string id="bandit_kmb_01_text_4_st">
+		<text>Проверить закладку сталкера</text>
+	</string>		
+	<string id="bandit_kmb_01_text_5_st">
+		<text>Вернуться с предъявой сталкеру</text>
+	</string>		
+	<string id="bandit_kmb_01_text_6_st">
+		<text>Сопроводить Семёру до базы</text>
+	</string>		
+	<string id="bandit_kmb_01_text_7_st">
+		<text>Расспросить о самочувствии Семёры</text>
+	</string>			
+	<string id="bandit_kmb_01_text_8_st">
+		<text>Доложить Декану</text>
+	</string>		
+	<string id="bandit_kmb_02_0_st">
+		<text>Найти любые наводки</text>
+	</string>	
+	<string id="bandit_kmb_02_1_st">
+		<text>Вернуть шкатулку.</text>
+	</string>		
+	<string id="bandit_kmb_02_descr">
+		<text>Добыть шкатулку Декана</text>
+	</string>	
+	<string id="bandit_kmb_03_descr">
+		<text>В путь дорогу: найти доктора для Семёры</text>
+	</string>		
+	<string id="bandit_kmb_03_0_st">
+		<text>В путь дорогу: узнать состояние Семёры</text>
+	</string>	
+	<string id="bandit_kmb_03_1_st">
+		<text>В путь дорогу: найти Болотного Доктора</text>
+	</string>		
+	<string id="bandit_kmb_03_2_st">
+		<text>В путь дорогу: привести Болотного Доктора к больному</text>
+	</string>	
+	<string id="bandit_kmb_03_3_st">
+		<text>В путь дорогу: узнать помогло ли лечение Семёре</text>
+	</string>		
+	<string id="bandit_kmb_03_4_st">
+		<text>В путь дорогу: доложить Декану</text>
+	</string>	
+	<!--------------------------- fanat ----------->	
+	<string id="task_fanat_kmb_2_descr">
+		<text>КМБ: отправиться за артефактом вместе с Бергамотом</text>
+	</string>		
+	<string id="task_fanat_kmb_3_descr">
+		<text>КМБ: вернуться в деревню вместе с Бергамотом</text>
+	</string>	
+	<!--------------------------- tropnik ----------->	
+	<string id="task_mar_kmb_2_descr">
+		<text>КМБ: отправиться за артефактом вместе с Тропником</text>
+	</string>		
+	<string id="task_mar_kmb_3_descr">
+		<text>КМБ: вернуться на базу Чистого Неба вместе с Тропником</text>
+	</string>		
+	<!--------------------------- priboi ----------->
+	<string id="descr_mishen_military_text_st_1">
+		<text>Тир: вернуться к майору Прибою и доложить о стрельбе</text>
+	</string>		
+	<string id="descr_mil_gruz_1_text_st_1">
+		<text>Будничное задание срочника: вернуться с грузом к майору</text>
+	</string>		
+	<string id="descr_mishen_duty_text_st_1">
+		<text>Вернуться к генералу и доложить о стрельбе</text>
+	</string>		
+	<string id="descr_duty_kmb_2_text_st_1">
+		<text>Отправиться в первый рейд: выкурить кровососов, которые обосновались неподалеку</text>
+	</string>		
+	<string id="descr_duty_kmb_2_text_st_2">
+		<text>Отправиться в первый рейд: доложить генералу итоги рейда</text>
+	</string>	
+		<!--------------------------- bandit ----------->
+	<string id="bandit_kmb_01_descr_1">
+		<text>Проверить схрон на заброшенной барахолке</text>
+	</string>		
+	<string id="bandit_kmb_01_descr_2">
+		<text>Нас кинули, срочно отправиться к Семере</text>
+	</string>		
+	<string id="bandit_kmb_01_descr_3">
+		<text>Рассказать о сделке Декану</text>
+	</string>		
+	<string id="bandit_kmb_03_descr_1">
+		<text>В путь дорогу: сообщить вести о состоянии Семеры Декану</text>
+	</string>	
+		<!--------------------------- eco ----------->
+	<string id="eco_kmb_1_descr_0_1">
+		<text>Взять всю информацию и принести профессору Сахарову</text>
+	</string>		
+	<string id="eco_kmb_1_descr_0_alt_1">
+		<text>Взять всю информацию и принести профессору Сахарову</text>
+	</string>		
+	<string id="eco_kmb_2_descr_1">
+		<text>Замеры сделаны, необходимо возвращаться в бункер</text>
+	</string>	
+	<string id="eco_kmb_2_descr_2">
+		<text>Отдать аппаратуру профессору Сахарову и получить вознаграждение</text>
+	</string>		
+	<string id="eco_kmb_2_alt_descr_1">
+		<text>Замеры сделаны, необходимо возвращаться в бункер</text>
+	</string>		
+	<string id="eco_kmb_2_alt_descr_2">
+		<text>Отдать аппаратуру профессору Сахарову и получить вознаграждение</text>
+	</string>	
+	<string id="kmb_mon_3_descr_1">
+		<text>Мутант уничтожен, необходимо оповестить об этом Асмодеуса</text>
+	</string>		
+	<!--------------------------- mono ----------->	
+	<string id="kmb_mon_1_descr_1">
+		<text>Оказать помощь в зачистке госпиталя</text>
+	</string>	
+	<string id="kmb_mon_1_descr_2">
+		<text>Обнаружить оставшихся неверных и уничтожить их</text>
+	</string>		
+	<string id="kmb_mon_1_descr_3">
+		<text>Сообщить Мэрвину благую весть</text>
+	</string>	
+	<!--------------------------- naim ----------->	
+	<string id="task_naim_kmb_4_kill_monster_0_st">
+		<text>Проверить место возможного нахождения долговцев</text>
+	</string>
+	<string id="task_naim_kmb_4_kill_monster_1_st">
+		<text>Вернуться на базу</text>
+	</string>
+	<string id="task_naim_kmb_4_kill_monster_2_st">
+		<text>Отправиться на армейские склады</text>
+	</string>	
+	<string id="task_naim_kmb_4_kill_monster_3_st">
+		<text>Разведать первые координаты</text>
+	</string>
+	<string id="task_naim_kmb_4_kill_monster_4_st">
+		<text>Разведать следующие координаты</text>
+	</string>
+	<string id="task_naim_kmb_4_kill_monster_5_st">
+		<text>Защитить разведанный периметр</text>
+	</string>
+	<string id="task_naim_kmb_4_kill_monster_6_st">
+		<text>Вернуться на базу</text>
+	</string>	
+	<string id="task_naim_kmb_4_kill_monster_0_descr">
+		<text>Исследовать места скоплений на Милитари</text>
+	</string>
+	<string id="task_naim_kmb_4_kill_monster_1_descr">
+		<text>Вернуться на базу и доложить о ситуации</text>
+	</string>
+	<string id="task_naim_kmb_4_kill_monster_2_descr">
+		<text>Уничтожить мутантов</text>
+	</string>
+	<string id="task_naim_kmb_4_kill_monster_3_descr">
+		<text>Вернуться на базу и доложить о ситуации</text>
+	</string>	
+	<!--------------------------- posilnii ----------->	
+	<string id="posilnii_voen_title_0">
+		<text>На побегушках у правительства: отправиться за отчётами</text>
+	</string>
+	<string id="posilnii_voen_title_1">
+		<text>На побегушках у правительства: вернуться к Кузнецову</text>
+	</string>
+	<string id="posilnii_voen_descr_0_descr">
+		<text>Собрать отчеты с Петренка, Сахарова, Германа</text>
+	</string>
+	<string id="posilnii_voen_descr_1_descr">
+		<text>Вернуться к майору Кузнецову</text>
+	</string>
+
+	<string id="fanat_1_wepons_qwest_0_st">
+		<text>Именное оружие: обследовать Дикую Территорию</text>
+	</string>	
+	<string id="fanat_1_wepons_qwest_0_descr">
+		<text>Со слов Фаната, он встретил монолитовца на Дикой Территории</text>
+	</string>
+	<string id="fanat_1_wepons_qwest_1_st">
+		<text>Именное оружие: отнести находку Фанату</text>
+	</string>
+	<string id="fanat_1_wepons_qwest_1_descr">
+		<text>Найден зашифрованный ПДА, необходимо отнести его Фанату</text>
+	</string>
+	<string id="fanat_1_wepons_qwest_2_st">
+		<text>Именное оружие: обследовать Армейские Склады</text>
+	</string>	
+	<string id="fanat_1_wepons_qwest_2_descr">
+		<text>Из дневника монолитовца стало известно, что ствол нужно искать на Армейских Складах в одном из домов деревеньки</text>
+	</string>	
+	<string id="fanat_1_wepons_qwest_3_st">
+		<text>Именное оружие: отнести ствол</text>
+	</string>
+	<string id="fanat_1_wepons_qwest_3_descr">
+		<text>Ствол найден, нужно отнести его Фанату</text>
+	</string>
+	<string id="fanat_2_photo_qwest_0_st">
+		<text>Корреспондент: найти фотоаппарат</text>
+	</string>
+	<string id="fanat_2_photo_qwest_0_descr">
+		<text>Из рассказа Фаната следует, что фотоаппарат может быть где-то в Темной Лощине</text>
+	</string>	
+	<string id="fanat_2_photo_qwest_1_st">
+		<text>Корреспондент: отнести фотоаппарат Фанату</text>
+	</string>
+	<string id="fanat_2_photo_qwest_1_descr">
+		<text>Отнести фотоаппарат Фанату и получить награду</text>
+	</string>
+
+	<string id="task_svoboda_mest_zachistka_00_st">
+		<text>Миссия "Ответный удар".</text>
+	</string>
+	<string id="task_svoboda_mest_zachistka_00_descr">
+		<text>Выполнить диверсионный рейд в Восточной Припяти</text>
+	</string>
+	<string id="task_svoboda_mest_zachistka_0_st">
+		<text>Миссия "Ответный удар".</text>
+	</string>
+	<string id="task_svoboda_mest_zachistka_0_descr">
+		<text>Выполнить диверсионный рейд в Восточной Припяти</text>
+	</string>
+	<string id="task_svoboda_mest_zachistka_1_st">
+		<text>Миссия "Ответный удар".</text>
+	</string>
+	<string id="task_svoboda_mest_zachistka_1_descr">
+		<text>Провести разведку боем в ключевых местах Восточной Припяти</text>
+	</string>	
+	<string id="task_svoboda_mest_zachistka_2_st">
+		<text>Миссия "Ответный удар"</text>
+	</string>
+	<string id="task_svoboda_mest_zachistka_2_descr">
+		<text>Провести разведку боем в ключевых местах Восточной Припяти</text>
+	</string>
+	<string id="task_svoboda_mest_zachistka_3_st">
+		<text>Миссия "Ответный удар"</text>
+	</string>
+	<string id="task_svoboda_mest_zachistka_3_descr">
+		<text>Провести разведку боем в ключевых местах Восточной Припяти</text>
+	</string>	
+	<string id="task_svoboda_mest_zachistka_4_st">
+		<text>Миссия "Ответный удар"</text>
+	</string>
+	<string id="task_svoboda_mest_zachistka_4_descr">
+		<text>Провести разведку боем в ключевых местах Восточной Припяти</text>
+	</string>
+		<string id="task_svoboda_mest_zachistka_5_st">
+		<text>Миссия "Вернуться живым".</text>
+	</string>
+	<string id="task_svoboda_mest_zachistka_5_descr">
+		<text>Вернуться на Янов с добрыми вестями</text>
+	</string>
+	<string id="task_svoboda_mest_zachistka_000_st">
+		<text>Миссия "Ответный удар"</text>
+	</string>
+	<string id="task_svoboda_mest_zachistka_000_descr">
+		<text>Провести разведку боем в ключевых местах Восточной Припяти</text>
+	</string>
+
+	<string id="task_svoboda_mest_spasenie_0_st">
+		<text>Рука помощи: спасти разведчика</text>
+	</string>	
+	<string id="task_svoboda_mest_spasenie_0_descr">
+		<text>Необходимо отправиться в путепровод и помочь разведчику</text>
+	</string>	
+	<string id="task_svoboda_mest_spasenie_1_st">
+		<text>Рука помощи: вывести разведчика к станции Янов</text>
+	</string>	
+	<string id="task_svoboda_mest_spasenie_1_descr">
+		<text>Вывести разведчика к станции Янов</text>
+	</string>	
+	<string id="task_svoboda_mest_spasenie_2_st">
+		<text>Рука помощи: переговорить с Мановаром</text>
+	</string>	
+	<string id="task_svoboda_mest_spasenie_2_descr">
+		<text>Переговорить с Мановаром</text>
+	</string>	
+	<string id="task_svoboda_mest_spasenie_3_st">
+		<text>Рука помощи: доложить Локи</text>
+	</string>
+	<string id="task_svoboda_mest_spasenie_3_descr">
+		<text>Разведчик спасен, доложить об этом Локи</text>
+	</string>
+
+  <string id="dolg_story_task_1_name">
+        <text>Живодер: поговорить с Петренко</text>
+    </string>
+    <string id="dolg_story_task_1_name1">
+        <text>Живодер: уничтожить логово кровососов</text>
+    </string>
+    <string id="dolg_story_task_1_descr">
+        <text>Мне поручили уничтожить логово кровососов на юге Свалки. Возможно, Стаценко на свалке поможет, наконец, истребить популяцию кровососов</text>
+    </string>
+    <string id="dolg_story_task_1_dop_name">
+        <text>Поговорить с полковником Петренко</text>
+    </string>
+    <string id="dolg_story_task_1_dop_name2">
+        <text>Найти пропавших охотников</text>
+    </string>
+    <string id="dolg_story_task_1_dop_descr">
+        <text>Двое охотников нанятых долгом: Фреон и Флибустьер пропали на юго-востоке свалки. Моя задача - найти их</text>
+    </string>
+    <string id="dolg_story_task_2_dop_name">
+        <text>Поговорить с Кречетом</text>
+    </string>
+    <string id="dolg_story_task_2_dop_name1">
+        <text>Уничтожить бандитов</text>
+    </string>
+    <string id="dolg_story_task_2_dop_descr">
+        <text>Неподалеку бандиты разбили лагерь. Необходимо ликвидировать их</text>
+    </string>
+    <string id="dolg_story_task_2_name">
+        <text>Живодер: поговорить с Петренко</text>
+    </string>
+    <string id="dolg_story_task_2_name1">
+        <text>Живодер: уничтожить псевдогиганта</text>
+    </string>
+    <string id="dolg_story_task_2_descr">
+        <text>Из подземелий Темной долины вылез гигант. Моя задача - ликвидировать гиганта. Возможно, разведчик на ферме в Тёмной Долине поможет мне найти его</text>
+    </string>
+    <string id="dolg_story_task_3_name">
+        <text>Живодер: доложить Петренко</text>
+    </string>
+    <string id="dolg_story_task_3_name1">
+        <text>Живодер: найти и уничтожить странных мутантов</text>
+    </string>
+    <string id="dolg_story_task_3_descr">
+        <text>Группа неизвестных мутантов уничтожила патруль "Долга". Необходимо ликвидировать эту угрозу</text>
+    </string>
+   <string id="dolg_story_task_4_name">
+        <text>Живодер: доложить Петренко</text>
+    </string>
+    <string id="dolg_story_task_4_name1">
+        <text>Живодер: уничтожить контролера</text>
+    </string>
+    <string id="dolg_story_task_4_descr">
+        <text>В деревне на Армейских Складах завелся контролёр. Необходимо ликвидировать эту угрозу</text>
+    </string>	
+    <string id="dolg_story_task_5_name">
+        <text>Живодер: доложить Петренко</text>
+    </string>
+    <string id="dolg_story_task_5_name1">
+        <text>Живодер: ликвидировать химеру</text>
+    </string>
+    <string id="dolg_story_task_5_descr">
+        <text>Мне необходимо найти и ликвидировать химеру в Рыжем Лесу</text>
+    </string>		
+	<string id="dolg_story_task_4_dop_name">
+		<text>Найти пропавших военных</text>
+	</string>	
+	<string id="dolg_story_task_4_dop_name1">
+		<text>Военные мертвы, но необходимо доставить найденный пда командованию</text>
+	</string>
+	<string id="dolg_story_task_4_dop_descr">
+		<text>Найти пропавших военных и доставить ценную информацию командованию</text>
+	</string>	
+
+	<string id="duty_task_naim_kmb_4_kill_monster_0_st">
+		<text>Проверить место возможного нахождения пропавшего сквада</text>
+	</string>			
+	<string id="duty_task_naim_kmb_4_kill_monster_1_st">
+		<text>Вернуться на базу</text>
+	</string>	
+	<string id="duty_task_naim_kmb_4_kill_monster_2_st">
+		<text>Отправиться на Армейские Склады</text>
+	</string>
+	<string id="duty_task_naim_kmb_4_kill_monster_3_st">
+		<text>Зачистить первую волну мутантов</text>
+	</string>		
+	<string id="duty_task_naim_kmb_4_kill_monster_4_st">
+		<text>Зачистить вторую волну мутантов</text>
+	</string>	
+	<string id="duty_task_naim_kmb_4_kill_monster_5_st">
+		<text>Зачистить третью волну мутантов</text>
+	</string>
+	<string id="duty_task_naim_kmb_4_kill_monster_6_st">
+		<text>Вернуться на базу</text>
+	</string>		
+	<string id="duty_task_naim_kmb_4_kill_monster_0_descr">
+		<text>Исследовать место</text>
+	</string>	
+	<string id="duty_task_naim_kmb_4_kill_monster_1_descr">
+		<text>Вернуться на базу и доложить о ситуации</text>
+	</string>	
+	<string id="duty_task_naim_kmb_4_kill_monster_2_descr">
+		<text>Уничтожить мутантов</text>
+	</string>
+	<string id="duty_task_naim_kmb_4_kill_monster_3_descr">
+		<text>Вернуться на базу и доложить о ситуации</text>
+	</string>	
+	<string id="task_duty_final_kmb_5_1_st">
+		<text>Обитель зла: найти "Изделие №62"</text>
+	</string>		
+	<string id="task_duty_final_kmb_5_2_st">
+		<text>Обитель зла: Осведомитель дал наводку на зону Генераторов</text>
+	</string>	
+	<string id="task_duty_final_kmb_5_3_st">
+		<text>Обитель зла: Кардан дал наводку на Генераторы</text>
+	</string>	
+	<string id="task_duty_final_kmb_5_4_st">
+		<text>Обитель зла: отдать "Изделие №62" генералу</text>
+	</string>
+	<string id="task_duty_final_kmb_5_1_descr">
+		<text>Генерал Воронин дал задание на поиск "Изделие №62", однако не уточнил, где можно найти "Изделие". Он посоветовал поспрашивать людей</text>
+	</string>		
+	<string id="task_duty_final_kmb_5_2_descr">
+		<text>Поговорив с Информатором, и отдав ему весомый куш, удалось узнать, что были осуществлены поставки "Изделия №62" в зону Генераторов</text>
+	</string>	
+	<string id="task_duty_final_kmb_5_3_descr">
+		<text>Поговорив с Карданом, удалось узнать, что были осуществлены поставки "Изделия №62" в зону Генераторов</text>
+	</string>	
+	<string id="task_duty_final_kmb_5_4_descr">
+		<text>Получен прототип "Изделия №62", нужно доложить об этом генералу Воронину</text>
+	</string>	
+	<string id="task_german_oazis_poisk_uchenii_1_st">
+		<text>Найти пропавшую экспедицию.</text>
+	</string>	
+	<string id="task_german_oazis_poisk_uchenii_2_st">
+		<text>Вернуться к проффесору Герману за наградой.</text>
+	</string>	
+	<string id="task_german_oazis_poisk_uchenii_descr">
+		<text>Найти пропавшую экспедицию и заполучить научную информацию лидера группы.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_1_st">
+		<text>Найти информацию о Смерть Лампе.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_2_st">
+		<text>Поговорить с Барменом.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_3_st">
+		<text>Найти группу ученых.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_4_st">
+		<text>Вернуться к Бармену.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_5_st">
+		<text>Получить обещаную Фанатом информацию.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_6_st">
+		<text>Найти тайник ученых под Радаром.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_7_st">
+		<text>Найти артефакт Осколок Неба.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_8_st">
+		<text>Найти Смерть Лампу.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_81_st">
+		<text>Смерть лампа теперь не убивает носителя.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_9_st">
+		<text>Вернуться за наградой Сахарову.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_1_descr">
+		<text>Найти информацию о Смерть Лампе, стоит распросить сталкеров.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_2_descr">
+		<text>Завсегдатый бара по прозвищу Фанат обещал рассказать кое-какую информацию в обмен на задание Бармена.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_3_descr">
+		<text>Бармен дал задание на поиск группы ученых, где-то Мертвом Городе и принести научные данные.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_4_descr">
+		<text>Вернуться к Бармену с полученной информацией.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_5_descr">
+		<text>Выполнив задание Бармена, остается получить обещаную Фанатом информацию.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_6_descr">
+		<text>Судя по словам Фаната у ученых есть какая-то информация о Смерть Лампе где-то под Радаром.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_7_descr">
+		<text>Судя по записям ученых Смерть лампа может убить своего обладателя. Для его нейтрализации нужен артефакт Осколок Неба. Судя по всему он может быть где-то на севере, стоит поситить бункер ученых.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_8_descr">
+		<text>Мы нашли Осколок Неба, теперь остается отыскать Смерть Лампу.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_81_descr">
+		<text>Смерть лампа теперь не убивает носителя.</text>
+	</string>	
+	<string id="task_sakhar_find_death_lamp_9_descr">
+		<text>Вернуться за наградой Сахарову</text>
+	</string>
+	<string id="task_esc_nql_qwest_luis_1_0_st">
+		<text>Уничтожить бандитов</text>
+	</string>
+	<string id="task_esc_nql_qwest_luis_1_1_st">
+		<text>Найти Флэшку</text>
+	</string>
+	<string id="task_esc_nql_qwest_luis_1_2_st">
+		<text>Вернуться Луису</text>
+	</string>
+	<string id="task_esc_nql_qwest_luis_1_0_descr">
+		<text>На северном блокпосте засели бандиты, которые взяли в заложники Берга, необходимо уничтожить их</text>
+	</string>
+	<string id="task_esc_nql_qwest_luis_1_1_descr">
+		<text>Найти флешку Берга</text>
+	</string>
+	<string id="task_esc_nql_qwest_luis_1_2_descr">
+		<text>Флешка найдена, теперь нужно вернуться за наградой</text>
+	</string>
+</string_table>

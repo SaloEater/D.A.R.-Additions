@@ -1,0 +1,20 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 32
+max_population = 1
+respawn_only_smart = true
+respawn_params = respawn@pri_sim_10
+respawn_idle = 43200
+
+
+[respawn@pri_sim_10]
+spawn_army
+spawn_ecolog
+
+[spawn_army]
+spawn_squads = army_sim_squad_elite
+spawn_num = {+bar_deactivate_radar_done} 1, 0
+
+[spawn_ecolog]
+spawn_squads = ecolog_sim_squad_advanced, ecolog_sim_squad_veteran
+spawn_num = {+bar_deactivate_radar_done} 2, 0

@@ -1,0 +1,82 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 19
+max_population = 2
+respawn_params = respawn@pri_b301   
+respawn_idle = 86400
+
+[respawn@pri_b301]
+
+spawn_monster
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_killer
+spawn_army
+spawn_ecolog
+spawn_monolith
+spawn_zombied
+
+[spawn_monster]
+spawn_squads = contr_5sn_pri_b301, contr_6gzomb_pri_b301, gigant_pri_b301, gigant_pri_b301, bloodsucker_pri_b301, bloodsucker_pri_b301, bloodsucker_pri_b301, bloodsucker_pri_b301, zombie_pri_b301, zombie_pri_b301, zombie_pri_b301, zombie_pri_b301, zombie_pri_b301 
+spawn_num = {=!smart_controlled(pri_b301)} 1, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b301:stalker)} 2, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b301:bandit)} 2, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b301:csky)} 2, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b301:dolg)} 2, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_veteran 
+spawn_num = {=smart_under_faction(pri_b301:freedom)} 2, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b301:killer)} 2, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_veteran, army_sim_squad_elite
+spawn_num = {=smart_under_faction(pri_b301:army)} 2, 0
+
+[spawn_ecolog]
+spawn_squads = ecolog_sim_squad_advanced, ecolog_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b301:ecolog)} 2, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b301:monolith)} 1, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_b301:zombied)} 1, 0
+
+
+
+
+[exclusive]
+monster_1 	= pripyat\pri_b301_logic.ltx
+monster_2	= pripyat\pri_b301_logic.ltx
+monster_3 	= pripyat\pri_b301_logic.ltx
+monster_4 	= pripyat\pri_b301_logic.ltx
+monster_5 	= pripyat\pri_b301_logic.ltx
+monster_6 	= pripyat\pri_b301_logic.ltx
+monster_7 	= pripyat\pri_b301_logic.ltx
+monster_8 	= pripyat\pri_b301_logic.ltx
+monster_9 	= pripyat\pri_b301_logic.ltx
+monster_10 	= pripyat\pri_b301_logic.ltx
+monster_11 	= pripyat\pri_b301_logic.ltx
+monster_12 	= pripyat\pri_b301_logic.ltx
+monster_13 	= pripyat\pri_b301_logic.ltx

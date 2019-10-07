@@ -1,0 +1,34 @@
+[smart_terrain]
+respawn_radius = 300 ;;лагерь у перехода на кордон
+squad_id = 15
+max_population = 4
+respawn_params = respawn@ds2_lager_st
+respawn_idle = 43200
+
+[respawn@ds2_lager_st]
+
+spawn_bandit
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_snork, simulation_pseudodog, simulation_fracture, simulation_cat
+spawn_num = {=!smart_controlled(ds2_lager_st)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_bloodsucker_red
+spawn_num = {=!smart_controlled(ds2_lager_st)} 1, 0
+
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_novice
+spawn_num = {=smart_under_faction(ds2_lager_st:bandit)} 2, 0
+
+
+[exclusive]
+ds2_lager_st_bandit_leader = darkscape\ds2_lager_st_bandit_leader.ltx
+ds2_lager_st_camp_work_1 = darkscape\ds2_lager_st_smart_logic.ltx
+ds2_lager_st_camp_work_2 = darkscape\ds2_lager_st_smart_logic.ltx
+ds2_lager_st_camp_work_3 = darkscape\ds2_lager_st_smart_logic.ltx
+ds2_lager_st_camp_work_4 = darkscape\ds2_lager_st_smart_logic.ltx
+ds2_lager_st_camp_work_5 = darkscape\ds2_lager_st_smart_logic.ltx

@@ -1,0 +1,1388 @@
+-------------------------
+--- Работа со спавном ---
+------------------------
+function spawn_obj(name, x, y, z, lv, gv, count)
+if (name==nil) then
+return
+end
+if (count==nil or count<=0) then
+count = 1
+end
+for i=1, count do
+alife():create(name,vector():set(x, y, z),lv,gv)
+end
+end
+function ran_spawn_obj(name, x, y, z, lv, gv, x_min, x_max, y_min, y_max, z_min, z_max, count)
+local x_ran=math.random(x_min,x_max)
+local y_ran=math.random(y_min,y_max)
+local z_ran=math.random(z_min,z_max)
+if (name==nil) then
+return
+end
+if (count==nil or count<=0) then
+count = 1
+end
+for i=1, count do
+alife():create(name,vector():set(x+x_ran, y+y_ran, z+z_ran),lv,gv)
+end
+end
+----------==============================-------------
+------ функции на проверку группировки------------
+----------==============================-------------
+function check_csky()
+	return trx_utils.check_comm('actor_csky')
+end
+function check_monolith()
+	return trx_utils.check_comm('actor_monolith')
+end
+function check_dolg()
+	return trx_utils.check_comm('actor_dolg')
+end
+function check_neutral()
+	return trx_utils.check_comm('actor_stalker')
+end
+function check_freedom()
+	return trx_utils.check_comm('actor_freedom')
+end
+function check_ecolog()
+	return trx_utils.check_comm('actor_ecolog')
+end
+function check_army()
+	return trx_utils.check_comm('actor_army')
+end
+function check_bandit()
+	return trx_utils.check_comm('actor_bandit')
+end
+function check_killer()
+	return trx_utils.check_comm('actor_killer')
+end
+------------------------------------------------
+--------------проверка жив ли нпс---------------
+------------------------------------------------
+function check_nastavnic_eco_alive(first_speaker, second_speaker)
+    return xr_conditions.is_alive(nil,nil,{"nastavnic_eco"})
+end
+----------==============================-------------
+----- функция на убийство непися --------
+function kill_npc(npc, actor)
+npc:kill(actor)
+end
+------------------- функция на убийство гг ----------------
+function kill_actor(actor, npc)
+    db.actor:kill(db.actor)
+end
+----------==============================-------------
+---==========выдача заданий===========------
+----------==============================-------------
+function give_task_duty_task_naim_kmb_4_kill_monster()
+task_manager.get_task_manager():give_task("duty_task_naim_kmb_4_kill_monster_1")
+nql.m_controller_naim_duty_qwest_spawn()
+end
+function give_task_duty_task_naim_kmb_4_kill1_monster()
+task_manager.get_task_manager():give_task("duty_task_naim_kmb_4_kill_monster")
+nql.dead_hunter_naim_duty_qwest_spawn()
+end
+function give_task_naim_kmb_4_kill_monster()
+task_manager.get_task_manager():give_task("task_naim_kmb_4_kill_monster_1")
+nql.m_controller_naim_duty_qwest_spawn()
+end
+function give_task_naim_kmb_4_kill1_monster()
+task_manager.get_task_manager():give_task("task_naim_kmb_4_kill_monster")
+nql.dead_hunter_naim_duty_qwest_spawn()
+end
+function give_task_svoboda_mest_spasenie()
+task_manager.get_task_manager():give_task("task_svoboda_mest_spasenie")
+end
+function give_task_svoboda_mest_zachistka()
+task_manager.get_task_manager():give_task("task_svoboda_mest_zachistka")
+nql.free_pri_podkreplenie_mest_qwest_spawn()
+end
+function give_task_drx_sl_gar_decan_duty_gp_task_1()
+task_manager.get_task_manager():give_task("drx_sl_gar_decan_duty_gp_task_1")
+end
+function give_task_sultan_kmb_1()
+task_manager.get_task_manager():give_task("task_sultan_kmb_1")
+end
+function give_task_sultan_kmb_2()
+task_manager.get_task_manager():give_task("task_sultan_kmb_2")
+end
+function give_task_fanat_1_wepons_qwest()
+task_manager.get_task_manager():give_task("fanat_1_wepons_qwest")
+end
+function give_task_posilnii_voen_1()
+task_manager.get_task_manager():give_task("posilnii_voen_1")
+end
+function give_task_fanat_kmb_1()
+task_manager.get_task_manager():give_task("task_fanat_kmb_1")
+end
+function give_task_fanat_kmb_2()
+task_manager.get_task_manager():give_task("task_fanat_kmb_2")
+end
+function give_task_mar_kmb_1()
+task_manager.get_task_manager():give_task("task_mar_kmb_1")
+end
+function give_task_mar_kmb_2()
+task_manager.get_task_manager():give_task("task_mar_kmb_2")
+end
+function give_esc_talk_wolf_1_quest()
+task_manager.get_task_manager():give_task("esc_talk_wolf_1_quest")
+end
+function give_esc_task_wolf_1_quest()
+task_manager.get_task_manager():give_task("esc_task_wolf_1_quest")
+end
+function give_mishen_military_kmb_1_quest()
+task_manager.get_task_manager():give_task("task_mishen_military_kmb_1")
+end
+function give_mishen_military_kmb_2_quest()
+task_manager.get_task_manager():give_task("task_mishen_military_kmb_2")
+end
+function give_mishen_military_kmb_3_quest()
+task_manager.get_task_manager():give_task("task_mishen_military_kmb_3")
+end
+function give_task_naim_kmb_1()
+task_manager.get_task_manager():give_task("naim_kmb_1")
+end
+function give_task_naim_kmb_2()
+task_manager.get_task_manager():give_task("naim_kmb_2")
+end
+function give_task_naim_kmb_3()
+task_manager.get_task_manager():give_task("naim_kmb_3")
+end
+function give_task_duty_kmb_1()
+task_manager.get_task_manager():give_task("duty_kmb_1")
+end
+function give_task_duty_kmb_2()
+task_manager.get_task_manager():give_task("duty_kmb_2")
+end
+function give_task_band_kmb_1()
+task_manager.get_task_manager():give_task("bandit_kmb_01")
+end
+function give_task_band_kmb_2()
+task_manager.get_task_manager():give_task("bandit_kmb_02")
+end
+function give_task_band_kmb_3()
+task_manager.get_task_manager():give_task("bandit_kmb_03")
+end
+function give_mono_kmb_1()
+task_manager.get_task_manager():give_task("mono_kmb_1")
+end
+function give_mono_kmb_2()
+task_manager.get_task_manager():give_task("mono_kmb_2")
+end
+function give_mono_kmb_3()
+task_manager.get_task_manager():give_task("mono_kmb_3")
+end
+function give_mono_kmb_4()
+task_manager.get_task_manager():give_task("mono_kmb_4")
+end
+function give_eco_kmb_1()
+task_manager.get_task_manager():give_task("eco_kmb_1")
+end
+function give_eco_kmb_1_alt()
+task_manager.get_task_manager():give_task("eco_kmb_1_alt")
+end
+function give_eco_kmb_2_alt()
+task_manager.get_task_manager():give_task("eco_kmb_2_alt")
+end
+function give_eco_kmb_2()
+task_manager.get_task_manager():give_task("eco_kmb_2")
+end
+function give_zadanie_voen_pripayt()
+task_manager.get_task_manager():give_task("zadanie_voen_pripayt")
+end
+function give_task_devushka_1()
+task_manager.get_task_manager():give_task("devushka_1_give")
+end
+function give_task_devushka_3()
+task_manager.get_task_manager():give_task("devushka_3_give")
+end
+function give_task_devushka_help_2()
+task_manager.get_task_manager():give_task("devushka_help_2_give")
+end
+function give_task_devushka_4()
+task_manager.get_task_manager():give_task("devushka_4_give")
+end
+function give_task_devushka_5()
+task_manager.get_task_manager():give_task("devushka_5_give")
+end
+function give_task_devushka_help_1()
+task_manager.get_task_manager():give_task("devushka_help_1_give")
+end
+function give_task_devushka_help_done3()
+task_manager.get_task_manager():give_task("task_devushka_help_done3")
+end
+function give_task_devushka_help_done4()
+task_manager.get_task_manager():give_task("task_devushka_help_done4")
+end
+function give_task_duty_final_kmb_5()
+task_manager.get_task_manager():give_task("task_duty_final_kmb_5")
+nql.resident_evil_bioihazard_duty_generator_lab2_spawn()
+end
+function give_task_esc_nql_qwest_luis_1()
+task_manager.get_task_manager():give_task("task_esc_nql_qwest_luis_1")
+nql.esc_nql_qwest_luis_drug_spawn()
+end
+----------==============================-------------
+---------=====kmb kvest за одиночек====----
+----------==============================-------------
+function give_antirad_from_fanat(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "antirad")  
+end 
+function has_1_11_af_medusa_kmb()
+return trx_utils.act_h_s('af_medusa')
+end 
+function spawn_af_medusa_kmb()
+alife():create("af_medusa",vector():set(-252.937820,-13.060023,-9.060023),10192,386)
+end
+---------====kmb kvest за csky======----
+function has_1_11_af_drop_kmb()
+return trx_utils.act_h_s('af_drop')
+end 
+function spawn_af_drop_kmb()
+alife():create("af_drop",vector():set(245.744141,4.530905,55.052349),295765,63)
+end
+---------====kmb kvest за military======----
+function mishen_military_spawn()
+nql.mishen_military_01_spawn()
+nql.mishen_military_02_spawn()
+nql.mishen_military_03_spawn()
+nql.mishen_military_04_spawn()
+nql.mishen_military_05_spawn()
+end
+function mishen_military_01_spawn()
+nql.spawn_obj("mishen_military_01", -216.777740, -23.791447, -441.382080, 37129, 362, 1)
+end
+function mishen_military_02_spawn()
+nql.spawn_obj("mishen_military_02", -216.100494, -23.788822, -443.883820, 37681, 362, 1)
+end
+function mishen_military_03_spawn()
+nql.spawn_obj("mishen_military_03", -216.975372, -23.807182, -448.851135, 37119, 362, 1)
+end
+function mishen_military_04_spawn()
+nql.spawn_obj("mishen_military_04", -222.667007, -23.604313, -444.923676, 32631, 362, 1)
+end
+function mishen_military_05_spawn()
+nql.spawn_obj("mishen_military_05", -221.501144, -23.732372, -438.549805, 33765, 362, 1)
+end
+function mishen_military_spawn_2()
+nql.esc_psy_dog_spawn1()
+nql.esc_psy_dog_spawn2()
+nql.esc_psy_dog_spawn3()
+nql.mil_gruz_1_spawn()
+end
+function esc_psy_dog_spawn1()
+nql.spawn_obj("esc_mil_psy_dog1", 394.786865, 20.073668, 287.027435, 624942, 638, 1)
+end
+function esc_psy_dog_spawn2()
+nql.spawn_obj("esc_mil_psy_dog2", 394.786865, 20.073668, 287.027435, 624942, 638, 1)
+end
+function esc_psy_dog_spawn3()
+nql.spawn_obj("esc_mil_psy_dog3", 394.786865, 20.073668, 287.027435, 624942, 638, 1)
+end
+function mil_gruz_1_spawn()
+nql.spawn_obj("mil_gruz_1", 394.786865, 20.073668, 287.027435, 624942, 638, 1)
+end
+function has_mil_gruz_1()
+return trx_utils.act_h_s('mil_gruz_1')
+end 
+function transfer_mil_gruz_1(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "mil_gruz_1")
+end
+function del_mil1(first_speaker, second_speaker)
+xr_effects.remove_npc(first_speaker,second_speaker,{"nastavnic_mil_2"})
+end
+---------====kmb kvest за naim======----
+function naim_kmb_1_teleport()
+db.actor:set_actor_position(vector():set(-217.003357, 6.054244, -74.470184))
+if db.actor:is_talking() then
+		db.actor:stop_talk()
+	end
+	level.add_pp_effector("black.ppe", 133613, false)
+	db.actor:set_actor_direction(0,-0.31552970409393,0)	
+end
+function naim_kmb_2_teleport()
+db.actor:set_actor_position(vector():set(108.889099, -0.835306, 64.877609))	
+if db.actor:is_talking() then
+		db.actor:stop_talk()
+	end
+	level.add_pp_effector("black.ppe", 93613, false)	
+	db.actor:set_actor_direction(0,-0.31552970409393,0)
+end
+function naim_kmb_2_bloodsucker_spawn()
+nql.spawn_obj("naim_kmb_bloodsucker", 119.822205, 1.424022,66.256966, 210630, 2416, 1)
+end
+---------====kmb kvest за duty======----
+function mishen_duty_spawn()
+nql.mishen_duty_01_spawn()
+nql.mishen_duty_02_spawn()
+nql.mishen_duty_03_spawn()
+nql.mishen_duty_04_spawn()
+nql.mishen_duty_05_spawn()
+end
+function mishen_duty_01_spawn()
+nql.spawn_obj("mishen_duty_01", 21.217299, -0.194196, 252.263367, 22703, 1749, 1)
+end
+function mishen_duty_02_spawn()
+nql.spawn_obj("mishen_duty_02", 17.731573, -0.061520, 246.123749, 22702, 1749, 1)
+end
+function mishen_duty_03_spawn()
+nql.spawn_obj("mishen_duty_03", 10.930260, -0.123070, 247.229965, 22702, 1749, 1)
+end
+function mishen_duty_04_spawn()
+nql.spawn_obj("mishen_duty_04", 25.334164, -0.244023, 254.679596, 22531, 1749, 1)
+end
+function mishen_duty_05_spawn()
+nql.spawn_obj("mishen_duty_05", 8.032915, -0.252686, 250.627594, 22531, 1749, 1)
+end
+function has_duty_gruz()
+return trx_utils.act_h_s('duty_gruz')
+end 
+function transfer_duty_gruz(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "duty_gruz", 1)
+end
+function give_duty_gruz_from_gg(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "duty_gruz") 
+end 
+----------==============================-------------
+----------==============================-------------
+--------============volk kvest=============------
+----------==============================-------------
+function has_wolf_dinamyt()
+return trx_utils.act_h_s('wolf_dinamyt')
+end 
+function wolf_dinamyt_spawn()
+nql.spawn_obj("wolf_dinamyt", 107.808762, -6.293290, -18.274183, 439407, 444, 1)
+end
+function transfer_wolf_dinamyt(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "wolf_dinamyt")
+end
+function wolf_dinamyt_money(first_speaker, second_speaker)
+dialogs.relocate_money_to_actor(first_speaker, second_speaker, 500) 
+end
+function wolf_dinamyt_money_dob(first_speaker, second_speaker)
+dialogs.relocate_money_to_actor(first_speaker, second_speaker, 200) 
+end
+function spawn_esc_merc_squad_novice()
+alife():create("esc_merc_squad_novice",vector():set(-147.803253,-6.384746,-40.520718),105556,382)
+end	
+---------====kmb kvest за бандитов======----
+function spawn_new_band_new_start_1()
+alife():create("new_band_new_start_1",vector():set(-152.740402,0.237672,-223.886673),56052,772)
+end	
+function spawn_new_band_new_start_5()
+alife():create("new_band_new_start_5",vector():set(69.557747,0.816269,236.528717),227184,645)
+end	
+function has_chennosti()
+return trx_utils.act_h_s('chennosti')
+end 
+function transfer_chennosti(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "chennosti", 1)
+end
+function has_pda_fraer_kmb()
+return trx_utils.act_h_s('pda_fraer_kmb')
+end 
+function transfer_pda_fraer_kmb(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "pda_fraer_kmb", 1)
+end
+function chennosti_money(first_speaker, second_speaker)
+dialogs.relocate_money_to_actor(first_speaker, second_speaker, 10000) 
+end
+function has_sdelka_money()
+	return trx_utils.act_h_m(10000)
+end
+function sdelka_money_loose(first_speaker, second_speaker) 
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 10000) 
+end
+function give_fraer_kpk(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "pda_fraer_kmb")  
+end 
+
+function mar_teleport_player_to_garbage()
+	local pos = vector():set(-85.6932373046875,1.51669597625732,-33.5118370056152)
+	if db.actor:is_talking() then
+		db.actor:stop_talk()
+	end
+	level.add_pp_effector("black.ppe", 133613, false)
+	ChangeLevel(pos, 109782, 725, vector():set(0,0,0))
+	db.actor:set_actor_direction(0,-0.31552970409393,0)
+end
+function gar_delete_doc_1()
+xr_effects.remove_npc(nil, nil, {"mar_smart_terrain_base_doctor"})	
+end
+function gar_delete_doc_2()
+xr_effects.remove_npc(nil, nil, {"bolot_doc_bandit"})	
+end
+---------====kmb kvest за monolith======----
+function has_pda_pri_army01()
+return trx_utils.act_h_s('pda_pri_army01')
+end 
+function transfer_pda_pri_army01(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "pda_pri_army01", 1)
+end
+function has_pda_pri_army02()
+return trx_utils.act_h_s('pda_pri_army02')
+end 
+function transfer_pda_pri_army02(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "pda_pri_army02", 1)
+end
+function pri_3_military_spawn()
+nql.kmb_mon_3_d_spawn1()
+nql.kmb_mon_4_d_spawn2()
+nql.kmb_mon_5_d_spawn3()
+end
+function kmb_mon_3_d_spawn1()
+nql.spawn_obj("kmb_mon_3_d", -43.017864, -0.393503, -78.586914, 146076, 4945, 1)
+end
+function kmb_mon_4_d_spawn2()
+nql.spawn_obj("kmb_mon_4_d", -42.630363, -0.426492, -89.282135, 146060, 4985, 1)
+end
+function kmb_mon_5_d_spawn3()
+nql.spawn_obj("kmb_mon_5_d", -38.645512, -0.523965, -81.909882, 149844, 4945, 1)
+end
+function mono_dar()
+return trx_utils.act_h_s('af_electra_sparkler')
+end 
+function mono_dar1(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "af_electra_sparkler", 1)
+end
+function spawn_electr_kmb()
+alife():create("af_electra_sparkler",vector():set(225.004562,4.798999,-98.624260),95519,3198)
+end
+function give_detector_gg_mono(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "detector_01") 
+end 
+function del_kmb_mon_3_d(first_speaker, second_speaker)
+xr_effects.remove_npc(first_speaker,second_speaker,{"kmb_mon_3_d"})
+end
+function goodwill_from_cancel_1(a,b)
+	xr_effects.inc_faction_goodwill_to_actor(db.actor, nil, {"monolith", -10})
+end
+function goodwill_from_cancel_2(a,b)
+	xr_effects.inc_faction_goodwill_to_actor(db.actor, nil, {"monolith", -100})
+end
+function mono_dar1(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "af_electra_sparkler", 1)
+end
+function has_monolith_patch_qwest()
+return trx_utils.act_h_s('monolith_patch_qwest')
+end 
+function monolith_patch_qwest(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "monolith_patch_qwest", 1)
+end
+---------====kmb kvest за freeman======----
+function spawn_new_free_death_1()
+alife():create("new_free_death_1",vector():set(209.622986,8.635228,290.4447463),716426,5295)
+end	
+function has_pda_free_army01()
+return trx_utils.act_h_s('pda_free_army01')
+end 
+function transfer_pda_free_army01(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "pda_free_army01", 1)
+end
+function has_pda_free_army02()
+return trx_utils.act_h_s('pda_free_army02')
+end 
+function transfer_pda_free_army02(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "pda_free_army02", 1)
+end
+function give_trade_free_nagrada_1(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "svoboda_heavy_outfit") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "backpack_heavy") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_p90") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.7x28_ss195") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.7x28_ss190") 
+end 
+function give_free_kmb_money_1(first_speaker, second_speaker)
+dialogs.relocate_money_to_actor(first_speaker, second_speaker, 200) 
+end
+---------====kmb kvest за freeman======----
+---------====kmb kvest за eco======----
+function has_detector_eco_5()
+return trx_utils.act_h_s('detector_eco_5')
+end 
+function has_pda_eco_army01()
+return trx_utils.act_h_s('pda_eco_army01')
+end 
+function transfer_pda_eco_army01(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "pda_eco_army01", 1)
+end
+function spawn_nastavnic_eco_death()
+alife():create("nastavnic_eco_death",vector():set(-144.441376,2.423976,-139.303680),16309,2233)
+end	
+function has_detector_eco_5()
+return trx_utils.act_h_s('detector_eco_5')
+end 
+function transfer_detector_eco_5(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "detector_eco_5", 1)
+end
+function give_detector_gg_eco(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "detector_eco_5") 
+end 
+---------====kmb kvest за eco======----
+--=================квесты на спасение экологов===================--
+function zadanie_voen_pripayt_spawn_1()
+nql.zadanie_voen_pripayt_spawn1()
+nql.zadanie_voen_pripayt_spawn2()
+nql.zadanie_voen_pripayt_spawn3()
+nql.zadanie_voen_pripayt_spawn4()
+nql.zadanie_voen_pripayt_spawn5()
+end
+function zadanie_voen_pripayt_spawn1()
+nql.spawn_obj("kmb_mon_3_d", -43.017864, -0.393503, -78.586914, 146076, 4945, 1)
+end
+function zadanie_voen_pripayt_spawn2()
+nql.spawn_obj("kmb_mon_4_d", -42.630363, -0.426492, -89.282135, 146060, 4985, 1)
+end
+function zadanie_voen_pripayt_spawn3()
+nql.spawn_obj("kmb_mon_5_d", -38.645512, -0.523965, -81.909882, 149844, 4945, 1)
+end
+function zadanie_voen_pripayt_spawn4()
+nql.spawn_obj("kmb_mon_4_d", -38.645512, -0.523965, -81.909882, 149844, 4945, 1)
+end
+function zadanie_voen_pripayt_spawn5()
+nql.spawn_obj("kmb_mon_5_d", -43.017864, -0.393503, -78.586914, 146076, 4945, 1)
+end
+
+function zadanie_voen_pripayt_spawn_2()
+nql.zadanie_voen_pripayt_spawn1_2()
+nql.zadanie_voen_pripayt_spawn2_2()
+nql.zadanie_voen_pripayt_spawn3_2()
+nql.zadanie_voen_pripayt_spawn6()
+nql.zadanie_voen_pripayt_spawn7()
+end
+function zadanie_voen_pripayt_spawn1_2()
+nql.spawn_obj("generate_mon_new_0", -43.017864, -0.393503, -78.586914, 146076, 4945, 1)
+end
+function zadanie_voen_pripayt_spawn2_2()
+nql.spawn_obj("generate_mon_new_1", -42.630363, -0.426492, -89.282135, 146060, 4985, 1)
+end
+function zadanie_voen_pripayt_spawn3_2()
+nql.spawn_obj("generate_mon_new_0", -38.645512, -0.523965, -81.909882, 149844, 4945, 1)
+end
+function zadanie_voen_pripayt_spawn6()
+nql.spawn_obj("kmb_mon_4_d", -42.630363, -0.426492, -89.282135, 146060, 4985, 1)
+end
+function zadanie_voen_pripayt_spawn7()
+nql.spawn_obj("kmb_mon_5_d", -38.645512, -0.523965, -81.909882, 149844, 4945, 1)
+end
+----------==============================-------------
+-------------======devushka mod==========-------
+----------==============================-------------
+function devushka_1_has(first_speaker, second_speaker)
+	return trx_utils.act_h_s('wpn_toz34_nimble', 1)
+end 
+function devushka_1_done(first_speaker, second_speaker)
+    dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "wpn_toz34_nimble")
+end
+function devushka_2_has(first_speaker, second_speaker)
+	return trx_utils.act_h_s('ammo_12x70_buck', 1)
+end 
+function devushka_2_done(first_speaker, second_speaker)
+    dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "ammo_12x70_buck")
+end
+function devushka_31_has(first_speaker, second_speaker)
+	return trx_utils.act_h_s('af_vyvert', 1)
+end 
+function devushka_32_has(first_speaker, second_speaker)
+	return trx_utils.act_h_s('af_fireball', 1)
+end 
+function devushka_33_has(first_speaker, second_speaker)
+	return trx_utils.act_h_s('af_electra_moonlight', 1)
+end 
+function devushka_31_done(first_speaker, second_speaker)
+    dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "af_vyvert")
+end
+function devushka_32_done(first_speaker, second_speaker)
+    dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "af_fireball")
+end
+function devushka_33_done(first_speaker, second_speaker)
+    dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "af_electra_moonlight")
+end
+function devushka_3_done_money(first_speaker, second_speaker) 
+ 	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 10000)
+end
+function devushka_1_info()
+	news_manager.send_tip(db.actor, "deva_to_vilage", 3, "hip_icon", 52000, 11000, 1)
+end
+function devushka_4_done(first_speaker, second_speaker)
+    dialogs.relocate_item_section(second_speaker, "beer", "in")
+end
+function devushka_5_done(first_speaker, second_speaker)
+    dialogs.relocate_item_section(second_speaker, "cigar", "in")
+end
+function give_hip_tushonka(first_speaker, second_speaker)
+    dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "chocolate")
+end
+
+
+function actor_has_detector_simple(first_speaker, second_speaker)
+	return trx_utils.act_h_s('detector_simple', 1)
+end 
+function give_devushka_detector_simple(first_speaker, second_speaker)
+    dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "detector_simple")
+end
+function actor_has_medved(first_speaker, second_speaker)
+	return trx_utils.act_h_s('detector_advanced', 1)
+end 
+function give_devushka_medved(first_speaker, second_speaker)
+    dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "detector_advanced")
+end
+function actor_has_detector_elite(first_speaker, second_speaker)
+	return trx_utils.act_h_s('detector_elite', 1)
+end 
+function give_devushka_detector_elite(first_speaker, second_speaker)
+    dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "detector_elite")
+end
+function actor_has_detector_scientific(first_speaker, second_speaker)
+	return trx_utils.act_h_s('detector_scientific', 1)
+end 
+function give_devushka_detector_scientific(first_speaker, second_speaker)
+    dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "detector_scientific")
+end
+
+function devushka_give_present_detector_simple(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "detector_simple", "in", 1) 
+	dialogs.relocate_item_section(second_speaker, "lead_box", "in", 1) 
+end
+function devushka_give_present_detector_advanced(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "detector_advanced", "in", 1) 
+	dialogs.relocate_item_section(second_speaker, "af_iam", "in", 1) 
+end
+function devushka_give_present_detector_elite(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "detector_elite", "in", 1) 
+	dialogs.relocate_item_section(second_speaker, "af_aac", "in", 1) 
+end
+
+
+
+
+
+function actor_has_tushonka(first_speaker, second_speaker)
+	return trx_utils.act_h_s('chocolate', 1)
+end 
+function poluchit_po_litsu(actor, npc)                                            
+    npc:force_set_goodwill(-5000, actor)
+end
+function devushka_3_has_money(first_speaker, second_speaker)
+    return first_speaker:money() >= 10000
+end
+function devushka_help_1_has(first_speaker, second_speaker)
+	local item_sections = {
+		["gruz_barm"] = 1}
+	local function calc(temp, item)
+		local sect = item:section()
+		if item_sections[sect] and item_sections[sect]>0 then
+			if item_sections[sect]==1 then
+				item_sections[sect] = nil
+			else
+				item_sections[sect] = item_sections[sect] - 1
+			end
+		end
+	end
+	db.actor:iterate_inventory(calc, db.actor)
+	return next(item_sections)==nil
+end 
+function devushka_help_2_has(first_speaker, second_speaker)
+	local item_sections = {
+		["gruz_barm"] = 1} 
+	local function calc(temp, item)
+		local sect = item:section()
+		if item_sections[sect] and item_sections[sect]>0 then
+			if item_sections[sect]==1 then
+				item_sections[sect] = nil
+			else
+				item_sections[sect] = item_sections[sect] - 1
+			end
+		end
+	end
+	db.actor:iterate_inventory(calc, db.actor)
+	return next(item_sections)==nil
+end 
+function hip_moovie_1(npc, actor)
+	npc:stop_talk()
+	actor:stop_talk()
+	xr_effects.enable_ui(db.actor, db.actor)	  
+	game.start_tutorial("hip_1")
+end
+function barmen_give_container(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "gruz_barm", "in", 1) 
+end
+function devushka_give_present(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_compass_lead_box", "in", 1) 
+end
+function mikluha_give_medkit_bags(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "gruz_barm", "in", 1) 
+end
+function devushka_help_1_done(first_speaker, second_speaker)
+    dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "gruz_barm", 1)
+end
+function devushka_help_2_done(first_speaker, second_speaker)
+    dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "gruz_barm", 1)
+end
+function has_gzegosh_bandos1_money()
+	return trx_utils.act_h_m(100000)
+end
+function gzegosh_bandos1_money_loose(first_speaker, second_speaker) 
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 100000) 
+end
+function has_gzegosh_bandos11_money()
+	return trx_utils.act_h_m(400000)
+end
+function gzegosh_bandos11_money_loose(first_speaker, second_speaker) 
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 400000) 
+end
+----------==============================-------------
+-------------======апгрейды детектров mod==========-------
+----------==============================-------------
+function has_money_otclik_standart()
+return trx_utils.act_h_m(12100)
+end
+function vzyal_money_otclik_standart(first_speaker, second_speaker) 
+dialogs.relocate_money_from_actor(first_speaker, second_speaker, 12100) 
+end
+function has_otclik_standart()
+return trx_utils.act_h_s('detector_simple')
+end 
+function vzyal_otclik_standart(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "detector_simple", 1)
+end
+function has_money_medved_standart()
+return trx_utils.act_h_m(25300)
+end
+function vzyal_money_medved_standart(first_speaker, second_speaker) 
+dialogs.relocate_money_from_actor(first_speaker, second_speaker, 25300) 
+end
+function has_medved_standart()
+return trx_utils.act_h_s('detector_advanced')
+end 
+function vzyal_medved_standart(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "detector_advanced", 1)
+end
+function has_money_veles_standart()
+return trx_utils.act_h_m(50500)
+end
+function vzyal_money_veles_standart(first_speaker, second_speaker) 
+dialogs.relocate_money_from_actor(first_speaker, second_speaker, 50500) 
+end
+function has_veles_standart()
+return trx_utils.act_h_s('detector_elite')
+end 
+function vzyal_veles_standart(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "detector_elite", 1)
+end
+function has_money_svarog_standart()
+return trx_utils.act_h_m(100700)
+end
+function vzyal_money_svarog_standart(first_speaker, second_speaker) 
+dialogs.relocate_money_from_actor(first_speaker, second_speaker, 100700) 
+end
+function has_svarog_standart()
+return trx_utils.act_h_s('detector_scientific')
+end 
+function vzyal_svarog_standart(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "detector_scientific", 1)
+end
+function give_otclik_standart_up(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "detector_01")  
+end 
+function give_medved_standart_up(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "detector_02")  
+end 
+function give_veles_standart_up(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "detector_03")  
+end 
+function give_svarog_standart_up(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "detector_04")  
+end 
+----------==============================-------------
+---==========апгрейды детектров mod===========------
+----------==============================-------------
+----------==============================-------------
+---==========voenni posilnii===========------
+----------==============================-------------
+function has_otschet_petrenko()
+return trx_utils.act_h_s('otschet_petrenko')
+end 
+function has_otschet_sakhar()
+return trx_utils.act_h_s('otschet_sakhar')
+end 
+function has_otschet_german()
+return trx_utils.act_h_s('otschet_german')
+end
+function give_otschet_petrenko(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "otschet_petrenko")  
+end 
+function give_otschet_sakhar(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "otschet_sakhar")  
+end 
+function give_otschet_german(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "otschet_german")  
+end 
+function vzyal_otschet_petrenko(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "otschet_petrenko", 1)
+end
+function vzyal_otschet_sakhar(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "otschet_sakhar", 1)
+end
+function vzyal_otschet_german(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "otschet_german", 1)
+end
+
+function give_voennii_avans_money_1(first_speaker, second_speaker)
+dialogs.relocate_money_to_actor(first_speaker, second_speaker, 2000) 
+end
+----------==============================-------------
+---==========voenni posilnii===========------
+----------==============================-------------
+----------==============================-------------
+---==========voenni posilnii===========------
+----------==============================-------------
+
+function has_duty_naim_contrakt_1_pda()
+return trx_utils.act_h_s('duty_naim_contrakt_1_pda')
+end 
+function transfer_duty_naim_contrakt_1_pda(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "duty_naim_contrakt_1_pda")
+end
+function naim_kill_monster_duty_spawn_1()
+nql.naim_kill_monster_duty_1_spawn1()
+nql.naim_kill_monster_duty_2_spawn2()
+nql.naim_kill_monster_duty_3_spawn3()
+nql.naim_kill_monster_duty_4_spawn4()
+end
+function naim_kill_monster_duty_1_spawn1()
+nql.spawn_obj("duty_kvad_1_nps_walve_kwest", -92.420158, -20.687519, 219.796814, 221324, 5316, 1)
+end
+function naim_kill_monster_duty_2_spawn2()
+nql.spawn_obj("duty_kvad_2_nps_walve_kwest", -92.420158, -20.687519, 219.796814, 221324, 5316, 1)
+end
+function naim_kill_monster_duty_3_spawn3()
+nql.spawn_obj("duty_kvad_3_nps_walve_kwest", -92.420158, -20.687519, 219.796814, 221324, 5316, 1)
+end
+function naim_kill_monster_duty_4_spawn4()
+nql.spawn_obj("duty_kvad_4_nps_walve_kwest", -92.420158, -20.687519, 219.796814, 221324, 5316, 1)
+end
+
+
+function give_4539(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.45x39_fmj")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.45x39_fmj")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_rgd5")    
+end 
+function give_6255(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.7x28_ss195")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.7x28_ss195")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.7x28_ss195")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_rgd5")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_rgd5")    
+end  
+function give_6251(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_7.62x51_fmj")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_7.62x51_fmj")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_rgd5") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_rgd5")   
+end  
+function give_6239(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_7.62x39_fmj")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_7.62x39_fmj") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_rgd5")  
+end 
+function give_4323(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_11.43x23_hydro")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_11.43x23_hydro")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_11.43x23_hydro")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_rgd5") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_rgd5")   
+end  
+function give_6254(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_7.62x54_ap")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_7.62x54_ap")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_9x18_fmj")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_9x19_fmj")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_rgd5")
+end  
+function give_6225(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_7.62x25_ps")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_7.62x25_ps")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_7.62x25_ps")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_7.62x25_ps")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_rgd5")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_rgd5")  
+end 
+function give_357_hp(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_357_hp_mag_ap")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_357_hp_mag_ap")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_357_hp_mag_ap")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_rgd5")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_rgd5")
+end  
+function give_1270(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_12x70_buck")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_12x70_buck")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_12x70_buck")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_12x70_buck")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_12x70_buck")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_rgd5")    
+end  
+function give_5645(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.56x45_ss190")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.56x45_ss190")    
+end 
+function give_money_cancel_naim_1(first_speaker, second_speaker)
+dialogs.relocate_money_to_actor(first_speaker, second_speaker, 2000) 
+end
+----------==============================-------------
+---==========voenni posilnii===========------
+----------==============================-------------
+----------==============================-------------
+---==========fanat===========------
+----------==============================-------------
+
+function mono_fanat_spawn()
+nql.spawn_obj("mono_fanat_dead", -244.015762, -6.002077, 90.398979, 11931, 1886, 1)
+end 
+function give_fanat_nagrada(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "beer") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "beans")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "chili")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "corn") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "tushonka") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "water_drink") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "swiss_8") 
+end  
+function has_mono_fanat_pda()
+return trx_utils.act_h_s('mono_fanat_pda')
+end 
+function transfer_mono_fanat_pda(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "mono_fanat_pda")
+end
+function has_abakan_fanat()
+return trx_utils.act_h_s('wpn_abakan_qwest')
+end 
+function transfer_abakan_fanat(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "wpn_abakan_qwest")
+end
+function abakan_fanat_spawn()
+nql.spawn_obj("wpn_abakan_qwest", -244.987288, -18.305826, 227.490845, 88465, 5466, 1)
+end
+
+
+function has_photo_fanat()
+return trx_utils.act_h_s('photo_qwest')
+end 
+function transfer_photo_fanat(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "photo_qwest")
+end
+function photo_fanat_spawn()
+nql.photo_fanat_spawn1()
+nql.fanat_monster_spawn1()
+nql.fanat_monster_spawn2()
+nql.fanat_monster_spawn3()
+end
+function photo_fanat_spawn1()
+nql.spawn_obj("photo_qwest", 242.782379, -4.260049, 584.055176, 660246, 1312, 1)
+end
+function fanat_monster_spawn1()
+nql.spawn_obj("snork_weak3", 240.365738, -3.768732, 573.689941, 658608, 1312, 1)
+end
+function fanat_monster_spawn2()
+nql.spawn_obj("snork_weak2", 240.365738, -3.768732, 573.689941, 658608, 1312, 1)
+end
+function fanat_monster_spawn3()
+nql.spawn_obj("snork_weak", 240.365738, -3.768732, 573.689941, 658608, 1312, 1)
+end
+function give_revard_photo_fanat(first_speaker, second_speaker)
+dialogs.relocate_money_to_actor(first_speaker, second_speaker, 6500)  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "glue_e_2")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "armor_repair_fa_2")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "greencard")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "greencard")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "bandage")    
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "bandage")   
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "bandage")  
+end
+----------==============================-------------
+---==========fanat===========------
+----------==============================-------------
+
+----------==============================-------------
+---==========Локи===========------
+----------==============================-------------
+function give_nagrada_mest_fre_1(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.56x45_ap")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.56x45_ap")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_light") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_gd-05") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_f1")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_m209")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_m209")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_m209")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_m209") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_sig552")
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_sil_nato") 
+end
+function give_nagrada_mest_fre_2(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.56x45_ap")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.56x45_ap")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_50ae_def") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_vog-25") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_m209") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "briefcase") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_desert_eagle_nimble") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "mag_wpn_desert_eagle_nimble") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "mag_wpn_desert_eagle_nimble") 
+end
+
+
+function free_pri_podkreplenie_mest_qwest_spawn()
+	   alife(pripyat):create("mest_fre_dead1",vector():set(-181.141082763672,0.549161970615387,-347.681732177734),33816,5019):on_death()
+	   alife(pripyat):create("mest_fre_dead2",vector():set(-181.141082763672,0.549161970615387,-347.681732177734),33816,5019):on_death()
+	   alife(pripyat):create("mest_fre_dead1",vector():set(-181.141082763672,0.549161970615387,-347.681732177734),33816,5019):on_death()
+	   alife(pripyat):create("mest_fre_dead1",vector():set(-181.141082763672,0.549161970615387,-347.681732177734),33816,5019):on_death()
+	   alife(pripyat):create("mest_fre_dead1",vector():set(-181.141082763672,0.549161970615387,-347.681732177734),33816,5019):on_death()
+	   alife(pripyat):create("mest_fre_dead2",vector():set(-181.141082763672,0.549161970615387,-347.681732177734),33816,5019):on_death()
+	   alife(pripyat):create("mest_fre_dead2",vector():set(-181.141082763672,0.549161970615387,-347.681732177734),33816,5019):on_death()
+	   alife(pripyat):create("mest_fre_dead2",vector():set(-181.141082763672,0.549161970615387,-347.681732177734),33816,5019):on_death()
+end
+----------==============================-------------
+---==========Локи===========------
+----------==============================-------------
+
+----------==============================-------------
+---==========долг теамлайт===========------
+----------==============================-------------
+function dolg_story_task_1()
+task_manager.get_task_manager():give_task("dolg_story_task_1")
+nql.dolg_story_task_1_dop_spawn()
+end
+function dolg_story_task_1_dop()
+task_manager.get_task_manager():give_task("dolg_story_task_1_dop")
+end
+function dolg_story_task_2()
+task_manager.get_task_manager():give_task("dolg_story_task_2")
+end
+function dolg_story_task_2_dop()
+task_manager.get_task_manager():give_task("dolg_story_task_2_dop")
+end
+function dolg_story_task_3()
+task_manager.get_task_manager():give_task("dolg_story_task_3")
+nql.dolg_story_task_3_spawn()
+end
+function dolg_story_task_4()
+task_manager.get_task_manager():give_task("dolg_story_task_4")
+nql.dolg_story_task_4_spawn()
+end
+function dolg_story_task_4_dop()
+task_manager.get_task_manager():give_task("dolg_story_task_4_dop")
+end
+function dolg_story_task_5()
+task_manager.get_task_manager():give_task("dolg_story_task_5")
+nql.dolg_story_task_5_spawn()
+nql.dolg_task_5_pda_spawn()
+end
+function dolg_story_task_3_spawn()
+		alife(k02_trucks_cemetery):create("sim_default_duty_1",vector():set(82.837738,4.995975,46.117172),552482,5298):on_death()
+		alife(k02_trucks_cemetery):create("sim_default_duty_1",vector():set(83.623690,4.555059,58.185291),553414,5298):on_death()
+		alife(k02_trucks_cemetery):create("sim_default_duty_2",vector():set(73.416809,4.704627,40.820946),540822,5298):on_death()
+end
+function dolg_story_task_4_spawn()
+		alife(new_military):create("pinya",vector():set(-223.812698,-16.327734,280.656219),105777,5394):on_death()
+		alife(new_military):create("sim_default_military_4",vector():set(-241.811996,-21.498692,290.213806),91257,5394):on_death()
+		alife(new_military):create("sim_default_military_4",vector():set(-245.6622659,-21.790972,278.577118),87939,5394):on_death()
+end
+function dolg_story_task_5_spawn()
+		alife(l10_red_forest):create("sim_default_stalker_3",vector():set(-9.514935,-2.446065,-282.228241),58164,2826):on_death()
+		alife(l10_red_forest):create("sim_default_stalker_4",vector():set(203.112213,-7.977217,-120.033737),129875,2773):on_death()
+		alife(l10_red_forest):create("sim_default_stalker_3",vector():set(178.21212768555,-0.18895435333252,-198.24349975586),117567,2805):on_death()
+end
+function dolg_task_5_pda_spawn()
+nql.spawn_obj("pda_neytral_red_forest_hunter_1", -9.514935, -2.446065, -282.228241, 58164, 2826, 1)
+end
+function dolg_story_task_1_dop_spawn()
+	   alife(l02_garbage):create("flibuster",vector():set(156.14549255371,-0.61046588420868,-189.81704711914),292988,750):on_death()
+	   alife(l02_garbage):create("freon",vector():set(156.14549255371,-0.61046588420868,-189.81704711914),292988,750):on_death()
+end
+function dolg_task4_pdapr()
+return trx_utils.act_h_s('pda_pinya')
+end 
+function has_pda_flibuster_pda1()
+return trx_utils.act_h_s('pda_flibuster')
+end 
+function has_pda_freon_pda()
+return trx_utils.act_h_s('pda_freon')
+end 
+function dolg_story_task_4_pda(first_speaker, second_speaker) 
+      dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "pda_pinya")	       
+end
+function recolate_pda_flibuster(first_speaker, second_speaker) 
+      dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "pda_flibuster")	       
+end
+function recolate_pda_freon(first_speaker, second_speaker) 
+      dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "pda_freon")	       
+end
+function dolg_story_task_1_dop_reward(first_speaker, second_speaker) 
+     dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_mp133",1) 
+end
+function dolg_story_task_4_pda1(first_speaker, second_speaker) 
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_vityaz",1) 
+end
+function m_controller_naim_duty_qwest_spawn()
+	alife(new_military):create("m_controller_naim_duty_qwest",vector():set(-70.995468,-16.025105,235.815643),240620,5315):on_death()
+end
+function dead_hunter_naim_duty_qwest_spawn()
+	alife(new_military):create("sim_default_duty_1",vector():set(-92.4201583862305,-20.6875190734863,219.796813964844),221324,5316):on_death()
+	alife(new_military):create("sim_default_duty_1",vector():set(-92.4201583862305,-20.6875190734863,219.796813964844),221324,5316):on_death()
+	alife(new_military):create("sim_default_duty_2",vector():set(-92.4201583862305,-20.6875190734863,219.796813964844),221324,5316):on_death()
+	alife(new_military):create("sim_default_duty_4",vector():set(-92.4201583862305,-20.6875190734863,219.796813964844),221324,5316):on_death()
+	alife(new_military):create("sim_default_killer_3",vector():set(-353.269256591797,-13.8832511901855,391.075958251953),8230,5369):on_death()
+	alife(new_military):create("sim_default_killer_3",vector():set(-353.269256591797,-13.8832511901855,391.075958251953),8230,5369):on_death()
+	alife(new_military):create("sim_default_killer_3",vector():set(-353.269256591797,-13.8832511901855,391.075958251953),8230,5369):on_death()
+end
+
+function give_reward_mar_story_dogystyle(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "vodka_quality_3") 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "mre_3") 
+end 
+
+function resident_evil_bioihazard_duty_generator_lab2_spawn()
+nql.resident_evil_bioihazard_duty_generator_lab2_spawn2()
+nql.resident_evil_bioihazard_duty_generator_lab2_spawn3()
+nql.resident_evil_bioihazard_duty_generator_lab2_spawn4()
+nql.resident_evil_bioihazard_duty_generator_lab2_spawn5()
+nql.resident_evil_bioihazard_duty_generator_lab2_spawn6()
+end
+function resident_evil_bioihazard_duty_generator_lab2_spawn2()
+nql.spawn_obj("snork_weak3", -193.456909, 10.173573, -290.321014, 29544, 3559, 1)
+nql.spawn_obj("rat_weak", -193.456909, 10.173573, -290.321014, 29544, 3559, 1)
+nql.spawn_obj("zombie_strong", -193.456909, 10.173573, -290.321014, 29544, 3559, 1)
+nql.spawn_obj("rat_weak", -193.456909, 10.173573, -290.321014, 29544, 3559, 1)
+end
+function resident_evil_bioihazard_duty_generator_lab2_spawn3()
+nql.spawn_obj("snork_weak3", -208.372147, 10.171926, -294.165009, 19317, 3559, 1)
+nql.spawn_obj("rat_weak", -208.372147, 10.171926, -294.165009, 19317, 3559, 1)
+nql.spawn_obj("rat_weak", -208.372147, 10.171926, -294.165009, 19317, 3559, 1)
+nql.spawn_obj("zombie_strong", -208.372147, 10.171926, -294.165009, 19317, 3559, 1)
+nql.spawn_obj("rat_weak", -208.372147, 10.171926, -294.165009, 19317, 3559, 1)
+end
+function resident_evil_bioihazard_duty_generator_lab2_spawn4()
+nql.spawn_obj("snork_weak3", -204.509650, 10.174441, -299.707153, 22127, 3559, 1)
+nql.spawn_obj("rat_weak", -204.509650, 10.174441, -299.707153, 22127, 3559, 1)
+nql.spawn_obj("snork_weak3", -204.509650, 10.174441, -299.707153, 22127, 3559, 1)
+nql.spawn_obj("rat_weak", -204.509650, 10.174441, -299.707153, 22127, 3559, 1)
+nql.spawn_obj("zombie_strong", -204.509650, 10.174441, -299.707153, 22127, 3559, 1)
+nql.spawn_obj("rat_weak", -204.509650, 10.174441, -299.707153, 22127, 3559, 1)
+end
+function resident_evil_bioihazard_duty_generator_lab2_spawn5()
+nql.spawn_obj("rat_weak", -202.185181, 5.547963, -295.055267, 23534, 3560, 1)
+nql.spawn_obj("snork_weak3", -202.185181, 5.547963, -295.055267, 23534, 3560, 1)
+nql.spawn_obj("rat_weak", -202.185181, 5.547963, -295.055267, 23534, 3560, 1)
+nql.spawn_obj("zombie_strong", -202.185181, 5.547963, -295.055267, 23534, 3560, 1)
+nql.spawn_obj("rat_weak", -202.185181, 5.547963, -295.055267, 23534, 3560, 1)
+end
+function resident_evil_bioihazard_duty_generator_lab2_spawn6()
+nql.spawn_obj("rat_weak", -201.524994, 5.564498, -292.648254, 23984, 3560, 1)
+nql.spawn_obj("snork_weak3", -201.524994, 5.564498, -292.648254, 23984, 3560, 1)
+nql.spawn_obj("zombie_strong", -201.524994, 5.564498, -292.648254, 23984, 3560, 1)
+nql.spawn_obj("rat_weak", -201.524994, 5.564498, -292.648254, 23984, 3560, 1)
+nql.spawn_obj("snork_weak3", -201.524994, 5.564498, -292.648254, 23984, 3560, 1)
+end
+function has_izdelie62_duty()
+return trx_utils.act_h_s('izdelie62')
+end 
+function recolate_izdelie62_duty(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "izdelie62")
+end
+function has_pda_neytral_red_forest_hunter_1()
+return trx_utils.act_h_s('pda_neytral_red_forest_hunter_1')
+end 
+function recolate_pda_neytral_red_forest_hunter_1(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "pda_neytral_red_forest_hunter_1")
+end
+
+function has_money_to_level_changer()
+return trx_utils.act_h_m(25000)
+end
+function sell_money_to_level_changer(first_speaker, second_speaker) 
+dialogs.relocate_money_from_actor(first_speaker, second_speaker, 25000) 
+end
+function has_kardan_duty_vodka()
+return trx_utils.act_h_s('vodka_quality_3')
+end 
+function transfer_kardan_duty_vodka(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "vodka_quality_3")
+end
+function has_kardan_duty_af()
+return trx_utils.act_h_s('af_soul')
+end 
+function transfer_kardan_duty_af(first_speaker, second_speaker)
+dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "af_soul")
+end
+function has_informer_money_duty_info_1()
+return trx_utils.act_h_m(10000)
+end
+function sell_informer_money_duty_info_1(first_speaker, second_speaker) 
+dialogs.relocate_money_from_actor(first_speaker, second_speaker, 10000) 
+end
+function has_informer_money_duty_info()
+return trx_utils.act_h_m(150000)
+end
+function sell_informer_money_duty_info(first_speaker, second_speaker) 
+dialogs.relocate_money_from_actor(first_speaker, second_speaker, 150000) 
+end
+function kardan_vodka_balalaika_ushanka_matreshka()
+	level.add_pp_effector("alcohol.ppe", 233613, false)
+	level.add_cam_effector("camera_effects\\drunk.anm", 233613, false)
+end
+
+function resident_evil_bioihazard_add_duty_generator_monster_spawn1()
+nql.spawn_obj("snork_weak3", -193.456909, 10.173573, -290.321014, 29544, 3559, 1)
+nql.spawn_obj("snork_weak3", -193.456909, 10.173573, -290.321014, 29544, 3559, 1)
+end
+function resident_evil_bioihazard_add_duty_generator_monster_spawn2()
+nql.spawn_obj("snork_weak3", -208.372147, 10.171926, -294.165009, 19317, 3559, 1)
+nql.spawn_obj("chimera_strong2", -208.372147, 10.171926, -294.165009, 19317, 3559, 1)
+nql.spawn_obj("snork_weak3", -208.372147, 10.171926, -294.165009, 19317, 3559, 1)
+end
+function resident_evil_bioihazard_add_duty_generator_monster_spawn3()
+nql.spawn_obj("snork_weak3", -204.509650, 10.174441, -299.707153, 22127, 3559, 1)
+nql.spawn_obj("snork_weak3", -204.509650, 10.174441, -299.707153, 22127, 3559, 1)
+nql.spawn_obj("snork_weak3", -204.509650, 10.174441, -299.707153, 22127, 3559, 1)
+end
+function resident_evil_bioihazard_add_duty_generator_monster_spawn4()
+nql.spawn_obj("snork_weak3", -202.185181, 5.547963, -295.055267, 23534, 3560, 1)
+nql.spawn_obj("chimera_strong2", -202.185181, 5.547963, -295.055267, 23534, 3560, 1)
+nql.spawn_obj("snork_weak3", -202.185181, 5.547963, -295.055267, 23534, 3560, 1)
+end
+function resident_evil_bioihazard_add_duty_generator_monster_spawn5()
+nql.spawn_obj("snork_weak3", -201.524994, 5.564498, -292.648254, 23984, 3560, 1)
+nql.spawn_obj("bloodsucker_red_weak", -201.524994, 5.564498, -292.648254, 23984, 3560, 1)
+nql.spawn_obj("snork_weak3", -201.524994, 5.564498, -292.648254, 23984, 3560, 1)
+end
+function resident_evil_bioihazard_add_duty_generator_monster_spawn6()
+nql.spawn_obj("chimera_strong2", -208.372147, 10.171926, -294.165009, 19317, 3559, 1)
+nql.spawn_obj("snork_weak3", -208.372147, 10.171926, -294.165009, 19317, 3559, 1)
+nql.spawn_obj("snork_weak3", -208.372147, 10.171926, -294.165009, 19317, 3559, 1)
+end
+function resident_evil_bioihazard_add_duty_generator_monster_spawn7()
+nql.spawn_obj("snork_weak3", -204.509650, 10.174441, -299.707153, 22127, 3559, 1)
+nql.spawn_obj("bloodsucker_red_weak", -204.509650, 10.174441, -299.707153, 22127, 3559, 1)
+nql.spawn_obj("snork_weak3", -204.509650, 10.174441, -299.707153, 22127, 3559, 1)
+end
+function resident_evil_bioihazard_add_duty_generator_monster_spawn8()
+nql.spawn_obj("snork_weak3", -202.185181, 5.547963, -295.055267, 23534, 3560, 1)
+nql.spawn_obj("chimera_strong2", -202.185181, 5.547963, -295.055267, 23534, 3560, 1)
+nql.spawn_obj("snork_weak3", -202.185181, 5.547963, -295.055267, 23534, 3560, 1)
+end
+function resident_evil_bioihazard_add_duty_generator_monster_spawn9()
+nql.spawn_obj("m_controller_normal", -201.524994, 5.564498, -292.648254, 23984, 3560, 1)
+nql.spawn_obj("snork_weak3", -201.524994, 5.564498, -292.648254, 23984, 3560, 1)
+nql.spawn_obj("chimera_strong4", -201.524994, 5.564498, -292.648254, 23984, 3560, 1)
+end
+function resident_evil_bioihazard_add_duty_generator_monster_spawn10()
+nql.spawn_obj("burer_strong", -6.164239, 3.344514, -232.211166, 192441, 3580, 1)
+nql.spawn_obj("burer_strong", -6.164239, 3.344514, -232.211166, 192441, 3580, 1)
+nql.spawn_obj("burer_strong", -6.164239, 3.344514, -232.211166, 192441, 3580, 1)
+nql.spawn_obj("m_poltergeist_normal_black", -6.164239, 3.344514, -232.211166, 192441, 3580, 1)
+nql.spawn_obj("chimera_strong2", -6.164239, 3.344514, -232.211166, 192441, 3580, 1)
+nql.spawn_obj("chimera_strong2", -6.164239, 3.344514, -232.211166, 192441, 3580, 1)
+end
+function add_dolg_premission()
+		xr_effects.inc_faction_goodwill_to_actor(db.actor, nil, {"dolg", 200})
+end
+
+--------------------поиск смерть лампы------------------
+function give_task_sakhar_find_death_lamp()
+task_manager.get_task_manager():give_task("task_sakhar_find_death_lamp")
+end
+function fanat_poisk_uchenii_spawn()
+	   alife(l09_deadcity):create("fanat_poisk_uchenii_ecolog_2",vector():set(84.928879,2.004882,-21.827551),187054,2384):on_death()
+	   alife(jupiter):create("sim_default_ecolog_3",vector():set(76.672829,1.872905,-16.573368),182296,2384):on_death()
+	   alife(l09_deadcity):create("sim_default_military_4",vector():set(75.136253,3.208191,-12.926028),180897,2343):on_death()
+	   alife(l09_deadcity):create("sim_default_military_4",vector():set(74.974030,3.922846,-26.219803),180884,2384):on_death()
+end
+function has_flesh_scientist_city_wounded_flash()
+return trx_utils.act_h_s('flesh_scientist_city_wounded_flash')
+end 
+function recolate_flesh_scientist_city_wounded_flash(first_speaker, second_speaker) 
+      dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "flesh_scientist_city_wounded_flash")	       
+end
+function give_revard_poisk_uchenick_limansk_barmen(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "vodka_3")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "flask_3")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "cigarettes")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "bandage")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "bandage")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "sausage")   
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "bread") 
+end 
+function zapis_text_doc_af_death_lamp_spawn()
+nql.spawn_obj("zapis_text_doc_af_death_lamp", 14.875293, -7.643042, 23.388821, 8375, 3836, 1)
+end
+function german_oazis_poisk_uchenii_spawn()
+	   alife(jupiter):create("german_oazis_poisk_uchenii_ecolog_2",vector():set(-31.209595,-3.802242,81.941025),9939,2456):on_death()
+	   alife(jupiter):create("sim_default_ecolog_3",vector():set(60.308746,-9.890636,-49.025257),55077,2439):on_death()
+	   alife(jupiter):create("sim_default_military_4",vector():set(-11.514830,-7.146873,-148.128983),19500,244):on_death()
+	   alife(jupiter):create("sim_default_military_4",vector():set(-36.779549,-5.008843,-242.412918),7375,2450):on_death()
+end
+function give_task_german_oazis_poisk_uchenii()
+task_manager.get_task_manager():give_task("task_german_oazis_poisk_uchenii")
+end
+function has_af_oasis_heart_pda_info()
+return trx_utils.act_h_s('af_oasis_heart_pda_info')
+end 
+function recolate_af_oasis_heart_pda_info(first_speaker, second_speaker) 
+      dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "af_oasis_heart_pda_info")	       
+end
+function give_revard_poisk_uchenick_deadcity_german_1(first_speaker, second_speaker) 
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "drug_radioprotector_2")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "antirad")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "bandage")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "bandage")  
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "bandage")   
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "stimpack")   
+dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "stimpack") 
+end 
+function give_revard_poisk_uchenick_deadcity_german_2(first_speaker, second_speaker)
+dialogs.relocate_money_to_actor(first_speaker, second_speaker, 20000) 
+end
+function has_scientist_af_death_lamp()
+return trx_utils.act_h_s('af_death_lamp')
+end 
+function recolate_scientist_af_death_lamp(first_speaker, second_speaker) 
+      dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "af_death_lamp")	       
+end
+function has_zapis_text_doc_af_death_lamp()
+return trx_utils.act_h_s('zapis_text_doc_af_death_lamp')
+end 
+function recolate_zapis_text_doc_af_death_lamp(first_speaker, second_speaker) 
+      dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "zapis_text_doc_af_death_lamp")	       
+end
+---------------------поиск смерть лампы---------------------
+--------------------------------------
+
+function glava_band_esc_nql_qwest_luis_spawn()
+	   alife(l01_escape):create("glava_band_esc_nql_qwest_luis",vector():set(140.148712,3.370775,336.741272),474825,541):on_death()
+end
+function esc_nql_qwest_luis_drug_spawn()
+	   alife(l01_escape):create("esc_nql_qwest_luis_drug",vector():set(37.319382,16.287723,680.530579),350314,567):on_death()
+end
+function has_flash_esc_nql_qwest_luis()
+return trx_utils.act_h_s('flash_esc_nql_qwest_luis')
+end 
+function recolate_flash_esc_nql_qwest_luis(first_speaker, second_speaker) 
+      dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "flash_esc_nql_qwest_luis")	       
+end
+
+function flash_esc_nql_qwest_luis_money_dob(first_speaker, second_speaker)
+dialogs.relocate_money_to_actor(first_speaker, second_speaker, 2000) 
+end
+------------------------------------------
+---------------------поиск смерть лампы---------------------
+--------------------------------------
+------------------------------------------
+function has_bar_perekhod_prabor_money()
+return trx_utils.act_h_m(30000)
+end
+function sell_bar_perekhod_prabor_money(first_speaker, second_speaker) 
+dialogs.relocate_money_from_actor(first_speaker, second_speaker, 30000) 
+end

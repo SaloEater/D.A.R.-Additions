@@ -1,0 +1,19 @@
+[smart_terrain]
+respawn_radius = 300 ;agr_smart_terrain_7_5 ;;Узкая нора снорков на холме у перехода на Свалку.
+squad_id = 16
+max_population = 2
+respawn_params = respawn@agr_smart_terrain_7_5
+respawn_idle = 86400
+
+[respawn@agr_smart_terrain_7_5]
+
+spawn_monster1
+spawn_monster2
+
+[spawn_monster1]
+spawn_squads = simulation_snork
+spawn_num = {=!smart_controlled(agr_smart_terrain_7_5)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_snork_2_5
+spawn_num = {=!smart_controlled(agr_smart_terrain_7_5) =actor_week_in_zone(5)} 1, 0

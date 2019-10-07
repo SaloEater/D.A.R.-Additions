@@ -1,0 +1,116 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 20
+max_population = 4
+respawn_params = respawn@jup_b219
+respawn_idle = 86400
+
+;сначала появляется один мутант в главном зале, затем отряд разрастается до нескольких мутантов, затем появляется второй отряд во входном зале
+[respawn@jup_b219]
+
+spawn_small_main_squad
+
+jup_b219_monster_middle_main_controller_squad
+jup_b219_monster_large_main_controller_squad
+jup_b219_monster_second_controller_squad
+
+jup_b219_monster_middle_main_burer_squad
+jup_b219_monster_large_main_burer_squad
+jup_b219_monster_second_burer_squad
+
+jup_b219_monster_middle_main_bloodsucker_squad
+jup_b219_monster_large_main_bloodsucker_squad
+jup_b219_monster_second_bloodsucker_squad
+
+jup_b219_monster_middle_main_poltergeist_squad
+jup_b219_monster_large_main_poltergeist_squad
+jup_b219_monster_second_poltergeist_squad
+
+[spawn_small_main_squad]
+spawn_squads = jup_b219_monster_small_main_controller_squad, jup_b219_monster_small_main_burer_squad, jup_b219_monster_small_main_bloodsucker_squad, jup_b219_monster_small_main_poltergeist_squad
+spawn_num = {=!smart_controlled(jup_b219)} 1, 0
+
+
+
+[jup_b219_monster_middle_main_controller_squad]
+spawn_squads = jup_b219_monster_middle_main_controller_squad
+spawn_num = {=squad_exist(jup_b219_monster_small_main_controller_squad)} 1, 0
+
+[jup_b219_monster_large_main_controller_squad]
+spawn_squads = jup_b219_monster_large_main_controller_squad
+spawn_num = {=squad_exist(jup_b219_monster_middle_main_controller_squad)} 1, 0
+
+[jup_b219_monster_second_controller_squad]
+spawn_squads = jup_b219_monster_second_controller_squad
+spawn_num = {=squad_exist(jup_b219_monster_large_main_controller_squad)} 1, 0
+
+
+
+[jup_b219_monster_middle_main_burer_squad]
+spawn_squads = jup_b219_monster_middle_main_burer_squad
+spawn_num = {=squad_exist(jup_b219_monster_small_main_burer_squad)} 1, 0
+
+[jup_b219_monster_large_main_burer_squad]
+spawn_squads = jup_b219_monster_large_main_burer_squad
+spawn_num = {=squad_exist(jup_b219_monster_middle_main_burer_squad)} 1, 0
+
+[jup_b219_monster_second_burer_squad]
+spawn_squads = jup_b219_monster_second_burer_squad
+spawn_num = {=squad_exist(jup_b219_monster_large_main_burer_squad)} 1, 0
+
+
+
+[jup_b219_monster_middle_main_bloodsucker_squad]
+spawn_squads = jup_b219_monster_middle_main_bloodsucker_squad
+spawn_num = {=squad_exist(jup_b219_monster_small_main_burer_squad)} 1, 0
+
+[jup_b219_monster_large_main_bloodsucker_squad]
+spawn_squads = jup_b219_monster_large_main_bloodsucker_squad
+spawn_num = {=squad_exist(jup_b219_monster_middle_main_bloodsucker_squad)} 1, 0
+
+[jup_b219_monster_second_bloodsucker_squad]
+spawn_squads = jup_b219_monster_second_bloodsucker_squad
+spawn_num = {=squad_exist(jup_b219_monster_large_main_bloodsucker_squad)} 1, 0
+
+
+
+[jup_b219_monster_middle_main_poltergeist_squad]
+spawn_squads = jup_b219_monster_middle_main_poltergeist_squad
+spawn_num = {=squad_exist(jup_b219_monster_small_main_poltergeist_squad)} 1, 0
+
+[jup_b219_monster_large_main_poltergeist_squad]
+spawn_squads = jup_b219_monster_large_main_poltergeist_squad
+spawn_num = {=squad_exist(jup_b219_monster_middle_main_poltergeist_squad)} 1, 0
+
+[jup_b219_monster_second_poltergeist_squad]
+spawn_squads = jup_b219_monster_second_poltergeist_squad
+spawn_num = {=squad_exist(jup_b219_monster_large_main_poltergeist_squad)} 1, 0
+
+
+
+
+[exclusive]
+;---входной зал------------------------
+monster_1  = jupiter\jup_b219_logic.ltx
+monster_2  = jupiter\jup_b219_logic.ltx
+monster_3  = jupiter\jup_b219_logic.ltx
+monster_4  = jupiter\jup_b219_logic.ltx
+monster_5  = jupiter\jup_b219_logic.ltx
+monster_6  = jupiter\jup_b219_logic.ltx
+monster_7  = jupiter\jup_b219_logic.ltx
+monster_8  = jupiter\jup_b219_logic.ltx
+monster_9  = jupiter\jup_b219_logic.ltx
+;---главный зал------------------------
+monster_10 = jupiter\jup_b219_logic.ltx
+monster_11 = jupiter\jup_b219_logic.ltx
+monster_12 = jupiter\jup_b219_logic.ltx
+monster_13 = jupiter\jup_b219_logic.ltx
+monster_14 = jupiter\jup_b219_logic.ltx
+monster_15 = jupiter\jup_b219_logic.ltx
+monster_16 = jupiter\jup_b219_logic.ltx
+monster_17 = jupiter\jup_b219_logic.ltx
+monster_18 = jupiter\jup_b219_logic.ltx
+monster_19 = jupiter\jup_b219_logic.ltx
+monster_20 = jupiter\jup_b219_logic.ltx
+monster_21 = jupiter\jup_b219_logic.ltx
+monster_home = jupiter\jup_b219_logic.ltx

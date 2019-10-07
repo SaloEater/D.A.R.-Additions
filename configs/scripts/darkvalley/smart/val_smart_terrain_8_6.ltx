@@ -1,0 +1,14 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 11
+max_population = 1
+respawn_params = respawn@val_smart_terrain_8_6
+respawn_idle = 86400
+
+[respawn@val_smart_terrain_8_6]
+
+spawn_monster1
+
+[spawn_monster1]
+spawn_squads = simulation_dog, simulation_cat, simulation_zombie, simulation_snork
+spawn_num = {=!smart_controlled(val_smart_terrain_8_6)} 1, 0

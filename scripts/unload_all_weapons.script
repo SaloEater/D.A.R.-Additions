@@ -1,0 +1,78 @@
+--------------------------------------------
+-- Unload All Weapons (CoC 1.4.22 / 1.5 R6)
+-- script version 8
+-- author: sLoPpYdOtBiGhOlE
+-- adapted Dead Air: Graf`s for D.A.R.(Gratis)
+--------------------------------------------
+
+local function on_key_press(key)
+	if (key == DIK_keys["DIK_U"]) then
+		local ta, tb, ts, ini = {}, {}, {}, system_ini()
+		local i, k, v
+		ts["wpn_knife"] = true
+		ts["wpn_knife2"] = true
+		ts["wpn_knife3"] = true
+		ts["wpn_knife4"] = true		
+		ts["wpn_knife5"] = true
+		ts["wpn_knife6"] = true			
+		ts["wpn_knife7"] = true	
+		ts["wpn_knife8"] = true
+		ts["wpn_knife9"] = true		
+		ts["wpn_knife10"] = true
+		ts["wpn_knife11"] = true		
+		ts["wpn_knife12"] = true
+		ts["wpn_knife13"] = true
+		ts["wpn_knife14"] = true		
+		ts["wpn_hand_axe"] = true
+		ts["wpn_hand_shovel"] = true
+		ts["wpn_hand_pickaxe"] = true
+		ts["wpn_hand_crowbar"] = true	
+		ts["wpn_hand_hammer"] = true
+		ts["wpn_dynamo_hand"] = true	
+		
+		for i=1,12 do
+			k = db.actor:item_in_slot(i)
+			if (k) then
+				ts[k:id()] = true
+			end
+		end
+
+		
+		local function itr(npc,itm)
+			if (IsWeapon(itm) and not ts[itm:id()] and not ts[itm:section()]) then
+				i = itm:get_ammo_in_magazine()
+				if (i > 0) then
+					k = itm and alife():object(itm:id())
+					v = k and stpk_utils.get_weapon_data(k)
+					if (v) then
+						k = ini:r_string_ex(itm:section(),"ammo_class","")
+						if (k and k ~= "") then
+							k = alun_utils.str_explode(k,",")
+							if (k) then
+								k = k[v.ammo_type + 1]
+								if (k and k ~= "") then
+									if not (ta[k]) then
+										ta[k] = i
+									else
+										ta[k] = ta[k] + i
+									end
+									itm:unload_magazine()
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+		db.actor:iterate_inventory(itr,db.actor)
+		
+		for k,v in pairs(ta) do
+			create_ammo(k,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id(),v)
+		end
+		sound_object([[weapons\toz34_reload_l]]):play(db.actor,0,sound_object.s2d)
+	end
+end
+
+function on_game_start()
+   RegisterScriptCallback("on_key_press",on_key_press)
+end

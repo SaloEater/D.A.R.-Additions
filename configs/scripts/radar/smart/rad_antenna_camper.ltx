@@ -1,0 +1,15 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 2
+max_population = 1
+respawn_params = respawn@rad_antenna_camper
+respawn_idle = 86400
+
+
+[respawn@rad_antenna_camper]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_dog, simulation_pseudodog, simulation_dog_5_7, simulation_dog_mix
+spawn_num = {=!smart_controlled(rad_antenna_camper)} 2, 0

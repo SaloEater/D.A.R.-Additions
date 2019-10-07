@@ -1,0 +1,24 @@
+[smart_terrain]
+respawn_radius = 900 ;;спуск к жаркам
+squad_id = 8
+max_population = 1
+respawn_params = respawn@ros_smart_monster7
+respawn_idle = 86400
+
+[respawn@ros_smart_monster7]
+
+spawn_ecolog
+spawn_zombied
+spawn_monster
+
+[spawn_ecolog]
+spawn_squads = ecolog_sim_squad_veteran
+spawn_num = {=smart_under_faction(yan_smart_terrain_6_4:ecolog)} 1, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_advanced, zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(ros_smart_monster7:zombied) -yan_labx16_switcher_primary_off} 1, 0
+
+[spawn_monster]
+spawn_squads = simulation_dog_mix, simulation_dog_5_7
+spawn_num = {=!smart_controlled(ros_smart_monster7)} 1, 0

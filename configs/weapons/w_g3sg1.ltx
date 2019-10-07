@@ -1,0 +1,449 @@
+[wpn_g3sg1]:identity_immunities,weapon_probability,default_weapon_params,wpn_g3sg1_sounds
+GroupControlSection     	= spawn_group
+$spawn                  	= "weapons\lr-300"               ; option for Level Editor
+$npc                 		= on           ; option for Level Editor
+$prefetch               	= 8
+scheduled               	= off                                ; option for ALife Simulator
+cform                   	= skeleton
+class                   	= WP_LR300
+description             	= st_wpn_g3sg1_descr
+
+ef_main_weapon_type     	= 2
+ef_weapon_type          	= 6
+
+default_to_ruck			= true
+sprint_allowed          	= true
+
+repair_type = rifle
+condition_avail = 2021654515
+;-------------------------------------------------------------------------------
+cost                 		= 40000
+weapon_class            	= assault_rifle
+inv_weight              	= 4.7
+
+upgrades                	= up_gr_firstab_g3sg1, up_gr_seconab_g3sg1, up_gr_thirdab_g3sg1, up_gr_fourtab_g3sg1, up_gr_fourtcd_g3sg1, up_gr_fourtef_g3sg1
+installed_upgrades      	=
+upgrade_scheme          	= upgrade_scheme_fn2000
+
+;--TTX----------------------------------------------------------------------------
+hit_power         		= 0.77, 0.77, 0.77, 0.77
+hit_impulse       		= 38
+hit_type          		= fire_wound
+fire_distance        		= 1000
+bullet_speed         		= 850
+rpm                  		= 500
+rpm_empty_click      		= 200
+
+use_aim_bullet          	= false                ;ѕоддерживаетс€ ли перва€ суппер пул€
+time_to_aim             	= 3.0
+
+hud                        	= wpn_g3sg1_hud
+
+misfire_start_condition		= 0.75
+misfire_end_condition		= 0.25
+misfire_start_prob              = 0.015 
+misfire_end_prob                = 0.1 
+condition_shot_dec      	= 0.00037
+condition_queue_shot_dec	= 0.00037
+
+ammo_elapsed            	= 20
+ammo_mag_size        		= 20           ; clip (magazine) size
+
+fire_modes			= 1, -1
+
+ammo_class		 	= ammo_7.62x51_ap, ammo_7.62x51_fmj
+
+grenade_class			= ammo_m209
+
+launch_speed            	= 0
+hand_dependence         	= 1
+single_handed           	= 0
+
+;---DOF-------------------------------------------------------------------------
+zoom_dof             		= 0.5, 1.0, 180
+reload_dof           		= 0.0, 0.5, 5, 2
+
+;---дисперси€---------------------------------------------------------------------------
+;базова€ дисперси€
+fire_dispersion_base	= 0.26	;угол (в градусах) базовой дисперсии оружи€ (оружи€ зажатого в тисках)
+control_inertion_factor	= 1.6f
+crosshair_inertion	= 5.6
+
+;отдача
+cam_return = 0 ;				= 1
+cam_relax_speed         = 10	;скорость возврата в исходное положение
+cam_relax_speed_ai      = 360
+cam_dispersion	        = 2
+cam_dispersion_inc      = 1
+cam_dispersion_frac     = 1	;ствол будет подыматьс€ на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
+cam_max_angle        	= 50.0 	;максимальный угол отдачи
+cam_max_angle_horz      = 50.0	;(degree) maximum shot horizontal degree
+cam_step_angle_horz     = 1.36	;(degree) size of step camera moved in horizontal position while shooting
+
+PDM_disp_base 				= 1.2
+PDM_disp_vel_factor 		= 2.75
+PDM_disp_accel_factor 		= 2.75
+PDM_disp_crouch = 1.0 ;  			= 1.225
+PDM_disp_crouch_no_acc = 1.0 ; 		= 1.425
+
+zoom_cam_relax_speed        = 10    ; scope & ironsight
+zoom_cam_relax_speed_ai     = 360
+zoom_cam_dispersion         = 4
+zoom_cam_dispersion_inc     = 1
+zoom_cam_dispersion_frac    = 1.0
+zoom_cam_max_angle          = 50.0
+zoom_cam_max_angle_horz     = 50.0
+zoom_cam_step_angle_horz    = 1.24
+
+fire_dispersion_condition_factor = 15     
+
+;-------------------------------------------------------------------------------
+holder_range_modifier   = 1.0                       ; во сколько раз увеличиваетс€ eye_range
+holder_fov_modifier     = 1.0              ; во сколько раз увеличиваетс€ eye_fov
+
+min_radius = 0 ;              = 0
+max_radius = 500 ; = 250 ;              = 100
+
+hit_probability_gd_novice = 1.00 ;  = 0.80
+hit_probability_gd_stalker = 1.00 ; = 0.80
+hit_probability_gd_veteran = 1.00 ; = 0.80
+hit_probability_gd_master = 1.00 ;  = 0.80
+
+;-------------------------------------------------------------------------------
+inv_name             		= st_wpn_g3sg1
+inv_name_short          	= st_wpn_g3sg1
+
+inv_grid_width			= 5
+inv_grid_height			= 2
+inv_grid_x			= 30
+inv_grid_y			= 52
+
+upgr_icon_x			= 1724 ; 297
+upgr_icon_y			= 802 ; 840
+upgr_icon_width			= 167 ; 292
+upgr_icon_height   		= 159 ; 98
+
+kill_msg_x			= 175
+kill_msg_y			= 0
+kill_msg_width			= 82
+kill_msg_height			= 28
+
+slot 			 	= 2		; // secondary
+animation_slot			= 2		; type of the animation that will be used
+
+;-------------------------------------------------------------------------------
+position			= -0.026, -0.125, -0.03
+orientation			= 0, -10, 0
+
+fire_point			= 0,0.188,0.392
+fire_point2			= 0,0.188,0.392
+
+flame_particles         	= weapons\generic_weapon05
+smoke_particles         	= weapons\generic_shoot_00
+grenade_flame_particles 	= weapons\generic_weapon01
+
+shell_point			= 0,0.188,0.082
+shell_dir			= 0,1,0
+shell_particles	 		= weapons\762x51
+
+;--STRAP PARAMETERS-----------------------------------------------------------------
+;под мишкой
+strap_position 			= -0.16, -0.36, 0.15
+strap_orientation 		= -10, -5, 10
+strap_bone0			= bip01_spine2
+strap_bone1			= bip01_spine1
+
+startup_ammo               	= 90
+visual                     	= dynamics\weapons\wpn_g3sg1\wpn_g3sg1.ogf
+
+light_disabled          	= false
+light_color             	= 0.6,0.5,0.3
+light_range             	= 5
+light_var_color         	= 0.05
+light_var_range         	= 0.1
+light_time              	= 0.2
+
+ph_mass                 	= 3
+
+;addons
+scope_status			= 1                     ; 0 - no addon
+silencer_status			= 0                   ; 1 - permanent
+grenade_launcher_status		= 0                   ; 2 - attachable
+
+zoom_enabled			= true                                                ; (on,off)zoom mode (right mouse button)
+zoom_rotate_time		= 0.25
+scope_zoom_factor = 5.0
+scope_texture			= wpn_crosshair_galil ;wpn_crosshair_mark4
+
+grenade_launcher_name		= wpn_addon_grenade_launcher_m203; section name for the attachable grenade launcher
+grenade_launcher_x		= 128                ; offset in inventory icon
+grenade_launcher_y		= 28
+
+;silencer_flame_particles  	= weapons\generic_weapon01
+silencer_smoke_particles   	= weapons\generic_shoot_00
+
+silencer_light_color    	= 0.6,0.5,0.3
+silencer_light_range    	= 0.01
+silencer_light_var_color	= 0.05
+silencer_light_var_range	= 0.5
+silencer_light_time     	= 0.2
+
+[wpn_g3sg1_hud]:hud_base
+zoom_hide_crosshair		= true
+attach_place_idx		= 0
+item_visual			= dynamics\weapons\wpn_g3sg1\wpn_g3sg1_hud.ogf
+
+hands_position			= 0.09,-0.07,0.1
+hands_orientation		= 0,0,0
+hands_position_16x9		= 0.09,-0.07,0.1
+hands_orientation_16x9		= 0,2,0
+
+item_position			= 0,0,0
+item_orientation		= 0,0,0
+
+aim_hud_offset_pos		= -0.09,0.04,-0.1
+aim_hud_offset_rot		= 0,0,0
+aim_hud_offset_pos_16x9		= -0.09,0.04,-0.1
+aim_hud_offset_rot_16x9		= 0,0,0
+
+shell_point                	= 0,0,0
+shell_dir               	= 0,0,0
+shell_bone                	= eject
+
+fire_point			= 0,0,0
+fire_bone                       = muzzle
+fire_point2			= 0,0,0
+fire_bone2                	= grenade
+
+anm_show             		= g3sg1_draw
+anm_hide             		= g3sg1_holster
+anm_idle             		= g3sg1_idle
+anm_idle_sprint         	= g3sg1_idle_sprint
+anm_idle_moving 		= g3sg1_idle_moving
+anm_shots               	= g3sg1_shoot, g36_shoot_w
+anm_reload              	= g3sg1_reload1, g36_reload_w
+anm_idle_aim           		= g3sg1_idle
+anm_bore			= g3sg1_idle_bore
+
+gl_hud_offset_pos       	= 0,0,0
+gl_hud_offset_rot       	= 0,0,0
+gl_hud_offset_pos_16x9    	= 0,0,0
+gl_hud_offset_rot_16x9    	= 0,0,0
+
+lean_hud_offset_pos		= 0,0,0
+lean_hud_offset_rot		= 0,0,0
+
+
+[wpn_g3]:wpn_g3sg1,wpn_g3_sounds
+
+description             = st_wpn_g3_descr
+
+scopes 			= ac10632, acog, eot
+parent_section  	= wpn_g3
+
+
+;-------------------------------------------------------------------------------
+cost                    = 38000
+weapon_class            = assault_rifle        ; Type of the weapon
+inv_weight              = 4.63
+
+upgrades                = up_gr_firstab_g3, up_gr_seconab_g3, up_gr_thirdab_g3, up_gr_fourtab_g3, up_gr_fourtcd_g3, up_gr_fourtef_g3
+
+;-------TTX-----------------------------------------------------------------------
+hit_power           		= 0.75, 0.75, 0.75, 0.75
+hit_impulse				= 35
+hit_type				= fire_wound
+fire_distance           = 1000
+bullet_speed            = 798         ;начальная скорость пули
+rpm                     = 600
+rpm_empty_click         = 200
+
+grenade_vel 				= 76
+launch_speed				= 76
+use_aim_bullet          = false                ;Поддерживается ли первая суппер пуля
+time_to_aim             = 3.0
+
+hud                     = wpn_g3_hud
+
+misfire_probability        = 0.005
+misfire_start_condition		= 0.73
+misfire_end_condition		= 0.058
+misfire_start_prob = 0.007 ;	     	= 0.0025
+misfire_end_prob = 0.11 ;	     	= 0.05
+condition_shot_dec      	= 0.0004
+condition_queue_shot_dec	= 0.0004
+
+ammo_elapsed            = 20
+ammo_mag_size           = 20
+
+ammo_class		 	= ammo_7.62x51_ap, ammo_7.62x51_fmj
+grenade_class           = ammo_m209
+fire_modes              = 1, -1
+hand_dependence         = 1
+single_handed           = 0
+
+;-дисперсия-----------------------------------------------------------------------------
+;базовая дисперсия
+fire_dispersion_base    	= 0.29        ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor 	= 1.44f
+crosshair_inertion		= 6.98
+
+cam_return 			= 0 ;				= 1
+cam_relax_speed         	= 10	;скорость возврата в исходное положение
+cam_relax_speed_ai      	= 360
+cam_dispersion	        	= 1.5
+cam_dispersion_inc      	= 1.03
+cam_dispersion_frac     	= 0.66	;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
+cam_max_angle        		= 50.0 	;максимальный угол отдачи
+cam_max_angle_horz      	= 50.0	;(degree) maximum shot horizontal degree
+cam_step_angle_horz     	= 1.22	;(degree) size of step camera moved in horizontal position while shooting
+
+zoom_cam_relax_speed        	= 10    ; scope & ironsight
+zoom_cam_relax_speed_ai     	= 360
+zoom_cam_dispersion         	= 1.05
+zoom_cam_dispersion_inc     	= 0.88
+zoom_cam_dispersion_frac    	= 1.0
+zoom_cam_max_angle          	= 50.0
+zoom_cam_max_angle_horz     	= 50.0
+zoom_cam_step_angle_horz    	= 1.13
+
+inv_name                	= st_wpn_g3
+inv_name_short          	= st_wpn_g3
+
+inv_grid_width          	= 5
+inv_grid_height         	= 2
+inv_grid_x              	= 30
+inv_grid_y              	= 56
+
+position			= -0.026, -0.097, 0.0
+orientation			= 0, 0, 0
+
+fire_point			=  0,0.137,0.649
+fire_point2			= 0, 0.097, 0.722
+
+shell_point			= 0.0, 0.188, 0.082
+shell_dir			= 0.0, 1.0, 0.0
+shell_particles	 		= weapons\762x51
+
+strap_position 			= -0.16, -0.36, 0.15
+strap_orientation 		= -10, -5, 10
+strap_bone0			= bip01_spine2
+strap_bone1			= bip01_spine1
+
+startup_ammo            	= 90
+visual                  	= dynamics\weapons\wpn_g3\wpn_g3.ogf
+
+scope_status            	= 0
+silencer_status         	= 2
+grenade_launcher_status 	= 0
+
+zoom_enabled            	= true                                                ; (on,off)zoom mode (right mouse button)
+zoom_rotate_time		= 0.25
+scope_zoom_factor = 1.1
+
+silencer_name           	= wpn_sil_pbs1
+silencer_x              	= 232
+silencer_y              	= 18
+
+[wpn_g3_hud]:hud_base
+zoom_hide_crosshair		= true
+attach_place_idx		= 0
+item_visual			= dynamics\weapons\wpn_g3\wpn_g3_hud.ogf
+
+hands_position			= -0.06,-0.22,0.2
+hands_orientation		= 0,3,0
+hands_position_16x9     	= -0.06,-0.22,0.2
+hands_orientation_16x9  	= 0,3,0
+
+item_position			= 0,0,0
+item_orientation		= 0,0,0
+
+aim_hud_offset_pos		= -0.0923,0.0843,-0.11
+aim_hud_offset_rot		= 0.054050,-0.0005,0
+aim_hud_offset_pos_16x9 	= -0.0923,0.0843,-0.11
+aim_hud_offset_rot_16x9 	= 0.054050,-0.0005,0
+
+shell_point             	= 0.021,0.099,0.286
+shell_dir              	 	= 0,1,0
+shell_bone              	= wpn_body
+
+fire_point			= 0,0,0
+fire_bone      			= muzzle
+fire_point2			= 0,0,0
+fire_bone2              	= wpn_body
+
+anm_show             		= g3_draw
+anm_hide             		= g3_holster
+anm_idle             		= g3_idle
+anm_idle_sprint         	= g3_sprint
+anm_idle_moving 		= g3_move
+anm_shots               	= g3_shoot, shoot
+anm_reload              	= g3_reload, reload
+anm_idle_aim           		= g3_aim
+anm_bore			= g3_aim
+
+gl_hud_offset_pos       	= 0,0,0
+gl_hud_offset_rot       	= 0,0,0
+gl_hud_offset_pos_16x9    	= 0,0,0
+gl_hud_offset_rot_16x9    	= 0,0,0
+
+lean_hud_offset_pos		= 0,0,0
+lean_hud_offset_rot		= 0,0,0
+;-----------------------------------------------------------------------------
+[wpn_g3_ac10632]:wpn_g3
+
+inv_weight			= 4.745
+
+hud				= wpn_g3_ac10632_hud
+
+1icon_layer			= ac10632
+1icon_layer_x			= 74
+1icon_layer_y			= -3
+
+visual				= dynamics\weapons\wpn_g3\wpn_g3_ac10632.ogf
+
+scope_zoom_factor = 1.1
+
+[wpn_g3_ac10632_hud]:wpn_g3_hud
+item_visual            	 	= dynamics\weapons\wpn_g3\wpn_g3_ac10632_hud.ogf
+
+aim_hud_offset_pos		= -0.0918,0.0376,-0.18
+aim_hud_offset_pos_16x9 	= -0.0918,0.0376,-0.18
+;-----------------------------------------------------------------------------
+[wpn_g3_acog]:wpn_g3
+
+inv_weight			= 4.98
+
+hud				= wpn_g3_acog_hud
+
+1icon_layer			= acog
+1icon_layer_x			= 72
+1icon_layer_y			= -1
+
+scope_status			= 1
+scope_texture			= wpn_crosshair_acog
+scope_zoom_factor = 3.5
+scope_dynamic_zoom		= off
+
+[wpn_g3_acog_hud]:wpn_g3_hud
+item_visual            	 	= dynamics\weapons\wpn_g3\wpn_g3_hud.ogf
+
+aim_hud_offset_pos		= -0.0922,0.03135,-0.05
+aim_hud_offset_rot		= 0.045,-0.0004,0
+aim_hud_offset_pos_16x9 	= -0.0922,0.03135,-0.05
+aim_hud_offset_rot_16x9 	= 0.045,-0.0004,0
+;-----------------------------------------------------------------------------
+[wpn_g3_eot]:wpn_g3
+
+inv_weight			= 4.93
+
+hud				= wpn_g3_eot_hud
+
+1icon_layer			= eot
+1icon_layer_x			= 76
+1icon_layer_y			= 3
+
+visual				= dynamics\weapons\wpn_g3\wpn_g3_eot.ogf
+
+[wpn_g3_eot_hud]:wpn_g3_acog_hud
+item_visual            	 	= dynamics\weapons\wpn_g3\wpn_g3_eot_hud.ogf

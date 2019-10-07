@@ -1,0 +1,68 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 2
+max_population = 2
+respawn_params = respawn@bar_dolg_general
+respawn_idle = 28800
+
+[respawn@bar_dolg_general]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+spawn_monster4
+spawn_dolg
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_freedom
+spawn_monolith
+
+[spawn_monster1]
+spawn_squads = simulation_snork, simulation_dog_mix, simulation_dog_5_7, simulation_dog
+spawn_num = {=!smart_controlled(bar_dolg_bunker) =!smart_controlled(bar_dolg_general) =!smart_controlled(bar_zastava) =!smart_controlled(bar_zastava_2)} 3, 0
+
+[spawn_monster2]
+spawn_squads = simulation_bloodsucker_red, simulation_fracture
+spawn_num = {=!smart_controlled(bar_dolg_bunker) =!smart_controlled(bar_dolg_general) =!smart_controlled(bar_zastava) =!smart_controlled(bar_zastava_2)} 1, 0
+
+[spawn_monster3]
+spawn_squads = ssimulation_poltergeist_tele, simulation_bloodsucker_red
+spawn_num = {=!smart_controlled(bar_dolg_bunker) =!smart_controlled(bar_dolg_general) =!smart_controlled(bar_zastava) =!smart_controlled(bar_zastava_2) =actor_week_in_zone(6)} 1, 0
+
+[spawn_monster4]
+spawn_squads = simulation_gigant, simulation_bloodsucker_red
+spawn_num = {=!smart_controlled(bar_dolg_bunker) =!smart_controlled(bar_dolg_general) =!smart_controlled(bar_zastava) =!smart_controlled(bar_zastava_2) =actor_week_in_zone(9)} 1, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_novice, duty_sim_squad_advanced, duty_sim_squad_advanced, duty_sim_squad_veteran
+spawn_num = {=smart_under_faction(bar_dolg_bunker:dolg) =squad_exist(squad_dolg_bar_zastava) =squad_exist(squad_dolg_bar_zastava_2) =!actor_week_in_zone(3)} 3, {=smart_under_faction(bar_dolg_bunker:dolg) =squad_exist(squad_dolg_bar_zastava) =squad_exist(squad_dolg_bar_zastava_2) =!actor_week_in_zone(6)} 2, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_advanced
+spawn_num = {=smart_under_faction(bar_dolg_general:stalker)} 1, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_advanced
+spawn_num = {=smart_under_faction(bar_dolg_general:bandit)} 1, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_advanced
+spawn_num = {=smart_under_faction(bar_dolg_general:csky)} 1, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_novice, freedom_sim_squad_novice, freedom_sim_squad_advanced 
+spawn_num = {=smart_under_faction(bar_dolg_bunker:freedom)} 5, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(bar_dolg_bunker:monolith)} 7, 0
+
+
+[exclusive]
+bar_dolg_general_animpoint_kamp1 = bar\bar_dolg_general_logic.ltx
+bar_dolg_general_animpoint_kamp2 = bar\bar_dolg_general_logic.ltx
+bar_dolg_general_animpoint_kamp3 = bar\bar_dolg_general_logic.ltx
+bar_dolg_general_animpoint_kamp4 = bar\bar_dolg_general_logic.ltx
+bar_dolg_general_zoneguard = bar\bar_dolg_general_logic.ltx
+bar_dolg_general_petrenko = bar\bar_dolg_general_logic.ltx

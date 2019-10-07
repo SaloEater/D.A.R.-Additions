@@ -1,0 +1,28 @@
+[smart_terrain]
+respawn_radius = 300;esc_smart_terrain_6_8 ;;обрушенный мост
+squad_id = 18
+max_population = 2
+respawn_params = respawn@esc_smart_terrain_6_8
+respawn_idle = 43200
+
+[respawn@esc_smart_terrain_6_8]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_dog
+spawn_num = {=!smart_controlled(esc_smart_terrain_6_8)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_pseudodog
+spawn_num = {=!smart_controlled(esc_smart_terrain_6_8) =actor_week_in_zone(3)} 1, 0
+
+[spawn_monster3]
+spawn_squads = simulation_dog_mix
+spawn_num = {=!smart_controlled(esc_smart_terrain_6_8) =actor_week_in_zone(7)} 1, 0
+
+
+[exclusive]
+esc_smart_terrain_6_8_robber = escape\esc_smart_terrain_6_8_smart_logic.ltx

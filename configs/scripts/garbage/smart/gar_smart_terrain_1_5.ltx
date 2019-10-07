@@ -1,0 +1,14 @@
+[smart_terrain]
+respawn_radius = 300 ;;агро-свалка, переход у Депо.
+squad_id = 1
+max_population = 1
+respawn_params = respawn@gar_smart_terrain_1_5
+respawn_idle = 14400
+
+[respawn@gar_smart_terrain_1_5]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_tushkano, simulation_rats
+spawn_num = {=!smart_controlled(gar_smart_terrain_1_7)} 4, 0

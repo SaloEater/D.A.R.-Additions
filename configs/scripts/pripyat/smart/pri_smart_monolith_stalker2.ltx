@@ -1,0 +1,70 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 7
+max_population = 1
+respawn_params = respawn@pri_smart_monolith_stalker2
+respawn_idle = 86400
+
+
+[respawn@pri_smart_monolith_stalker2]
+
+spawn_monster1
+spawn_monster2
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_killer
+spawn_army
+spawn_ecolog
+spawn_monolith
+spawn_zombied
+
+[spawn_monster1]
+spawn_squads = simulation_dog, simulation_pseudodog, simulation_dog_5_7, simulation_psy_dog
+spawn_num = {=!smart_controlled(pri_smart_monolith_stalker2)} 1, 0
+
+[spawn_monster2]
+spawn_squads = simulation_gigant, simulation_snork, simulation_bloodsucker_red
+spawn_num = {=!smart_controlled(pri_smart_monolith_stalker2) =actor_week_in_zone(4)} 1, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran
+spawn_num = {+bar_deactivate_radar_done =smart_under_faction(pri_smart_monolith_stalker2:stalker)} 4, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_veteran
+spawn_num = {+bar_deactivate_radar_done =smart_under_faction(pri_smart_monolith_stalker2:bandit)} 3, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_veteran
+spawn_num = {+bar_deactivate_radar_done =smart_under_faction(pri_smart_monolith_stalker2:csky)} 1, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_veteran
+spawn_num = {+bar_deactivate_radar_done =smart_under_faction(pri_smart_monolith_stalker2:dolg)} 1, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_veteran 
+spawn_num = {+bar_deactivate_radar_done =smart_under_faction(pri_smart_monolith_stalker2:freedom)} 1, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {+bar_deactivate_radar_done =smart_under_faction(pri_smart_monolith_stalker2:killer)} 1, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_elite
+spawn_num = {+bar_deactivate_radar_done =smart_under_faction(pri_smart_monolith_stalker2:army)} 2, 0
+
+[spawn_ecolog]
+spawn_squads = ecolog_sim_squad_veteran
+spawn_num = {+bar_deactivate_radar_done =smart_under_faction(pri_smart_monolith_stalker2:ecolog)} 1, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_novice, monolith_sim_squad_advanced
+spawn_num = {=smart_under_faction(pri_smart_monolith_stalker2:monolith)} 1, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_smart_monolith_stalker2:zombied)} 1, 0

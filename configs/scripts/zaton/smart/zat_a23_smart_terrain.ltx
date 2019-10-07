@@ -1,0 +1,67 @@
+[smart_terrain]
+respawn_radius = 300;zat_a23_smart_terrain
+squad_id = 53
+max_population = 2
+respawn_params = respawn@zat_a23_smart_terrain
+respawn_idle = 86400
+
+[respawn@zat_a23_smart_terrain]
+
+spawn_monster
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_killer
+spawn_army
+spawn_monolith
+spawn_zombied
+
+[spawn_monster]
+spawn_squads = simulation_tushkano_7_10, simulation_rats_7_10, simulation_snork_2_5
+spawn_num = {=!smart_controlled(zat_a23_smart_terrain)} 3, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_a23_smart_terrain:stalker) +bar_deactivate_radar_done} 1, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_a23_smart_terrain:bandit) +bar_deactivate_radar_done} 3, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_a23_smart_terrain:csky) +bar_deactivate_radar_done} 2, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_a23_smart_terrain:dolg) +bar_deactivate_radar_done} 1, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_veteran 
+spawn_num = {=smart_under_faction(zat_a23_smart_terrain:freedom) +bar_deactivate_radar_done} 1, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_a23_smart_terrain:killer) +bar_deactivate_radar_done} 5, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_elite
+spawn_num = {=smart_under_faction(zat_a23_smart_terrain:army) +bar_deactivate_radar_done} 5, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_a23_smart_terrain:monolith)} 2, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_a23_smart_terrain:zombied)} 2, 0
+
+[exclusive]
+;zat_a23_zombie_02 = zaton\zat_a23_zombie.ltx
+;zat_a23_zombie_03 = zaton\zat_a23_zombie.ltx
+;zat_a23_zombie_04 = zaton\zat_a23_zombie.ltx
+;zat_a23_zombie_05 = zaton\zat_a23_zombie.ltx
+;zat_a23_zombie_06 = zaton\zat_a23_zombie.ltx
+;zat_a23_giant = zaton\zat_a23_giant.ltx

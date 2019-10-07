@@ -1,0 +1,24 @@
+[smart_terrain]
+respawn_radius = 300;mar_smart_terrain_7_7 ;;сев-западнее сгоревш.хутора
+squad_id = 20
+max_population = 1
+respawn_params = respawn@mar_smart_terrain_7_7
+respawn_idle = 43200
+
+[respawn@mar_smart_terrain_7_7]
+
+spawn_ecolog
+spawn_monster1
+spawn_monster2
+
+[spawn_ecolog]
+spawn_squads = ecolog_sim_squad_novice, stalker_sim_squad_novice
+spawn_num = {=smart_under_faction(yan_smart_terrain_6_4:ecolog) =actor_week_in_zone(2) =actor_on_level(k00_marsh)} 1, 0
+
+[spawn_monster1]
+spawn_squads = simulation_boar, simulation_flesh, simulation_dog, simulation_tushkano
+spawn_num = {=!smart_controlled(mar_smart_terrain_7_7)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_cat
+spawn_num = {=!smart_controlled(mar_smart_terrain_7_7) =actor_week_in_zone(1)} 1, 0

@@ -1,0 +1,2751 @@
+last_task_id = nil
+
+local hit_sound = [[material\dead-body\collide\hithard06hl]]
+
+function drx_sl_dont_has_npc_task( a, b )
+
+	local npc = who_is_npc(a, b)
+	local se_obj = npc and alife( ):object( npc:id( ) )
+	local giver_id = se_obj and (se_obj.group_id ~= 65535 and se_obj.group_id or se_obj.id)
+	if not ( giver_id ) then
+		return false
+	end
+	if ( alun_utils.load_var( db.actor, ("drx_sl_task_giver_" .. giver_id), 0 ) > 0 ) then
+		return false
+	end
+
+	return true
+
+end
+
+function drx_sl_actor_not_same_faction( a, b )
+
+	-- Get npc faction:
+	local npc = who_is_npc( a, b )
+	local npc_faction = character_community( npc )
+	local start, finish = string.find( npc_faction, "actor_" )
+	if ( finish ) then
+		npc_faction = string.sub( npc_faction, (finish + 1) )
+	end
+
+	-- Special check for Sidorovich:
+	if ( npc_faction == "monster" ) then
+		npc_faction = "stalker"
+	end
+
+	-- Get player faction:
+	local actor_faction = character_community( db.actor )
+	local start, finish = string.find( actor_faction, "actor_" )
+	if ( finish ) then
+		actor_faction = string.sub( actor_faction, (finish + 1) )
+	end
+
+	-- Check if factions are same:
+	if ( actor_faction == npc_faction ) then
+		return false
+	else
+		return true
+	end
+
+end
+
+function drx_sl_actor_good_reputation( a, b )
+
+	-- Get npc faction:
+	local npc = who_is_npc( a, b )
+	local npc_faction = character_community( npc )
+	local start, finish = string.find( npc_faction, "actor_" )
+	if ( finish ) then
+		npc_faction = string.sub( npc_faction, (finish + 1) )
+	end
+
+	if ( npc_faction == "trader" ) then
+		npc_faction = "stalker"
+	end
+
+	return db.actor and (relation_registry.community_goodwill(npc_faction, db.actor:id()) >= 400)
+
+end
+
+
+
+
+function drx_sl_actor_has_finished_task( a, b )
+
+	local npc = who_is_npc( a, b )
+
+	local task = axr_task_manager and axr_task_manager.drx_sl_get_finished_task( npc )
+	if ( task == nil ) then
+		return false
+	end
+
+	return true
+
+end
+
+function drx_sl_actor_has_finished_cf_task( a, b )
+
+	local npc = who_is_npc( a, b )
+
+	local task = axr_task_manager and axr_task_manager.drx_sl_get_finished_cf_task( npc )
+	if ( task == nil ) then
+		return false
+	end
+
+	return true
+
+end
+
+function drx_sl_is_endgame( a, b )
+
+	if ( (alun_utils.load_var( db.actor, "drx_sl_current_task_number", 1 ) >= alun_utils.load_var( db.actor, "drx_sl_total_task_number", 1 )) and (has_alife_info( "bar_deactivate_radar_done" )) ) then
+		return true
+	end
+
+	return false
+
+end
+
+function drx_sl_is_not_endgame( a, b )
+	return not drx_sl_is_endgame( )
+end
+
+function drx_sl_text_honcho_has_storyline_task_to_give( a, b )
+
+	local npc = who_is_npc( a, b )
+	local task_section = axr_task_manager and axr_task_manager.drx_sl_generate_random_sl_task( npc )
+	last_task_id = task_section
+	return game.translate_string( task_section and axr_task_manager.get_task_job_description( task_section ) or "st_no_available_task" )
+
+end
+
+function drx_sl_text_mechanic_has_ordered_task_to_give( a, b )
+
+	local npc = who_is_npc( a, b )
+	local task_section = axr_task_manager and axr_task_manager.drx_sl_get_mechanic_task( npc )
+	last_task_id = task_section
+	return game.translate_string( task_section and axr_task_manager.get_task_job_description( task_section ) or "st_no_available_task" )
+
+end
+
+function drx_sl_text_npc_has_change_factions_task_to_give( a, b )
+
+	local npc = who_is_npc( a, b )
+	local task_section = axr_task_manager and axr_task_manager.drx_sl_generate_change_factions_task( npc )
+	last_task_id = task_section
+	return game.translate_string( task_section and axr_task_manager.get_task_job_description( task_section ) or "st_no_available_task" )
+
+end
+
+function drx_sl_text_fetch_task( a, b )
+
+	axr_task_manager.trigger_fetch_func( last_task_id )
+
+	local text = game.translate_string( last_task_id and axr_task_manager.get_fetch_task_description( last_task_id ) or "st_about_fetch_task_default" )
+
+	return string.format( text, _FETCH_TEXT or "" ) or ""
+
+end
+
+function drx_sl_text_task_finish( a, b )
+
+	local npc = who_is_npc( a, b )
+
+	local task_section = axr_task_manager and axr_task_manager.drx_sl_get_finished_task( npc )
+	return game.translate_string( task_section and axr_task_manager.get_task_complete_text( task_section ) or ("st_default_task_finished_" .. math.random( 1, 3 )) )
+
+end
+
+function drx_sl_text_cf_task_finish( a, b )
+
+	local npc = who_is_npc( a, b )
+
+	local task_section = axr_task_manager and axr_task_manager.drx_sl_get_finished_cf_task( npc )
+	return game.translate_string( task_section and axr_task_manager.get_task_complete_text( task_section ) or ("st_default_task_finished_" .. math.random( 1, 3 )) )
+
+end
+
+function drx_sl_text_end_game( a, b )
+
+	local npc = who_is_npc( a, b )
+
+	local text_list = {}
+	local i = 1
+	while ( true ) do
+		local text_id = (alun_utils.load_var( db.actor, "drx_sl_start_task", "" ) .. "_endgame_" .. i)
+		local end_game_text = game.translate_string( text_id )
+		if ( end_game_text and end_game_text ~= "" and end_game_text ~= ("_endgame_" .. i) and end_game_text ~= text_id ) then
+			table.insert( text_list, end_game_text )
+		else
+			break
+		end
+		i = (i + 1)
+	end
+
+	if ( #text_list < 1 ) then
+		return game.translate_string( "drx_sl_default_endgame" )
+	end
+
+	return text_list[math.random( 1, #text_list )]
+
+end
+
+function drx_sl_set_finished_task_complete( a, b )
+
+	-- Set current task to complete:
+	local npc = who_is_npc( a, b )
+	axr_task_manager.drx_sl_set_finished_task_complete( npc )
+
+	-- Give actor meet next honcho task:
+	xr_effects.drx_sl_meet_random_honcho( )
+
+end
+
+function drx_sl_set_finished_task_complete_endgame( a, b )
+
+	-- Set current task to complete:
+	local npc = who_is_npc( a, b )
+	axr_task_manager.drx_sl_set_finished_task_complete( npc )
+
+	-- Give actor end game task:
+	xr_effects.drx_sl_find_wish_granter( )
+
+end
+
+function drx_sl_set_finished_cf_task_complete( a, b )
+
+	-- Set current task to complete:
+	local npc = who_is_npc( a, b )
+	axr_task_manager.drx_sl_set_finished_cf_task_complete( npc )
+
+end
+
+function text_npc_has_permission_to_give( a, b )
+
+	local npc = who_is_npc( a, b )
+	local task_section = axr_task_manager and axr_task_manager.generate_get_permission_task( npc )
+	last_task_id = task_section
+	return game.translate_string( task_section and axr_task_manager.get_task_job_description( task_section ) or "st_no_available_task" )
+
+end
+
+function actor_has_permission_task( a, b )
+	local npc = who_is_npc( a, b )
+	local task = axr_task_manager and axr_task_manager.has_permission_task( npc )
+	if ( task == nil ) then
+		return false
+	end
+
+	return true
+end
+
+
+function npc_has_ordered_task_to_give( a, b )
+
+	local npc = who_is_npc( a, b )
+	return last_task_id ~= nil or false
+
+end
+
+function text_npc_has_ordered_task_to_give( a, b )
+
+	local npc = who_is_npc( a, b )
+	local task_section = axr_task_manager and axr_task_manager.get_first_available_task( npc )
+	last_task_id = task_section
+	return game.translate_string( task_section and axr_task_manager.get_task_job_description( task_section ) or "st_no_available_task" )
+
+end
+
+function text_sim_npc_has_ordered_task_to_give( a, b )
+
+	local npc = who_is_npc( a, b )
+	local task_section = axr_task_manager and axr_task_manager.get_first_available_task( npc, nil, true )
+	last_task_id = task_section
+	return game.translate_string( task_section and axr_task_manager.get_task_job_description( task_section ) or "st_no_available_task" )
+
+end
+
+function text_task_finish( a, b )
+
+	local npc = who_is_npc( a, b )
+	local task_section = axr_task_manager and axr_task_manager.get_first_finished_task( npc )
+	return game.translate_string( task_section and axr_task_manager.get_task_complete_text( task_section ) or "st_default_task_finished_" .. math.random( 1, 3 ) )
+
+end
+
+function text_sim_task_finish( a, b )
+
+	local npc = who_is_npc( a, b )
+	local task_section = axr_task_manager and axr_task_manager.get_first_finished_task( npc, true )
+	return game.translate_string( task_section and axr_task_manager.get_task_complete_text( task_section ) or "st_default_task_finished_" .. math.random( 1, 3 ) )
+
+end
+
+function task_is_fetch_task( a, b )
+
+	local npc = who_is_npc( a, b )
+	local task_id = last_task_id  --axr_task_manager.get_first_available_task(npc)
+	if not ( task_id ) then
+		return false
+	end
+	return axr_task_manager.get_fetch_task_description( task_id ) ~= nil
+
+end
+
+function not_task_is_fetch_task( a, b )
+
+	return not task_is_fetch_task( a, b )
+
+end
+
+function npc_clear_skipped_tasks( a, b )
+
+	if ( axr_task_manager ) then
+		axr_task_manager.clear_skipped_tasks( )
+	end
+
+end
+
+function condition_actor_has_pda( a, b )
+
+	return db.actor:object( "itm_pda_common") or db.actor:object( "itm_pda_uncommon" ) or db.actor:object( "itm_pda_rare" ) or false
+
+end
+
+function actor_has_finished_ordered_task( a, b )
+
+	local npc = who_is_npc( a, b )
+	local tsk = axr_task_manager and axr_task_manager.get_first_finished_task( npc )
+	if ( tsk == nil ) then
+		return false
+	end
+	return true
+
+end
+
+function actor_has_not_finished_ordered_task( a, b )
+
+	return not actor_has_finished_ordered_task( a, b )
+
+end
+
+function actor_sim_has_finished_ordered_task( a, b )
+
+	local npc = who_is_npc( a, b )
+	return axr_task_manager and axr_task_manager.get_first_finished_task( npc, true ) ~= nil or false
+
+end
+
+function actor_sim_has_not_finished_ordered_task( a, b )
+
+	return not actor_sim_has_finished_ordered_task( a, b )
+
+end
+
+function npc_sim_set_finished_task_complete( a, b )
+
+	local npc = who_is_npc( a, b )
+	axr_task_manager.set_finished_task_complete( npc, true )
+
+end
+
+function drx_sl_give_sl_task( a, b )
+
+	disable_info( ("drx_sl_meet_honcho_" .. alun_utils.load_var( db.actor, "drx_sl_current_honcho", "" )) )
+	local npc = who_is_npc( a, b )
+	local task_section = axr_task_manager and axr_task_manager.drx_sl_generate_random_sl_task( npc, nil, true )
+	while last_task_id and task_section ~= nil and task_section ~= last_task_id do
+		task_section = axr_task_manager.drx_sl_generate_random_sl_task( npc, true, true )
+	end
+
+	if ( last_task_id ) then
+		printf( ("DRX SL storyline task started: " .. last_task_id) )
+		local se_obj = npc and alife( ):object( npc:id( ) )
+		local giver_id = se_obj and (se_obj.group_id ~= 65535 and se_obj.group_id or se_obj.id)
+		alun_utils.save_var( db.actor, "drx_sl_current_task", last_task_id )
+		task_manager.get_task_manager( ):give_task( last_task_id, giver_id )
+
+		-- Register current task giver:
+		if ( (not string.find( "meet_task", last_task_id )) and (not string.find( "find_wish_granter", last_task_id )) ) then
+			local giver_task_count = (alun_utils.load_var( db.actor, ("drx_sl_task_giver_" .. giver_id), 0 ) + 1)
+			alun_utils.save_var( db.actor, ("drx_sl_task_giver_" .. giver_id), giver_task_count )
+			printf( ("DRX SL: drx_sl_task_giver_" .. giver_id .. " registered (" .. giver_task_count .. " outstanding)") )
+		end
+
+		last_task_id = nil
+
+	end
+
+end
+
+function drx_sl_give_cf_task( a, b )
+
+	local npc = who_is_npc( a, b )
+	local task_section = axr_task_manager and axr_task_manager.drx_sl_generate_change_factions_task( npc, nil, true )
+	while last_task_id and task_section ~= nil and task_section ~= last_task_id do
+		task_section = axr_task_manager.drx_sl_generate_change_factions_task( npc, true, true )
+	end
+
+	if ( last_task_id ) then
+		printf( ("DRX SL change factions task started: " .. last_task_id) )
+		local se_obj = npc and alife( ):object( npc:id( ) )
+		local giver_id = se_obj and (se_obj.group_id ~= 65535 and se_obj.group_id or se_obj.id)
+		task_manager.get_task_manager( ):give_task( last_task_id, giver_id )
+
+		-- Register current task giver:
+		local giver_task_count = (alun_utils.load_var( db.actor, ("drx_sl_task_giver_" .. giver_id), 0 ) + 1)
+		alun_utils.save_var( db.actor, ("drx_sl_task_giver_" .. giver_id), giver_task_count )
+		printf( ("DRX SL: drx_sl_task_giver_" .. giver_id .. " registered (" .. giver_task_count .. " outstanding)") )
+
+		last_task_id = nil
+
+	end
+
+end
+
+function drx_sl_give_mechanic_task( a, b )
+
+	local npc = who_is_npc( a, b )
+	local task_section = axr_task_manager and axr_task_manager.drx_sl_get_mechanic_task( npc, nil, true )
+	while last_task_id and task_section ~= nil and task_section ~= last_task_id do
+		task_section = axr_task_manager.drx_sl_get_mechanic_task( npc, true, true )
+	end
+
+	if ( last_task_id ) then
+		printf( ("DRX SL mechanic task started: " .. last_task_id) )
+		local se_obj = npc and alife( ):object( npc:id( ) )
+		local giver_id = se_obj and (se_obj.group_id ~= 65535 and se_obj.group_id or se_obj.id)
+		task_manager.get_task_manager( ):give_task( last_task_id, giver_id )
+		local giver_task_count = (alun_utils.load_var( db.actor, ("drx_sl_task_giver_" .. giver_id), 0 ) + 1)
+		alun_utils.save_var( db.actor, ("drx_sl_task_giver_" .. giver_id), giver_task_count )
+		printf( ("DRX SL: drx_sl_task_giver_" .. giver_id .. " registered (" .. giver_task_count .. " outstanding)") )
+		last_task_id = nil
+	end
+
+end
+
+function give_gp_task( a, b )
+
+	local npc = who_is_npc( a, b )
+	local task_section = axr_task_manager and axr_task_manager.generate_get_permission_task( npc, nil, true )
+	while last_task_id and task_section ~= nil and task_section ~= last_task_id do
+		task_section = axr_task_manager.generate_get_permission_task( npc, true, true )
+	end
+
+	if ( last_task_id ) then
+		printf( ("Get permission task started: " .. last_task_id) )
+		local se_obj = npc and alife( ):object( npc:id( ) )
+		local giver_id = se_obj and (se_obj.group_id ~= 65535 and se_obj.group_id or se_obj.id)
+		task_manager.get_task_manager( ):give_task( last_task_id, giver_id )
+
+		-- Register current task giver:
+		local giver_task_count = (alun_utils.load_var( db.actor, ("drx_sl_task_giver_" .. giver_id), 0 ) + 1)
+		alun_utils.save_var( db.actor, ("drx_sl_task_giver_" .. giver_id), giver_task_count )
+		printf( ("DRX SL: drx_sl_task_giver_" .. giver_id .. " registered (" .. giver_task_count .. " outstanding)") )
+
+		last_task_id = nil
+
+	end
+
+end
+
+function npc_give_last_task_id( a, b )
+
+	local npc = who_is_npc( a, b )
+	local task_section = axr_task_manager and axr_task_manager.get_first_available_task( npc, nil, true )
+	while last_task_id and task_section ~= nil and task_section ~= last_task_id do
+		task_section = axr_task_manager.get_first_available_task( npc, true, true )
+	end
+
+	if ( last_task_id ) then
+		printf( ("DRX SL dynamic task started: " .. last_task_id) )
+		local se_obj = npc and alife( ):object( npc:id( ) )
+		local giver_id = se_obj and (se_obj.group_id ~= 65535 and se_obj.group_id or se_obj.id)
+		task_manager.get_task_manager( ):give_task( last_task_id, giver_id )
+		local giver_task_count = (alun_utils.load_var( db.actor, ("drx_sl_task_giver_" .. giver_id), 0 ) + 1)
+		alun_utils.save_var( db.actor, ("drx_sl_task_giver_" .. giver_id), giver_task_count )
+		printf( ("DRX SL: drx_sl_task_giver_" .. giver_id .. " registered (" .. giver_task_count .. " outstanding)") )
+		last_task_id = nil
+	end
+
+end
+
+function npc_sim_give_last_task_id( a, b )
+
+	local npc = who_is_npc( a, b )
+	local task_section = axr_task_manager and axr_task_manager.get_first_available_task( npc, nil, true )
+	while last_task_id and task_section ~= nil and task_section ~= last_task_id do
+		task_section = axr_task_manager.get_first_available_task( npc, true, true )
+	end
+
+	if ( last_task_id ) then
+
+		-- Give player task:
+		printf( ("DRX SL simulation task started: " .. last_task_id) )
+		local se_obj = npc and alife( ):object( npc:id( ) )
+		local giver_id = se_obj and (se_obj.group_id ~= 65535 and se_obj.group_id or se_obj.id)
+		task_manager.get_task_manager( ):give_task( last_task_id, giver_id )
+		last_task_id = nil
+
+		-- Register task giver:
+		local giver_task_count = (alun_utils.load_var( db.actor, ("drx_sl_task_giver_" .. giver_id), 0 ) + 1)
+		alun_utils.save_var( db.actor, ("drx_sl_task_giver_" .. giver_id), giver_task_count )
+		printf( ("DRX SL: drx_sl_task_giver_" .. giver_id .. " registered (" .. giver_task_count .. " outstanding)") )
+
+		-- Register hostage task giver:
+		if ( alun_utils.load_var( db.actor, "drx_sl_hostage_giver_needed", false ) ) then
+			alun_utils.save_var( db.actor, ("drx_sl_hostage_giver_" .. giver_id), true )
+			alun_utils.save_var( db.actor, "drx_sl_hostage_giver_needed", false )
+			printf( ("DRX SL: drx_sl_hostage_giver_" .. giver_id .. " registered") )
+		end
+
+	end
+
+end
+
+function npc_give_first_available_task( a, b )
+
+	if ( axr_task_manager ) then
+		local npc = who_is_npc( a, b )
+		local task_id = axr_task_manager.npc_give_first_available_ordered_task( npc )
+		if ( not task_id ) then
+			return
+		end
+		printf( ("DRX SL dynamic task started: " .. task_id) )
+		local se_obj = npc and alife( ):object( npc:id( ) )
+		local giver_id = se_obj and (se_obj.group_id ~= 65535 and se_obj.group_id or se_obj.id)
+		local giver_task_count = (alun_utils.load_var( db.actor, ("drx_sl_task_giver_" .. giver_id), 0 ) + 1)
+		alun_utils.save_var( db.actor, ("drx_sl_task_giver_" .. giver_id), giver_task_count )
+		printf( ("DRX SL: drx_sl_task_giver_" .. giver_id .. " registered (" .. giver_task_count .. " outstanding)") )
+	end
+
+end
+
+function npc_sim_give_first_available_task( a, b )
+
+	if ( axr_task_manager ) then
+		local npc = who_is_npc( a, b )
+		local task_id = axr_task_manager.npc_give_first_available_ordered_task( npc, true )
+		if ( not task_id ) then
+			return
+		end
+		printf( ("DRX SL simulation task started: " .. task_id) )
+		local se_obj = npc and alife( ):object( npc:id( ) )
+		local giver_id = se_obj and (se_obj.group_id ~= 65535 and se_obj.group_id or se_obj.id)
+		local giver_task_count = (alun_utils.load_var( db.actor, ("drx_sl_task_giver_" .. giver_id), 0 ) + 1)
+		alun_utils.save_var( db.actor, ("drx_sl_task_giver_" .. giver_id), giver_task_count )
+		printf( ("DRX SL: drx_sl_task_giver_" .. giver_id .. " registered (" .. giver_task_count .. " outstanding)") )
+	end
+
+end
+
+
+function npc_is_assault_target(a,b)
+	if (axr_task_manager) then
+		local npc = who_is_npc( a, b )
+		local smart = xr_gulag.get_npc_smart(npc)
+		
+		if (smart) then
+			return (utils.load_var(db.actor, (smart.id.."_assault_target")) == true)
+		end
+
+	end
+	
+	return false
+end
+
+function npc_can_leave_smart(a,b)
+	local npc = who_is_npc( a, b )
+
+	if (is_friend(a,b) or has_alife_info("perk_authority")) then
+		return true
+	end
+	
+	return false
+end
+
+function npc_cant_leave_smart(a,b)
+	return not npc_can_leave_smart(a,b)
+end
+
+
+function npc_leave_smart(a,b)
+	local npc = who_is_npc( a, b )
+	local squad = get_object_squad(npc)
+	
+	if (squad) then
+		squad.current_action = nil
+	end
+end
+
+
+function npc_is_trader(a,b)
+    local npc = who_is_npc(a, b)
+	local hud = get_hud()
+	if (hud) then
+		hud:HideActorMenu()
+		npc:start_trade(db.actor)
+	end
+end
+
+function npc_is_tech(a,b)
+    local npc = who_is_npc(a,b)
+	local hud = get_hud()
+	if (hud) then
+		hud:HideActorMenu()
+		npc:start_upgrade(db.actor)
+	end
+end
+
+function rescue_hostage(a,b)
+	local npc = who_is_npc(a,b)
+	local squad = get_object_squad(npc)
+	
+	
+	if (squad) then
+		for k in squad:squad_members() do
+			utils.se_obj_save_var(k.id,k.object:name(),"companion_cannot_teleport",nil)
+			xrs_kill_wounded.hostage_list[k.id] = nil
+		end
+	else
+		local se_npc = alife_object(npc:id())
+		if (se_npc) then
+			utils.se_obj_save_var(se_npc.id,se_npc:name(),"companion_cannot_teleport",nil)
+			xrs_kill_wounded.hostage_list[se_npc.id] = nil
+		end
+	end
+end
+
+-- Dynamic Ordered Task dialog
+-- AVAILABLE TASKS
+function generate_available_tasks(a,b)
+	local npc = who_is_npc(a, b)
+	axr_task_manager.generate_available_tasks(npc,nil)
+	--printf("generate_available_tasks %s",axr_task_manager.available_tasks[npc:id()] and #axr_task_manager.available_tasks[npc:id()])
+end
+
+function sim_generate_available_tasks(a,b)
+	local npc = who_is_npc(a, b)
+	axr_task_manager.generate_available_tasks(npc,true)
+	--printf("sim_generate_available_tasks %s",axr_task_manager.available_tasks[npc:id()] and #axr_task_manager.available_tasks[npc:id()])
+end
+
+function text_npc_has_task(a,b)
+	local npc = who_is_npc(a, b)
+	local task_id = axr_task_manager.available_tasks[npc:id()] and axr_task_manager.available_tasks[npc:id()][1]
+	--printf("text_npc_has_task %s",task_id)
+
+	local fetch = task_id and task_manager.task_ini:r_string_ex(task_id,"fetch_descr")
+	if (fetch) then
+		axr_task_manager.trigger_fetch_func(task_id)
+		return strformat(game.translate_string(fetch),_FETCH_TEXT or "")
+	end
+
+	return game.translate_string(task_id and task_manager.task_ini:r_string_ex(task_id,"job_descr") or "st_no_available_task")
+end
+
+function npc_has_task(a,b)
+	local npc = who_is_npc(a, b)
+	--printf("npc_has_task %s",axr_task_manager.available_tasks[npc:id()] and axr_task_manager.available_tasks[npc:id()][1] ~= nil)
+	return axr_task_manager.available_tasks[npc:id()] and axr_task_manager.available_tasks[npc:id()][1] ~= nil
+end
+
+function npc_give_task(a,b)
+	local npc = who_is_npc(a, b)
+	local task_id = axr_task_manager.available_tasks[npc:id()] and axr_task_manager.available_tasks[npc:id()][1]
+	if (task_id) then
+        task_manager.get_task_manager():give_task(task_id,npc:id())
+	end
+	--printf("npc_give_task %s",task_id)
+end
+
+function npc_skip_task(a,b)
+	local npc = who_is_npc(a, b)
+	if (axr_task_manager.available_tasks[npc:id()]) then
+		table.remove(axr_task_manager.available_tasks[npc:id()],1)
+	end
+	--printf("npc_skip_task %s",axr_task_manager.available_tasks[npc:id()] and #axr_task_manager.available_tasks[npc:id()])
+end
+
+-- FINISHED TASK TURN-IN DIALOG
+function actor_has_finished_task(a,b)
+	local npc = who_is_npc(a, b)
+
+	axr_task_manager.generate_finished_tasks(npc,nil)
+
+	--printf("actor_has_finished_task %s",axr_task_manager.finished_tasks[npc:id()] and axr_task_manager.finished_tasks[npc:id()][1] ~= nil)
+	return axr_task_manager.finished_tasks[npc:id()] and axr_task_manager.finished_tasks[npc:id()][1] ~= nil
+end
+
+function sim_actor_has_finished_task(a,b)
+	local npc = who_is_npc(a, b)
+
+	axr_task_manager.generate_finished_tasks(npc,true)
+
+	--printf("sim_actor_has_finished_task %s",axr_task_manager.finished_tasks[npc:id()] and axr_task_manager.finished_tasks[npc:id()][1] ~= nil)
+	return axr_task_manager.finished_tasks[npc:id()] and axr_task_manager.finished_tasks[npc:id()][1] ~= nil
+end
+
+function text_npc_task_finish(a,b)
+	local npc = who_is_npc(a, b)
+	local task_id = axr_task_manager.finished_tasks[npc:id()] and axr_task_manager.finished_tasks[npc:id()][1]
+	--printf("text_npc_task_finish %s",task_id)
+	return game.translate_string(task_id and task_manager.task_ini:r_string_ex(task_id,"task_complete_descr") or "st_default_task_finished_"..math.random(1,3))
+end
+
+function text_npc_task_finish(a,b)
+	local npc = who_is_npc(a, b)
+	local task_id = axr_task_manager.finished_tasks[npc:id()] and axr_task_manager.finished_tasks[npc:id()][1]
+	--printf("text_npc_task_finish %s",task_id)
+	return game.translate_string(task_id and task_manager.task_ini:r_string_ex(task_id,"task_complete_descr") or "st_default_task_finished_"..math.random(1,3))
+end
+
+
+-- ////////////////////////////////////////////////////////////////////////////////////////////////
+--
+-- npc_set_finished_task_complete function
+--
+-- ------------------------------------------------------------------------------------------------
+--
+--	Description:
+--		- Sets the current dynamic task to complete
+--
+--	Usage:
+--		npc_set_finished_task_complete( )
+--
+--	Parameters:
+--		none
+--
+--	Return value (type: none):
+--		none
+--
+-- ------------------------------------------------------------------------------------------------
+--	Modified by DoctorX
+--	for DoctorX Questlines 1.6
+--	Last modified October 11, 2016
+-- ------------------------------------------------------------------------------------------------
+
+-- Set current dynamic task to complete:
+function npc_set_finished_task_complete( a, b )
+
+	local npc = who_is_npc( a, b )
+	axr_task_manager.set_finished_task_complete( npc )
+
+end
+
+-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+-- CANCEL TASKS
+
+function actor_has_ongoing_task(a,b)
+	local npc = who_is_npc(a, b)
+	axr_task_manager.generate_ongoing_tasks(npc,nil)
+	return axr_task_manager.ongoing_tasks[npc:id()] and axr_task_manager.ongoing_tasks[npc:id()][1] ~= nil
+end
+
+function sim_actor_has_ongoing_task(a,b)
+	local npc = who_is_npc(a, b)
+	axr_task_manager.generate_ongoing_tasks(npc,true)
+	return axr_task_manager.ongoing_tasks[npc:id()] and axr_task_manager.ongoing_tasks[npc:id()][1] ~= nil
+end
+
+function text_npc_has_cancel_task(a,b)
+	local npc = who_is_npc(a, b)
+	local task_id = axr_task_manager.ongoing_tasks[npc:id()] and axr_task_manager.ongoing_tasks[npc:id()][1]
+	--printf("text_npc_has_cancel_task %s",task_id)
+
+	local text = task_id and game.translate_string(task_manager.task_ini:r_string_ex(task_id, "title"))
+	if not (text) then
+		return game.translate_string("st_task_none_active")
+	end
+
+	local fetch = task_id and task_manager.task_ini:r_string_ex(task_id,"fetch_descr")
+	if (fetch) then
+        local sec = utils.load_var(db.actor,task_id.."_fetch")
+        if not (sec) then
+            return text or game.translate_string("st_task_none_active")
+        end
+		local name = game.translate_string(system_ini():r_string_ex(sec,"inv_name") or "")
+		return strformat(text,name or "")
+	end
+
+	return text
+end
+
+function npc_has_cancel_task(a,b)
+	local npc = who_is_npc(a, b)
+	--printf("npc_has_cancel_task %s",axr_task_manager.ongoing_tasks[npc:id()] and axr_task_manager.ongoing_tasks[npc:id()][1] ~= nil)
+	return axr_task_manager.ongoing_tasks[npc:id()] and axr_task_manager.ongoing_tasks[npc:id()][1] ~= nil
+end
+
+function npc_cancel_task(a,b)
+	local npc = who_is_npc(a, b)
+	local task_id = axr_task_manager.ongoing_tasks[npc:id()] and axr_task_manager.ongoing_tasks[npc:id()][1]
+	if (task_id) then
+        task_manager.get_task_manager():set_task_cancelled(task_id)
+	end
+	--printf("npc_cancel_task %s",task_id)
+end
+
+function npc_skip_cancel_task(a,b)
+	local npc = who_is_npc(a, b)
+	if (axr_task_manager.ongoing_tasks[npc:id()]) then
+		table.remove(axr_task_manager.ongoing_tasks[npc:id()],1)
+	end
+	--printf("npc_skip_cancel_task %s",axr_task_manager.ongoing_tasks[npc:id()] and #axr_task_manager.ongoing_tasks[npc:id()])
+end
+
+function text_actor_cancel_task(a,b)
+    local npc = who_is_npc(a, b)
+	local task_id = axr_task_manager.ongoing_tasks[npc:id()] and axr_task_manager.ongoing_tasks[npc:id()][1]
+    return game.translate_string(task_id and task_manager.task_ini:r_string_ex(task_id, "abandoned_reason") or "st_task_default_excuse_cancel_job")
+end
+
+function text_task_cancel(a,b)
+    local npc = who_is_npc(a, b)
+    local task_id = axr_task_manager.ongoing_tasks[npc:id()] and axr_task_manager.ongoing_tasks[npc:id()][1]
+    return game.translate_string(task_id and task_manager.task_ini:r_string_ex(task_id, "abandoned_reply") or "st_default_task_cancel_"..math.random(1,3))
+end
+
+-- This function allows Player to see NPC inventory as if it was a corpse
+function free_trade_with_npc(a,b)
+	local npc = who_is_npc(a, b)
+	if (hud) then
+		hud:HideActorMenu()
+		npc:use(db.actor)
+	end
+end
+
+-- Dynamic Broker dialogWW
+function condition_actor_has_valuable_item( a, b )
+	return condition_actor_has_valuable_pda(a,b) or condition_actor_has_valuable_info(a,b)
+end
+
+function condition_actor_has_valuable_pda( a, b )
+
+	local items = {
+		["itm_pda_common"] = true,
+		["itm_pda_uncommon"] = true,
+		["itm_pda_rare"] = true,
+	}
+
+	for k,v in pairs( items ) do
+		if ( v == true and db.actor:object( k ) ) then
+			return true
+		end
+	end
+
+	return false
+
+end
+
+function condition_actor_has_valuable_info( a, b )
+
+	local story_done = has_alife_info( "warlab_deactivate_generators_done" )
+
+	local items = {
+		
+		["main_story_1_quest_case"] = true,
+		["main_story_2_lab_x18_documents"] = true,
+		["main_story_3_lab_x16_documents"] = true,
+		["main_story_4_lab_x10_documents"] = true,
+		["main_story_5_lab_x8_documents"] = true,
+		["main_story_6_jup_ug_documents"] = true,
+		["main_story_7_mon_con_documents"] = true,
+		["dok_1"] = true,
+		["dok_2"] = true,
+		["dok_3"] = true,
+		["dok_4"] = true,
+		["dok_5"] = true,
+		["dok_6"] = true,
+		["dok_7"] = true,
+		["dok_8"] = true,
+		["lab_diary_1"] = true,
+		["lab_diary_2"] = true,
+		["lab_diary_3"] = true,
+		["box_lab_1"] = true,
+	}
+
+	for k,v in pairs( items ) do
+		if ( v == true and db.actor:object( k ) ) then
+			return true
+		end
+	end
+
+	return false
+end
+
+function condition_actor_has_quest_doc( a, b )
+
+	local items = {
+		
+		["main_story_1_quest_case"] = true,
+		["main_story_2_lab_x18_documents"] = true,
+		["main_story_3_lab_x16_documents"] = true,
+		["main_story_4_lab_x10_documents"] = true,
+		["main_story_5_lab_x8_documents"] = true,
+		["main_story_6_jup_ug_documents"] = true,
+		["main_story_7_mon_con_documents"] = true,
+	}
+
+	for k,v in pairs( items ) do
+		if ( v == true and db.actor:object( k ) ) then
+			return true
+		end
+	end
+
+	return false
+end
+
+--
+-- text_actor_has_valuable_item function
+--
+
+-- Text for if the player has an item that can be brokered:
+function text_actor_has_valuable_pda( a, b )
+
+	local npc = who_is_npc( a, b )
+	
+	local count = 0
+	local function itr( actor, itm )
+		local sec = itm:section( )
+		if ( sec == "itm_pda_common" or sec == "itm_pda_uncommon" or sec == "itm_pda_rare" ) then
+			count = count + 1
+		end
+	end
+
+	db.actor:iterate_inventory( itr, db.actor )
+
+	if ( count == 1 ) then
+		return game.translate_string( "st_broker_query_pda" )
+	end
+
+	return strformat( game.translate_string( "st_broker_query_pdas" ), count ) or game.translate_string( "st_broker_query_pda" )
+
+end
+
+function text_actor_has_valuable_info( a, b )
+
+	local npc = who_is_npc( a, b )
+
+	local story_done = has_alife_info( "warlab_deactivate_generators_done" )
+
+	local valuable = {
+		["main_story_1_quest_case"] = true,
+		["main_story_2_lab_x18_documents"] = true,
+		["main_story_3_lab_x16_documents"] = true,
+		["main_story_4_lab_x10_documents"] = true,
+		["main_story_5_lab_x8_documents"] = true,
+		["main_story_6_jup_ug_documents"] = true,
+		["main_story_7_mon_con_documents"] = true,
+		["dok_1"] = true,
+		["dok_2"] = true,
+		["dok_3"] = true,
+		["dok_4"] = true,
+		["dok_5"] = true,
+		["dok_6"] = true,
+		["dok_7"] = true,
+		["dok_8"] = true,
+		["lab_diary_1"] = true,
+		["lab_diary_2"] = true,
+		["lab_diary_3"] = true,
+		["box_lab_1"] = true,
+	}
+
+	for k,v in pairs( valuable ) do
+		if ( v == true and db.actor:object( k ) ) then
+		
+			local name = game.translate_string(system_ini():r_string_ex(k,"inv_name") or "")
+			return strformat(game.translate_string("st_broker_query_valuable"),name)
+		end
+	end
+
+end
+
+
+function text_actor_has_quest_doc( a, b )
+
+	local npc = who_is_npc( a, b )
+
+	local valuable = {
+		["main_story_1_quest_case"] = true,
+		["main_story_2_lab_x18_documents"] = true,
+		["main_story_3_lab_x16_documents"] = true,
+		["main_story_4_lab_x10_documents"] = true,
+		["main_story_5_lab_x8_documents"] = true,
+		["main_story_6_jup_ug_documents"] = true,
+		["main_story_7_mon_con_documents"] = true,
+	}
+
+	for k,v in pairs( valuable ) do
+		if ( v == true and db.actor:object( k ) ) then
+		
+			local name = game.translate_string(system_ini():r_string_ex(k,"inv_name") or "")
+			return game.translate_string(name).."."
+		end
+	end
+
+end
+
+function text_query_npc_info(a,b)
+    local npc = who_is_npc(a, b)
+
+	local valuable = {
+		["main_story_1_quest_case"] = 15000,
+		["main_story_2_lab_x18_documents"] = 17000,
+		["main_story_3_lab_x16_documents"] = 13000,
+		["main_story_4_lab_x10_documents"] = 16000,
+		["main_story_5_lab_x8_documents"] = 18000,
+		["main_story_6_jup_ug_documents"] = 12000,
+		["main_story_7_mon_con_documents"] = 14000,
+		["dok_1"] = 6000,
+		["dok_2"] = 3000,
+		["dok_3"] = 3000,
+		["dok_4"] = 3000,
+		["dok_5"] = 3000,
+		["dok_6"] = 3000,
+		["dok_7"] = 500,
+		["dok_8"] = 500,
+		["lab_diary_1"] = 500,
+		["lab_diary_2"] = 500,
+		["lab_diary_3"] = 500,
+		["box_lab_1"] = 25000,
+	}
+	
+	for k,v in pairs(valuable) do
+		if (db.actor:object(k)) then
+			return strformat(game.translate_string("st_broker_npc_answer_info_query"),tostring(v))
+		end
+	end
+end
+
+function text_query_npc_quest_doc(a,b)
+    local npc = who_is_npc(a, b)
+
+	local valuable = {
+		["main_story_1_quest_case"] = 10000,
+		["main_story_2_lab_x18_documents"] = 12000,
+		["main_story_3_lab_x16_documents"] = 8000,
+		["main_story_4_lab_x10_documents"] = 11000,
+		["main_story_5_lab_x8_documents"] = 13000,
+		["main_story_6_jup_ug_documents"] = 7000,
+		["main_story_7_mon_con_documents"] = 9000,
+	}
+	
+	local se_obj = alife_object(npc:id())
+	local npc_data = IsStalker(npc) and stpk_utils.get_stalker_data(se_obj)
+	local npc_name = npc_data and npc_data.specific_character or "esc_2_12_stalker_trader"
+	
+	local num = 1
+	if (has_alife_info(npc_name.."_quest_doc_given_1")) then
+		num = 2
+	elseif (has_alife_info(npc_name.."_quest_doc_given_2")) then
+		num = 3
+	end
+
+	for k,v in pairs(valuable) do
+		if (db.actor:object(k)) then
+		
+			if (num == 3) then v = v*2 end
+		
+			local text = strformat(game.translate_string("st_quest_doc_query_base"),tostring(v))
+			if (num == 1) then
+				text = strformat(game.translate_string("st_quest_doc_query_"..npc_name),tostring(v))
+			end
+			
+			return text
+		end
+	end
+end
+-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+function text_trade_npc_info(a,b)
+    local npc = who_is_npc(a, b)
+
+	local story_done = has_alife_info( "warlab_deactivate_generators_done" )
+
+
+	local valuable = {
+		["main_story_1_quest_case"] = 15000,
+		["main_story_2_lab_x18_documents"] = 17000,
+		["main_story_3_lab_x16_documents"] = 13000,
+		["main_story_4_lab_x10_documents"] = 16000,
+		["main_story_5_lab_x8_documents"] = 18000,
+		["main_story_6_jup_ug_documents"] = 12000,
+		["main_story_7_mon_con_documents"] = 14000,
+		["dok_1"] = 10000,
+		["dok_2"] = 5000,
+		["dok_3"] = 5000,
+		["dok_4"] = 5000,
+		["dok_5"] = 5000,
+		["dok_6"] = 5000,
+		["dok_7"] = 2500,
+		["dok_8"] = 2500,
+		["lab_diary_1"] = 1500,
+		["lab_diary_2"] = 1500,
+		["lab_diary_3"] = 1500,
+		["box_lab_1"] = 50000,
+	}
+
+	for k,v in pairs(valuable) do
+		local item = db.actor:object(k)
+		if (item) then
+			db.actor:transfer_item(item,npc)
+			news_manager.relocate_item(db.actor, "out", item:section())
+			relocate_money(npc, v, "in")
+			local name = game.translate_string(system_ini():r_string_ex(item:section(),"inv_name") or "")
+			xr_sound.set_sound_play(db.actor:id(), "pda_tips")
+			return strformat(game.translate_string("st_broker_trade_valuable"),name)
+		end
+	end
+end
+
+
+function text_trade_npc_pda(a,b)
+    local npc = who_is_npc(a, b)
+
+    local tbl = { common = 0, uncommon = 0, rare = 0}
+    local function itr(actor,itm)
+        local chk, pda_t = itm:section():match("(itm_pda_)([%l]+)")
+        if chk and tbl[pda_t] then
+			tbl[pda_t] = tbl[pda_t] + 1
+            actor:transfer_item(itm,npc)
+            xr_statistic.inc_counter("pdas_delivered")
+        end
+    end
+    db.actor:iterate_inventory(itr,db.actor)
+
+    local npc_text = ""
+
+    local total_value = 0
+    local pda_bonus_coords = 0
+
+    local first_line
+    for j,count in pairs(tbl) do
+        if (count > 0) then
+		    local mul = j == "common" and 1 or j == "uncommon" and 2 or j == "rare" and 4
+			local mul2 = j == "common" and 0.5 or j == "uncommon" and 5 or j == "rare" and 10
+
+            news_manager.relocate_item(db.actor, "out", "itm_pda_"..j, count)
+
+            for i=1, count do
+                total_value = total_value + (mul * math.random(450,900))
+
+                if (math.random(1,100) <= mul2) then
+                    pda_bonus_coords = pda_bonus_coords + 1
+                end
+            end
+
+            if (count == 1) then
+                npc_text = game.translate_string("st_broker_npc_about_pda_"..j.."_"..math.random(1,20))
+                first_line = true
+            elseif (count > 1) then
+                for i=1,count do
+                    if not (first_line) then
+                        first_line = true
+                        npc_text = game.translate_string("st_broker_npc_about_pda_"..j.."_"..math.random(1,20))
+                    else
+                        npc_text = npc_text..".. "..game.translate_string("st_broker_npc_about_pda_"..j.."_"..math.random(1,20))
+                    end
+                end
+            end
+        end
+    end
+	
+	-- Round off value:
+	total_value = math.ceil( (total_value / 50) )
+	total_value = (total_value * 50)
+    relocate_money(npc, total_value, "in")
+
+	-- Add ending text:
+	npc_text = (npc_text .. " " .. game.translate_string( "st_drx_broker_finish_" .. math.random( 1, 3 ) ))
+
+    if (pda_bonus_coords > 0 and coc_treasure_manager) then
+        npc_text = npc_text .. "\n\n " .. game.translate_string("st_broker_npc_about_pda_bonus_coords")
+
+        for i=1,pda_bonus_coords do
+            coc_treasure_manager.create_random_stash()
+        end
+    end
+
+	xr_sound.set_sound_play(db.actor:id(), "pda_tips")
+    return npc_text
+end
+
+-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
+function text_trade_npc_quest_doc(a,b)
+    local npc = who_is_npc(a, b)
+
+	local valuable = {
+		["main_story_1_quest_case"] = 25000,
+		["main_story_2_lab_x18_documents"] = 23000,
+		["main_story_3_lab_x16_documents"] = 12000,
+		["main_story_4_lab_x10_documents"] = 15000,
+		["main_story_5_lab_x8_documents"] = 18000,
+		["main_story_6_jup_ug_documents"] = 22000,
+		["main_story_7_mon_con_documents"] = 30000,
+	}
+	
+	local revard_list = {
+		["esc_2_12_stalker_trader"] = {"wpn_sig220_nimble","wpn_mp5_nimble"},
+		["mar_smart_terrain_base_stalker_leader_marsh"] = {"wpn_remington870","wpn_pkm_nimble"},
+		["bar_dolg_leader"] = {"wpn_ak74u_nimble","wpn_vintorez_nimble"},
+		["zat_b7_bandit_boss_sultan"] = {"wpn_desert_eagle_nimble","wpn_rg-6"},
+		["agr_smart_terrain_1_6_near_2_military_colonel_kovalski"] = {"wpn_saiga12s","wpn_groza_nimble"},
+		["cit_killers_merc_trader_stalker"] = {"wpn_fn2000_nimble","wpn_sig550_nimble"},
+		["yan_stalker_sakharov"] = {"af_aam","detector_elite"},
+		["jup_a6_freedom_leader"] = {"wpn_svu_nimble","wpn_svd_nimble"},
+	}
+	
+	local se_obj = alife_object(npc:id())
+	local npc_data = IsStalker(npc) and stpk_utils.get_stalker_data(se_obj)
+	local npc_name = npc_data and npc_data.specific_character or "esc_2_12_stalker_trader"
+	local num = 1
+	
+	if (has_alife_info(npc_name.."_quest_doc_given_1")) then
+		disable_info(npc_name.."_quest_doc_given_1")
+		give_info(npc_name.."_quest_doc_given_2")
+		num = 2
+	elseif (has_alife_info(npc_name.."_quest_doc_given_2")) then
+		num = 3
+	else
+		give_info(npc_name.."_quest_doc_given_1")
+	end
+
+	for k,v in pairs(valuable) do
+		local item = db.actor:object(k)
+		if (item) then
+		
+			local text = game.translate_string("st_quest_doc_finish_base")
+			if (num == 1) then
+				text = game.translate_string("st_quest_doc_finish_"..npc_name)
+			elseif (num == 3) then
+				v = v*2
+			end
+			
+			db.actor:transfer_item(item,npc)
+			news_manager.relocate_item(db.actor, "out", item:section())
+			relocate_money(npc, v, "in")
+			xr_sound.set_sound_play(db.actor:id(), "pda_tips")
+
+			local reward = revard_list[npc_name]
+			if (reward) and (num < 3) then
+				dialogs.relocate_item_section(db.actor,reward[num],"in")
+			end
+			
+			return text
+		end
+	end
+end
+
+-- Dynamic Surrender dialog
+function victim_is_bounty(a,b)
+	local npc = who_is_npc(a, b)
+	local id = npc:id()
+	for task_id,npc_id in pairs(axr_task_manager.bounties_by_id) do
+		if (id == npc_id) then
+			return true
+		end
+	end
+	return false
+end
+
+function npc_is_surrendered(a,b)
+	local npc = who_is_npc(a, b)
+	local st = db.storage[npc:id()]
+	local po = st and st.victim_surrender and st.victim_surrender < 65534 and level.object_by_id(st.victim_surrender)
+	--printf("npc_is_surrendered: surrendered to %s",st.victim_surrender)
+	if (po) then
+		return true
+	end
+	return false
+end
+
+function npc_is_not_surrendered(a,b)
+	local npc = who_is_npc(a, b)
+	local st = db.storage[npc:id()]
+	local po = st and st.victim_surrender and st.victim_surrender < 65534 and level.object_by_id(st.victim_surrender)
+	if not (po) then
+		return false
+	end
+	return true
+end
+
+function victim_asked(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	--printf("CHECK ASKED: "..tostring(utils.load_var(npc,"victim_asked")))
+	return utils.load_var(npc,"victim_asked",false) == true
+end
+
+function victim_not_asked(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	--printf("CHECK NOT ASKED: "..tostring(utils.load_var(npc,"victim_asked")))
+	return utils.load_var(npc,"victim_asked",false) == false
+end
+
+function victim_surrender(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	return utils.load_var(npc,"victim_surrender",false) == true
+end
+
+function victim_no_surrender(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	return utils.load_var(npc,"victim_surrender",false) == false
+end
+
+function set_victim_surrendered(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	utils.save_var(npc,"victim_surrender",true)
+end
+
+function surrender_dialog_victim_start(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	local id = npc:id()
+	return game.translate_string("st_surrender_victim_"..math.random(1,4))
+end
+
+function surrender_dialog_actor_start(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	local id = npc:id()
+	return game.translate_string("st_surrender_query_actor_"..math.random(1,4))
+end
+
+function surrender_dialog_victim_answer(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	local id = npc:id()
+	utils.save_var(npc,"victim_asked",true)
+	--printf("SAVE")
+	return game.translate_string("st_surrender_query_victim_"..math.random(1,14))
+end
+
+function surrender_dialog_actor_end_1(a,b)
+end
+
+function surrender_dialog_actor_end_2(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	local npc_faction = character_community(npc)
+	db.actor:transfer_item(db.actor:object("bandage"), npc)
+	alife():create("medkit_script",npc:position(),0,0,npc:id())
+	xr_wounded.unlock_medkit(npc)
+	npc:set_relation(game_object.neutral,db.actor)
+	game_relations.change_factions_community_num(npc_faction,db.actor:id(),5)
+	xr_statistic.inc_counter("help_wounded")
+	db.storage[npc:id()].panicked_to_actor = true
+	
+	
+end
+
+function surrender_dialog_actor_end_3(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	local npc_faction = character_community( npc )
+	game_relations.change_factions_community_num(npc_faction,db.actor:id(),-5)
+	utils.save_var(npc,"victim_surrender",true)
+	alun_utils.get_sound(hit_sound):play_at_pos(db.actor,db.actor:position(),0)
+	level.add_cam_effector('camera_effects\\hit_front_right.anm', 8063, false,'')
+end
+
+
+
+
+
+function surrender_victim_answers_bounty(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	local id = npc:id()
+
+	local prefix = "default"
+	for task_id,npc_id in pairs(axr_task_manager.bounties_by_id) do
+		if (npc_id == id) then
+			if (task_id == "esc_m_trader_task_2") then
+				prefix = "esc_m_trader"
+			elseif (task_id == "zat_b7_bandit_boss_sultan_task_1") then
+				prefix = "zat_b7_bandit_boss_sultan"
+			end
+		end
+	end
+
+	local r = math.random(1,10)
+	if (r == 1 or r == 2) then
+		r = (math.random(1,100)/100)
+		local sec = "itm_pda_common"
+		if (r <= 0.10) then
+			sec = "itm_pda_rare"
+		elseif (r <= 0.5) then
+			sec = "itm_pda_uncommon"
+		end
+		relocate_item_section_to_actor(a, b, sec, 1)
+		relocate_money_to_actor(a,b,math.random(500,6000))
+		return game.translate_string("st_surrender_victim_answer_"..prefix.."_bounty_1")
+	elseif (r == 3 or r == 4) then
+		return game.translate_string("st_surrender_victim_answer_"..prefix.."_bounty_2")
+	elseif (r == 5) then
+		return game.translate_string("st_surrender_victim_answer_"..prefix.."_bounty_3")
+	elseif (r == 6 or r == 7) then
+		return game.translate_string("st_surrender_victim_answer_"..prefix.."_bounty_4")
+	elseif (r == 8 or r == 9) then
+		return game.translate_string("st_surrender_victim_answer_"..prefix.."_bounty_5")
+	end
+
+	if ((math.random(1,100)/100) < 0.5) then
+		alife():create("medkit_script",npc:position(),0,0,npc:id())
+		xr_wounded.unlock_medkit(npc)
+	end
+
+	return game.translate_string("st_surrender_victim_answer_5")
+end
+
+function surrender_victim_answers_1(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+
+	local r = math.random(1,5)
+
+	if (axr_dynamic_spawn or coc_treasure_manager) and (r <= 2) then
+
+		local function itr(npc,itm)
+			if (IsWeapon(itm)) then
+				local cond = math.random(25,50)/100
+				itm:set_condition(cond)
+				npc:transfer_item(itm,db.actor)
+			end
+		end
+
+		npc:iterate_inventory(itr,npc)
+
+		if (coc_treasure_manager) then
+			coc_treasure_manager.create_random_stash(nil, strformat(game.translate_string("st_itm_stash_of_character"),npc:character_name()) )
+			if (has_alife_info("perk_authority") and ((math.random(1,100)/100) <= 0.33)) then
+				coc_treasure_manager.create_random_stash(nil,strformat(game.translate_string("st_itm_stash_of_character"),npc:character_name()))
+			end
+		else
+			axr_dynamic_spawn.random_secret()
+		end
+
+		if (axr_dynamic_spawn.last_secret) then
+			local hint = axr_dynamic_spawn.ini:r_string_ex(axr_dynamic_spawn.last_secret,"hint")
+			hint = hint and " " .. game.translate_string(hint) or ""
+			return game.translate_string("st_surrender_victim_answer_"..math.random(3)) .. hint
+		elseif (coc_treasure_manager and coc_treasure_manager.last_secret) then
+			return game.translate_string("st_surrender_victim_answer_"..math.random(3))
+		else
+			return game.translate_string("st_surrender_victim_answer_5")
+		end
+	elseif (r == 3) then
+		r = (math.random(1,100)/100)
+		local sec = "itm_pda_common"
+		if (r <= 0.10) then
+			sec = "itm_pda_rare"
+		elseif (r <= 0.5) then
+			sec = "itm_pda_uncommon"
+		end
+		relocate_item_section_to_actor(a, b, sec, 1)
+		return game.translate_string("st_surrender_victim_answer_4")
+	elseif (r == 5) then
+		alife():create("medkit_script",npc:position(),0,0,npc:id())
+		xr_wounded.unlock_medkit(npc)
+		return game.translate_string("st_surrender_victim_answer_5")
+	end
+	
+	return game.translate_string("st_surrender_victim_answer_5")
+end
+
+function surrender_victim_answers_2(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	alife():create("medkit_script",npc:position(),0,0,npc:id())
+	xr_wounded.unlock_medkit(npc)
+	--npc:set_relation(game_object.enemy,db.actor)
+	local function itr(npc,itm)
+		if (IsWeapon(itm)) then
+			local cond = math.random(25,50)/100
+			itm:set_condition(cond)
+			npc:transfer_item(itm,db.actor)
+		end
+	end
+
+	xr_statistic.inc_counter("help_wounded")
+
+	npc:iterate_inventory(itr,npc)
+
+	--if (math.random() <= 0.8) then
+		--npc:set_relation(game_object.neutral,db.actor)
+	--end
+
+	db.storage[npc:id()].panicked_to_actor = true
+
+	return game.translate_string("st_surrender_victim_answer_6")
+end
+
+
+
+function robbery_dialog_npc_start(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	local id = npc:id()
+	return game.translate_string("sim_robbery_npc_start_"..math.random(1,9))
+end
+
+function robbery_dialog_npc_friend(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	local id = npc:id()
+	return game.translate_string("sim_robbery_npc_friend_"..math.random(1,10))
+end
+
+function robbery_dialog_npc_threat(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	local id = npc:id()
+	return game.translate_string("sim_robbery_npc_threat_"..math.random(1,10))
+end
+
+
+function robbery_play_threat_sound(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	xr_effects.play_sound(db.actor,npc,{"robbery_scene_threat"})
+end
+
+function robbery_play_kill_actor_sound(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	xr_effects.play_sound(db.actor,npc,{"robbery_scene_kill_actor"})
+end
+
+function robbery_play_after_pay_sound(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	xr_effects.play_sound(db.actor,npc,{"robbery_scene_after_pay_first"})
+end
+
+function robbery_dialog_can_friend(a,b)
+	return db.actor and (relation_registry.community_goodwill("bandit", db.actor:id()) >= 400)
+end
+
+function robbery_dialog_cant_friend(a,b)
+	return not robbery_dialog_can_friend(a,b)
+end
+
+function robbery_dialog_can_threat(a,b)
+	return has_alife_info("perk_authority")
+end
+
+function robbery_dialog_cant_threat(a,b)
+	return not robbery_dialog_can_threat(a,b)
+end
+
+function robbery_dialog_take_items(a,b)
+
+	local npc = dialogs.who_is_npc(a,b)
+	local ini = system_ini()
+	local ltx = ini_file("misc\\trade\\trade_presets.ltx")
+	local total_cost = 0
+	local function itr( actor, itm )
+		local sec = itm:section()
+		
+		local cost = ini:r_float_ex(sec,"cost")*1.0 or 0
+		local can_take = (not ltx:line_exist("misc",sec)) and (not ltx:line_exist("misc",sec)) and (not ltx:line_exist("trash",sec)) and (not ltx:line_exist("unused",sec)) and (itm:condition() > 0.7) and (ini:r_bool_ex(sec,"quest_item",false) == false) and (cost > 0) and (cost <= (3000 - total_cost))
+		
+		can_take = can_take and not (IsWeapon(itm) or IsOutfit(itm) or IsHeadgear(itm))
+		
+		
+		if  can_take and (total_cost < 3000) then
+			total_cost = total_cost + cost
+			db.actor:transfer_item(itm,npc)
+			news_manager.relocate_item(db.actor, "out", sec)
+		end
+	end
+	db.actor:iterate_inventory(itr, db.actor)
+	
+	local diff = 3000-math.ceil(total_cost/100)*100
+	if (diff > 0) then
+		local money = db.actor:money()
+		money = utils.clamp(money,0,diff)
+		db.actor:transfer_money(money, npc)
+		news_manager.relocate_money(db.actor, "out", money)
+	end
+end
+
+function robbery_dialog_set_enemies(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	xr_effects.set_npc_squad_enemy_to_actor(db.actor,npc)
+end
+
+function robbery_dialog_end(a,b)
+	db.actor:give_info_portion("sim_robbery_end")
+end
+
+
+
+
+function set_enemy(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	npc:set_relation(game_object.enemy,db.actor)
+end
+--End Alundaio
+function is_npc_in_current_smart(first_speaker, second_speaker, smart_name)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	local smart = xr_gulag.get_npc_smart(npc)
+	if not smart then return false end
+	return smart:name() == smart_name
+end
+
+
+function travel_dialog(first_speaker, second_speaker)
+
+
+	local result = game.translate_string("dm_stalker_doing_nothing_"..math.random(1,4))
+
+	local npc = who_is_npc(first_speaker, second_speaker)
+	
+	local squad = get_object_squad(npc)
+	
+	if not squad then
+		return result
+	end
+	
+	local current_target = squad.current_target_id and alife_object(squad.current_target_id)
+	local assigned_target = squad.assigned_target_id and alife_object(squad.assigned_target_id)
+	
+	
+	if (current_target ~= assigned_target) then
+		result = game.translate_string("dm_travel_start").." "..dynamic_news_helper.GetPointDescription(assigned_target).." - "..game.translate_string("dm_travel_end")
+	end
+	
+	--[[
+	local assigned_target = squad.assigned_target and alife_object(squad.assigned_target)
+	if not (assigned_target) then return result end
+	
+	
+	--local level_name = sim:level_name(game_graph():vertex(assigned_target.m_game_vertex_id):level_id())
+	
+	
+	--result = game.translate_string(level_name)..", "..game.translate_string(assigned_target:name())
+	--]]
+	
+	return result
+end
+
+function break_dialog(first_speaker, second_speaker, id)
+	first_speaker:stop_talk()
+	second_speaker:stop_talk()
+end
+
+function update_npc_dialog(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	local st = db.storage[npc:id()]
+	st.meet.meet_manager:update()
+	xr_meet.process_npc_usability(npc)
+	--xr_motivator.update_logic(npc)
+	xr_logic.try_switch_to_another_section(npc, st[st.active_scheme], db.actor)
+end
+
+function disable_talk_self(first_speaker, second_speaker)
+	first_speaker:disable_talk()
+end
+function disable_talk_victim(first_speaker, second_speaker)
+	second_speaker:disable_talk()
+end
+
+function punch(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	
+	xr_abuse.enable_abuse(npc)
+	xr_abuse.set_abuse(npc, 6)
+end
+
+function get_money_then_leave(first_speaker, second_speaker)
+	db.storage[first_speaker:id()].meet.enabled = false
+	db.storage[first_speaker:id()].robber.enabled = true
+end
+
+function is_wounded(first_speaker, second_speaker)
+--	if db.storage[first_speaker:id()].wounded ~= nil and
+--		 db.storage[first_speaker:id()].wounded.wound_manager.can_use_medkit == true
+--	then
+--		return false
+--	end
+	local npc = who_is_npc(first_speaker, second_speaker)
+	return xr_wounded.is_wounded(npc)
+end
+--[[
+function is_opp_wounded(first_speaker, second_speaker, dialog_id)
+		if db.storage[second_speaker:id()].wounded ~= nil and
+			 db.storage[second_speaker:id()].wounded.wound_manager.can_use_medkit == true
+		then
+				return false
+		end
+	return	xr_wounded.is_wounded(second_speaker)
+end
+]]--
+function is_not_wounded(first_speaker, second_speaker, dn)
+	return not is_wounded(first_speaker, second_speaker)
+end
+function actor_have_medkit(first_speaker, second_speaker)
+	local med = {"medkit","medkit_army","medkit_scientic"}
+	for k,v in pairs(med) do
+		if (db.actor:object(v)) then
+			return true
+		end
+	end
+	return false
+end
+function actor_hasnt_medkit(first_speaker, second_speaker)
+	return actor_have_medkit(first_speaker, second_speaker) == false
+end
+function actor_have_bandage(first_speaker, second_speaker)
+	return db.actor:object("bandage") ~= nil
+end
+function transfer_medkit(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+
+	xr_wounded.unlock_medkit(npc)
+
+	if not (npc:object("medkit_script")) then
+		alife():create("medkit_script", npc:position(), npc:level_vertex_id(), npc:game_vertex_id(), npc:id())
+	end
+
+	local t = {"medkit","medkit_army","medkit_scientic"}
+	for i=1,#t do
+		if (db.actor:object(t[i])) then
+			dialogs.relocate_item_section(npc,t[i],"out")
+			break
+		end
+	end
+
+	if (npc:relation(db.actor) >= game_object.enemy) then
+		npc:set_relation(game_object.neutral,db.actor)
+	else
+		npc:set_relation(game_object.friend,db.actor)
+	end
+
+	xr_statistic.inc_counter("help_wounded")
+end
+function transfer_bandage(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "bandage", "out")
+	second_speaker.bleeding = 1
+	second_speaker:set_relation(game_object.friend, first_speaker)
+end
+function kill_yourself(first_speaker, second_speaker)
+local npc = who_is_npc(first_speaker, second_speaker)
+	npc:kill(actor)
+end
+
+--' Use this function instead.
+function relocate_item_section(victim, section, type, amount)
+	if db.actor then
+		if not amount then
+			amount = 1
+		end
+		for i = 1, amount do
+			if type == "in" then
+			--' Трансферить нужно только квестовые предметы.
+				--if quest_section[section] == true and victim ~= nil and victim:object(section) ~= nil then
+				--	victim:transfer_item(victim:object(section), db.actor)
+				--else
+					alife():create(section,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id())
+				--end
+			elseif type == "out" then
+				if victim == nil then
+					printf("Couldn't relocate item to NULL")
+				end
+				db.actor:transfer_item(db.actor:object(section), victim)
+			end
+		end
+		if (utils.is_ammo(section)) then
+			local ltx = system_ini()
+			local box_size = ltx:r_s32(section, "box_size")
+			amount = amount * box_size
+		end
+		news_manager.relocate_item(db.actor, type, section, amount)
+	end
+end
+
+
+function relocate_money(victim, num, type)
+	if db.actor then
+		if type == "in" then
+			db.actor:give_money(num)
+			-- game_stats.money_quest_update (num)
+
+		elseif type == "out" then
+			if victim == nil then
+				printf("Couldn't relocate money to NULL")
+			end
+			db.actor:transfer_money(num, victim)
+			-- game_stats.money_quest_update(-num)
+		end
+		news_manager.relocate_money(db.actor, type, num)
+	end
+end
+
+--'---------------------------------------------------------------------------------
+--' DIALOG ALLOWED
+--'---------------------------------------------------------------------------------
+--function dialog_allowed(object, victim, id)
+--	if id ~= nil then
+----		printf("*DIALOGS*: dialog_allowed: %s", id)
+--	else
+----		printf("*DIALOGS*: dialog_allowed: nil")
+--	end
+--	if db.storage[victim:id()].actor_dialogs ~= nil then
+--		for k,v in pairs(db.storage[victim:id()].actor_dialogs) do
+--			if v == id then return true end
+--		end
+--	end
+--	return false
+--end
+--function dialog_not_disable(object, victim, id)
+--	if id ~= nil then
+----		printf("*DIALOGS*: dialog_disable:%s", id)
+--	else
+----		printf("*DIALOGS*: dialog_disable:nil")
+--	end
+--	if db.storage[victim:id()].actor_disable ~= nil then
+--		for k,v in pairs(db.storage[victim:id()].actor_disable) do
+--			if v == id then return false end
+--		end
+--	end
+--	return true
+--end
+
+function allow_wounded_dialog(object, victim, id)
+	if db.storage[victim:id()].wounded == nil then
+		return false
+	end
+	if db.storage[victim:id()].wounded.help_dialog == id then
+		return true
+	end
+	return false
+end
+
+--function allow_guide_dialog(object, victim, id)
+--	local section = db.storage[victim:id()].active_section
+--	printf("active_section %s", tostring(section))
+--	if section == nil then
+--		return false
+--	end
+--	if string.find(section, "conductor", 1) ~= nil then
+--		return true
+--	end
+--	return false
+--end
+
+-----------------------------------------------------------------------------------
+-- LEVELS
+-----------------------------------------------------------------------------------
+--function level_escape(first_speaker, second_speaker)
+--	return level.name() == "l01_escape"
+--end
+--
+--function level_garbage(first_speaker, second_speaker)
+--	return level.name() == "l02_garbage"
+--end
+--
+--function level_agroprom(first_speaker, second_speaker)
+--	return level.name() == "l03_agroprom_ai2" or level.name() == "l03_agroprom"
+--end
+
+
+function level_zaton(first_speaker, second_speaker)
+	return level.name() == "zaton"
+end
+
+function level_jupiter(first_speaker, second_speaker)
+	return level.name() == "jupiter"
+end
+
+function level_pripyat(first_speaker, second_speaker)
+	return level.name() == "pripyat"
+end
+
+function not_level_zaton(first_speaker, second_speaker)
+	return level.name() ~= "zaton"
+end
+
+function not_level_jupiter(first_speaker, second_speaker)
+	return level.name() ~= "jupiter"
+end
+
+function not_level_pripyat(first_speaker, second_speaker)
+	return level.name() ~= "pripyat"
+end
+
+-----------------------------------------------------------------------------------
+-- Relation functions
+-----------------------------------------------------------------------------------
+function is_friend(first_speaker, second_speaker)
+	return first_speaker:relation(second_speaker) == game_object.friend
+end
+
+function is_not_friend(first_speaker, second_speaker)
+	return not is_friend(first_speaker, second_speaker)
+end
+
+function become_friend(first_speaker, second_speaker)
+	first_speaker:set_relation(game_object.friend, second_speaker)
+end
+
+-----------------------------------------------------------------------------------
+-- Community
+-----------------------------------------------------------------------------------
+function npc_stalker(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	return character_community(npc) == "stalker"
+end
+
+function npc_bandit(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	return character_community(npc) == "bandit"
+end
+
+function npc_freedom(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	return character_community(npc) == "freedom"
+end
+
+function npc_dolg(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	return character_community(npc) == "dolg"
+end
+
+function npc_killer(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	return character_community(npc) == "killer"
+end
+
+function npc_army(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	return character_community(npc) == "army"
+end
+
+function npc_ecolog(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	return character_community(npc) == "ecolog"
+end
+
+function npc_csky(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	return character_community(npc) == "csky"
+end
+-----------------------------------------------------------------------------------
+-- Money functions
+-----------------------------------------------------------------------------------
+function has_2000_money(first_speaker, second_speaker)
+	return first_speaker:money() >= 2000
+end
+
+function has_3000_money(first_speaker, second_speaker)
+	return first_speaker:money() >= 3000
+end
+
+function take_3000_money(first_speaker, second_speaker)
+	news_manager.relocate_money(db.actor, "out", 3000)
+end
+
+function has_7000_money(first_speaker, second_speaker)
+	return first_speaker:money() >= 7000
+end
+
+function take_7000_money(first_speaker, second_speaker)
+	news_manager.relocate_money(db.actor, "out", 7000)
+end
+-----------------------------------------------------------------------------------
+-- TRADE
+-----------------------------------------------------------------------------------
+--' Инициализация торговли
+function trade_init(seller, buyer)
+	db.storage[seller:id()].meet.begin_wait_to_see.begin = time_global()/1000
+	xr_position.setPosition(db.storage[seller:id()].meet.Seller,
+							db.storage[seller:id()].meet.Seller:level_vertex_id())
+	db.storage[seller:id()].meet.Buyer = buyer
+end
+
+function want_trade(seller, buyer)
+	if seller:relation(buyer) == game_object.friend or
+		seller:relation(buyer) == game_object.neutral
+	then
+		return true
+	else
+		return false
+	end
+end
+
+function dont_want_trade(seller, buyer)
+	return not want_trade(seller,buyer)
+end
+
+----------------------------------------------------------------------------------
+-- Новые функции трансфера предметов в диалогах!!!
+----------------------------------------------------------------------------------
+
+function relocate_item_section_to_actor(first_speaker, second_speaker, section, amount)
+	-- Сначала выясним кто из них актер
+	local npc = who_is_npc(first_speaker, second_speaker)
+	local v = 0
+	--' Трансферить нужно только квестовые предметы.
+	if not amount then
+		amount = 1
+	end
+
+	local function transfer_object_item(temp, item)
+		--printf("item:section(): [%s]", item:section())
+		if (item:section() == section and v ~= 0) then
+			npc:transfer_item(item, db.actor)
+			v = v - 1
+		end
+	end
+
+	if amount > 1 then
+		v = amount
+		npc:iterate_inventory(transfer_object_item, nil)
+	else
+		if npc:object(section) ~= nil then
+			npc:transfer_item(npc:object(section), db.actor)
+		else
+			alife():create(section,
+					db.actor:position(),
+					db.actor:level_vertex_id(),
+					db.actor:game_vertex_id(),
+					db.actor:id())
+		end
+	end
+
+	if v ~= 0 then
+		for i = 1, v do
+			alife():create(section,
+					db.actor:position(),
+					db.actor:level_vertex_id(),
+					db.actor:game_vertex_id(),
+					db.actor:id())
+		end
+	end
+	if (utils.is_ammo(section)) then
+		local ltx = system_ini()
+		local box_size = ltx:r_s32(section, "box_size")
+		amount = amount * box_size
+	end
+	news_manager.relocate_item(db.actor, "in", section, amount)
+end
+
+function relocate_money_to_actor(first_speaker, second_speaker, num)
+	db.actor:give_money(num)
+	-- game_stats.money_quest_update (num)
+	news_manager.relocate_money(db.actor, "in", num)
+end
+
+function relocate_money_from_actor(first_speaker, second_speaker, num)
+	local victim = who_is_npc(first_speaker, second_speaker)
+	if victim == nil then
+		printf("Couldn't relocate money to NULL")
+	end
+	db.actor:transfer_money(num, victim)
+	-- game_stats.money_quest_update(-num)
+	news_manager.relocate_money(db.actor, "out", num)
+end
+
+--[[ Old one
+function relocate_item_section_from_actor(first_speaker, second_speaker, section)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	db.actor:transfer_item(db.actor:object(section), npc)
+	news_manager.relocate_item(db.actor, "out", section)
+end
+]]--
+
+function who_is_actor(first_speaker, second_speaker)
+	local npc = second_speaker
+	if db.actor:id() ~= npc:id() then
+		npc	= first_speaker
+	end
+	return npc
+end
+
+--section - Имя секции для передачи; amount - количество, также принимает стринг "all"
+function relocate_item_section_from_actor(first_speaker, second_speaker, section, amount)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	local i = 0
+	--printf("Amount [%s]", tostring(amount))
+	if not amount then
+		amount = 1
+	end
+
+	local function transfer_object_item(temp, item)
+		--printf("item:section(): [%s]", item:section())
+		if (item:section() == section and i ~= 0) then
+			db.actor:transfer_item(item, npc)
+			i = i - 1
+		end
+	end
+
+	if amount == "all" then
+		i = -1
+		db.actor:iterate_inventory(transfer_object_item, nil)
+		amount = (i+1)*(-1)
+		i = 0
+	elseif amount > 1 then
+		i = amount
+		db.actor:iterate_inventory(transfer_object_item, nil)
+	elseif amount < 1 then
+		printf("Wrong parameters in function 'relocate_item_section_from_actor'!")
+	else
+		db.actor:transfer_item(db.actor:object(section), npc)
+	end
+
+	if i~=0 then
+		assert("Actor do not has enough items! Transferred [%s], needed [%s]", tostring(amount - i), tostring(amount))
+	end
+
+	if (utils.is_ammo(section)) then
+		local ltx = system_ini()
+		local box_size = ltx:r_s32(section, "box_size")
+		amount = amount * box_size
+	end
+	news_manager.relocate_item(db.actor, "out", section, amount - i)
+end
+
+function actor_has_item(first_speaker, second_speaker, section)
+	return db.actor:object(section) ~= nil
+end
+
+function npc_has_item(first_speaker, second_speaker, section)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	return npc:object(section) ~= nil
+end
+
+function who_is_npc(first_speaker, second_speaker)
+	return first_speaker:id() == 0 and second_speaker or first_speaker
+end
+
+--------------------------------------------------------------------------------
+function transfer_any_pistol_from_actor(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+		db.actor:iterate_inventory(is_pistol, npc)
+	if(db.actor.pistol~=nil) then
+			db.actor:transfer_item(db.actor:object(db.actor.pistol), npc)
+		news_manager.relocate_item(db.actor, "out", db.actor.pistol)
+		db.actor.pistol = nil
+	end
+end
+
+function is_pistol(npc, item)
+	local section = item:section()
+	if(section=="wpn_beretta")
+	or(section=="wpn_colt1911")
+	or(section=="wpn_desert_eagle")
+	or(section=="wpn_fort")
+	or(section=="wpn_hpsa")
+	or(section=="wpn_pb")
+	or(section=="wpn_pm")
+	or(section=="wpn_usp")
+	or(section=="wpn_walther") then
+		db.actor.pistol = section
+	end
+end
+
+function have_actor_any_pistol(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+		db.actor:iterate_inventory(is_pistol, npc)
+	if(db.actor.pistol~=nil) then
+		return true
+	else
+		return false
+	end
+end
+
+--------------------------------------------------------------------------------
+function transfer_any_gun_from_actor(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+		db.actor:iterate_inventory(is_gun, npc)
+	if(db.actor.gun~=nil) then
+			db.actor:transfer_item(db.actor:object(db.actor.gun), npc)
+		news_manager.relocate_item(db.actor, "out", db.actor.gun)
+		db.actor.gun = nil
+	end
+end
+
+function is_gun(npc, item)
+	local section = item:section()
+	if(section=="wpn_abakan")
+	or(section=="wpn_ak74")
+	or(section=="wpn_ak74u")
+	or(section=="wpn_groza")
+	or(section=="wpn_sig550")
+	or(section=="wpn_vintorez") then
+		db.actor.gun = section
+	end
+end
+
+function have_actor_any_gun(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+		db.actor:iterate_inventory(is_gun, npc)
+	if(db.actor.gun~=nil) then
+		return true
+	else
+		return false
+	end
+end
+
+--------------------------------------------------------------------------------
+function transfer_any_shootgun_from_actor(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+		db.actor:iterate_inventory(is_shootgun, npc)
+	if(db.actor.shootgun~=nil) then
+			db.actor:transfer_item(db.actor:object(db.actor.shootgun), npc)
+		news_manager.relocate_item(db.actor, "out", db.actor.shootgun)
+		db.actor.shootgun = nil
+	end
+end
+
+function is_shootgun(npc, item)
+	local section = item:section()
+	if(section=="wpn_bm16")
+	or(section=="wpn_toz34")
+	or(section=="wpn_wincheaster1300")
+	or(section=="wpn_spas12") then
+		db.actor.shootgun = section
+	end
+end
+
+function have_actor_any_shootgun(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+		db.actor:iterate_inventory(is_shootgun, npc)
+	if(db.actor.shootgun~=nil) then
+		return true
+	else
+		return false
+	end
+end
+--------------------------------------------------------------------------------
+--			ALIFE SUPPORT
+--------------------------------------------------------------------------------
+
+function disable_ui(first_speaker, second_speaker)
+	xr_effects.disable_ui(first_speaker, second_speaker)
+end
+
+function disable_ui_only(first_speaker, second_speaker)
+	xr_effects.disable_ui_only(first_speaker, second_speaker)
+end
+
+function is_surge_running(first_speaker, second_speaker)
+	return xr_conditions.surge_started()
+end
+
+function is_surge_not_running(first_speaker, second_speaker)
+	return not xr_conditions.surge_started()
+end
+
+---------------------
+function quest_dialog_heli_precond(first_speaker, second_speaker)
+	if (has_alife_info("jup_b9_heli_1_searched") and
+				has_alife_info("zat_b100_heli_2_searched") and
+				has_alife_info("zat_b28_heli_3_searched") and
+				has_alife_info("jup_b8_heli_4_searched") and
+				has_alife_info("zat_b101_heli_5_searched")) or
+				has_alife_info("pri_b305_actor_wondered_done") then
+			return false
+	end
+
+	return true
+end
+
+function quest_dialog_military_precond(first_speaker, second_speaker)
+	if has_alife_info("zat_b28_heli_3_searched") or has_alife_info("jup_b9_blackbox_decrypted") then
+		if not (has_alife_info("zat_b28_heli_3_searched") and has_alife_info("jup_b9_blackbox_decrypted")) then
+			return true
+		end
+	end
+	return false
+end
+
+function quest_dialog_squad_precond(first_speaker, second_speaker)
+	return not (has_alife_info("jup_b218_monolith_hired") and has_alife_info("jup_b218_soldier_hired") and has_alife_info("jup_a10_vano_agree_go_und"))
+end
+
+function quest_dialog_toolkits_precond(first_speaker, second_speaker)
+	if has_alife_info("zat_a2_mechanic_toolkit_search") and not has_alife_info("zat_b3_task_end") then
+		return true
+	elseif has_alife_info("jup_b217_tech_instruments_start") and not has_alife_info("jup_b217_task_end") then
+		return true
+	end
+	return false
+end
+
+
+function squad_not_in_smart_b101(first_speaker, second_speaker)
+	local smart = "zat_b101"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b103(first_speaker, second_speaker)
+	local smart = "zat_b103"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b104(first_speaker, second_speaker)
+	local smart = "zat_b104"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b213(first_speaker, second_speaker)
+	local smart = "jup_b213"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b214(first_speaker, second_speaker)
+	local smart = "jup_b214"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b304(first_speaker, second_speaker)
+	local smart = "pri_b304_monsters_smart_terrain"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b303(first_speaker, second_speaker)
+	local smart = "pri_b303"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b40(first_speaker, second_speaker)
+	local smart = "zat_b40_smart_terrain"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b18(first_speaker, second_speaker)
+	local smart = "zat_b18"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b6(first_speaker, second_speaker)
+	local smart = "jup_b41"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b205(first_speaker, second_speaker)
+	local smart = "jup_b205_smart_terrain"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b47(first_speaker, second_speaker)
+	local smart = "jup_b47"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_in_smart_zat_base(first_speaker, second_speaker)
+	local smart = "zat_stalker_base_smart"
+	return is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_in_smart_jup_b25(first_speaker, second_speaker)
+	local smart = "jup_a6"
+	return is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function spartak_is_alive(first_speaker, second_speaker)
+	return xr_conditions.is_alive(nil,nil,{"zat_b7_stalker_victim_1"})
+end
+
+function tesak_is_alive(first_speaker, second_speaker)
+	return xr_conditions.is_alive(nil,nil,{"zat_b103_lost_merc_leader"})
+end
+
+function gonta_is_alive(first_speaker, second_speaker)
+	return xr_conditions.is_alive(nil,nil,{"zat_b103_lost_merc_leader"})
+end
+
+function mityay_is_alive(first_speaker, second_speaker)
+	return xr_conditions.is_alive(nil,nil,{"jup_a12_stalker_assaulter"})
+end
+
+function dolg_can_work_for_sci(first_speaker, second_speaker)
+	return not (has_alife_info("jup_a6_freedom_leader_bunker_guards_work") or has_alife_info("jup_a6_freedom_leader_bunker_scan_work"))
+end
+
+function dolg_can_not_work_for_sci(first_speaker, second_speaker)
+	return has_alife_info("jup_a6_freedom_leader_bunker_guards_work") or has_alife_info("jup_a6_freedom_leader_bunker_scan_work")
+end
+
+function freedom_can_work_for_sci(first_speaker, second_speaker)
+	return not (has_alife_info("jup_a6_duty_leader_bunker_guards_work") or has_alife_info("jup_a6_duty_leader_bunker_scan_work"))
+end
+
+function freedom_can_not_work_for_sci(first_speaker, second_speaker)
+	return has_alife_info("jup_a6_duty_leader_bunker_guards_work") or has_alife_info("jup_a6_duty_leader_bunker_scan_work")
+end
+
+function monolith_leader_is_alive(first_speaker, second_speaker)
+	if not (has_alife_info("jup_b4_monolith_squad_in_freedom") or has_alife_info("jup_b4_monolith_squad_in_duty")) then
+		return xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_monolith_skin"})
+	end
+
+	if has_alife_info("jup_b4_monolith_squad_in_freedom") then
+		return xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_freedom_skin"})
+	elseif has_alife_info("jup_b4_monolith_squad_in_duty") then
+		return xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_duty_skin"})
+	end
+
+	return false
+end
+
+function monolith_leader_dead_or_hired(first_speaker, second_speaker)
+	if has_alife_info("jup_b218_soldier_hired") then
+		return true
+	end
+
+	if not (has_alife_info("jup_b4_monolith_squad_in_freedom") or has_alife_info("jup_b4_monolith_squad_in_duty")) then
+		return not xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_monolith_skin"})
+	end
+
+	if has_alife_info("jup_b4_monolith_squad_in_freedom") then
+		return not xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_freedom_skin"})
+	elseif has_alife_info("jup_b4_monolith_squad_in_duty") then
+		return not xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_duty_skin"})
+	end
+
+	return true
+end
+
+function monolith_leader_dead_or_dolg(first_speaker, second_speaker)
+	if has_alife_info("jup_b218_soldier_hired") then
+		return true
+	end
+
+	if not (has_alife_info("jup_b4_monolith_squad_in_freedom") or has_alife_info("jup_b4_monolith_squad_in_duty")) then
+		return not xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_monolith_skin"})
+	end
+
+	if has_alife_info("jup_b4_monolith_squad_in_freedom") then
+		return true
+	elseif has_alife_info("jup_b4_monolith_squad_in_duty") then
+		return not xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_duty_skin"})
+	end
+
+	return true
+end
+
+function monolith_leader_dead_or_freedom(first_speaker, second_speaker)
+	if has_alife_info("jup_b218_soldier_hired") then
+		return true
+	end
+
+	if not (has_alife_info("jup_b4_monolith_squad_in_freedom") or has_alife_info("jup_b4_monolith_squad_in_duty")) then
+		return not xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_monolith_skin"})
+	end
+
+	if has_alife_info("jup_b4_monolith_squad_in_freedom") then
+		return not xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_freedom_skin"})
+	elseif has_alife_info("jup_b4_monolith_squad_in_duty") then
+		return true
+	end
+
+	return true
+end
+
+-- Medic support
+function medic_magic_potion(first_speaker, second_speaker)
+	db.actor.health = 1
+	db.actor.power = 1
+-- com	db.actor.radiation = -1
+	db.actor.bleeding = 1
+end
+
+function medic_rad_potion(first_speaker, second_speaker)
+	db.actor.radiation = -1
+end
+
+function health_care_actor_has_money(first_speaker, second_speaker)
+	return db.actor:money() >= 2000
+end
+
+function health_care_actor_has_rad_money(first_speaker, second_speaker)
+	return db.actor:money() >= 1500
+end
+
+function health_care_actor_hasnt_money(first_speaker, second_speaker)
+	return not health_care_actor_has_money(first_speaker, second_speaker)
+end
+
+function health_care_actor_hasnt_rad_money(first_speaker, second_speaker)
+	return not health_care_actor_has_rad_money(first_speaker, second_speaker)
+end
+
+function health_care_actor_transfer_money(first_speaker, second_speaker)
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 2000)
+end
+
+function health_care_actor_transfer_rad_money(first_speaker, second_speaker)
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 1500)
+end
+function actor_needs_bless(first_speaker, second_speaker)
+	if db.actor.health < 1 or
+			db.actor.radiation > 0 or
+			db.actor.bleeding > 0 then
+		return true
+	end
+
+	return false
+end
+
+function actor_needs_health(first_speaker, second_speaker)
+	if (db.actor.health < 1) and (db.actor:money() >= 2000) then
+		return true
+	end
+	return false
+end
+
+function actor_needs_rad_health(first_speaker, second_speaker)
+	if (db.actor.radiation > 0) and (db.actor:money() >= 1500) then
+		return true
+	end
+	return false
+end
+
+function actor_is_damn_healthy(first_speaker, second_speaker)
+	return not actor_needs_bless(first_speaker, second_speaker)
+end
+
+function actor_needs_rad_bless(first_speaker, second_speaker)
+	if db.actor.radiation > 0 or
+			db.actor.bleeding >= 0 then
+		return true
+	end
+
+	return false
+end
+
+function actor_wants_rad_bless(first_speaker, second_speaker)
+	if db.actor.radiation > 0 and db.actor:money() >= 3500 then
+		return true
+	end
+
+	return false
+end
+
+function actor_must_rad_bless(first_speaker, second_speaker)
+	if db.actor.radiation > 0 and db.actor:money() >= 500 and db.actor:money() < 3500 then
+		return true
+	end
+
+	return false
+end
+
+function actor_is_damn_healthy(first_speaker, second_speaker)
+	return not actor_needs_bless(first_speaker, second_speaker)
+end
+
+function leave_zone_save(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_uni_zone_to_reality"})
+end
+
+function save_uni_travel_zat_to_jup(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_uni_travel_zat_to_jup"})
+end
+
+function save_uni_travel_zat_to_pri(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_uni_travel_zat_to_pri"})
+end
+
+function save_uni_travel_jup_to_zat(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_uni_travel_jup_to_zat"})
+end
+
+function save_uni_travel_jup_to_pri(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_uni_travel_jup_to_pri"})
+end
+
+function save_uni_travel_pri_to_zat(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_uni_travel_pri_to_zat"})
+end
+
+function save_uni_travel_pri_to_jup(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_uni_travel_pri_to_jup"})
+end
+
+function save_jup_b218_travel_jup_to_pas(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_jup_b218_travel_jup_to_pas"})
+end
+
+function save_pri_a17_hospital_start(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_pri_a17_hospital_start"})
+end
+
+function save_jup_a10_gonna_return_debt(first_speaker, second_speaker)
+	if has_alife_info("jup_a10_vano_give_task") and not has_alife_info("jup_a10_avtosave") and not has_alife_info("jup_b218_gather_squad_complete") then
+		xr_effects.scenario_autosave(db.actor,nil,{"st_save_jup_a10_gonna_return_debt"})
+		db.actor:give_info_portion("jup_a10_avtosave")
+	end
+end
+
+function save_jup_b6_arrived_to_fen(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_jup_b6_arrived_to_fen"})
+end
+
+function save_jup_b6_arrived_to_ash_heap(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_jup_b6_arrived_to_ash_heap"})
+end
+
+function save_jup_b19_arrived_to_kopachy(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_jup_b19_arrived_to_kopachy"})
+end
+
+function save_zat_b106_arrived_to_chimera_lair(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_zat_b106_arrived_to_chimera_lair"})
+end
+
+function save_zat_b5_met_with_others(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_zat_b5_met_with_others"})
+end
+
+function can_do_alun_riddle_quest(first_speaker, second_speaker)
+	return has_alife_info("alun_riddle_begin") ~= true
+end
+
+function actor_not_bandit(first_speaker, second_speaker)
+	return relation_registry.community_relation("bandit", alife():actor():community()) <= -1000
+end
+
+function actor_not_army(first_speaker, second_speaker)
+	return relation_registry.community_relation("army", alife():actor():community()) <= -1000
+end
+
+function actor_has_money_for_garbage_pass(first_speaker, second_speaker)
+	return db.actor:money() >= 5000
+end
+
+function actor_take_money_for_garbage_pass(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	db.actor:transfer_money(5000, npc)
+	news_manager.relocate_money(db.actor, "out", 5000)
+	xr_sound.set_sound_play(db.actor:id(), "pda_tips")
+end
+
+function actor_has_money_for_info_bandit_permission(first_speaker, second_speaker)
+	return db.actor:money() >= 1000
+end
+
+function actor_take_money_for_info_bandit_permission(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	db.actor:transfer_money(1000, npc)
+	news_manager.relocate_money(db.actor, "out", 1000)
+end
+
+function actor_has_money_for_info_army_permission(first_speaker, second_speaker)
+	return db.actor:money() >= 20000
+end
+
+function actor_has_money_for_gar_decan_duty_permission(first_speaker, second_speaker)
+	return db.actor:money() >= 3000
+end
+
+function actor_take_money_for_info_army_permission(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	db.actor:transfer_money(20000, npc)
+	news_manager.relocate_money(db.actor, "out", 20000)
+end
+
+function actor_take_money_for_gar_decan_duty_permission(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	db.actor:transfer_money(3000, npc)
+end
+
+
+
+function actor_has_money_for_info_killer_permission(first_speaker, second_speaker)
+	return db.actor:money() >= 15000
+end
+
+function actor_take_money_for_info_killer_permission(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	db.actor:transfer_money(15000, npc)
+	news_manager.relocate_money(db.actor, "out", 15000)
+end
+
+function actor_has_bandit_permission_money(first_speaker, second_speaker)
+	return db.actor:money() >= 10000
+end
+
+function actor_has_army_permission_money(first_speaker, second_speaker)
+	return db.actor:money() >= 200000
+end
+
+
+function actor_has_gar_decan_duty_permission_money(first_speaker, second_speaker)
+	return db.actor:money() >= 3000
+end
+
+
+function actor_has_killer_permission_money(first_speaker, second_speaker)
+	return db.actor:money() >= 150000
+end
+
+
+function esc_7_11_give_rpg_task(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	local se_obj = npc and alife( ):object( npc:id( ) )
+	local giver_id = se_obj and se_obj.id
+	task_manager.get_task_manager():give_task("esc_smart_terrain_7_11_bandit_leader_task_1", giver_id)
+end
+
+
+function jup_b6_give_scanner(first_speaker, second_speaker)
+	disable_info("jup_b6_preapare_scanner")
+	relocate_item_section_to_actor(first_speaker, second_speaker, "jup_b32_scanner_device", 1)
+end
+
+
+function ds2_can_take_gonta_task(first_speaker, second_speaker)
+	return xr_conditions.has_completed_task_prerequisites(nil,nil,{"ds2_gonta_quest_task"})
+end
+
+function ds2_cant_take_gonta_task(first_speaker, second_speaker)
+	return not xr_conditions.has_completed_task_prerequisites(nil,nil,{"ds2_gonta_quest_task"})
+end
+
+function ds2_give_gonta_task(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	local se_obj = npc and alife( ):object( npc:id( ) )
+	local giver_id = se_obj and se_obj.id
+	task_manager.get_task_manager():give_task("ds2_gonta_quest_task", giver_id)
+end
+
+
+function ds2_set_gonta_move(first_speaker, second_speaker)
+	--printf("SET MOVE")
+	xr_effects.add_task_companion(db.actor,npc,{"ds2_domik_st_stalker_gonta_squad"})
+end
+
+function ds2_set_gonta_remove(first_speaker, second_speaker)
+	xr_effects.remove_task_companion(db.actor,npc,{"ds2_domik_st_stalker_gonta_squad"})
+end
+
+function ds2_gonta_alive(first_speaker, second_speaker)
+	return xr_conditions.is_alive(nil,nil,{"ds2_domik_st_stalker_gonta"})
+end
+
+function ds2_give_antigonta_task(first_speaker, second_speaker)
+	local npc = who_is_npc(first_speaker, second_speaker)
+	local se_obj = npc and alife( ):object( npc:id( ) )
+	local giver_id = se_obj and se_obj.id
+	task_manager.get_task_manager():give_task("ds2_lager_st_leader_task_1", giver_id)
+end
+
+
+function ds2_reward_1(first_speaker, second_speaker)
+	relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_toz34", 1)
+	relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_12x76_zhekan", 1)
+	xr_sound.set_sound_play(db.actor:id(), "pda_tips")
+end
+
+function ds2_reward_2(first_speaker, second_speaker)
+	relocate_item_section_to_actor(first_speaker, second_speaker, "vodka_3", 1)
+	relocate_item_section_to_actor(first_speaker, second_speaker, "bread", 1)
+	relocate_item_section_to_actor(first_speaker, second_speaker, "sausage", 1)
+	relocate_item_section_to_actor(first_speaker, second_speaker, "medkit", 1)
+	relocate_item_section_to_actor(first_speaker, second_speaker, "bandage", 2)
+	relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_9x18_fmj", 4)
+	xr_sound.set_sound_play(db.actor:id(), "pda_tips")
+end
+
+function ds2_reward_3(first_speaker, second_speaker)
+	relocate_item_section_to_actor(first_speaker, second_speaker, "vodka_3", 1)
+	relocate_item_section_to_actor(first_speaker, second_speaker, "cigarettes_russian_3", 2)
+	relocate_item_section_to_actor(first_speaker, second_speaker, "kolbasa", 1)
+	relocate_item_section_to_actor(first_speaker, second_speaker, "cocaine", 1)
+	xr_sound.set_sound_play(db.actor:id(), "pda_tips")
+end

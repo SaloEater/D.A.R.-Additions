@@ -1,0 +1,14 @@
+[smart_terrain]
+respawn_radius = 300 ;;переход в ТД
+squad_id = 6
+max_population = 2
+respawn_params = respawn@ds_kem1
+respawn_idle = 43200
+
+[respawn@ds_kem1]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_boar, simulation_flesh
+spawn_num = {=!smart_controlled(ds_kem1)} 2, 0

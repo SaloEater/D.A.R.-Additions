@@ -1,0 +1,24 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 3
+max_population = 1
+respawn_params = respawn@mil_smart_terrain_2_2
+respawn_idle = 86400
+
+[respawn@mil_smart_terrain_2_2]
+
+spawn_monster1
+spawn_monster2
+spawn_killer
+
+[spawn_monster1]
+spawn_squads = simulation_dog
+spawn_num = {=!smart_controlled(mil_smart_terrain_2_2)} 2, 0
+
+[spawn_monster2]
+spawn_squads = simulation_pseudodog
+spawn_num = {=!smart_controlled(mil_smart_terrain_2_2) =actor_week_in_zone(6)} 1, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_advanced, merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(mil_smart_terrain_2_2:killer)} 1, 0

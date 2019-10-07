@@ -1,0 +1,374 @@
+;---- Кордон -----
+[nastavnic_squad]:online_offline_group
+faction = stalker
+npc = nastavnic
+target_smart = {+fanat_kmb_1_give4} esc_smart_terrain_2_12, {+fanat_kmb_1_give3} nil, {+fanat_kmb_1_give2} esc_smart_terrain_1_11, {+fanat_kmb_1_give} nil, esc_smart_terrain_2_12
+story_id = nastavnic_squad
+on_death = %+nastavnic_death%
+
+[esc_nql_qwest_luis_squad]:online_offline_group
+faction = stalker
+npc = esc_nql_qwest_luis
+target_smart = esc_smart_terrain_2_12
+story_id = esc_nql_qwest_luis_squad
+on_death = %+esc_nql_qwest_luis_death%
+
+[band_esc_nql_qwest_luis_squad]:online_offline_group
+faction = bandit
+npc = sim_default_bandit_1, sim_default_bandit_2, sim_default_bandit_0, glava_band_esc_nql_qwest_luis_2
+target_smart = esc_smart_terrain_5_2
+npc_in_squad = 1, 4
+story_id = band_esc_nql_qwest_luis_squad_squad
+on_death = %+band_esc_nql_qwest_luis_squad_death% 
+
+[esc_2_14_boars_kmb_squad]:online_offline_group
+faction = monster_vegetarian
+npc_random = boar_normal, boar_normal, boar_01a_weak, boar_02a_weak
+npc_in_squad = 4, 4
+target_smart = esc_smart_terrain_5_12
+on_death = %+esc_2_14_boars_kmb_death%
+
+[nastavnic_mil_squad]:online_offline_group
+faction = army
+npc = nastavnic_mil
+spawn_point = esc_smart_terrain_3_16_spawn_point
+target_smart =  {+mil_kmb_3_done} agr_smart_terrain_1_6, esc_smart_terrain_3_16
+story_id = nastavnic_mil_squad
+on_death = %+nastavnic_mil_death%
+
+[nastavnic_mil_2_squad]:online_offline_group
+faction = army
+npc = nastavnic_mil_2
+target_smart = esc_smart_terrain_3_16
+story_id = nastavnic_mil_2_squad
+on_death = %+nastavnic_mil_2_death%
+
+[esc_mil_psy_dog_qwest_squad]:online_offline_group
+faction = monster_vegetarian
+npc_random = pseudodog_grey_weak, psy_dog_normal, pseudodog_grey_weak
+npc_in_squad = 3, 3
+on_death = %+esc_mil_psy_dog_death%
+;---- Болота ---
+[nastavnic_cs_squad]:online_offline_group
+faction = csky
+npc = nastavnic_cs
+target_smart = {+mar_kmb_1_give4} mar_smart_terrain_base, {+mar_kmb_1_give3} nil, {+mar_kmb_1_give2} mar_smart_terrain_8_8, {+mar_kmb_1_give} nil, mar_smart_terrain_base
+story_id = nastavnic_cs_squad
+on_death = %+nastavnic_cs_death%
+
+[mar_flesh_kmb_squad]:online_offline_group
+faction = monster_vegetarian
+npc_random = flesh_small_qwest, flesh_small_qwest, flesh_small_qwest, flesh_small_qwest, flesh_small_qwest, flesh_small_qwest, flesh_small_qwest
+npc_in_squad = 7, 7
+target_smart = mar_smart_terrain_8_9
+on_death = %+mar_flesh_kmb_death%
+;---- Бар -----
+[barkas_squad]:online_offline_group
+faction = dolg
+npc = barkas
+target_smart =  bar_dolg_bunker
+story_id = barkas_squad
+on_death = %+barkas_death%
+;---- свалка ------
+[bloodsucker_duty_kmb_2]:online_offline_group
+faction = monster_vegetarian
+npc_random = bloodsucker_red_weak, bloodsucker_red_normal, bloodsucker_red_normal, bloodsucker_red_strong, bloodsucker_red_strong, bloodsucker_red_strong
+npc_in_squad = 5, 5
+target_smart = gar_smart_terrain_6_1
+on_death = %+bloodsucker_duty_kmb_2%
+
+[new_band_new_start_2_squad]:online_offline_group
+faction = bandit
+npc = new_band_new_start_2
+target_smart =  gar_smart_terrain_3_5
+story_id = new_band_new_start_2_squad
+on_death = %+new_band_new_start_2_death%
+
+[new_band_new_start_3_squad]:online_offline_group
+faction = bandit
+npc = new_band_new_start_3
+target_smart =  gar_smart_terrain_3_5
+story_id = new_band_new_start_3_squad
+on_death = %+new_band_new_start_3_death%
+
+[new_band_new_start_4_squad]:online_offline_group
+faction = stalker_fake
+npc = new_band_new_start_4
+target_smart = gar_smart_terrain_5_6
+story_id = new_band_new_start_4_squad
+on_death = %+nastavnic_band_4_death%
+
+
+[new_duty_new_start_1_squad]:online_offline_group
+faction = dolg
+npc = new_duty_new_start_1
+target_smart =gar_smart_terrain_5_2
+story_id = new_duty_new_start_1_squad
+on_death = %+new_duty_new_start_1_death%
+
+;---- мертвый город ----
+[cit_kmb_3_stalker_squad]:online_offline_group
+faction = stalker
+npc = kmb_stalker_dead_city_1, kmb_stalker_dead_city_2, kmb_stalker_dead_city_3
+target_smart = cit_kanaliz2
+story_id = cit_kmb_3_stalker_squad
+on_death = %+kmb_stalker_dead_city_death% 
+;---- Припять -----
+
+[kmb_mon_1_0_squad]:online_offline_group
+faction = monolith
+npc = kmb_mon_1_0
+target_smart = pri_a16
+story_id = kmb_mon_1_0_squad
+on_death = %+kmb_mon_1_0_death% 
+
+[kmb_mon_1_0_squad_1]:online_offline_group
+faction = monolith
+npc = sim_default_monolith_2, sim_default_monolith_2, sim_default_monolith_2, sim_default_monolith_2
+npc_in_squad = 5, 5
+target_smart = pri_a16
+story_id = kmb_mon_1_0_squad_1
+
+[kmb_mon_1_mil]:online_offline_group
+faction = army
+npc = kmb_mon_10, kmb_mon_11, kmb_mon_12, kmb_mon_13, kmb_mon_14
+npc_in_squad = 5, 5
+story_id = kmb_mon_1_mil
+on_death = %+kmb_mon_1_mil_death%
+target_smart = pri_a17
+
+[kmb_mon_1_eco]:online_offline_group
+faction = army
+npc = kmb_mon_6_u, kmb_mon_8_u
+npc_in_squad = 4, 4
+target_smart = pri_b301
+story_id = kmb_mon_1_eco
+on_death = %+kmb_mon_1_eco_death_1% 
+
+[kmb_mon_1_1_squad]:online_offline_group
+faction = monolith
+npc = kmb_mon_1_1, sim_default_monolith_4, sim_default_monolith_4
+npc_in_squad = 3, 3
+target_smart = pri_sim_14
+story_id = kmb_mon_1_1_squad
+
+[nastavnic_mono_squad]:online_offline_group
+faction = monolith
+npc = nastavnic_mono
+target_smart = aes_smart_terran_soldier
+story_id = nastavnic_mono_squad
+on_death = %+nastavnic_mono_death% 
+
+[mono_contr]:online_offline_group
+faction = monster_vegetarian
+npc = m_controller_normal, zombie_weak, zombie_weak
+story_id = mono_contr
+target_smart = aes_smart_terrain_monsters2
+on_death = %+mono_contr_death%
+
+
+[new_free_death_1_squad]:online_offline_group
+faction = freedom
+npc = new_free_death_1
+target_smart = jup_a6
+story_id = new_free_death_1_squad
+
+[nastavnic_eco_squad]:online_offline_group
+faction = army
+npc = nastavnic_eco
+target_smart = yan_smart_terrain_6_4
+story_id = nastavnic_eco_squad
+on_death = %+nastavnic_eco_death% 
+
+[kmb_mon_7_u_squad]:online_offline_group
+faction = ecolog
+npc = kmb_mon_7_u
+target_smart = pri_b301
+story_id = kmb_mon_7_u_squad
+on_death = %+kmb_mon_1_eco_death% 
+
+
+[devushka_squad]:online_offline_group
+faction = sin
+npc = devushka
+target_smart = {+devushka_3_done_money} esc_smart_terrain_2_12, mar_smart_terrain_base
+story_id = devushka_squad
+on_death = %+devushka_death%
+
+
+[gzegosh_bandos_squad]:online_offline_group
+faction = bandit
+npc = gzegosh_bandos2, sim_default_bandit_0, sim_default_bandit_0, sim_default_bandit_0, sim_default_bandit_0
+npc_in_squad = 5
+target_smart = mil_smart_terrain_7_10
+story_id = gzegosh_bandos_squad
+on_death = %+devushka_help_done% 
+
+[gzegosh_squad]:online_offline_group
+faction = bandit
+npc = gzegosh_bandos
+npc_in_squad = 1
+target_smart = ds2_lager_st
+story_id = gzegosh_squad
+on_death = %+devushka_help_done +devushka_help_done111% 
+
+[gzegosh_bandos1_squad]:online_offline_group
+faction = stalker_fake
+npc = gzegosh_bandos1
+npc_in_squad = 1
+target_smart = gar_smart_terrain_5_2
+story_id = gzegosh_bandos1_squad
+on_death = %+gzegosh_bandos1_death% 
+
+[sar_monolith_sklad_squad_boss]:online_offline_group
+faction = monolith
+npc = monolith_sklad_squad_boss
+target_smart = sar_monolith_sklad
+story_id = sar_monolith_guard
+
+[mutnii_mertv_3_1_squad]:online_offline_group
+faction = monster
+npc_in_squad = 10
+npc = dog_normal_white, dog_normal_brown, dog_normal_bulterier, dog_weak_brown, dog_weak_red, dog_weak_white, dog_weak_brown, pseudodog_grey_weak, pseudodog_grey_weak, pseudodog_strong
+target_smart = mil_smart_terrain_2_4
+story_id = mutnii_mertv_3_1_squad
+on_death = %+mutnii_mertv_1%
+
+[mutnii_mertv_3_2_squad]:online_offline_group
+faction = monster
+npc_in_squad = 7,  7
+npc_random = boar_normal, boar_normal, boar_01a_weak, boar_02a_weak, boar_02a_weak, boar_02a_weak, boar_02a_weak
+target_smart = mil_smart_terrain_2_6
+story_id = mutnii_mertv_3_2_squad
+on_death = %+mutnii_mertv_2%
+
+[mutnii_mertv_3_3_squad]:online_offline_group
+faction = monster
+npc_in_squad = 10
+npc_random = snork_weak2, snork_weak2, snork_weak2, snork_weak2, snork_weak2, snork_weak2, snork_weak2, snork_weak2, snork_weak2, snork_weak2
+target_smart = mil_smart_terrain_2_4
+story_id = mutnii_mertv_3_5_squad
+on_death = %+mutnii_mertv_5%
+
+[bolot_doc_bandit_squad]:online_offline_group
+faction = shamans
+npc = bolot_doc_bandit
+npc_in_squad = 1
+story_id = bolot_doc_bandit_squad
+target_smart = gar_smart_terrain_3_5
+on_death = %+bolot_doc_bandit_death%
+
+
+
+
+
+[pripayt_vostok_fre_qwest_0_squad]:online_offline_group
+faction = monolith
+npc_in_squad = 10
+npc_random = mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_1
+story_id = pripayt_vostok_fre_qwest_0_squad
+target_smart = pri_a18 
+on_death = %+pripayt_vostok_fre_qwest_0_mertv%
+
+
+[pripayt_vostok_fre_qwest_1_squad]:online_offline_group
+faction = monolith
+npc_in_squad = 8
+npc_random = mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2
+target_smart = pri_a25_smart_terrain
+story_id = pripayt_vostok_fre_qwest_1_squad
+on_death = %+pripayt_vostok_fre_qwest_1_mertv%
+
+[pripayt_vostok_fre_qwest_2_squad]:online_offline_group
+faction = monolith
+npc_in_squad = 8
+npc_random = mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2
+target_smart = pri_b301
+story_id = pripayt_vostok_fre_qwest_2_squad
+on_death = %+pripayt_vostok_fre_qwest_2_mertv%
+
+[pripayt_vostok_fre_qwest_3_squad]:online_offline_group
+faction = monolith
+npc_in_squad = 8
+npc_random = mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2
+target_smart = pri_b303
+story_id = pripayt_vostok_fre_qwest_3_squad
+on_death = %+pripayt_vostok_fre_qwest_3_mertv%
+
+[pripayt_vostok_fre_qwest_4_squad]:online_offline_group
+faction = monolith
+npc_in_squad = 8
+npc_random = mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2
+target_smart = pri_sim_1
+story_id = pripayt_vostok_fre_qwest_4_squad
+on_death = %+pripayt_vostok_fre_qwest_4_mertv%
+
+[pripayt_vostok_fre_qwest_5_squad]:online_offline_group
+faction = monolith
+npc_in_squad = 15
+npc_random = mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_1, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2, mono_unic_fredoom_generate_2
+target_smart = pri_b36_smart_terrain
+story_id = pripayt_vostok_fre_qwest_5_squad
+on_death = %+pripayt_vostok_fre_qwest_5_mertv%
+
+[mest_fre_wound_squad]:online_offline_group
+faction = freedom
+npc = mest_fre_wound
+npc_in_squad = 1
+story_id = mest_fre_wound_squad
+target_smart = {+svoboda_mest_spasisokhranii_end} jup_a6, pas_b400_hall
+on_death = %+mest_fre_wound_death%
+
+[dolg_story_task_1_suskers]:online_offline_group
+faction = monster_predatory_night
+npc =  bloodsucker_green_normal, bloodsucker_green_weak, bloodsucker_green_weak, bloodsucker_green_weak
+target_smart = gar_smart_terrain_6_6
+story_id = dolg_story_task_1_suskers
+on_death = %+dolg_story_task_1_suskers_dead%
+
+
+[dolg_story_task_2_gigant]:online_offline_group
+faction = monster
+npc = gigant_normal
+target_smart = ds_ptr
+story_id = dolg_story_task_2_gigant
+on_death = %+dolg_story_task_2_gigant_dead%
+
+[dolg_story_task_2_bandit]:online_offline_group
+faction = bandit
+npc_random = sim_default_bandit_3, sim_default_bandit_2, sim_default_bandit_1, sim_default_bandit_1, sim_default_bandit_1, sim_default_bandit_1, sim_default_bandit_1
+npc_in_squad = 5, 5
+target_smart = val_smart_terrain_5_10
+story_id = dolg_story_task_2_bandit
+on_death = %+dolg_story_task_2_bandit_dead%
+
+[dolg_story_task_3_burers]:online_offline_group
+faction = monster_predatory_night
+npc =  burer_normal2, burer_normal2, burer_normal2
+target_smart = trc_sim_15
+story_id = dolg_story_task_3_burers
+on_death = %+dolg_story_task_3_burers_dead%
+
+[dolg_story_task_4_contoller]:online_offline_group
+faction = monster_predatory_night
+npc =  bloodsucker_black_normal, bloodsucker_black_normal, bloodsucker_black_normal, bloodsucker_black_normal, m_controller_normal2
+target_smart = mil_smart_terrain_4_3
+story_id = dolg_story_task_4_contoller
+on_death = %+dolg_story_task_4_contoller_dead%
+
+[dolg_story_task_5_chemera]:online_offline_group
+faction = monster
+npc_in_squad = 1
+npc =  chimera_strong4
+target_smart = red_smart_terrain_monsters
+story_id = dolg_story_task_5_chemera
+on_death = %+dolg_story_task_5_chemera_dead%
+
+
+[new_duty_new_start_1_fake_1_squad]:online_offline_group
+faction = dolg
+npc_in_squad = 1
+npc = new_duty_new_start_1_fake_1
+target_smart = {+dolg_story_task_2_gigant_dead} gar_smart_terrain_5_2, {+dolg_story_task_2_dop_started} val_smart_terrain_5_10, val_smart_terrain_4_0
+story_id = new_duty_new_start_1_fake_1_squad
+on_death = %+new_duty_new_start_1_fake_1_death%

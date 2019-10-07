@@ -1,0 +1,77 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 29
+max_population = 2
+respawn_params = respawn@zat_b7 
+respawn_idle = 86400
+  
+
+[respawn@zat_b7]
+
+spawn_monster
+spawn_stalker
+spawn_bandit
+spawn_csky
+spawn_dolg
+spawn_freedom
+spawn_killer
+spawn_army
+spawn_monolith
+spawn_zombied
+
+[spawn_monster]
+spawn_squads = simulation_snork_2_5, simulation_tushkano_7_10, simulation_poltergeist_tele, simulation_bloodsucker_green
+spawn_num = {=!smart_controlled(zat_b7)} 1, 0
+
+[spawn_stalker]
+spawn_squads = stalker_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_b7:stalker) +bar_deactivate_radar_done} 1, 0
+
+[spawn_bandit]
+spawn_squads = bandit_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_b7:bandit) +bar_deactivate_radar_done} 1, 0
+
+[spawn_csky]
+spawn_squads = csky_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_b7:csky) +bar_deactivate_radar_done} 1, 0
+
+[spawn_dolg]
+spawn_squads = duty_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_b7:dolg) +bar_deactivate_radar_done} 2, 0
+
+[spawn_freedom]
+spawn_squads = freedom_sim_squad_veteran 
+spawn_num = {=smart_under_faction(zat_b7:freedom) +bar_deactivate_radar_done} 1, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_b7:killer) +bar_deactivate_radar_done} 1, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_elite
+spawn_num = {=smart_under_faction(zat_b7:army) +bar_deactivate_radar_done} 1, 0
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_veteran, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_b7:monolith)} 1, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(zat_b7:zombied)} 1, 0
+
+
+
+[exclusive]
+
+zat_b7_stalker_victim_1 = zaton\zat_b7_stalker_victim.ltx
+;;zat_b7_stalker_victim_2 = zaton\zat_b7_stalker_victim.ltx сидят в засаде как в зп
+;;zat_b7_stalker_victim_3 = zaton\zat_b7_stalker_victim.ltx
+;;zat_b7_stalker_victim_4 = zaton\zat_b7_stalker_victim.ltx
+;;zat_b7_stalker_victim_5 = zaton\zat_b7_stalker_victim.ltx
+;;zat_b7_stalker_victim_6 = zaton\zat_b7_stalker_victim.ltx
+;;zat_b7_stalker_victim_7 = zaton\zat_b7_stalker_victim.ltx
+;sim
+;in addition there are 1 guard and 3 walkers
+zat_b7_guard_walker = zaton\zat_b7_stalker_victim.ltx
+zat_b7_stalker_victim_sleeper_1 = zaton\zat_b7_stalker_victim.ltx
+zat_b7_stalker_victim_sleeper_2 = zaton\zat_b7_stalker_victim.ltx

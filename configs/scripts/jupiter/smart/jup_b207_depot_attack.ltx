@@ -1,0 +1,14 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 14
+max_population = 1
+respawn_params = respawn@jup_b207_depot_attack
+respawn_idle = 86400
+
+[respawn@jup_b207_depot_attack]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_cat
+spawn_num = {=!smart_controlled(jup_b207_depot_attack)} 1, 0

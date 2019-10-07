@@ -1,0 +1,25 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 13
+max_population = 2
+respawn_params = respawn@rad_zombied1
+respawn_idle = 43200
+
+
+[respawn@rad_zombied1]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_snork
+spawn_num = {-bar_deactivate_radar_done} 3, 0
+
+[spawn_monster2]
+spawn_squads = simulation_bloodsucker_red
+spawn_num = {-bar_deactivate_radar_done} 2, 0
+
+[spawn_monster3]
+spawn_squads = simulation_pseudodog, simulation_cat
+spawn_num = {+bar_deactivate_radar_done} 3, 0

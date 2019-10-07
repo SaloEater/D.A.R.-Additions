@@ -1,0 +1,24 @@
+[smart_terrain]
+respawn_radius = 900 ;;сев-зап угол локации
+squad_id = 5
+max_population = 2
+respawn_params = respawn@ros_smart_monster4
+respawn_idle = 8640
+
+[respawn@ros_smart_monster4]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_rat, simulation_rats, simulation_tushkano
+spawn_num = {=!smart_controlled(ros_smart_monster4)} 7, 0
+
+[spawn_monster2]
+spawn_squads = simulation_tushkano
+spawn_num = {=!smart_controlled(ros_smart_monster4) =actor_week_in_zone(3)} 2, 0
+
+[spawn_monster3]
+spawn_squads = simulation_tushkano
+spawn_num = {=!smart_controlled(ros_smart_monster4) =actor_week_in_zone(6)} 2, 0

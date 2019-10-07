@@ -1,0 +1,34 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 35
+max_population = 2
+respawn_params = respawn@pri_sim_14
+respawn_idle = 43200
+
+[respawn@pri_sim_14]
+
+spawn_monster
+spawn_zombied
+
+[spawn_monster]
+spawn_squads = simulation_zombie
+spawn_num = {=!smart_controlled(pri_sim_14)} 2, 0
+
+[spawn_zombied]
+spawn_squads = zombied_sim_squad_veteran
+spawn_num = {=smart_under_faction(pri_sim_14:zombied)} 1, 0
+
+
+
+
+[exclusive]
+monster_1 	= pripyat\pri_sim_14_logic.ltx
+monster_2	= pripyat\pri_sim_14_logic.ltx
+monster_3 	= pripyat\pri_sim_14_logic.ltx
+monster_4 	= pripyat\pri_sim_14_logic.ltx
+monster_5 	= pripyat\pri_sim_14_logic.ltx
+monster_6 	= pripyat\pri_sim_14_logic.ltx
+monster_7 	= pripyat\pri_sim_14_logic.ltx
+monster_8 	= pripyat\pri_sim_14_logic.ltx
+monster_9 	= pripyat\pri_sim_14_logic.ltx
+monster_10 	= pripyat\pri_sim_14_logic.ltx

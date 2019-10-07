@@ -1,0 +1,275 @@
+#include "trade_discounts.ltx"
+#include "trade_presets.ltx"
+
+[trader]
+buy_condition = trade_generic_buy
+sell_condition = trade_generic_sell
+buy_supplies = {+bar_deactivate_radar_done} supplies_4, {=actor_goodwill_ge(stalker:800)} supplies_3, {=actor_goodwill_ge(stalker:400)} supplies_2, supplies_1
+buy_item_condition_factor = 0.5
+resupply_timeout = 432000
+
+discounts = {=actor_week_in_zone(9)} discount_barman_9, {=actor_week_in_zone(8)} discount_barman_8, {=actor_week_in_zone(7)} discount_barman_7, {=actor_week_in_zone(6)} discount_barman_6, {=actor_week_in_zone(5)} discount_barman_5, {=actor_week_in_zone(4)} discount_barman_4, {=actor_week_in_zone(3)} discount_barman_3, {=actor_week_in_zone(2)} discount_barman_2, {=actor_week_in_zone(1)} discount_barman_1 
+
+[trade_generic_buy]:barman, mutant_part_for_barman
+
+dok_1                 = 0.086, 0.086 
+dok_2                 = 0.086, 0.086 
+dok_3                 = 0.086, 0.086 
+dok_4                 = 0.086, 0.086 
+dok_5                 = 0.086, 0.086 
+dok_6                 = 0.086, 0.086 
+dok_7                 = 0.086, 0.086 
+dok_8                 = 0.086, 0.086 
+lab_diary_1           = 0.086, 0.086
+lab_diary_2           = 0.086, 0.086
+lab_diary_3           = 0.086, 0.086
+box_lab_1             = 0.086, 0.086 
+maps_kit			  = 0.086, 0.086
+mili_maps			  = 0.086, 0.086
+
+af_thing_1               = 0.07, 0.07
+af_thing_2               = 0.07, 0.07
+af_thing_3               = 0.07, 0.07
+af_thing_4               = 0.07, 0.07
+af_thing_5               = 0.07, 0.07
+af_medusa                = 0.07, 0.07
+af_vyvert                = 0.07, 0.07
+af_gravi                 = 0.07, 0.07
+af_cristall_flower       = 0.086, 0.086 ;100% cost
+af_night_star            = 0.086, 0.086
+af_gold_fish             = 0.086, 0.086
+af_slime                 = 0.07, 0.07
+af_slug                  = 0.07, 0.07
+af_mica                  = 0.07, 0.07
+af_blood                 = 0.07, 0.07
+af_mincer_meat           = 0.07, 0.07
+af_pellicle              = 0.07, 0.07
+af_baloon                = 0.07, 0.07
+af_soul                  = 0.086, 0.086
+af_thorn                 = 0.07, 0.07
+af_crystal_thorn         = 0.07, 0.07
+af_sea_urchin            = 0.07, 0.07
+af_fuzz_kolobok          = 0.07, 0.07
+af_electra_sparkler      = 0.086, 0.086
+af_electra_flash         = 0.086, 0.086
+af_electra_moonlight     = 0.086, 0.086
+af_dummy_dummy           = 0.08, 0.08
+af_dummy_battery         = 0.086, 0.086
+af_ice                   = 0.086, 0.086
+af_drop                  = 0.07, 0.07
+af_cristall              = 0.086, 0.086
+af_fireball              = 0.086, 0.086
+af_eye                   = 0.07, 0.07
+af_dummy_glassbeads      = 0.08, 0.08
+af_fire                  = 0.086, 0.086
+af_compass               = 0.086, 0.086
+af_black_spray           = 0.07, 0.07
+af_bracelet              = 0.07, 0.07
+af_death_lamp            = 0.07, 0.07
+af_gratis            	 = 0.07, 0.07
+af_empty                 = 0.07, 0.07
+af_full_empty            = 0.07, 0.07
+af_itcher                = 0.07, 0.07
+af_lobster_eyes          = 0.07, 0.07
+af_pin                   = 0.07, 0.07
+af_ring                  = 0.07, 0.07
+af_sponge                = 0.07, 0.07
+af_glass                 = 0.07, 0.07
+af_dummy_spring          = 0.07, 0.07
+
+[trade_generic_sell]:barman
+briefcase
+moneybag
+stalker_outfit          = 1.0, 1.0
+helm_m40                = 1.1, 1.1
+helm_hardhat            = 1.1, 1.1
+airtank  		        = 1.1, 1.1
+wpn_knife3              = 1.1, 1.1
+wpn_binoc           = 1.1, 1.1
+wpn_hand_axe            = 1.1, 1.1
+cooking                 = 1.1, 1.1
+fieldcooker             = 1.1, 1.1
+wood_stove              = 1.1, 1.1
+charcoal_3                = 1.1, 1.1
+explo_balon_gas_8         = 1.1, 1.1
+geiger                  = 1.1, 1.1
+itm_qr      = 1.1, 1.1
+itm_backpack            = 1.1, 1.1
+itm_sleepbag            = 1.1, 1.1
+batteries_dead          = 1.1, 1.1
+batteries               = 1.1, 1.1
+batteries_ccell         = 1.1, 1.1
+matches                 = 1.1, 1.1
+backpack_light          = 1.1, 1.1
+tarpaulin               = 1.1, 1.1
+rope                    = 1.1, 1.1
+synthrope               = 1.1, 1.1
+copper_coil             = 1.1, 1.1
+sharpening_stones_4     = 1.1, 1.1
+detector_advanced       = 1.1, 1.1
+device_torch_dummy      = 1.1, 1.1
+device_glowstick        = 1.1, 1.1
+device_lighter	        = 1.1, 1.1
+device_kerosinka		= 1.1, 1.1
+af_iam                  = 1.1, 1.1
+lead_box                = 1.1, 1.1
+af_camelbak             = 1.1, 1.1
+drug_charcoal_5         = 1.1, 1.1
+bandage                 = 1.1, 1.1
+medkit                  = 1.1, 1.1
+stimpack                = 1.1, 1.1
+stimpack_bad				= 1.1, 1.1
+stimpack_good				= 1.1, 1.1
+antirad                 = 1.1, 1.1
+drug_coagulant_5        = 1.1, 1.1
+drug_antidot_3          = 1.1, 1.1
+drug_radioprotector_2   = 1.1, 1.1
+bread					= 1.1, 1.1
+conserva			    = 1.1, 1.1
+sausage					= 1.1, 1.1
+caffeine_5				= 1.1, 1.1
+hand_rolling_tobacco_3  = 1.1, 1.1
+cigar                   = 1.1, 1.1
+water_drink             = 1.1, 1.1
+cigarettes_3            = 1.1, 1.1
+akvatab_3               = 1.1, 1.1
+vodka_quality_3         = 1.1, 1.1
+tobacco_3               = 1.1, 1.1
+marijuana               = 1.1, 1.1
+backpack_stalker       = 1.1, 1.1
+backpack_heavy          = 1.1, 1.1
+af_aac                  = 1.1, 1.1
+survival_kit            = 1.1, 1.1
+cigarettes_lucky_3      = 1.1, 1.1
+salmon                  = 1.1, 1.1
+raisins                 = 1.1, 1.1
+chocolate               = 1.1, 1.1
+nuts                    = 1.1, 1.1
+mint_3					= 1.1, 1.1
+medkit_scientic         = 1.1, 1.1
+medkit_army             = 1.1, 1.1
+stimpack_army           = 1.1, 1.1
+stimpack_scientic       = 1.1, 1.1
+af_frames               = 1.1, 1.1
+af_kevlar               = 1.1, 1.1
+af_plates               = 1.1, 1.1
+
+[supplies_1]
+
+meat_rat			    = 3, 1
+meat_tushkano			= 3, 1
+meat_dog				= 2, 1
+meat_flesh				= 2, 1
+meat_pseudodog			= 1, 0.5
+meat_boar				= 1, 0.5
+meat_bloodsucker		= 1, 0.3
+meat_snork				= 1, 0.5
+meat_chimera			= 1, 0.3
+breadold                = 1, 0.5
+kolbasa                 = 1, 0.3
+conserva                = 1, 0.1
+tomato                  = 1, 0.1
+beans                   = 1, 0.1
+chili                   = 1, 0.1
+mint_3					= 1, 1
+
+cigarettes_russian_3    = 1, 0.5
+beer                    = 2, 0.5
+vodka_3                 = 1, 0.75
+mineral_water_3         = 2, 1
+energy_drink            = 1, 1
+water_drink             = 1, 1
+tea_3                   = 1, 0.5
+flask_3                 = 2, 1
+bottle_metal_3          = 2, 1
+cigar1_3                = 1, 0.5
+cigar2_3                = 1, 0.5
+cigar3_3                = 1, 0.5
+swiss_2					= 3, 1
+gasmask_filter			= 1, 1
+maps_kit                = 2, 1
+greencard               = 4, 1
+helm_respirator			= 1, 0.5
+helm_eo21sawnoff		= 1, 1
+helm_hardhat           	= 1, 1
+stalker_outfit         	= 1, 1
+stalker_bear_outfit          = 1, 1
+stalker_salamander_outfit    = 1, 1
+stalker_graphite_outfit      = 1, 1
+helm_gp5_slon          = 1, 0.5
+airtank  		       	= 1, 1
+bag_01			= 1, 1
+wpn_knife3              = 1, 1
+wpn_binoc           = 1, 0.5
+cooking                 = 3, 1
+fieldcooker             = 1, 1
+kerosene_5                = 2, 1
+charcoal_3                = 3, 1
+explo_jerrycan_fuel_8     = 2, 1
+explo_balon_gas_8         = 2, 1
+geiger                  = 1, 1
+itm_qr      = 1, 1
+itm_backpack            = 1, 0.75
+itm_sleepbag            = 1, 0.75
+batteries_dead          = 3, 1
+batteries               = 2, 0.75
+batteries_ccell         = 1, 0.5
+matches                 = 3, 1
+backpack_light          = 1, 1
+porn  					= 1, 1
+porn2 					= 1, 1
+textile_patch_b         = 2, 1
+textile_patch_m         = 2, 1
+textile_patch_e         = 2, 1
+tarpaulin               = 2, 1
+rope                    = 2, 1
+synthrope               = 2, 1
+copper_coil             = 2, 1
+sharpening_stones_4     = 2, 1
+detector_simple         = 1, 0.5
+device_torch_dummy      = 1, 0.5
+device_glowstick        = 1, 1
+device_lighter	        = 1, 0.75
+device_kerosinka		= 1, 0.75
+af_iam                  = 1, 0.85
+lead_box                = 2, 0.85
+af_camelbak             = 1, 0.5
+
+[supplies_2]:supplies_1
+
+tushonka                = 1, 0.05
+raisins                 = 1, 0.05
+chocolate               = 1, 0.05
+salmon                  = 1, 0.05
+corn                    = 1, 0.1
+nuts                    = 1, 0.05
+sausage                 = 1, 0.05
+cigarettes_lucky_3      = 1, 0.25
+hand_rolling_tobacco_3  = 1, 0.5
+cigar                   = 1, 0.5
+cigarettes_3            = 1, 0.5
+vodka_quality_3         = 1, 0.5
+tobacco_3               = 1, 0.5
+marijuana               = 1, 0.5
+backpack_light          = 0, 1
+backpack_heavy          = 1, 1
+af_aac                  = 1, 1
+survival_kit            = 1, 0.5
+bag_01			= 1, 1
+helm_ach7		= 1, 0.75
+
+
+[supplies_3]:supplies_2
+
+af_frames               = 1, 0.5
+af_kevlar               = 1, 0.5
+af_plates               = 1, 0.5
+ration_ukr_6            = 2, 0.5
+backpack_stalker       = 1, 1
+helm_ach7ex				= 1, 1
+
+[supplies_4]:supplies_3
+specops_outfit			= 1, 1
+wastelander_outfit 		= 1, 1
+antirad_outfit				= 1, 1
+bag_01			= 1, 1

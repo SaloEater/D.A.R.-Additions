@@ -1,0 +1,15 @@
+[smart_terrain]
+respawn_radius = 300;zat_sim_6
+squad_id = 5
+max_population = 1
+respawn_params = respawn@zat_sim_6   
+respawn_idle = 259200
+
+
+[respawn@zat_sim_6]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = zat_sim_6_controller, simulation_bloodsucker_green, simulation_gigant
+spawn_num = {=!smart_controlled(zat_sim_6)} 1, 0

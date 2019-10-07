@@ -1,0 +1,29 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 4
+max_population = 3
+respawn_params = respawn@rad_antenna_patrol
+respawn_idle = 86400
+
+
+[respawn@rad_antenna_patrol]
+spawn_monolith
+spawn_monster
+spawn_army
+spawn_heli_strong
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {=smart_under_faction(rad_antenna_monolith:monolith) -bar_deactivate_radar_done} 1, 0
+
+[spawn_monster]
+spawn_squads = monster_rad_antenna_patrol
+spawn_num = {=!smart_controlled(rad_antenna_monolith) +bar_deactivate_radar_done} 1, 0
+
+[spawn_army]
+spawn_squads = army_sim_squad_elite
+spawn_num = {=smart_under_faction(rad_antenna_patrol:army)} 2, 0
+
+[spawn_heli_strong]
+spawn_helicopter = simulation_helicopter_strong
+spawn_num = {=smart_under_faction(rad_antenna_patrol:army) !is_laststand} 1, 0

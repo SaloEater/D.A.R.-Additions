@@ -1,0 +1,19 @@
+[smart_terrain]
+respawn_radius = 500
+squad_id = 52
+max_population = 2
+respawn_params = respawn@zat_b100
+respawn_idle = 172800
+
+
+[respawn@zat_b100]
+
+spawn_monster
+
+[spawn_monster]
+spawn_squads = simulation_gigant, simulation_gigant, simulation_gigant, simulation_controller_5sn, simulation_controller_4zomb_str, simulation_controller
+spawn_num = {=!smart_controlled(zat_b100)} 1, 0
+
+[exclusive]
+zat_b100_poltergeist_01 = zaton\zat_b100_poltergeist_normal_tele.ltx
+zat_b100_poltergeist_02 = zaton\zat_b100_poltergeist_normal_tele.ltx

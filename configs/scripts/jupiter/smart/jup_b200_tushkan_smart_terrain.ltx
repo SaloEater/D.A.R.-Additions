@@ -1,0 +1,39 @@
+[smart_terrain]
+respawn_radius = 300
+squad_id = 8
+max_population = 3
+;respawn_only_smart = true
+respawn_params = respawn@jup_b200_tushkan_smart_terrain
+respawn_idle = 8640
+
+
+[respawn@jup_b200_tushkan_smart_terrain]
+
+spawn_monster1
+spawn_monster2
+spawn_monster3
+
+[spawn_monster1]
+spawn_squads = simulation_rats
+spawn_num = {=!smart_controlled(jup_b200_tushkan_smart_terrain)} 7, 0
+
+[spawn_monster2]
+spawn_squads = simulation_tushkano
+spawn_num = {=!smart_controlled(jup_b200_tushkan_smart_terrain)} 7, 0
+
+[spawn_monster3]
+spawn_squads = simulation_tushkano_7_10, simulation_rats_7_10
+spawn_num = {=!smart_controlled(jup_b200_tushkan_smart_terrain)} 2, 0
+
+
+[exclusive]
+tushkano_1  = jupiter\jup_b200_tushkans.ltx
+tushkano_2  = jupiter\jup_b200_tushkans.ltx
+tushkano_3  = jupiter\jup_b200_tushkans.ltx
+tushkano_4  = jupiter\jup_b200_tushkans.ltx
+tushkano_5  = jupiter\jup_b200_tushkans.ltx
+tushkano_6  = jupiter\jup_b200_tushkans.ltx
+tushkano_7  = jupiter\jup_b200_tushkans.ltx
+tushkano_8  = jupiter\jup_b200_tushkans.ltx
+tushkano_9  = jupiter\jup_b200_tushkans.ltx
+tushkano_10 = jupiter\jup_b200_tushkans.ltx
