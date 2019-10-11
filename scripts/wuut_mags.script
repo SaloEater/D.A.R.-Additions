@@ -70,7 +70,6 @@ function serializeTable(val, name, skipnewlines, depth)
     return tmp
 end
 
-
 function isMagazine(item)
 
 	--printf("isMagazine")
@@ -112,8 +111,6 @@ end
 
 
 function unload_mag_functor(weapon)
-
-
 	local is_mag = isMagazine(weapon)
 	local is_weapon = IsWeapon(weapon)
 	
@@ -194,7 +191,6 @@ end
 
 -- Called when the context option is clicked.
 function unload_mag_action_functor(weapon)
-
 	local is_mag = isMagazine(weapon)
 	local is_weapon = IsWeapon(weapon)
 	
@@ -305,9 +301,6 @@ function WeaponEjectMag(weapon)
 	stpk_utils.set_weapon_data(data,new_ammo_mag)
 	
 	--local new_se_obj = alife():create(currentMagClass, db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
-			
-	
-
 end
 
 function MagEjectAmmo(mag)
@@ -385,7 +378,6 @@ function UpdateMagazineUI(item)
 			ammo_type = math.abs(ammo_type-1)
 			item:set_ammo_type(ammo_type)
 		end
-	
 		--printf("ammo to mag " .. ammo_box_size .. " / " .. wpn_ammo_size)
 	
 	end
@@ -424,7 +416,6 @@ function GetLastSectionPart(section)
 end
 
 function on_item_focus(item)
-	
 	if(isMagazine(item)) then 
 		-- Highlight all weapons for this magazine.
 		local weapons = alun_utils.parse_list(system_ini(), item:section(), "compatible_weapons")
@@ -574,6 +565,7 @@ function on_key_release(key)
 			local loading_state = false
 
 			local weapon = db.actor:active_item()
+
 
 			db.actor:inventory_for_each(
 				function (item)
@@ -730,7 +722,7 @@ function main_loop()
 				
 				--wpn:set_ammo_elapsed(next_ammo_count)
 				
-				printf("final reload")
+				--printf("final reload")
 				
 			end
 			
@@ -750,7 +742,7 @@ function main_loop()
 	
 		if(wpn:get_state() == stateReload) then 
 			
-			printf("7")
+			--printf("7")
 			
 		end
 		
@@ -822,11 +814,11 @@ function on_key_press(key)
 		
 		
 		-- switch state
-		printf("switch state")
+		--printf("switch state")
 		local wpn = db.actor:item_in_slot(db.actor:active_slot())
 		if (wpn) then
 		
-			printf("switch state to (%s) ", tostring(state_test))
+			--printf("switch state to (%s) ", tostring(state_test))
 			wpn:switch_state(state_test) 
 			
 			--wpn:set_ammo_elapsed(2)
@@ -837,7 +829,7 @@ function on_key_press(key)
 		--[[
 		--ui_itm_drawn_map.drawn_map_ui("itm_map_redforest")
 		--db.actor.radiation = -1
-		printf("test G")
+		--printf("test G")
 		
 		
 		
@@ -845,7 +837,7 @@ function on_key_press(key)
 		
 		is_loading = not is_loading
 		
-		printf(is_loading)
+		--printf(is_loading)
 		]]
 		
 	end
@@ -856,24 +848,27 @@ function on_key_press(key)
 end
 
 function WeaponSetMagData(weapon, magClass)
-
 	--printf("magClass " .. magClass)
-
 	local wObj = alife_object(weapon:id())
-	local data = stpk_utils.get_weapon_data(wObj)
-	data.custom_data = magClass
-	stpk_utils.set_weapon_data(data,wObj)
-		
+	WeaponObjectSetMagData(wObj, magClass);		
 end
 
-function WeaponGetMagData(weapon)
-	
-	local wObj = alife_object(weapon:id())
+function WeaponObjectSetMagData(wObj, magClass)
+	--printf("magClass " .. magClass)
 	local data = stpk_utils.get_weapon_data(wObj)
-	
-	--printf("WeaponGetMagData: (" .. data.custom_data .. ")")
-	
-	--return data.custom_data
+	data.custom_data = magClass
+	stpk_utils.set_weapon_data(data,wObj)		
+end
+
+function WeaponGetMagData(weapon)	
+	local wObj = alife_object(weapon:id())
+	return WeaponObjectGetMagData(wObj)
+end
+
+function WeaponObjectGetMagData(wObj)	
+	local data = stpk_utils.get_weapon_data(wObj)	
+	--printf("WeaponGetMagData: (" .. data.custom_data .. ")")	
+	--return data.custom_data	
 	
 	return alun_utils.str_explode(data.custom_data,":")
 end
@@ -941,13 +936,13 @@ function IsAppropriateMagazine(weapon, magazine)
 		
 		local scopeClass = nameparts[table.getn(nameparts)]
 		
-		printf("IsAppropriateMagazine: %s", nameparts[table.getn(nameparts)])
+		--printf("IsAppropriateMagazine: %s", nameparts[table.getn(nameparts)])
 		
 		local basetemp = alun_utils.str_explode(weapon:section(),"_" .. scopeClass)
 		
 		weaponBase = basetemp[1]
 		
-		printf("IsAppropriateMagazine: base class : " .. weaponBase)
+		--printf("IsAppropriateMagazine: base class : " .. weaponBase)
 		
 		
 		
@@ -1211,6 +1206,7 @@ function drag_item(item, weapon, from_slot, to_slot)
 
 	--printf(isMagazine(weapon))
 
+	--printf("drag_item")
 	if(IsAmmo(item) and isMagazine(weapon)) then
 	
 		if(is_loading) then
@@ -1237,7 +1233,7 @@ function drag_item(item, weapon, from_slot, to_slot)
 	end
 	
 --[[
-	printf("drag_item: "..tostring(item:section()).." (" .. item:clsid() .. ") " ..tostring(weapon:section()))
+	--printf("drag_item: "..tostring(item:section()).." (" .. item:clsid() .. ") " ..tostring(weapon:section()))
 
 	local ini = system_ini()
 
@@ -1268,7 +1264,7 @@ function drag_item(item, weapon, from_slot, to_slot)
 	
 	--weapon:set_ammo_elapsed(9)
 	
-	printf("writing file")
+	--printf("writing file")
 	
 	-- Opens a file in append mode
 	file = io.open("test.lua", "a")
@@ -1294,7 +1290,7 @@ function drag_item(item, weapon, from_slot, to_slot)
 	-------------------------------------------------
 	local ammo_mag_size = ini:r_string_ex(weapon:section(),"ammo_mag_size")
 
-	printf("val %s", ammo_mag_size)
+	--printf("val %s", ammo_mag_size)
 	
 	-------------------------------------------------
 	

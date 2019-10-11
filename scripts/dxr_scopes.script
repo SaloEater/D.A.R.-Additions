@@ -203,72 +203,11 @@ function attach_addon(item, weapon)
 	if not (check_addon(item:section(), weapon:section())) then
 		return
 	end
---[[
-	-- Create objects for the 'before' and 'after' attachment weapons.
-	local old_weapon = alife_object(weapon:id())
-	if (old_weapon) then
-		local new_weapon = alife():clone_weapon(old_weapon, child_section, old_weapon.position, old_weapon.m_level_vertex_id, old_weapon.m_game_vertex_id, old_weapon.parent_id, false)
-		if (new_weapon) then
-			-- Release the addon and old unmodified weapon.
-			local addon_object = alife_object(item:id())
-			alife():release(addon_object, true)
-			alife():release(old_weapon, true)
-			
-			-- Register the new modified weapon.
-			alife():register(new_weapon)
-		end
-	end
-]]
-
-	local mag
-	local magClass
-	local magAmmoClass
-	local magAmmoCount
-	local magData
-
-	local is_mag = wuut_mags.isMagazine(weapon)		-- если weapon - магазин - true, иначе false
-	local is_weapon = IsWeapon(weapon)			-- если weapon - оружие - true, иначе false
-	local mag_exist = wuut_mags.IsMagInPlace(weapon)	-- если магазин вставлен в оружие - true, иначе false
-
-	if is_weapon and not is_mag then
-		if mag_exist then
-			mag = wuut_mags.WeaponGetMagData(weapon)
-			magClass = mag[1]
-			magAmmoClass = mag[2]
-			magAmmoCount = mag[3]
-			magData = magClass .. ":" .. magAmmoClass .. ":" .. magAmmoCount
-		end
-	end
 	
-	-- Create objects for the 'before' and 'after' attachment weapons.
-	local old_weapon = alife_object(weapon:id())
-	if (old_weapon) then
-		local new_weapon = alife():clone_weapon(old_weapon, child_section, old_weapon.position, old_weapon.m_level_vertex_id, old_weapon.m_game_vertex_id, old_weapon.parent_id, false)
-		if (new_weapon) then
-			-- Release the addon and old unmodified weapon.
-			local addon_object = alife_object(item:id())
-			alife():release(addon_object, true)
-			alife():release(old_weapon, true)
-
-			new_weapon:set_ammo_elapsed(0)
-
-			if mag_exist then
-				new_weapon:set_ammo_elapsed(magAmmoCount)
-			end
-
-			-- Register the new modified weapon.
-			alife():register(new_weapon)
-
-
-			if mag_exist then
-				local wObj = alife_object(new_weapon.id)
-				local data = stpk_utils.get_weapon_data(wObj)
-				data.custom_data = magData
-				stpk_utils.set_weapon_data(data,wObj)
-			end
-
-		end
-	end
+	createWeaponCloneWithDifferentSection(weapon, child_section)
+	
+	local addon_object = alife_object(item:id())
+	alife():release(addon_object, true)
 	xr_sound.set_sound_play(db.actor:id(),"inv_attach_addon")
 end
 
@@ -291,67 +230,68 @@ function detach_addon(weapon)
 			break
 		end
 	end
---[[
-	-- Create objects for the 'before' and 'after' detachment weapons.
+	
+	createWeaponCloneWithDifferentSection(weapon, parent_section)
+	xr_sound.set_sound_play(db.actor:id(),"inv_detach_addon")
+end
+
+function createWeaponCloneWithDifferentSection(weapon, section)
+	--[[local oldMagazine = wuut_mags.WeaponEjectMag(weapon)
+
+	-- Create objects for the 'before' and 'after' attachment weapons.
 	local old_weapon = alife_object(weapon:id())
 	if (old_weapon) then
-		local new_weapon = alife():clone_weapon(old_weapon, parent_section, old_weapon.position, old_weapon.m_level_vertex_id, old_weapon.m_game_vertex_id, old_weapon.parent_id, false)
-		if (new_weapon) then
-			-- Release the old modified weapon.
+		
+		local new_weapon = alife():clone_weapon(old_weapon, section, old_weapon.position, old_weapon.m_level_vertex_id, old_weapon.m_game_vertex_id, old_weapon.parent_id, false)
+		if (new_weapon) then					
+			-- Release old weapon and addon
 			alife():release(old_weapon, true)
 			
-			-- Register the new unmodified weapon.
+			
+			if oldMagazine then		
+				wuut_mags.WeaponAttemptToLoadMagazine(new_weapon, oldMagazine)
+			end
+			-- Register the new modified weapon.
 			alife():register(new_weapon)
+			
 		end
-	end
-]]
+	end]]
 
-	local mag
-	local magClass
-	local magAmmoClass
-	local magAmmoCount
 	local magData
+	local magAmmoCountInteger
 
 	local is_mag = wuut_mags.isMagazine(weapon)		-- если weapon - магазин - true, иначе false
 	local is_weapon = IsWeapon(weapon)			-- если weapon - оружие - true, иначе false
 	local mag_exist = wuut_mags.IsMagInPlace(weapon)	-- если магазин вставлен в оружие - true, иначе false
 
-	if is_weapon and not is_mag then
-		if mag_exist then
-			mag = wuut_mags.WeaponGetMagData(weapon)
-			magClass = mag[1]
-			magAmmoClass = mag[2]
-			magAmmoCount = mag[3]
-			magData = magClass .. ":" .. magAmmoClass .. ":" .. magAmmoCount
-		end
+	if is_weapon and not is_mag and mag_exist then
+		local mag = wuut_mags.WeaponGetMagData(weapon)
+		local magClass = mag[1]
+		local magAmmoClass = mag[2]
+		local magAmmoCount = mag[3]
+		magAmmoCountInteger = tonumber(magAmmoCount)
+		magData = magClass .. ":" .. magAmmoClass .. ":" .. magAmmoCount
 	end
 
-	-- Create objects for the 'before' and 'after' detachment weapons.
+	-- Create objects for the 'before' and 'after' attachment weapons.
 	local old_weapon = alife_object(weapon:id())
 	if (old_weapon) then
-		local new_weapon = alife():clone_weapon(old_weapon, parent_section, old_weapon.position, old_weapon.m_level_vertex_id, old_weapon.m_game_vertex_id, old_weapon.parent_id, false)
-		if (new_weapon) then
-			-- Release the old modified weapon.
+		
+		local new_weapon = alife():clone_weapon(old_weapon, section, old_weapon.position, old_weapon.m_level_vertex_id, old_weapon.m_game_vertex_id, old_weapon.parent_id, false)
+		if (new_weapon) then					
+			-- Release old weapon and addon
 			alife():release(old_weapon, true)
-
-			new_weapon:set_ammo_elapsed(0)
-
-			if mag_exist then
-				new_weapon:set_ammo_elapsed(magAmmoCount)
+			
+			if mag_exist then	
+				new_weapon:set_ammo_elapsed(magAmmoCountInteger)
 			end
 			
-			-- Register the new unmodified weapon.
+			-- Register the new modified weapon.
 			alife():register(new_weapon)
-
-
-			if mag_exist then
-				local wObj = alife_object(new_weapon.id)
-				local data = stpk_utils.get_weapon_data(wObj)
-				data.custom_data = magData
-				stpk_utils.set_weapon_data(data,wObj)
+			if mag_exist then				
+				-- Restore magazine data
+				wuut_mags.WeaponObjectSetMagData(new_weapon, magData)
 			end
-
 		end
 	end
-	xr_sound.set_sound_play(db.actor:id(),"inv_detach_addon")
 end
