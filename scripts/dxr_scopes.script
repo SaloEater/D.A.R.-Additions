@@ -230,35 +230,12 @@ function detach_addon(weapon)
 			break
 		end
 	end
-	
 	createWeaponCloneWithDifferentSection(weapon, parent_section)
 	xr_sound.set_sound_play(db.actor:id(),"inv_detach_addon")
 end
 
 function createWeaponCloneWithDifferentSection(weapon, section)
-	--[[local oldMagazine = wuut_mags.WeaponEjectMag(weapon)
-
-	-- Create objects for the 'before' and 'after' attachment weapons.
-	local old_weapon = alife_object(weapon:id())
-	if (old_weapon) then
-		
-		local new_weapon = alife():clone_weapon(old_weapon, section, old_weapon.position, old_weapon.m_level_vertex_id, old_weapon.m_game_vertex_id, old_weapon.parent_id, false)
-		if (new_weapon) then					
-			-- Release old weapon and addon
-			alife():release(old_weapon, true)
-			
-			
-			if oldMagazine then		
-				wuut_mags.WeaponAttemptToLoadMagazine(new_weapon, oldMagazine)
-			end
-			-- Register the new modified weapon.
-			alife():register(new_weapon)
-			
-		end
-	end]]
-
 	local magData
-	local magAmmoCountInteger
 
 	local is_mag = wuut_mags.isMagazine(weapon)		-- если weapon - магазин - true, иначе false
 	local is_weapon = IsWeapon(weapon)			-- если weapon - оружие - true, иначе false
@@ -266,11 +243,10 @@ function createWeaponCloneWithDifferentSection(weapon, section)
 
 	if is_weapon and not is_mag and mag_exist then
 		local mag = wuut_mags.WeaponGetMagData(weapon)
-		local magClass = mag[1]
-		local magAmmoClass = mag[2]
-		local magAmmoCount = mag[3]
-		magAmmoCountInteger = tonumber(magAmmoCount)
-		magData = magClass .. ":" .. magAmmoClass .. ":" .. magAmmoCount
+		local magClass = mag.class
+		local magAmmoClass = mag.ammoClass
+		local magAmmoCount = mag.ammoCount
+		magData = wuut_mags.assembleWeaponData(magClass, magAmmoClass, magAmmoCount)
 	end
 
 	-- Create objects for the 'before' and 'after' attachment weapons.
@@ -283,14 +259,14 @@ function createWeaponCloneWithDifferentSection(weapon, section)
 			alife():release(old_weapon, true)
 			
 			if mag_exist then	
-				new_weapon:set_ammo_elapsed(magAmmoCountInteger)
+				new_weapon:set_ammo_elapsed(tonumber(magData.ammoCount))
 			end
 			
 			-- Register the new modified weapon.
 			alife():register(new_weapon)
 			if mag_exist then				
 				-- Restore magazine data
-				wuut_mags.WeaponObjectSetMagData(new_weapon, magData)
+				wuut_mags.SOWeaponSetMagData(new_weapon, wuut_mags.stringifyWeaponData(magData))
 			end
 		end
 	end

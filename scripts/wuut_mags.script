@@ -160,33 +160,34 @@ function unload_mag_functor(weapon)
 	--printf("0" .. weapon.custom)
 	
 	-------------------------------------------------
+	--[[
 	local id = weapon:id()
 	local wObj = alife_object(id)
 	
 	local data = stpk_utils.get_weapon_data(wObj)
 	
 	
-	--data.ammo_mag_size = 12
+	data.ammo_mag_size = 12
 	
-	--printf("wpn %s", data.inv_weight)
+	printf("wpn %s", data.inv_weight)
 	
-	--data.inv_weight = 1.0
+	data.inv_weight = 1.0
 	
-	--data.ammo_current = 10
-	--data.custom = "asd"
-	--data.condition = 0.9
+	data.ammo_current = 10
+	data.custom = "asd"
+	data.condition = 0.9
 	
-	--stpk_utils.set_weapon_data(data,wObj)
+	stpk_utils.set_weapon_data(data,wObj)
 	
-	--printf("1" .. weapon.custom)
+	printf("1" .. weapon.custom)
 	if (data.custom_data ~= nil) then
-	--printf("get " .. data.custom_data)
+	printf("get " .. data.custom_data)
 	
 	end
 	
-	--isMagazine(weapon)
+	isMagazine(weapon)
 	
-	--return "unload mag"
+	return "unload mag"]]
 end
 
 -- Called when the context option is clicked.
@@ -256,7 +257,7 @@ function IsMagInPlace(weapon)
 	
 	local currentMag = WeaponGetMagData(weapon)
 	
-	local currentMagClass = currentMag[1]
+	local currentMagClass = currentMag.class
 	
 	if(system_ini():section_exist(currentMagClass)) then
 		
@@ -272,13 +273,13 @@ function WeaponEjectMag(weapon)
 
 	local currentMag = WeaponGetMagData(weapon)
 	
-	local currentMagClass = currentMag[1]
+	local currentMagClass = currentMag.class
 	
-	--printf("WeaponEjectMag: class" .. currentMagClass)
+	printf("WeaponEjectMag: class" .. currentMagClass)
 	
-	local currentAmmoName = currentMag[2]
+	local currentAmmoName = currentMag.ammoClass
 
-	local weapon_ammo = weapon:get_ammo_in_magazine() --currentMag[3]
+	local weapon_ammo = weapon:get_ammo_in_magazine() --currentMag.ammoCount
 
 	-- set ammo to 0
 	weapon:set_ammo_elapsed(0)
@@ -294,9 +295,9 @@ function WeaponEjectMag(weapon)
 	
 	--currentMagClass = "X"
 	
-	data.custom_data = currentMagClass .. ":" .. currentAmmoName .. ":" .. weapon_ammo 
+	data.custom_data = stringifyWeaponData(assembleWeaponData(currentMagClass, currentAmmoName, weapon_ammo))
 	
-	--printf("WeaponEjectMag: custom_data : " .. data.custom_data)
+	printf("WeaponEjectMag: custom_data : " .. data.custom_data)
 	
 	stpk_utils.set_weapon_data(data,new_ammo_mag)
 	
@@ -307,13 +308,13 @@ function MagEjectAmmo(mag)
 	
 	local magData = WeaponGetMagData(mag)
 	
-	local magClass = magData[1]
-	local magAmmoClass = magData[2]
-	local magAmmoCount = magData[3]
+	local magClass = magData.class
+	local magAmmoClass = magData.ammoClass
+	local magAmmoCount = magData.ammoCount
 	
 	create_ammo(magAmmoClass,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),0, tonumber(magAmmoCount))
 					
-	WeaponSetMagData(mag, magClass .. ":" .. magAmmoClass .. ":" .. "0")
+	WeaponSetMagData(mag, stringifyWeaponData(assembleWeaponData(magClass, magAmmoClass, "0")))
 	
 	xr_sound.set_sound_play(db.actor:id(),"inv_unload")
 	
@@ -330,7 +331,7 @@ function ValidateMag(mag)
 		
 		--printf("ValidateMag new item")
 		
-		WeaponSetMagData(mag, "X:X:0")
+		WeaponSetMagData(mag, stringifyWeaponData(assembleWeaponData("X", "X", "0")))
 	end
 end
 
@@ -352,8 +353,8 @@ function UpdateMagazineUI(item)
 
 		--printf("currentMag data" .. currentMag)
 		
-		local curretnAmmoName = currentMag[2]
-		local currentMagAmmo = currentMag[3]
+		local curretnAmmoName = currentMag.ammoClass
+		local currentMagAmmo = currentMag.ammoCount
 		
 		-- disable
 		--item:set_ammo_elapsed(currentMagAmmo)
@@ -451,19 +452,19 @@ function on_item_focus(item)
 		--printf("on_item_focus2")
 	
 		
-		local tempMagClass = tempData[1]
+		local tempMagClass = tempData.class
 		
 		-- get old mag data if available
 		if(IsMagInPlace(item) and system_ini():section_exist(tempMagClass)) then
 		
 		
-			local currentMagClass = tempData[1]
-			
-			local currentAmmoName = tempData[2]
+			local currentMagClass = tempData.class
+		
+			local currentAmmoName = tempData.ammoClass
 			
 			local currentMagAmmo = weapon_ammo
 			
-			WeaponSetMagData(item, currentMagClass .. ":" .. currentAmmoName .. ":" .. currentMagAmmo)
+			WeaponSetMagData(item, stringifyWeaponData(assembleWeaponData(currentMagClass, currentAmmoName, currentMagAmmo)))
 		
 		else
 		
@@ -505,7 +506,7 @@ function on_item_focus(item)
 			
 			local currentMagAmmo = weapon_ammo
 			
-			WeaponSetMagData(item, currentMagClass .. ":" .. currentAmmoName .. ":" .. currentMagAmmo)
+			WeaponSetMagData(item, stringifyWeaponData(assembleWeaponData(currentMagClass, currentAmmoName, currentMagAmmo)))
 			
 		end
 		--local mag_ammo_count = GetMagAmmo(item) --item:get_ammo_in_magazine()
@@ -682,13 +683,13 @@ function animation_end(item,section,motion,state,slot)
 			
 			local tempData = WeaponGetMagData(item)
 			
-			local currentMagClass = tempData[1]
+			local currentMagClass = tempData.class
 			
-			local currentAmmoName = tempData[2]
+			local currentAmmoName = tempData.ammoClass
 			
 			local currentMagAmmo = next_ammo_count
 			
-			WeaponSetMagData(item, currentMagClass .. ":" .. currentAmmoName .. ":" .. currentMagAmmo)
+			WeaponSetMagData(item, stringifyWeaponData(assembleWeaponData(currentMagClass, currentAmmoName, currentMagAmmo)))
 		
 		
 		
@@ -839,64 +840,78 @@ function on_key_press(key)
 		
 		--printf(is_loading)
 		]]
-		
 	end
-	
-
-
-
 end
 
-function WeaponSetMagData(weapon, magClass)
-	--printf("magClass " .. magClass)
+function disassembleWeaponDataString(dataString)
+	dataArray = alun_utils.str_explode(dataString,":")
+	class = dataArray[1]
+	ammoClass = dataArray[2]
+	ammoCount = dataArray[3]
+	return assembleWeaponData(class, ammoClass, ammoCount)
+end
+
+function assembleWeaponData(class, ammoClass, ammoCount)
+	ammoCount = ammoCount or 0
+	magazineData = {}
+	magazineData.class = class
+	magazineData.ammoClass = ammoClass
+	magazineData.ammoCount = ammoCount
+	return magazineData
+end
+
+function stringifyWeaponData(magazineData)
+	return magazineData.class .. ":" .. magazineData.ammoClass .. ":" .. magazineData.ammoCount
+end
+
+function WeaponSetMagData(weapon, weaponData)
+	--printf("magClass " .. weaponData)
 	local wObj = alife_object(weapon:id())
-	WeaponObjectSetMagData(wObj, magClass);		
+	SOWeaponSetMagData(wObj, weaponData);		
 end
 
-function WeaponObjectSetMagData(wObj, magClass)
-	--printf("magClass " .. magClass)
+function SOWeaponSetMagData(wObj, weaponData)
+	--printf("magClass " .. weaponData)
 	local data = stpk_utils.get_weapon_data(wObj)
-	data.custom_data = magClass
+	data.custom_data = weaponData
 	stpk_utils.set_weapon_data(data,wObj)		
 end
 
 function WeaponGetMagData(weapon)	
 	local wObj = alife_object(weapon:id())
-	return WeaponObjectGetMagData(wObj)
+	return SOWeaponGetMagData(wObj)
 end
 
-function WeaponObjectGetMagData(wObj)	
+function SOWeaponGetMagData(wObj)	
 	local data = stpk_utils.get_weapon_data(wObj)	
 	--printf("WeaponGetMagData: (" .. data.custom_data .. ")")	
 	--return data.custom_data	
 	
-	return alun_utils.str_explode(data.custom_data,":")
+	return disassembleWeaponDataString(data.custom_data)
 end
 
 function GetMagAmmo(mag)
 	local wObj = alife_object(mag:id())
 	local data = stpk_utils.get_weapon_data(wObj)
 	
-	local magData = alun_utils.str_explode(data.custom_data,":")
+	local magData = disassembleWeaponDataString(data.custom_data)
 	
-	return tonumber(magData[3]) 
-
+	return tonumber(magData.ammoCount) 
 end
 
 function SetMagAmmo(mag, magAmmoCount)
 	local wObj = alife_object(mag:id())
 	local data = stpk_utils.get_weapon_data(wObj)
 	
-	local magData = alun_utils.str_explode(data.custom_data,":")
+	local magData = disassembleWeaponDataString(data.custom_data)
 	
-	local magClass = magData[1]
-	local magAmmoClass = magData[2]
-	--local magAmmoCount = magData[2]
+	local magClass = magData.class
+	local magAmmoClass = magData.ammoClass
+	--local magAmmoCount = magData.ammoClass
 	
-	data.custom_data = magClass .. ":" .. magAmmoClass .. ":" .. magAmmoCount
+	data.custom_data = stringifyWeaponData(assembleWeaponData(magClass, magAmmoClass, magAmmoCount))
 	
-	stpk_utils.set_weapon_data(data,wObj)
-	
+	stpk_utils.set_weapon_data(data,wObj)	
 end
 
 
@@ -994,15 +1009,15 @@ function WeaponAttemptToLoadMagazine(weapon, item)
 		
 		local currentWeaponData = WeaponGetMagData(weapon)
 		
-		local currentWeaponMagClass = currentWeaponData[1]
+		local currentWeaponMagClass = currentWeaponData.class
 		
-		local currentWeaponAmmoName = currentWeaponData[2]
+		local currentWeaponAmmoName = currentWeaponData.ammoClass
 		
 		local currentMagData = WeaponGetMagData(item)
 		
-		local currentMagAmmoName = currentMagData[2]
+		local currentMagAmmoName = currentMagData.ammoClass
 		
-		--local currentMagAmmo = currentWeaponData[3]
+		--local currentMagAmmo = currentWeaponData.ammoCount
 		
 		
 		-- make sure we can load the ammo with current mag, required for caliber changes
@@ -1038,12 +1053,7 @@ function WeaponAttemptToLoadMagazine(weapon, item)
 			--new_ammo_magobj
 			--new_ammo_mag.ammo_elapsed = weapon_ammo
 		
-			--cloneMe(new_ammo_mag)
-		
-			
-		
-			
-		
+			--cloneMe(new_ammo_mag)	
 		
 			-- update ammo type
 			--current_ammo_type = weapon:get_ammo_type()
@@ -1091,7 +1101,7 @@ function WeaponAttemptToLoadMagazine(weapon, item)
 
 		--printf("new class: " .. mag_class_name)
 
-		WeaponSetMagData(weapon, mag_class_name .. ":" .. currentMagAmmoName .. ":" .. mag_ammo_count)
+		WeaponSetMagData(weapon, stringifyWeaponData(assembleWeaponData(mag_class_name, currentMagAmmoName, mag_ammo_count)))
 		
 		
 		return true
@@ -1127,7 +1137,7 @@ function MagazineAttemptLoadingWithBullets(item, weapon)
 
 	local magData = WeaponGetMagData(weapon)
 
-	local current_mag_ammo_name = magData[2]
+	local current_mag_ammo_name = magData.ammoClass
 
 	--local same_ammo = weapon:get_ammo_name() == item:section()
 	local same_ammo = current_mag_ammo_name == item:section()
@@ -1168,8 +1178,8 @@ function MagazineAttemptLoadingWithBullets(item, weapon)
 			--weapon:set_ammo_elapsed(wpn_ammo_size + 1)
 			SetMagAmmo(weapon, wpn_ammo_size + 1)
 			
-			--WeaponSetMagData(weapon, weapon:section() .. ":" .. weapon:get_ammo_name() .. ":" .. wpn_ammo_size + 1)
-			WeaponSetMagData(weapon, weapon:section() .. ":" .. item:section() .. ":" .. wpn_ammo_size + 1)
+			--WeaponSetMagData(weapon,  stringifyWeaponData(assembleWeaponData(weapon:section(), weapon:get_ammo_name(), wpn_ammo_size + 1)))
+			WeaponSetMagData(weapon, stringifyWeaponData(assembleWeaponData(weapon:section(), item:section(), wpn_ammo_size + 1)))
 			
 			xr_sound.set_sound_play(db.actor:id(),"inv_ammo")
 			
